@@ -19,6 +19,7 @@
 1. yii2需要开启的PHP的openssl、pdo、pdo_mysql扩展，我弄了文件上传的功能，需要fileinfo扩展。（因为还没开始学缓存什么的，所以可以用php7，速度很快）
 
 2. 你要有[composer](http://docs.phpcomposer.com/)，以及创建一个utf8数据库，在**数据库配置文件**配置好相关参数后，执行以下命令：
+
 ```
 composer install
 yii migrate --migrationPath=@yii/rbac/migrations
@@ -29,6 +30,7 @@ yii migrate/to m160523_015948_init
 3. **配置文件**里的```$config['components']['urlManager']```这一部分我给注释掉了，如果开启apache的rewrite并把站点根目录设置为/web的话，就可以把整个```if```取消掉注释了。
 
 4. 用户名和密码如下：
+
 身份 | 用户名 | 密码 |
 ---|---|---
 超级管理员 | hu | hbw12345
@@ -42,4 +44,6 @@ yii migrate/to m160523_015948_init
 
 如果觉得我的项目做的好的话，就给我打赏吧，以后我会用这些钱来学习以及购买服务器。
 
-![wechat](https://raw.githubusercontent.com/hubeiwei/laohu-yii2/master/wechat_1464710844970.png "微信") ![alipay](https://raw.githubusercontent.com/hubeiwei/laohu-yii2/master/alipay_1464710933517.jpg "支付宝")
+![wechat](https://raw.githubusercontent.com/hubeiwei/laohu-yii2/master/wechat_1464710844970.png "微信")
+
+![alipay](https://raw.githubusercontent.com/hubeiwei/laohu-yii2/master/alipay_1464710933517.jpg "支付宝")
