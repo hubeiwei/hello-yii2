@@ -12,7 +12,7 @@
 /modules | 模块，主要的东西都在这里了，模块的注释在**配置文件**里
 /views | 只是放一个布局文件而已
 
-# 项目搭建
+# 项目部署
 
 ## 安装
 
@@ -27,9 +27,11 @@ yii migrate/to m140602_111327_create_menu_table --migrationPath=@mdm/admin/migra
 yii migrate/to m160523_015948_init
 ```
 
-3. **配置文件**里的```$config['components']['urlManager']```这一部分我给注释掉了，如果开启apache的rewrite并把站点根目录设置为/web的话，就可以把整个```if```取消掉注释了。
+## 使用
 
-4. 用户名和密码如下：
+1. **配置文件**里的`$config['components']['urlManager']`这一部分我给注释掉了，如果开启apache的rewrite并把站点根目录设置为`/web`的话，就可以把整个`if`取消掉注释了。
+
+2. 用户名和密码如下：
 
 身份 | 用户名 | 密码 |
 ---|---|---
@@ -48,7 +50,7 @@ composer global require "fxp/composer-asset-plugin:~1.1.1"
 
 [参考链接](https://segmentfault.com/q/1010000004047286)
 
-# 捐赠
+# 打赏
 
 如果觉得我的项目做的好的话，就给我打赏吧，以后我会用这些钱来学习以及购买服务器。
 
