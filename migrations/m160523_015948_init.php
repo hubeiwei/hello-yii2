@@ -96,8 +96,8 @@ class m160523_015948_init extends Migration
             'status' => 'enum(\'Y\',\'N\') DEFAULT \'Y\' COMMENT \'状态\'',
             'description' => $this->string(200)->comment('描述'),
             'tag' => $this->string(20)->comment('标记'),
-            'user_id' => $this->integer(10)->unsigned()->comment('用户ID'),
-            'last_operater' => $this->integer(10)->unsigned()->comment('最后操作人'),
+            'created_by' => $this->integer(10)->unsigned()->comment('创建者'),
+            'updated_by' => $this->integer(10)->unsigned()->comment('最后操作者'),
             'created_at' => $this->integer(11)->unsigned()->comment('创建时间'),
             'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
         ], $tableMyISAMOptions . ' COMMENT=\'网站配置\'');
