@@ -38,7 +38,15 @@ yii migrate/to m160523_015948_init
 
 ## 安装遇到问题怎么办？
 
-我只测试过migration能正常导入数据而已，项目刚传上来还没测试过别人拿到手之后能不能跑，有问题加QQ联系吧。
+1. 我只测试过migration能正常导入数据而已，项目刚传上来还没测试过别人拿到手之后能不能跑，有问题加QQ联系吧。
+
+2. 在公司电脑测试部署我的项目，执行`composer install`后vendor目录里没有bower目录，尝试执行以下命令再重新执行一次`composer install`
+
+```
+composer global require "fxp/composer-asset-plugin:~1.1.1"
+```
+
+[参考链接](https://segmentfault.com/q/1010000004047286)
 
 # 捐赠
 
