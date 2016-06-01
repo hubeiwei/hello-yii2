@@ -55,17 +55,6 @@ ManageAssets::register($this);
     ?>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <?php
-                echo Breadcrumbs::widget([
-                    'homeLink' => [
-                        'label' => '首页',
-                        'url' => '/manage'
-                    ],
-                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                ]);
-                ?>
-            </div>
             <div class="col-md-3 col-lg-2 hidden-sm hidden-xs">
                 <div class="list-group" id="nav-menu">
                     <?php
@@ -129,6 +118,14 @@ ManageAssets::register($this);
             </div>
             <div class="col-md-9 col-lg-10">
                 <?php
+                echo Breadcrumbs::widget([
+                    'homeLink' => [
+                        'label' => '首页',
+                        'url' => '/manage'
+                    ],
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]);
+
                 if (EasyHelper::hasMessage('success')) {
                     echo Alert::widget([
                         'options' => ['class' => 'alert-success'],
