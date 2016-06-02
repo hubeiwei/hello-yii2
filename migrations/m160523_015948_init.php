@@ -90,7 +90,6 @@ class m160523_015948_init extends Migration
 
         $this->createTable(Setting::tableName(), [
             'id' => $this->primaryKey(10)->unsigned(),
-            'name' => $this->string(50)->notNull()->comment('名称'),
             'key' => $this->string(20)->notNull()->unique()->comment('键'),
             'value' => $this->text()->notNull()->comment('值'),
             'status' => 'enum(\'Y\',\'N\') DEFAULT \'Y\' COMMENT \'状态\'',
