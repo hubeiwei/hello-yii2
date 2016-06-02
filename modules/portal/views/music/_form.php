@@ -22,7 +22,7 @@ use yii\helpers\Html;
      * 现在用了kartik\file\FileInput，得自己写
      */
     $form = HuActiveForm::begin([
-        //options覆盖了，得重新配class，宽度就不用设置了
+        //options覆盖了，得重新配class
         'options' => ['class' => 'form-horizontal', 'enctype' => 'multipart/form-data'],
     ]);
 

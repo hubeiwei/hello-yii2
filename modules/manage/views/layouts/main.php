@@ -59,6 +59,8 @@ ManageAssets::register($this);
                 <div class="list-group" id="nav-menu">
                     <?php
                     $currentUrl = Url::current();
+                    $currentUrlSnippet = explode('/', $currentUrl);
+                    $currentUrlPath = '/' . $currentUrlSnippet[1] . '/' . $currentUrlSnippet[2];
                     $activeMenu = '';
                     $menu = MenuHelper::getAssignedMenu(UserHelper::getUserId());
                     foreach ($menu as $menuKey => $menuValue) {
@@ -90,7 +92,9 @@ ManageAssets::register($this);
                                 'class' => 'submenu collapse',
                             ]);
                             foreach ($menuValue['items'] as $itemKey => $itemValue) {
-                                if ($currentUrl == $itemValue['url'][0]) {
+                                $itemUrlSnippet = explode('/', $itemValue['url'][0]);
+                                $itemUrlPath = '/' . $itemUrlSnippet[1] . '/' . $itemUrlSnippet[2];
+                                if ($currentUrlPath == $itemUrlPath) {
                                     $active = ' active';
                                     $activeMenu = 'nav-menu-' . $menuKey;
                                 } else {
@@ -102,16 +106,6 @@ ManageAssets::register($this);
                             }
                             echo Html::endTag('div');
                         }
-                    }
-                    if ($activeMenu) {
-                        ?>
-                        <script>
-                            var active_menu = $("[data-target = '#<?=$activeMenu ?>']");
-                            active_menu.attr("class", active_menu.attr("class") + " active");
-                            var active_menu_group = $("#<?=$activeMenu ?>");
-                            active_menu_group.attr("class", active_menu_group.attr("class") + " in");
-                        </script>
-                        <?php
                     }
                     ?>
                 </div>
@@ -159,6 +153,18 @@ ManageAssets::register($this);
     </div>
 </footer>
 <?php $this->endBody() ?>
+<?php
+if ($activeMenu) {
+    ?>
+    <script>
+        var active_menu = $("[data-target = '#<?=$activeMenu ?>']");
+        active_menu.attr("class", active_menu.attr("class") + " active");
+        var active_menu_group = $("#<?=$activeMenu ?>");
+        active_menu_group.attr("class", active_menu_group.attr("class") + " in");
+    </script>
+    <?php
+}
+?>
 </body>
 </html>
 <?php $this->endPage() ?>

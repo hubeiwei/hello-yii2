@@ -14,11 +14,11 @@ use yii\widgets\ActiveForm;
 class HuActiveForm extends ActiveForm
 {
     public $options = [
-        'class' => 'form-horizontal col-md-8',
+        'class' => 'form-horizontal',
     ];
 
     public $fieldConfig = [
-        'template' => '{label}<div class="col-md-5">{input}{error}</div>',
+        'template' => '{label}<div class="col-md-5">{input}</div><div class="col-md-5">{error}</div>',
         'labelOptions' => ['class' => 'col-md-2 control-label'],
     ];
 }
