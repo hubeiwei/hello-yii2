@@ -111,17 +111,11 @@ $config = [
 $config['components']['urlManager'] = [
     'enablePrettyUrl' => true,
     'showScriptName' => false,
-
-    /**
-     * url简写（貌似叫规则或者别名才对），
-     * 为了照顾没开rewrite的，用到这些简写的地方也改回原来的了，
-     * 所以这些规则已经废掉了，取消注释也只是方便开了rewrite的手动输地址
-     */
-    /*'rules' => [
+    'rules' => [
         'login' => '/user/default/login',
         'logout' => '/user/default/logout',
         'register' => '/user/default/register',
-    ],*/
+    ],
 ];
 
 if (YII_ENV_DEV) {
