@@ -29,7 +29,7 @@ yii migrate/to m160523_015948_init
 
 ## 使用
 
-1. **配置文件**里的`$config['components']['urlManager']`这一部分我给注释掉了，如果开启apache的rewrite并把站点根目录设置为`/web`的话，就可以把整个`if`取消掉注释了。
+1. 需要开启apache的rewrite并把站点根目录设置为`/web`，因为后台菜单需要，以后再解决这个问题。
 
 2. 用户名和密码如下：
 

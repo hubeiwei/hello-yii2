@@ -84,10 +84,6 @@ class m160523_015948_init extends Migration
             'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
         ], $tableInnoDBOptions);
 
-        $this->batchInsert(Music::tableName(), ['track_title', 'music_file', 'user_id', 'created_at', 'updated_at'], [
-            ['いのちの名前 ~ジブリ・メドレー~', '34b372ac9769060', 1, time(), time()],
-        ]);
-
         $this->createTable(Setting::tableName(), [
             'id' => $this->primaryKey(10)->unsigned(),
             'key' => $this->string(20)->notNull()->unique()->comment('键'),
