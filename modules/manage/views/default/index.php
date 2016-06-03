@@ -2,6 +2,10 @@
 
 use yii\helpers\Html;
 
+/**
+ * @var $this yii\web\View
+ */
+
 $this->title = '首页';
 //$this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 ?>

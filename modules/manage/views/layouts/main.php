@@ -107,6 +107,16 @@ ManageAssets::register($this);
                             echo Html::endTag('div');
                         }
                     }
+                    if ($activeMenu) {
+                        ?>
+                        <script>
+                            var active_menu = $("[data-target = '#<?=$activeMenu ?>']");
+                            active_menu.attr("class", active_menu.attr("class") + " active");
+                            var active_menu_group = $("#<?=$activeMenu ?>");
+                            active_menu_group.attr("class", active_menu_group.attr("class") + " in");
+                        </script>
+                        <?php
+                    }
                     ?>
                 </div>
             </div>
@@ -153,18 +163,6 @@ ManageAssets::register($this);
     </div>
 </footer>
 <?php $this->endBody() ?>
-<?php
-if ($activeMenu) {
-    ?>
-    <script>
-        var active_menu = $("[data-target = '#<?=$activeMenu ?>']");
-        active_menu.attr("class", active_menu.attr("class") + " active");
-        var active_menu_group = $("#<?=$activeMenu ?>");
-        active_menu_group.attr("class", active_menu_group.attr("class") + " in");
-    </script>
-    <?php
-}
-?>
 </body>
 </html>
 <?php $this->endPage() ?>

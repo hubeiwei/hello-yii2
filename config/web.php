@@ -53,11 +53,6 @@ $config = [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['Guest'],//默认角色
         ],
-        /*'session' => [
-            'class' => 'yii\web\DbSession',
-//            'class' => 'yii\web\Session',
-            'timeout' => 300,
-        ]*/
     ],
     'params' => $params,
     'language' => 'zh-CN',
