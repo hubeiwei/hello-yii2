@@ -106,28 +106,23 @@ $config = [
 ];
 
 /**
- * 我捡来的万网虚拟主机只能直接丢项目上去，不能配东西，所以就设置成仅在局域网内启用该配置。
- *
- * 共享代码出去时我会把整个if注释掉，
- * 如果开启apache的rewrite并把站点根目录设置为/web的话，就可以取消注释了。
+ * TODO 因为后台菜单需要，所以需要把站点根目录设置为/web，不会配置的就去学一下吧，以后解决了后台菜单的问题再说
  */
-//if (strpos($_SERVER['SERVER_ADDR'], '127.0') === 0 || strpos($_SERVER['SERVER_ADDR'], '192.168') === 0) {
-//    $config['components']['urlManager'] = [
-//        'enablePrettyUrl' => true,
-//        'showScriptName' => false,
-//
-//        /**
-//         * url简写（貌似叫规则或者别名才对），
-//         * 为了照顾没开rewrite的，用到这些简写的地方也改回原来的了，
-//         * 所以这些规则已经废掉了，取消注释也只是方便开了rewrite的手动输地址
-//         */
-//        /*'rules' => [
-//            'login' => '/user/default/login',
-//            'logout' => '/user/default/logout',
-//            'register' => '/user/default/register',
-//        ],*/
-//    ];
-//}
+$config['components']['urlManager'] = [
+    'enablePrettyUrl' => true,
+    'showScriptName' => false,
+
+    /**
+     * url简写（貌似叫规则或者别名才对），
+     * 为了照顾没开rewrite的，用到这些简写的地方也改回原来的了，
+     * 所以这些规则已经废掉了，取消注释也只是方便开了rewrite的手动输地址
+     */
+    /*'rules' => [
+        'login' => '/user/default/login',
+        'logout' => '/user/default/logout',
+        'register' => '/user/default/register',
+    ],*/
+];
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment

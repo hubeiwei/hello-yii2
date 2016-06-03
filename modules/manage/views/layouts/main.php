@@ -58,6 +58,9 @@ ManageAssets::register($this);
             <div class="col-md-3 col-lg-2 hidden-sm hidden-xs">
                 <div class="list-group" id="nav-menu">
                     <?php
+                    /**
+                     * TODO 这种做法会产生两种问题：1.菜单上同控制器的链接都会高亮；2.currentUrl格式不是"/模块/控制器"的情况下会报错
+                     */
                     $currentUrl = Url::current();
                     $currentUrlSnippet = explode('/', $currentUrl);
                     $currentUrlPath = '/' . $currentUrlSnippet[1] . '/' . $currentUrlSnippet[2];
