@@ -18,7 +18,7 @@ $config = [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
             'loginUrl' => ['/user/default/login'],//登录的url，权限管理需要，游客访问一些需要权限的url时会往该链接跳转
-            
+
             //配下面这一块的话，不管是自动登录还是主动登录，都会记录登录时间和IP，但我只要主动登录的
             /*'on beforeLogin' => function($event) {
                 $user = $event->identity;
@@ -140,8 +140,13 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
     ];
-    //我发现在其他IP登录超管看不到debug工具条，就弄了这个
-    if (isset($_SERVER['HTTP_LaoHu']) || strpos($_SERVER['SERVER_ADDR'], '127.0') === 0 || strpos($_SERVER['SERVER_ADDR'], '192.168') === 0) {
+    $config['modules']['debug']['allowedIPs'] = [
+        '::1',
+        '127.0.0.1',
+        '192.168.*.*',
+    ];
+    //外网专用，有兴趣的去研究一下$_SERVER与header的关系
+    if (isset($_SERVER['HTTP_LaoHu'])) {
         $config['modules']['debug']['allowedIPs'] = ['*.*.*.*'];
     };
 
