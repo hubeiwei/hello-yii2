@@ -17,10 +17,9 @@ class Setting extends SettingBase
 
     /**
      * 详细注释在Music这个Model里面了
+     * @see Music::behaviors()
      *
      * @return array
-     *
-     * @see Music::behaviors()
      */
     public function behaviors()
     {

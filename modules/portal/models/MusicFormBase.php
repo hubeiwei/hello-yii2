@@ -47,7 +47,14 @@ class MusicFormBase extends Model
             ['verifyCode', 'string', 'length' => 4],
             ['verifyCode', HuCaptchaValidator::className()],
 
-            //以上方法除了验证文件大小外都在前端不用提交就可以验证了，以下自定验证方法在提交后才进行验证，建议放在最后，上面的顺序也可以自己酌情调整
+            /**
+             * 以上方法在前端不提交就可以验证了，
+             * 以下自定验证方法在提交后才进行验证，建议放在最后。
+             *
+             * 另外如果用ajax想提交一次获得一条错误提示的话，那就可以考虑布置一下所有规则的顺序，
+             * 但我感觉有了这么好的表单验证，我不会这么做。
+             */
+            
             ['music_file', 'verifyExtension'],
         ];
     }

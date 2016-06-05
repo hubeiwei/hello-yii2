@@ -24,18 +24,17 @@ class UserDetail extends UserDetailBase
 
     /**
      * 详细注释在Music这个Model里面了
+     * @see Music::behaviors()
      *
      * @return array
-     *
-     * @see Music::behaviors()
      */
     public function behaviors()
     {
         return [
             [
                 'class' => TimestampBehavior::className(),
-                //只有修改时间
                 'attributes' => [
+                    self::EVENT_BEFORE_INSERT => 'updated_at',
                     self::EVENT_BEFORE_UPDATE => 'updated_at',
                 ],
             ],
@@ -45,13 +44,6 @@ class UserDetail extends UserDetailBase
     public function rules()
     {
         return array_merge(parent::rules(), [
-            /**
-             * 用户信息因为日期的问题所以都用UserDetailForm来验证前端的内容了
-             * 邮箱规则也顺便写在那些类里了
-             * 所以这里不弄什么规则了
-             * @see app\modules\user\models\RegisterForm
-             * @see app\modules\user\models\UserDetailForm
-             */
         ]);
     }
 

@@ -7,9 +7,6 @@ use app\modules\core\helpers\FileHelper;
 class MusicUpdateForm extends MusicFormBase
 {
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return array_merge(parent::attributeLabels(), [
@@ -17,9 +14,6 @@ class MusicUpdateForm extends MusicFormBase
         ]);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return array_merge(parent::rules(), [

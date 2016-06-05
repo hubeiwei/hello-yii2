@@ -6,9 +6,6 @@ use app\modules\core\helpers\FileHelper;
 
 class MusicUploadForm extends MusicFormBase
 {
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return array_merge(parent::rules(), [

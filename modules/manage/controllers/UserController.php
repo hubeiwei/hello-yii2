@@ -57,12 +57,10 @@ class UserController extends ModuleController
         $user = new User();
 
         if ($user->load(Yii::$app->request->post())) {
-            $user->generateKey();
-
             $user_detail = new UserDetail();
 
             $transaction = EasyHelper::beginTransaction();
-            $flow = $user->save();
+            $flow = $user->save(false);
             if ($flow) {
                 $user_detail->user_id = $user->user_id;
             }

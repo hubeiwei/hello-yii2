@@ -6,29 +6,17 @@ use app\models\base\MusicBase;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 
-/**
- * Class Music
- * @package app\models
- *
- * 为什么要建一个BaseClass再写多一个Class来继承呢？
- *
- * 当然只用一个Class也行，我是用gii生成Model的，
- * 万一要改字段，要对比新旧代码把新字段相关的东西一点一点复制过来，
- * 很麻烦，直接覆盖的话你自己写的代码就没了
- *
- * 所以我的解决办法是建一个Class来继承gii生成的Class
- *
- * 如果你是用PHPStorm最新版的话，你应该可以很直观的看到我覆写了几个function，有些还加了内容
- */
 class Music extends MusicBase
 {
     /**
-     * 定义这些常量和数组是因为我觉得后期用起来挺方便的，
-     * 前端单纯的显示的时候我并不用写判断，直接把查出来的数据当作key传到数组里就好了，
-     * 后期万一要加多一个项，我只要在这里改改就好了
-     * 后期万一我想改个名字，我用IDE的重构就好了
+     * 为一些枚举类型的字段定义好常量和数组是因为我觉得后期用起来挺方便的，
+     * 在页面输出时我并不用一个一个值写判断，直接把查出来的数据当作key传到数组里就好了，
+     * 如果后期要加多一个项，我只要在这里加就好了
+     * 如果后期我不爽想换个名字，我用IDE重构就好了
      *
      * attribute_array用在rules
+     * @see rules()
+     *
      * attribute_map在一些视图能找到
      *
      * 可能命名有点煞笔，但我也没想到其他的

@@ -32,7 +32,7 @@ class UserDetailForm extends Model
             ['phone', 'number'],
             ['phone', 'string', 'length' => 11],
             ['phone', 'match', 'pattern' => '/^1[34578]\d{9}$/'],
-            ['resume', 'string'],//其实这个没啥验证应该不用写的，但我发现不写的话load不到数据
+            ['resume', 'safe'],//其实这个没啥验证应该不用写的，但我发现不写的话load不到数据，就学那些SearchModel写个safe好了
             ['verifyCode', 'required'],
             ['verifyCode', 'string', 'length' => 4],
             ['verifyCode', HuCaptchaValidator::className()],

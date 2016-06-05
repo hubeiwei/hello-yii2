@@ -34,10 +34,9 @@ class User extends UserBase implements \yii\web\IdentityInterface
 
     /**
      * 详细注释在Music这个Model里面了
+     * @see Music::behaviors()
      *
      * @return array
-     *
-     * @see Music::behaviors()
      */
     public function behaviors()
     {
@@ -68,17 +67,34 @@ class User extends UserBase implements \yii\web\IdentityInterface
         ]);
     }
 
-    /**
-     * @inheritdoc
-     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($insert) {
+                $this->passkey = Yii::$app->security->generateRandomString(6);
+                $this->access_token = Yii::$app->security->generateRandomString(64);
+                $this->hashPassword();
+            }
+
+            /**
+             * auth_key字段是自动登录时，取cookie记录的值往数据库查找对应用户来实现的，
+             * 所以强烈建议这个字段的值必须是为唯一的。
+             * 根据目前项目内的情况，无论添加还是修改（包括登录）都要更新auth_key，
+             * 例如，超管把用户禁用了，自动登录的用户是不会受影响的。
+             *
+             * TODO 主动登录后更新可以踢掉其他端的，但是要其他端下一次打开浏览器才生效，研究发现要把cookie里的session_id删掉才能做到立即踢掉，以后再研究能不能马上把用户踢掉
+             */
+            $this->auth_key = Yii::$app->security->generateRandomString(64);
+            return true;
+        }
+        return false;
+    }
+
     public static function findIdentity($id)
     {
         return self::findOne($id);
     }
 
-    /**
-     * @inheritdoc
-     */
     public static function findIdentityByAccessToken($token, $type = null)
     {
         $user = self::findOne(['access_token' => $token]);
@@ -88,54 +104,19 @@ class User extends UserBase implements \yii\web\IdentityInterface
         return null;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getId()
     {
         return $this->user_id;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getAuthKey()
     {
         return $this->auth_key;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function validateAuthKey($authKey)
     {
         return $this->auth_key === $authKey;
-    }
-
-    public function generatePasskey($length = 6)
-    {
-        $this->passkey = Yii::$app->security->generateRandomString($length);
-    }
-
-    public function generateAuthKey($length = 64)
-    {
-        $this->auth_key = Yii::$app->security->generateRandomString($length);
-    }
-
-    public function generateAccessToken($length = 64)
-    {
-        $this->access_token = Yii::$app->security->generateRandomString($length);
-    }
-
-    public function generateKey($password = '')
-    {
-        if (empty($password)) {
-            $password = $this->password;
-        }
-        $this->generatePasskey();
-        $this->generateAuthKey();
-        $this->generateAccessToken();
-        $this->hashPassword($password);
     }
 
     public function encryptPassword($password)
@@ -143,19 +124,16 @@ class User extends UserBase implements \yii\web\IdentityInterface
         $password = md5($password) . md5(self::COMMON_KEY . $this->passkey);
         return $password;
     }
-    
+
     public function validatePassword($password)
     {
         $password = $this->encryptPassword($password);
         return Yii::$app->security->validatePassword($password, $this->password);
     }
 
-    public function hashPassword($password = '')
+    public function hashPassword()
     {
-        if (empty($password)) {
-            $password = $this->password;
-        }
-        $password = $this->encryptPassword($password);
+        $password = $this->encryptPassword($this->password);
         $this->password = Yii::$app->security->generatePasswordHash($password);
     }
 

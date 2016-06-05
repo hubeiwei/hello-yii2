@@ -55,9 +55,13 @@ class DefaultController extends ModuleController
     {
         $model = new LoginForm();
         
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            EasyHelper::setSuccessMsg('登录成功');
-            return $this->goHome();
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->login()){
+                EasyHelper::setSuccessMsg('登录成功');
+                return $this->goHome();
+            } else {
+                EasyHelper::setErrorMsg('登录失败');
+            }
         }
 
         return $this->render('login', [
@@ -82,10 +86,10 @@ class DefaultController extends ModuleController
                 $user_detail = new UserDetail();
 
                 $user->username = $form->username;
-                $user->generateKey($form->password);
+                $user->password = $form->password;
 
                 $transaction = EasyHelper::beginTransaction();//开启事务
-                $flow = $user->save();
+                $flow = $user->save(false);
                 if ($flow) {
                     $user_detail->user_id = $user->user_id;
                     $user_detail->email = $form->email;

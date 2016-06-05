@@ -21,16 +21,6 @@ class RegisterForm extends Model
     public $email;
     public $verifyCode;
 
-    /**
-     * 声明往数据库查询的表名
-     *
-     * @return string
-     */
-    public static function tableName()
-    {
-        return 'user';
-    }
-
     public function rules()
     {
         return [
@@ -39,10 +29,10 @@ class RegisterForm extends Model
             ['password', HuStrengthValidator::className()],
 
             /**
-             * 直接写['attribute', 'compare']会自动去对比attribute_repeat这个属性的值
+             * 直接写['attribute', 'compare']会去寻找attribute_repeat这个属性来对比值
              * 如果attribute的值与attribute_repeat不相等，错误是在attribute这里提示
              * 这不合理，错误提示应该出现在attribute_repeat
-             * 以下是让某attribute与另一个attribute对比的规则
+             * 所以就有了以下写法
              */
             ['password_repeat', 'compare', 'compareAttribute' => 'password'],
 

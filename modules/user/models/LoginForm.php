@@ -43,17 +43,10 @@ class LoginForm extends Model
             [['username', 'password', 'verifyCode'], 'required'],
             ['username', 'string', 'max' => 20],
             ['password', 'string', 'min' => 8, 'max' => 20],
+            ['password', 'validatePassword'],
             [['verifyCode'], 'string', 'length' => 4],
             [['verifyCode'], HuCaptchaValidator::className()],
             ['rememberMe', 'boolean'],
-
-            /**
-             * 以上方法在前端不提交就可以验证了，
-             * 以下自定验证方法在提交后才进行验证，建议放在最后，
-             * 如果用ajax想提交一次获得一条错误提示的话，那就可以考虑布置一下所有规则的顺序，但感觉没人会用ajax这么做
-             */
-
-            ['password', 'validatePassword'],
         ];
     }
 
@@ -83,8 +76,6 @@ class LoginForm extends Model
         if ($this->validate()) {
             $user = $this->getUser();
 
-            //TODO auth_key是cookie自动登录用的字段，主动登录后更新，可以踹掉其他端的，但是要其他端下一次打开浏览器才能生效，研究发现要把cookie里的session_id删掉才行，以后再研究能不能马上把用户踢掉
-            $user->generateAuthKey();
             $user->last_login = time();
             $user->last_ip = EasyHelper::getRealIP();
 
@@ -103,7 +94,7 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::find()->where(['username' => $this->username, 'status' => User::status_enable])->one();
+            $this->_user = User::find()->where(['username' => $this->username, 'status' => User::status_enable])->limit(1)->one();
         }
         return $this->_user;
     }
