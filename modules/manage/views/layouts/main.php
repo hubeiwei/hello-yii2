@@ -59,15 +59,15 @@ ManageAssets::register($this);
                 <div class="list-group" id="nav-menu">
                     <?php
                     /**
-                     * TODO 这种做法会产生两种问题：1.菜单上同控制器的链接都会高亮；2.currentUrl格式不是"/模块/控制器"的情况下会报错
+                     * TODO 这种做法当currentUrl格式不是"/模块/控制器"的情况下会报错，需要把站点根目录部署为/web
                      */
                     $currentUrl = Url::current();
                     $currentUrlSnippet = explode('/', $currentUrl);
                     $currentUrlPath = '/' . $currentUrlSnippet[1] . '/' . $currentUrlSnippet[2];
+
                     $activeMenu = '';
                     $menu = MenuHelper::getAssignedMenu(UserHelper::getUserId());
                     foreach ($menu as $menuKey => $menuValue) {
-                        //url居然是个数组，获取值要加[0]，如果是在Html类的一些方法里用的话就不用加
                         $menuUrl = $menuValue['url'][0];
 
                         //提升体验
@@ -95,15 +95,23 @@ ManageAssets::register($this);
                                 'class' => 'submenu collapse',
                             ]);
                             foreach ($menuValue['items'] as $itemKey => $itemValue) {
-                                $itemUrlSnippet = explode('/', $itemValue['url'][0]);
+                                $itemUrl = $itemValue['url'][0];
+                                $itemUrlSnippet = explode('/', $itemUrl);
                                 $itemUrlPath = '/' . $itemUrlSnippet[1] . '/' . $itemUrlSnippet[2];
+
+                                //高亮父级菜单，根据url上的"/模块/控制器"来判断
                                 if ($currentUrlPath == $itemUrlPath) {
-                                    $active = ' active';
                                     $activeMenu = 'nav-menu-' . $menuKey;
+                                }
+
+                                //高亮子链接
+                                if ($currentUrl == $itemUrl) {
+                                    $active = ' active';
                                 } else {
                                     $active = '';
                                 }
-                                echo Html::a($itemValue['label'], $itemValue['url'], [
+
+                                echo Html::a($itemValue['label'], $itemUrl, [
                                     'class' => 'list-group-item' . $active,
                                 ]);
                             }
