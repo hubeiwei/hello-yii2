@@ -5,31 +5,32 @@ namespace app\models;
 use Yii;
 use app\models\base\UserBase;
 use yii\behaviors\TimestampBehavior;
+use yii\web\IdentityInterface;
 
-class User extends UserBase implements \yii\web\IdentityInterface
+class User extends UserBase implements IdentityInterface
 {
     const COMMON_KEY = 'LaoHu';
 
-    const type_member = 'Member';
-    const type_admin = 'Admin';
+    const TYPE_MEMBER = 'Member';
+    const TYPE_ADMIN = 'Admin';
     public static $type_array = [
-        self::type_member,
-        self::type_admin,
+        self::TYPE_MEMBER,
+        self::TYPE_ADMIN,
     ];
     public static $type_map = [
-        self::type_member => '用户',
-        self::type_admin => '管理员',
+        self::TYPE_MEMBER => '用户',
+        self::TYPE_ADMIN => '管理员',
     ];
 
-    const status_disable = 'N';
-    const status_enable = 'Y';
+    const STATUS_DISABLE = 'N';
+    const STATUS_ENABLE = 'Y';
     public static $status_array = [
-        self::status_disable,
-        self::status_enable,
+        self::STATUS_DISABLE,
+        self::STATUS_ENABLE,
     ];
     public static $status_map = [
-        self::status_disable => '禁用',
-        self::status_enable => '启用',
+        self::STATUS_DISABLE => '禁用',
+        self::STATUS_ENABLE => '启用',
     ];
 
     /**

@@ -8,18 +8,18 @@ use yii\behaviors\TimestampBehavior;
 
 class UserDetail extends UserDetailBase
 {
-    const gender_secrecy = '0';
-    const gender_man = '1';
-    const gender_woman = '2';
+    const GENDER_SECRECY = '0';
+    const GENDER_MAN = '1';
+    const GENDER_WOMAN = '2';
     public static $gender_array = [
-        self::gender_secrecy,
-        self::gender_man,
-        self::gender_woman,
+        self::GENDER_SECRECY,
+        self::GENDER_MAN,
+        self::GENDER_WOMAN,
     ];
     public static $gender_map = [
-        self::gender_secrecy => '保密',
-        self::gender_man => '男',
-        self::gender_woman => '女',
+        self::GENDER_SECRECY => '保密',
+        self::GENDER_MAN => '男',
+        self::GENDER_WOMAN => '女',
     ];
 
     /**

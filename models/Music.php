@@ -21,26 +21,26 @@ class Music extends MusicBase
      *
      * 可能命名有点煞笔，但我也没想到其他的
      */
-    const visible_yes = 'Y';
-    const visible_no = 'N';
+    const VISIBLE_YES = 'Y';
+    const VISIBLE_NO = 'N';
     public static $visible_array = [
-        self::visible_yes,
-        self::visible_no,
+        self::VISIBLE_YES,
+        self::VISIBLE_NO,
     ];
     public static $visible_map = [
-        self::visible_yes => '显示',
-        self::visible_no => '隐藏',
+        self::VISIBLE_YES => '显示',
+        self::VISIBLE_NO => '隐藏',
     ];
 
-    const status_disable = 'N';
-    const status_enable = 'Y';
+    const STATUS_DISABLE = 'N';
+    const STATUS_ENABLE = 'Y';
     public static $status_array = [
-        self::status_enable,
-        self::status_disable,
+        self::STATUS_ENABLE,
+        self::STATUS_DISABLE,
     ];
     public static $status_map = [
-        self::status_enable => '启用',
-        self::status_disable => '禁用',
+        self::STATUS_ENABLE => '启用',
+        self::STATUS_DISABLE => '禁用',
     ];
 
     /**

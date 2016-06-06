@@ -94,7 +94,7 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::find()->where(['username' => $this->username, 'status' => User::status_enable])->limit(1)->one();
+            $this->_user = User::find()->where(['username' => $this->username, 'status' => User::STATUS_ENABLE])->limit(1)->one();
         }
         return $this->_user;
     }

@@ -20,7 +20,7 @@ class MusicFormBase extends Model
     /** @var \yii\web\UploadedFile */
     public $music_file;
     public $visible;
-    public $status = Music::status_enable;//非管理员提交的时候没有值也能插入数据库，导致前台调用数组报错，要设置个默认值
+    public $status = Music::STATUS_ENABLE;//非管理员提交的时候没有值也能插入数据库，导致前台调用数组报错，要设置个默认值
     public $verifyCode;
 
     /**

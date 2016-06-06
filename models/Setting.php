@@ -8,11 +8,11 @@ use yii\behaviors\TimestampBehavior;
 
 class Setting extends SettingBase
 {
-    const status_disable = 'N';
-    const status_enable = 'Y';
+    const STATUS_DISABLE = 'N';
+    const STATUS_ENABLE = 'Y';
     public static $status_map = [
-        self::status_disable => '禁用',
-        self::status_enable => '启用',
+        self::STATUS_DISABLE => '禁用',
+        self::STATUS_ENABLE => '启用',
     ];
 
     /**
