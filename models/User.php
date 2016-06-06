@@ -98,7 +98,8 @@ class User extends UserBase implements IdentityInterface
 
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        $user = self::findOne(['access_token' => $token]);
+        /** @var self $user */
+        $user = self::find()->where(['access_token' => $token, 'status' => self::STATUS_ENABLE])->limit(1)->one();
         if ($user->access_token === $token) {
             return $user;
         }
@@ -117,7 +118,10 @@ class User extends UserBase implements IdentityInterface
 
     public function validateAuthKey($authKey)
     {
-        return $this->auth_key === $authKey;
+        if($this->status == self::STATUS_ENABLE) {
+            return $this->auth_key === $authKey;
+        }
+        return false;
     }
 
     public function encryptPassword($password)
