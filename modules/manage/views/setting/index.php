@@ -72,7 +72,7 @@ $gridColumns = [
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('添加配置', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加配置', ['create'], ['class' => 'btn btn-info']) ?>
     </p>
 
     <?= RenderHelper::gridView($dataProvider, $searchModel, $gridColumns) ?>

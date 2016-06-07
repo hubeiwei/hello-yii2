@@ -83,7 +83,7 @@ $gridColumns = [
     <hr>
 
     <p>
-        <?= Html::a('添加音乐', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加音乐', ['create'], ['class' => 'btn btn-info']) ?>
     </p>
 
     <?= RenderHelper::gridView($dataProvider, $searchModel, $gridColumns) ?>
