@@ -26,7 +26,7 @@ class UserDetailForm extends Model
     {
         return [
             ['gender', 'in', 'range' => UserDetail::$gender_array],
-            ['birthday', 'date', 'format' => 'yyyy-mm-dd'],//我觉得其实只要是日期能转成时间戳就好了，居然还要特定一个格式
+            ['birthday', 'date', 'format' => 'php:Y-m-d'],//我觉得其实只要是日期能转成时间戳就好了，居然还要特定一个格式，但这样也没有什么不好的
             ['email', 'email'],
             ['email', 'string', 'max' => 100],
             ['phone', 'number'],
