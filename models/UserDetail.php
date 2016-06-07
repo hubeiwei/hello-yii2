@@ -44,6 +44,7 @@ class UserDetail extends UserDetailBase
     public function rules()
     {
         return array_merge(parent::rules(), [
+            ['gender', 'in', 'range' => self::$gender_array],
         ]);
     }
 

@@ -83,8 +83,8 @@ class Music extends MusicBase
     public function rules()
     {
         return array_merge(parent::rules(), [
-            ['visible', 'in', 'range' => Music::$visible_array],
-            ['status', 'in', 'range' => Music::$status_array],
+            ['visible', 'in', 'range' => self::$visible_array],
+            ['status', 'in', 'range' => self::$status_array],
         ]);
     }
 

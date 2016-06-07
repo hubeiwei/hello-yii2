@@ -10,6 +10,10 @@ class Setting extends SettingBase
 {
     const STATUS_DISABLE = 'N';
     const STATUS_ENABLE = 'Y';
+    public static $status_array = [
+        self::STATUS_DISABLE,
+        self::STATUS_ENABLE,
+    ];
     public static $status_map = [
         self::STATUS_DISABLE => '禁用',
         self::STATUS_ENABLE => '启用',
@@ -32,6 +36,7 @@ class Setting extends SettingBase
     public function rules()
     {
         return array_merge(parent::rules(), [
+            ['status', 'in', 'range' => self::$status_array],
         ]);
     }
 
