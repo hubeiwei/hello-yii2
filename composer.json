@@ -21,7 +21,7 @@
         "mdmsoft/yii2-admin": "~2.0",
         "kartik-v/yii2-krajee-base": "dev-master",
         "kartik-v/yii2-grid": "@dev",
-        "kartik-v/yii2-export": "dev-master",
+        "kartik-v/yii2-export": "@dev",
         "kartik-v/yii2-mpdf": "@dev",
         "kartik-v/yii2-date-range": "1.6.3",
         "kartik-v/yii2-password": "@dev",
@@ -34,8 +34,9 @@
         "kartik-v/yii2-widget-select2": "@dev",
         "kartik-v/yii2-widget-timepicker": "*",
         "kartik-v/yii2-widget-typeahead": "*",
-        "kartik-v/yii2-helpers": "dev-master"
-
+        "kartik-v/yii2-helpers": "dev-master",
+        "ijackua/yii2-lepture-markdown-editor-widget": "^1.0",
+        "yiidoc/yii2-redactor": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
