@@ -2,9 +2,6 @@
 
 namespace app\modules\portal\controllers;
 
-use app\models\User;
-use mdm\admin\components\MenuHelper;
-use Yii;
 use app\models\Music;
 use app\models\search\MusicSearch;
 use app\modules\core\helpers\EasyHelper;
@@ -13,6 +10,7 @@ use app\modules\core\helpers\UserHelper;
 use app\modules\portal\controllers\base\ModuleController;
 use app\modules\portal\models\MusicUpdateForm;
 use app\modules\portal\models\MusicUploadForm;
+use Yii;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
@@ -108,14 +106,14 @@ class MusicController extends ModuleController
         /**
          * 我的套路是这样的：
          * 在post的数据把MusicUploadForm里面的rules()的字段load下来，然后执行validate()方法来验证rules，
+         * 不符合rules返回false，并在MusicUploadForm->error添加了内容，
+         * 然后因为我这流程的结构，会继续回到create页面，在create页面如果Model有错误则会在对应字段下显示错误，
+         * 同理，因为MusicUploadForm已经load了你提交的内容，所以回到create页面还能看到你原来填写的内容，
+         * 因此，create和update两个表单如果没有什么特殊要求的话，可以共用一个生成的表单，这里就共用了_form.php。
+         *
          * 你可以把rules()里的某个字段的规则删掉，看看load之后MusicUploadForm的这个字段有没有值。
          * @see MusicUploadForm::rules()
          * @see MusicFormBase::rules()
-         *
-         * 不符合rules返回false，并在MusicUploadForm->error添加了内容，
-         * 然后因为我这流程的结构，会继续回到create页面，在create页面如果Model有错误则会在对应字段下显示错误，
-         * 同理，因为MusicUploadForm已经load了你提交的内容，所以回到create页面还能看到你原来填写的内容
-         * 因此，create和update两个表单如果没有什么特殊要求的话，可以共用一个生成的表单，这里就共用了_form.php
          */
         if ($form->load(Yii::$app->request->post())) {
             $form->music_file = UploadedFile::getInstance($form, 'music_file');//文件是不能直接收到的，得这样
@@ -123,9 +121,8 @@ class MusicController extends ModuleController
                 $filename = FileHelper::generateFileName();
                 $savePath = FileHelper::getMusicFullPath($filename);
                 if ($form->music_file->saveAs($savePath)) {
-                    $modelData['Music'] = $form->getAttributes();
                     $model = new Music();
-                    $model->load($modelData);
+                    $model->setAttributes($form->getAttributes());
                     $model->music_file = $filename;
                     if ($model->save()) {
                         EasyHelper::setSuccessMsg('添加成功');
@@ -210,8 +207,7 @@ class MusicController extends ModuleController
                 }
             }
         } else {
-            $formData['MusicUpdateForm'] = $model->getAttributes();
-            $form->load($formData);
+            $form->setAttributes($model->getAttributes());
         }
 
         return $this->render('update', [

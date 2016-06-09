@@ -122,8 +122,7 @@ class DefaultController extends ModuleController
 
         if ($form->load(Yii::$app->request->post())) {
             if ($form->validate()) {
-                $modelData['UserDetail'] = $form->getAttributes();
-                $model->load($modelData);
+                $model->setAttributes($form->getAttributes());
                 $model->birthday = $form->birthday ? strtotime($form->birthday) : 0;
                 $model->updated_at = time();
                 if ($model->save()) {
@@ -135,13 +134,12 @@ class DefaultController extends ModuleController
                 }
             }
         } else {
-            $formData['UserDetailForm'] = $model->getAttributes();
-            $form->load($formData);
+            $form->setAttributes($model->getAttributes());
             $form->birthday = $model->birthday ? date('Y-m-d', $model->birthday) : '';
         }
 
         return $this->render('detail', [
-            'user_detail_form' => $form,
+            'model' => $form,
         ]);
     }
 }

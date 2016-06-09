@@ -54,7 +54,7 @@ class MusicFormBase extends Model
              * 另外如果用ajax想提交一次获得一条错误提示的话，那就可以考虑布置一下所有规则的顺序，
              * 但我感觉有了这么好的表单验证，我不会这么做。
              */
-            
+
             ['music_file', 'verifyExtension'],
         ];
     }
@@ -64,7 +64,7 @@ class MusicFormBase extends Model
         if (!$this->hasErrors()) {
             $extension = FileHelper::MUSIC_EXTENSION;
             if ($this->music_file->extension != $extension) {
-                $this->addError($attribute, '扩展名不是' . $extension);
+                $this->addError('music_file', '扩展名不是' . $extension);
             }
         }
     }

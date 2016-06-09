@@ -55,8 +55,7 @@ class UserDetailController extends ModuleController
 
         if ($form->load(Yii::$app->request->post())) {
             if ($form->validate()) {
-                $modelData['UserDetail'] = $form->getAttributes();
-                $model->load($modelData);
+                $model->setAttributes($form->getAttributes());
                 $model->birthday = $form->birthday ? strtotime($form->birthday) : null;
                 if ($model->save()) {
                     EasyHelper::setSuccessMsg('修改成功');
@@ -66,14 +65,14 @@ class UserDetailController extends ModuleController
                 }
             }
         } else {
-            $formData['UserDetailForm'] = $model->getAttributes();
-            $form->load($formData);
+            $form->setAttributes($model->getAttributes());
             $form->birthday = EasyHelper::timestampToDate($model->birthday, 'Y-m-d');
         }
 
         return $this->render('update', [
-            'model' => $model,
-            'user_detail_form' => $form,
+            'user_id' => $model->user_id,
+            'username' => $model->user->username,
+            'model' => $form,
         ]);
     }
 
