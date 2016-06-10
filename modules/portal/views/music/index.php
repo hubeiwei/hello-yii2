@@ -19,13 +19,19 @@ $this->title = '音乐';
 $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 
 /**
- * 这里可以直接写字段名，例如下面的id
+ * 数组里可以直接写字段名
  * 也可以写成['attribute' => '字段名']
- * 还可以写成['attribute' => '字段名', 'value' => '字段名或任意或function']，值以value为准，label以attribute为准
- * 还可以写成['label' => '任意', 'value' => '字段名或任意或function']
+ * 还可以写成['attribute' => '字段名', 'value' => '字段名或function']，值以value为准，label以attribute为准
+ * 还可以写成['label' => '任意', 'value' => '字段名或function']
+ * @see \yii\grid\GridView 详情还是来这里看
+ *
+ * 配置项可以结合我的代码看下面这两个
+ * @see \yii\grid\DataColumn
+ * @see \kartik\grid\DataColumn
  */
 $gridColumns = [
     ['class' => SerialColumn::className()],
+
     [
         'attribute' => 'track_title',
         'value' => function ($model) {
