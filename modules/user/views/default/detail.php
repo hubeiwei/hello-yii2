@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
 
     <hr>
 
-    <?= $this->render('user_detail_form', [
+    <?= $this->render('_user-detail-form', [
         'model' => $model,
     ]) ?>
 

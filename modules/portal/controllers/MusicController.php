@@ -83,7 +83,7 @@ class MusicController extends ModuleController
         $searchModel = new MusicSearch();
         $dataProvider = $searchModel->searchMyMusic(Yii::$app->request->queryParams);
 
-        return $this->render('my_music', [
+        return $this->render('my-music', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
