@@ -70,7 +70,7 @@ class MusicSearch extends Music
             /**
              * tableName()方法下面有讲到
              */
-            $query->where(['visible' => 'Y', self::tableName() . '.status' => 'Y']);
+            $query->where(['visible' => self::VISIBLE_YES, self::tableName() . '.status' => self::STATUS_ENABLE]);
         }
 
         // add conditions that should always apply here
