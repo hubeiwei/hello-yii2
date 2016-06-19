@@ -39,6 +39,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-left'],
         'items' => [
+            ['label' => '文章', 'url' => ['/portal/article/index']],
             ['label' => '音乐', 'url' => ['/portal/music/index']],
         ],
     ]);
@@ -70,6 +71,10 @@ AppAsset::register($this);
                         'url' => ['/user/default/detail'],
                     ],
                     [
+                        'label' => '我的文章',
+                        'url' => ['/portal/article/my-article'],
+                    ],
+                    [
                         'label' => '我的音乐',
                         'url' => ['/portal/music/my-music'],
                     ],
@@ -86,9 +91,15 @@ AppAsset::register($this);
     NavBar::end();
     ?>
     <div class="container">
-
         <?php
         echo Breadcrumbs::widget([
+            'options' => [
+                'class' => 'breadcrumb',
+                'style' => [
+                    'background-color' => 'white',
+                ],
+            ],
+            'homeLink' => false,
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]);
 
@@ -113,8 +124,14 @@ AppAsset::register($this);
             ]);
         }
         ?>
-
-        <?= $content ?>
+        <div class="panel panel-default">
+            <div class="panel-heading media">
+                <h1 class="media-heading"><?= Html::encode($this->title) ?></h1>
+            </div>
+            <div class="panel-body">
+                <?= $content ?>
+            </div>
+        </div>
     </div>
 </div>
 <footer class="footer">

@@ -1,6 +1,6 @@
-html,
-body {
+html, body {
     height: 100%;
+    background-color: #f1f1f1;
 }
 
 .wrap {
@@ -107,3 +107,36 @@ a.desc:after {
 /*.container {*/
 /*width: 100%;*/
 /*}*/
+
+.article-index .nav-tabs {
+    border-bottom: 2px solid #DDD;
+}
+
+.article-body img {
+    max-width: 100%;
+}
+
+.article-body table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    word-break: keep-all;
+}
+
+.article-body table th, .article-body table td {
+    padding: 6px 13px;
+    border: 1px solid #ddd;
+}
+
+.article-body table th {
+    font-weight: bold;
+}
+
+.article-body table tr {
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+}
+
+.article-body table tr:nth-child(2n) {
+    background-color: #f8f8f8;
+}

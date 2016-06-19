@@ -18,14 +18,6 @@ $config = [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
             'loginUrl' => ['/user/default/login'],//登录的url，权限管理需要，游客访问一些需要权限的url时会往该链接跳转
-
-            //配下面这一块的话，不管是自动登录还是主动登录，都会记录登录时间和IP，但我只要主动登录的
-            /*'on beforeLogin' => function($event) {
-                $user = $event->identity;
-                $user->last_login = time();
-                $user->last_ip = $_SERVER['REMOTE_ADDR'];
-                $user->save();
-            },*/
         ],
         'errorHandler' => [
             'errorAction' => '/core/default/error',//挪地方了
@@ -57,7 +49,7 @@ $config = [
     'params' => $params,
     'language' => 'zh-CN',
     'timeZone' => 'Asia/Shanghai',
-    'defaultRoute' => '/portal/music',//访问入口文件后默认转到的url
+    'defaultRoute' => '/portal/article',//访问入口文件后默认转到的url
     'modules' => [
         'gridview' => [
             'class' => 'kartik\grid\Module',
@@ -71,6 +63,16 @@ $config = [
                     'idField' => 'user_id',
                     'searchClass' => 'app\models\search\UserSearch',
                 ]
+            ],
+        ],
+        'redactor' => [
+            'class' => 'yii\redactor\RedactorModule',
+            'uploadDir' => '@webroot/redactor',
+            'uploadUrl' => '@web/redactor',
+            'imageAllowExtensions' => ['jpg', 'png', 'gif'],
+            'widgetClientOptions' => [
+                'minHeight' => 300,
+                'maxHeight' => 600,
             ],
         ],
         //封装和继承一些代码的地方
@@ -98,6 +100,7 @@ $config = [
 //            'debug/*',
 //            'gii/*',
 //            'admin/*',
+            'redactor/*',
             'core/*',
             'portal/*',
             'user/*',
@@ -111,6 +114,12 @@ $config = [
 $config['components']['urlManager'] = [
     'enablePrettyUrl' => true,
     'showScriptName' => false,
+
+    /**
+     * 之前因为照顾到没有配apache的rewrite的同学，
+     * 用到这些别名的地方都改回去了，
+     * 现在这些别名也只是方便手敲而已
+     */
     'rules' => [
         'login' => '/user/default/login',
         'logout' => '/user/default/logout',

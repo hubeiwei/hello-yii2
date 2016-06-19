@@ -16,7 +16,7 @@ use yii\helpers\Html;
  */
 
 $this->title = '音乐';
-$this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
+//$this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 
 /**
  * 数组里可以直接写字段名
@@ -112,10 +112,6 @@ $gridColumns = [
 ];
 ?>
 <div class="music-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <hr>
 
     <h2 id="track_title">点击标题播放音乐</h2>
 

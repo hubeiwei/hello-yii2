@@ -1,10 +1,10 @@
 {
-    "name": "yiisoft/yii2-app-basic",
-    "description": "Yii 2 Basic Project Template",
+    "name": "hubeiwei/laohu-yii2",
+    "description": "练手用的项目",
     "keywords": ["yii2", "framework", "basic", "project template"],
-    "homepage": "http://www.yiiframework.com/",
+    "homepage": "https://github.com/hubeiwei/laohu-yii2",
     "type": "project",
-    "license": "BSD-3-Clause",
+    "license": "MIT",
     "support": {
         "issues": "https://github.com/yiisoft/yii2/issues?state=open",
         "forum": "http://www.yiiframework.com/forum/",

@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Article;
 use app\models\Music;
 use app\models\Setting;
 use app\models\User;
@@ -73,6 +74,20 @@ class m160523_015948_init extends Migration
 
         $this->batchInsert(UserDetail::tableName(), ['user_id', 'updated_at'], [[1, time()], [2, time()]]);
 
+        //migration是迁移，不是用来控制数据库版本的，所以我直接把新表加在这里
+        $this->createTable(Article::tableName(), [
+            'id' => $this->primaryKey(10)->unsigned(),
+            'title' => $this->string(20)->notNull()->comment('标题'),
+            'created_by' => $this->integer(10)->notNull()->unsigned()->comment('作者'),
+            'published_at' => $this->integer(11)->notNull()->unsigned()->comment('发布时间'),
+            'content' => $this->text()->notNull()->comment('内容'),
+            'visible' => 'enum(\'Y\',\'N\') DEFAULT \'Y\' COMMENT \'可见性\'',
+            'type' => 'enum(\'H\',\'M\') NOT NULL COMMENT \'文章类型\'',
+            'status' => 'enum(\'Y\',\'N\') DEFAULT \'Y\' COMMENT \'状态\'',
+            'created_at' => $this->integer(11)->unsigned()->comment('创建时间'),
+            'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
+        ]);
+
         $this->createTable(Music::tableName(), [
             'id' => $this->primaryKey(10)->unsigned(),
             'track_title' => $this->string(50)->notNull()->comment('标题'),
@@ -129,13 +144,14 @@ class m160523_015948_init extends Migration
 
         $this->batchInsert('menu', ['name', 'parent', 'route', 'order'], [
             ['首页', null, '/manage/default/index', 1],
-            ['用户', null, null, 2],
-            ['用户管理', 2, '/manage/user/index', 1],
-            ['用户资料', 2, '/manage/user-detail/index', 2],
-            ['系统', null, null, 3],
-            ['网站配置', 5, '/manage/setting/index', 1],
-            ['权限管理', 5, '/admin/default/index', 2],
-            ['代码生成', 5, '/gii/default/index', 3],
+            ['文章管理', null, '/manage/article/index', 2],
+            ['用户', null, null, 3],
+            ['用户管理', 3, '/manage/user/index', 1],
+            ['用户资料', 3, '/manage/user-detail/index', 2],
+            ['系统', null, null, 4],
+            ['网站配置', 6, '/manage/setting/index', 1],
+            ['权限管理', 6, '/admin/default/index', 2],
+            ['代码生成', 6, '/gii/default/index', 3],
         ]);
     }
 
@@ -143,6 +159,7 @@ class m160523_015948_init extends Migration
     {
         $this->dropTable(User::tableName());
         $this->dropTable(UserDetail::tableName());
+        $this->dropTable(Article::tableName());
         $this->dropTable(Music::tableName());
         $this->dropTable(Setting::tableName());
 
