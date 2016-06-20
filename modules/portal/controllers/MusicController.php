@@ -172,7 +172,7 @@ class MusicController extends ModuleController
                     $file_name = FileHelper::generateFileName();
                     $savePath = FileHelper::getMusicFullPath($file_name);
                     $model->music_file = $file_name;
-                    if ($form->music_file->saveAs($savePath)) {
+                    if (!$form->music_file->saveAs($savePath)) {
                         $form->addError('music_file', '文件上传失败');//上传文件跟这些类没关系，要是失败了就手动给music_file这个属性添加错误
                         $flow = false;
                     }
