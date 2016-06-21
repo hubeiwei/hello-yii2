@@ -72,7 +72,10 @@ class ArticleController extends ModuleController
                 'FROM_UNIXTIME(`published_at`, \'%m-%d %H:%i\' ) AS published_at'
             ])
             ->where(['<=', 'published_at', time()])
-            ->where([Article::tableName() . '.status' => Article::STATUS_ENABLE])
+            ->where([
+                'visible' => Article::VISIBLE_YES,
+                Article::tableName() . '.status' => Article::STATUS_ENABLE,
+            ])
             ->leftJoin(User::tableName(), User::tableName() . '.user_id = ' . Article::tableName() . '.created_by')
             ->orderBy(['published_at' => SORT_DESC]);
 

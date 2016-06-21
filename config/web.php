@@ -109,7 +109,7 @@ $config = [
 ];
 
 /**
- * TODO 因为后台菜单需要，所以需要把站点根目录设置为/web，不会配置的就去学一下吧，以后解决了后台菜单的问题再说
+ * TODO 因为后台菜单需要，所以需要把站点根目录设置为/web，apache需要开启rewrite，nginx还没用过，自行解决吧，以后再考虑如何处理这个问题。
  */
 $config['components']['urlManager'] = [
     'enablePrettyUrl' => true,
@@ -132,11 +132,11 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
-    ];
-    $config['modules']['debug']['allowedIPs'] = [
-        '::1',
-        '127.0.0.1',
-        '192.168.*.*',
+        'allowedIPs' => [
+            '::1',
+            '127.0.0.1',
+            '192.168.*.*',
+        ],
     ];
     //外网专用，有兴趣的去研究一下$_SERVER与header的关系
     if (isset($_SERVER['HTTP_LaoHu'])) {
