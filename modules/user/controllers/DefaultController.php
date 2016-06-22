@@ -72,7 +72,7 @@ class DefaultController extends ModuleController
     public function actionLogout()
     {
         Yii::$app->user->logout();
-        EasyHelper::setMessage('info', '已登出');
+        EasyHelper::setMessage('已登出');
         return $this->goHome();
     }
 

@@ -16,7 +16,7 @@ class SecureController extends ModuleController
 {
     public function actionForgotPassword()
     {
-        EasyHelper::setMessage('info', '开发中，暂未开放');
+        EasyHelper::setMessage('开发中，暂未开放');
         return $this->redirect(['/user/default/login']);
     }
 }

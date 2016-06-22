@@ -4,7 +4,6 @@
 /* @var $content string */
 
 use app\assets\ManageAssets;
-use app\modules\core\helpers\EasyHelper;
 use app\modules\core\helpers\UserHelper;
 use mdm\admin\components\MenuHelper;
 use yii\bootstrap\Alert;
@@ -141,22 +140,25 @@ ManageAssets::register($this);
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]);
 
-                if (EasyHelper::hasMessage('success')) {
+                //获取成功消息提示
+                if (Yii::$app->session->hasFlash('success')) {
                     echo Alert::widget([
                         'options' => ['class' => 'alert-success'],
-                        'body' => EasyHelper::getMessage('success'),
+                        'body' => Yii::$app->session->getFlash('success'),
                     ]);
                 }
-                if (EasyHelper::hasMessage('info')) {
+                //获取消息提示
+                if (Yii::$app->session->hasFlash('info')) {
                     echo Alert::widget([
                         'options' => ['class' => 'alert-info'],
-                        'body' => EasyHelper::getMessage('info'),
+                        'body' => Yii::$app->session->getFlash('info'),
                     ]);
                 }
-                if (EasyHelper::hasMessage('error')) {
+                //获取错误消息提示
+                if (Yii::$app->session->hasFlash('error')) {
                     echo Alert::widget([
                         'options' => ['class' => 'alert-danger'],
-                        'body' => EasyHelper::getMessage('error'),
+                        'body' => Yii::$app->session->getFlash('error'),
                     ]);
                 }
                 ?>
@@ -168,7 +170,7 @@ ManageAssets::register($this);
 </div>
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Easy Music <?= date('Y') ?></p>
+        <p class="pull-left">&copy; LaoHu Yii2 <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

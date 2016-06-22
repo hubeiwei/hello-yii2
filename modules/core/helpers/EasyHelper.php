@@ -15,29 +15,35 @@ use yii\db\Transaction;
 
 class EasyHelper
 {
-    public static function hasMessage($key)
-    {
-        return Yii::$app->session->hasFlash($key);
-    }
-
-    public static function getMessage($key)
-    {
-        return Yii::$app->session->getFlash($key);
-    }
-
-    public static function setMessage($key, $value)
+    /**
+     * 设置消息提示，获取消息的代码在两个布局文件里
+     *
+     * @param $value
+     * @param string $key
+     */
+    public static function setMessage($value, $key = 'info')
     {
         Yii::$app->session->setFlash($key, $value);
     }
 
-    public static function setSuccessMsg($value, $key = 'success')
+    /**
+     * 设置成功消息
+     *
+     * @param $value
+     */
+    public static function setSuccessMsg($value)
     {
-        self::setMessage($key, $value);
+        self::setMessage('success', $value);
     }
 
-    public static function setErrorMsg($value, $key = 'error')
+    /**
+     * 设置错误消息
+     *
+     * @param $value
+     */
+    public static function setErrorMsg($value)
     {
-        self::setMessage($key, $value);
+        self::setMessage('error', $value);
     }
 
     public static function setSession($key, $value)
@@ -93,7 +99,7 @@ class EasyHelper
      *
      * @param int $timestamp 时间戳
      * @param string $format 默认Y-m-d H:i:s
-     * @return mixed
+     * @return string|null 时间戳为空时就不显示"1970..."了
      */
     public static function timestampToDate($timestamp = -1, $format = 'Y-m-d H:i:s')
     {
@@ -108,8 +114,13 @@ class EasyHelper
     }
 
     /**
+     * 字符串拼接
+     *
+     * 抠别人的，还没感受到实际作用
+     *
      * ```php
-     * return EasyHelper:stringFormat('{0}{1}', '1', '2');//12
+     * $string = EasyHelper:stringFormat('{0}{1}{2}', '1', '2', '3');
+     * return $string;//123
      * ```
      */
     public static function stringFormat()
@@ -127,6 +138,10 @@ class EasyHelper
     }
 
     /**
+     * 开启事务
+     *
+     * 该方法只是为了让不同数据库的component开启事务时都能让IDE提示代码
+     *
      * @param string $db
      * @param string $isolationLevel
      * @return \yii\db\Transaction

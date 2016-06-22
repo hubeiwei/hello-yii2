@@ -4,7 +4,6 @@
 /* @var $content string */
 
 use app\assets\AppAsset;
-use app\modules\core\helpers\EasyHelper;
 use app\modules\core\helpers\UserHelper;
 use kartik\alert\Alert;
 use yii\bootstrap\Nav;
@@ -103,23 +102,26 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]);
 
-        if (EasyHelper::hasMessage('success')) {
+        //获取成功消息提示
+        if (Yii::$app->session->hasFlash('success')) {
             echo Alert::widget([
                 'type' => Alert::TYPE_SUCCESS,
-                'title' => EasyHelper::getMessage('success'),
+                'title' => Yii::$app->session->getFlash('success'),
                 'delay' => 10000,
             ]);
         }
-        if (EasyHelper::hasMessage('info')) {
+        //获取消息提示
+        if (Yii::$app->session->hasFlash('info')) {
             echo Alert::widget([
-                'title' => EasyHelper::getMessage('info'),
+                'title' => Yii::$app->session->getFlash('info'),
                 'delay' => 10000,
             ]);
         }
-        if (EasyHelper::hasMessage('error')) {
+        //获取错误消息提示
+        if (Yii::$app->session->hasFlash('error')) {
             echo Alert::widget([
                 'type' => Alert::TYPE_DANGER,
-                'title' => EasyHelper::getMessage('error'),
+                'title' => Yii::$app->session->getFlash('error'),
                 'delay' => 10000,
             ]);
         }
@@ -136,7 +138,7 @@ AppAsset::register($this);
 </div>
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Easy Music <?= date('Y') ?></p>
+        <p class="pull-left">&copy; LaoHu Yii2 <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
