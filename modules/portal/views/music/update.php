@@ -1,10 +1,8 @@
 <?php
 
-use yii\helpers\Html;
-
 /**
  * @var yii\web\View $this
- * @var app\modules\portal\models\MusicUpdateForm $model
+ * @var app\modules\portal\models\MusicForm $model
  */
 
 $this->title = '修改音乐: ' . $model->track_title;

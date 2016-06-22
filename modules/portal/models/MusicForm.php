@@ -14,13 +14,13 @@ use app\modules\core\extensions\HuCaptchaValidator;
 use app\modules\core\helpers\FileHelper;
 use yii\base\Model;
 
-class MusicFormBase extends Model
+class MusicForm extends Model
 {
     public $track_title;
     /** @var \yii\web\UploadedFile */
     public $music_file;
     public $visible;
-    public $status = Music::STATUS_ENABLE;//非管理员提交的时候没有值也能插入数据库，导致前台调用数组报错，要设置个默认值
+    public $status = Music::STATUS_ENABLE;
     public $verifyCode;
 
     /**
@@ -37,25 +37,26 @@ class MusicFormBase extends Model
         ];
     }
 
+    public function scenarios()
+    {
+        return [
+            'create' => ['track_title', 'music_file', 'visible', 'status', 'verifyCode'],
+            'update' => ['track_title', 'music_file', 'visible', 'status', 'verifyCode'],
+        ];
+    }
+
     public function rules()
     {
         return [
+            ['music_file', 'required', 'on' => 'create'],
+            ['music_file', 'file', 'maxSize' => FileHelper::MUSIC_SIZE],
+            ['music_file', 'verifyExtension'],//自带的格式验证经常不准，另外写了一个
             [['track_title', 'verifyCode'], 'required'],
             ['track_title', 'string', 'max' => 50],
             ['visible', 'in', 'range' => Music::$visible_array],
             ['status', 'in', 'range' => Music::$status_array],
             ['verifyCode', 'string', 'length' => 4],
             ['verifyCode', HuCaptchaValidator::className()],
-
-            /**
-             * 以上方法在前端不提交就可以验证了，
-             * 以下自定验证方法在提交后才进行验证，建议放在最后。
-             *
-             * 另外如果用ajax想提交一次获得一条错误提示的话，那就可以考虑布置一下所有规则的顺序，
-             * 但我感觉有了这么好的表单验证，我不会这么做。
-             */
-
-            ['music_file', 'verifyExtension'],
         ];
     }
 

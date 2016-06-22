@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 /**
  * @var $this yii\web\View
- * @var $model app\modules\portal\models\MusicUploadForm | app\modules\portal\models\MusicUpdateForm
+ * @var $model app\modules\portal\models\MusicForm
  * @var $form HuActiveForm
  */
 ?>
@@ -40,7 +40,7 @@ use yii\helpers\Html;
         'options' => [
             'accept' => 'audio/mpeg',
         ],
-    ]);
+    ])->label($model->scenario == 'update' ? '新文件（可不传）' : '文件');
 
     echo $form->field($model, 'visible')->dropDownList(Music::$visible_map);
 

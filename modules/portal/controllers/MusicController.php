@@ -8,8 +8,7 @@ use app\modules\core\helpers\EasyHelper;
 use app\modules\core\helpers\FileHelper;
 use app\modules\core\helpers\UserHelper;
 use app\modules\portal\controllers\base\ModuleController;
-use app\modules\portal\models\MusicUpdateForm;
-use app\modules\portal\models\MusicUploadForm;
+use app\modules\portal\models\MusicForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
@@ -101,7 +100,8 @@ class MusicController extends ModuleController
          * 是因为Music的music_file字段是存字符串的
          * 全部规则混在Music里面会导致save不成功
          */
-        $form = new MusicUploadForm();
+        $form = new MusicForm();
+        $form->scenario = 'create';
 
         /**
          * 我的套路是这样的：
@@ -158,7 +158,8 @@ class MusicController extends ModuleController
             return $this->redirect(['index']);
         }
 
-        $form = new MusicUpdateForm();
+        $form = new MusicForm();
+        $form->scenario = 'update';
 
         if ($form->load(Yii::$app->request->post())) {
             $form->music_file = UploadedFile::getInstance($form, 'music_file');

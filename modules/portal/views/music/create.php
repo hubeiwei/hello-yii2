@@ -1,10 +1,8 @@
 <?php
 
-use yii\helpers\Html;
-
 /**
  * @var yii\web\View $this
- * @var app\modules\portal\models\MusicUploadForm $model
+ * @var app\modules\portal\models\MusicForm $model
  */
 
 $this->title = '添加音乐';
