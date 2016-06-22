@@ -33,7 +33,7 @@ class EasyHelper
      */
     public static function setSuccessMsg($value)
     {
-        self::setMessage('success', $value);
+        self::setMessage($value, 'success');
     }
 
     /**
@@ -43,7 +43,7 @@ class EasyHelper
      */
     public static function setErrorMsg($value)
     {
-        self::setMessage('error', $value);
+        self::setMessage($value, 'error');
     }
 
     public static function setSession($key, $value)
