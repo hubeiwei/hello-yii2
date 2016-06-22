@@ -39,7 +39,7 @@ class ArticleController extends ModuleController
 
         $form = new ArticleForm();
         $form->type = $model->type;
-        $form->isNewRecord = false;
+        $form->scenario = 'update';
 
         if ($form->load(Yii::$app->request->post())) {
             if ($form->validate()) {

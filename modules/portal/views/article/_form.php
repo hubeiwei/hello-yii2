@@ -32,7 +32,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'published_at')->widget(DateTimePicker::className(), [
         'readonly' => true,
         'options' => [
-            'value' => $model->isNewRecord ? date('Y-m-d H:i') : date('Y-m-d H:i', $model->published_at),
+            'value' => $model->scenario == 'update' ? date('Y-m-d H:i', $model->published_at) : date('Y-m-d H:i'),
         ],
         'pluginOptions' => [
             'autoclose' => true,

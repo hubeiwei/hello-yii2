@@ -21,7 +21,6 @@ class ArticleForm extends Model
     public $published_at;
     public $visible;
     public $type;
-    public $isNewRecord = true;
     public $verifyCode;
 
     public function attributeLabels()
@@ -32,6 +31,13 @@ class ArticleForm extends Model
             'published_at' => '发布时间',
             'visible' => '可见性',
             'verifyCode' => '验证码',
+        ];
+    }
+
+    public function scenarios()
+    {
+        return [
+            'update' => ['title', 'content', 'published_at', 'visible', 'verifyCode'],
         ];
     }
 
