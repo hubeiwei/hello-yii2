@@ -2,6 +2,7 @@
 
 use app\models\Article;
 use app\modules\core\extensions\HuCaptcha;
+use app\modules\core\helpers\UserHelper;
 use ijackua\lepture\Markdowneditor;
 use kartik\datetime\DateTimePicker;
 use yii\helpers\Html;
@@ -17,30 +18,35 @@ use yii\widgets\ActiveForm;
 
 <div class="article-form">
 
-    <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
     <?php
+    $form = ActiveForm::begin();
+
+    echo $form->field($model, 'title')->textInput(['maxlength' => true]);
+
     if ($model->type == Article::TYPE_MARKDOWN) {
         echo $form->field($model, 'content')->widget(Markdowneditor::className());
     } else if ($model->type == Article::TYPE_HTML) {
         echo $form->field($model, 'content')->widget(Redactor::className());
     }
-    ?>
 
-    <?= $form->field($model, 'published_at')->widget(DateTimePicker::className(), [
+    echo $form->field($model, 'published_at')->widget(DateTimePicker::className(), [
         'readonly' => true,
         'pluginOptions' => [
             'autoclose' => true,
         ],
-    ]) ?>
+    ]);
 
-    <?= $form->field($model, 'visible')->dropDownList(Article::$visible_map) ?>
+    echo $form->field($model, 'visible')->dropDownList(Article::$visible_map);
 
-    <?= $form->field($model, 'type', ['template' => '{input}'])->hiddenInput() ?>
+    echo $form->field($model, 'type', ['template' => '{input}'])->hiddenInput();
 
-    <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
+    if (UserHelper::userIsAdmin()) {
+        echo $form->field($model, 'status')->dropDownList(Article::$status_map);
+    }
+
+    echo $form->field($model, 'verifyCode')->widget(HuCaptcha::className());
+
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>

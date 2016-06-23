@@ -21,6 +21,7 @@ class ArticleForm extends Model
     public $published_at;
     public $visible;
     public $type;
+    public $status = Article::STATUS_ENABLE;
     public $verifyCode;
 
     public function attributeLabels()
@@ -30,6 +31,7 @@ class ArticleForm extends Model
             'content' => '内容',
             'published_at' => '发布时间',
             'visible' => '可见性',
+            'status' => '状态',
             'verifyCode' => '验证码',
         ];
     }
@@ -43,6 +45,7 @@ class ArticleForm extends Model
             ['published_at', 'date', 'type' => DateValidator::TYPE_DATETIME, 'format' => 'php:Y-m-d H:i'],
             ['visible', 'in', 'range' => Article::$visible_array],
             ['type', 'in', 'range' => Article::$type_array],
+            ['status', 'in', 'range' => Article::$status_array],
             ['verifyCode', 'string', 'length' => 4],
             ['verifyCode', HuCaptchaValidator::className()],
         ];
