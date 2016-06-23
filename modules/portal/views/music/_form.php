@@ -25,13 +25,14 @@ use yii\helpers\Html;
         //options覆盖了，得重新配class
         'options' => ['class' => 'form-horizontal', 'enctype' => 'multipart/form-data'],
     ]);
+    ?>
 
-    echo $form->field($model, 'track_title')->textInput([
+    <?= $form->field($model, 'track_title')->textInput([
         'autofocus' => true,
         'maxlength' => true,
-    ]);
+    ]) ?>
 
-    echo $form->field($model, 'music_file')->widget(FileInput::className(), [
+    <?= $form->field($model, 'music_file')->widget(FileInput::className(), [
         'pluginOptions' => [
             'showUpload' => false,//不显示上传按钮，这个按钮是submit
             'browseLabel' => '',
@@ -40,16 +41,17 @@ use yii\helpers\Html;
         'options' => [
             'accept' => 'audio/mpeg',
         ],
-    ])->label($model->scenario == 'update' ? '新文件（可不传）' : '文件');
+    ])->label($model->scenario == 'update' ? '新文件（可不传）' : '文件') ?>
 
-    echo $form->field($model, 'visible')->dropDownList(Music::$visible_map);
+    <?= $form->field($model, 'visible')->dropDownList(Music::$visible_map) ?>
 
+    <?php
     if (UserHelper::userIsAdmin()) {
         echo $form->field($model, 'status')->dropDownList(Music::$status_map);
     }
-
-    echo $form->field($model, 'verifyCode')->widget(HuCaptcha::className());
     ?>
+
+    <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-12">

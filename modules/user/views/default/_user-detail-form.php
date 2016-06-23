@@ -22,34 +22,32 @@ use yii\helpers\Html;
 
 <div class="user-detail-form">
 
-        <?php
-        $form = HuActiveForm::begin();
+    <?php $form = HuActiveForm::begin(); ?>
 
-        echo $form->field($model, 'gender')->dropDownList(UserDetail::$gender_map);
+    <?= $form->field($model, 'gender')->dropDownList(UserDetail::$gender_map) ?>
 
-        echo $form->field($model, 'birthday')->widget(DatePicker::className(), [
-            'readonly' => true,
-            'pluginOptions' => [
-                'autoclose' => true,
-                'format' => 'yyyy-mm-dd',
-            ],
-        ]);
+    <?= $form->field($model, 'birthday')->widget(DatePicker::className(), [
+        'readonly' => true,
+        'pluginOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd',
+        ],
+    ]) ?>
 
-        echo $form->field($model, 'email')->textInput(['maxlength' => true]);
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-        echo $form->field($model, 'phone')->textInput(['maxlength' => 11]);
+    <?= $form->field($model, 'phone')->textInput(['maxlength' => 11]) ?>
 
-        echo $form->field($model, 'resume')->textarea(['maxlength' => 100, 'rows' => 3]);
+    <?= $form->field($model, 'resume')->textarea(['maxlength' => 100, 'rows' => 3]) ?>
 
-        echo $form->field($model, 'verifyCode')->widget(HuCaptcha::className());
-        ?>
+    <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
 
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-12">
-        <?= Html::submitButton('修改', ['class' => 'btn btn-primary']) ?>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-12">
+            <?= Html::submitButton('修改', ['class' => 'btn btn-primary']) ?>
+        </div>
     </div>
-</div>
 
-<?php HuActiveForm::end(); ?>
+    <?php HuActiveForm::end(); ?>
 
 </div>
