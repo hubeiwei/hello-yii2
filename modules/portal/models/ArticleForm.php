@@ -34,22 +34,15 @@ class ArticleForm extends Model
         ];
     }
 
-    public function scenarios()
-    {
-        return [
-            'update' => ['title', 'content', 'published_at', 'visible', 'verifyCode'],
-        ];
-    }
-
     public function rules()
     {
         return [
             [['title', 'content', 'type', 'published_at'], 'required'],
             ['title', 'string', 'max' => 20],
             ['content', 'string'],
-            ['type', 'in', 'range' => Article::$type_array],
-            ['visible', 'in', 'range' => Article::$visible_array],
             ['published_at', 'date', 'type' => DateValidator::TYPE_DATETIME, 'format' => 'php:Y-m-d H:i'],
+            ['visible', 'in', 'range' => Article::$visible_array],
+            ['type', 'in', 'range' => Article::$type_array],
             ['verifyCode', 'string', 'length' => 4],
             ['verifyCode', HuCaptchaValidator::className()],
         ];

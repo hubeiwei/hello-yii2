@@ -38,8 +38,6 @@ class ArticleController extends ModuleController
         $model = $this->findModel($id);
 
         $form = new ArticleForm();
-        $form->type = $model->type;
-        $form->scenario = 'update';
 
         if ($form->load(Yii::$app->request->post())) {
             if ($form->validate()) {
@@ -54,6 +52,7 @@ class ArticleController extends ModuleController
             }
         } else {
             $form->setAttributes($model->getAttributes());
+            $form->published_at = date('Y-m-d H:i', $model->published_at);
         }
 
         return $this->render('@app/modules/portal/views/article/update', [

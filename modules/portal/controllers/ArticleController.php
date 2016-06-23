@@ -142,7 +142,10 @@ class ArticleController extends ModuleController
                     EasyHelper::setErrorMsg('发布失败');
                 }
             }
+        } else {
+            $form->published_at = date('Y-m-d H:i');
         }
+
 
         return $this->render('create', [
             'model' => $form,
@@ -159,8 +162,6 @@ class ArticleController extends ModuleController
         }
 
         $form = new ArticleForm();
-        $form->type = $model->type;
-        $form->scenario = 'update';
 
         if ($form->load(Yii::$app->request->post())) {
             if ($form->validate()) {
@@ -175,6 +176,7 @@ class ArticleController extends ModuleController
             }
         } else {
             $form->setAttributes($model->getAttributes());
+            $form->published_at = date('Y-m-d H:i', $model->published_at);
         }
 
         return $this->render('update', [
