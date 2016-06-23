@@ -106,8 +106,6 @@ $gridColumns = [
                 return UserHelper::isBelongToUser($model->user_id);
             },
         ],
-//        'headerOptions' => ['width' => 80],
-//        'width' => false,//这是style的width，默认80有效，自定义无效，所以用上一行来控制宽度，但这里不false掉的话上一行的也无效
     ],
 ];
 ?>

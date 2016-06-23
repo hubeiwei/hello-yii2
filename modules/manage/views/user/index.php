@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 
 $gridColumns = [
     ['class' => SerialColumn::className()],
+
     [
         'attribute' => 'user_id',
         'headerOptions' => ['width' => 80],
@@ -64,8 +65,8 @@ $gridColumns = [
         'headerOptions' => ['width' => 160],
     ],
     'last_ip',
-    ['class' => ActionColumn::className()],
 
+    ['class' => ActionColumn::className()],
 ];
 ?>
 <div class="sys-user-index">

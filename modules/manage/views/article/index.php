@@ -16,17 +16,10 @@ use yii\helpers\Html;
 $this->title = '文章';
 $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 
-$columns = [
+$gridColumns = [
     ['class' => SerialColumn::className()],
 
     'title',
-//    [
-//        'attribute' => 'title',
-//        'value' => function ($model) {
-//            return Html::a($model->title, ['view-article', 'id' => $model->id]);
-//        },
-//        'format' => 'html',
-//    ],
     [
         'attribute' => 'user.username',
         'headerOptions' => ['width' => 160],
@@ -91,6 +84,6 @@ $columns = [
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= RenderHelper::gridView($dataProvider, $searchModel, $columns) ?>
+    <?= RenderHelper::gridView($dataProvider, $searchModel, $gridColumns) ?>
 
 </div>

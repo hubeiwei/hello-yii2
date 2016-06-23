@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 
 $gridColumns = [
     ['class' => SerialColumn::className()],
+
     [
         'attribute' => 'user_id',
         'headerOptions' => ['width' => 100],
@@ -28,7 +29,7 @@ $gridColumns = [
             return Html::a($model->user['username'], ['index', 'UserDetailSearch[user_id]' => $model->user_id]);
         },
         'format' => 'html',
-//        'headerOptions' => ['width' => 160],
+        'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'avatar_file',
@@ -63,6 +64,7 @@ $gridColumns = [
         'filter' => RenderHelper::dateRangePicker('UserDetailSearch[updated_at]'),
         'headerOptions' => ['width' => 160],
     ],
+
     [
         'class' => ActionColumn::className(),
         'template' => '{view} {update}',

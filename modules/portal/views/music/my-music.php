@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['my-music']
 
 $gridColumns = [
     ['class' => SerialColumn::className()],
+
     [
         'attribute' => 'track_title',
         'value' => function ($model) {
@@ -65,6 +66,7 @@ $gridColumns = [
         'filter' => RenderHelper::dateRangePicker('MusicSearch[updated_at]', false),
         'headerOptions' => ['width' => 160],
     ],
+
     [
         'class' => ActionColumn::className(),
         'template' => '{update} {delete}',
