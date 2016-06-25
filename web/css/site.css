@@ -91,10 +91,6 @@ a.desc:after {
 }
 
 /*自定和覆盖的样式*/
-/*.table-responsive table {*/
-    /*width: 100%;*/
-    /*min-width: 1024px;*/
-/*}*/
 
 .table-responsive table th {
     text-align: center;
@@ -104,16 +100,14 @@ a.desc:after {
     text-align: center;
 }
 
-/*.container {*/
-/*width: 100%;*/
-/*}*/
-
 .article-index .nav-tabs {
     border-bottom: 2px solid #DDD;
 }
 
 .article-body img {
     max-width: 100%;
+    display: block;
+    margin: 0 auto;
 }
 
 .article-body table {
@@ -121,6 +115,7 @@ a.desc:after {
     width: 100%;
     overflow: auto;
     word-break: keep-all;
+    margin-bottom: 10px;
 }
 
 .article-body table th, .article-body table td {
