@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f644eb8cf988686025c276cf7d154568",
-    "content-hash": "cbd36bc6fd6e34410a476002481c5473",
+    "hash": "ef51c860c618821e4fd053d455f52084",
+    "content-hash": "2896b39d099d22a9a42fbdaa7d8f804c",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -45,6 +45,56 @@
                 "MIT"
             ],
             "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+            "keywords": [
+                "css",
+                "framework",
+                "front-end",
+                "js",
+                "less",
+                "mobile-first",
+                "responsive",
+                "web"
+            ]
+        },
+        {
+            "name": "bower-asset/bootstrap3-dialog",
+            "version": "v1.35.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nakupanda/bootstrap3-dialog.git",
+                "reference": "49b786d4949bb02a22a9358d7d65f30e058c5438"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nakupanda/bootstrap3-dialog/zipball/49b786d4949bb02a22a9358d7d65f30e058c5438",
+                "reference": "49b786d4949bb02a22a9358d7d65f30e058c5438",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap": ">=3.1.0",
+                "bower-asset/jquery": ">=1.9.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "dist/less/bootstrap-dialog.less",
+                    "dist/css/bootstrap-dialog.min.css",
+                    "dist/js/bootstrap-dialog.min.js"
+                ],
+                "bower-asset-ignore": [
+                    "source",
+                    "spec",
+                    ".bowerrc",
+                    ".gitignore",
+                    ".jshintignore",
+                    ".jshintrc",
+                    "bower.json",
+                    "gruntfile.js",
+                    "package.json",
+                    "README.md"
+                ]
+            },
+            "description": "Make use of Bootstrap Modal more monkey-friendly. http://nakupanda.github.io/bootstrap3-dialog/",
             "keywords": [
                 "css",
                 "framework",
@@ -347,16 +397,16 @@
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
-            "version": "v4.3.1",
+            "version": "v4.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "32b0ccb2562b9c83f12222ddd1406986a45450d1"
+                "reference": "bdea79210ab646544c9e6f4a6d39e7dd670d45ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/32b0ccb2562b9c83f12222ddd1406986a45450d1",
-                "reference": "32b0ccb2562b9c83f12222ddd1406986a45450d1",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/bdea79210ab646544c9e6f4a6d39e7dd670d45ee",
+                "reference": "bdea79210ab646544c9e6f4a6d39e7dd670d45ee",
                 "shasum": ""
             },
             "type": "library",
@@ -396,49 +446,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2016-02-28 02:23:49"
-        },
-        {
-            "name": "kartik-v/dependent-dropdown",
-            "version": "v1.4.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kartik-v/dependent-dropdown.git",
-                "reference": "a13970aec78e8eaae5cb9f1168df20d443f95113"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/dependent-dropdown/zipball/a13970aec78e8eaae5cb9f1168df20d443f95113",
-                "reference": "a13970aec78e8eaae5cb9f1168df20d443f95113",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "kartik\\plugins\\depdrop\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Kartik Visweswaran",
-                    "email": "kartikv2@gmail.com",
-                    "homepage": "http://www.krajee.com/"
-                }
-            ],
-            "description": "A multi level dependent dropdown JQuery plugin that allows nested dependencies.",
-            "homepage": "https://github.com/kartik-v/dependent-dropdown",
-            "keywords": [
-                "dependent",
-                "dropdown",
-                "jquery",
-                "option",
-                "select"
-            ],
-            "time": "2015-12-16 18:15:01"
+            "time": "2016-06-11 18:44:02"
         },
         {
             "name": "kartik-v/strength-meter",
@@ -532,6 +540,58 @@
             "time": "2015-05-22 15:26:20"
         },
         {
+            "name": "kartik-v/yii2-dialog",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-dialog.git",
+                "reference": "c0f83291c050fb05a1dc66a90ad6151de2d1e982"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-dialog/zipball/c0f83291c050fb05a1dc66a90ad6151de2d1e982",
+                "reference": "c0f83291c050fb05a1dc66a90ad6151de2d1e982",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap3-dialog": "~1.34",
+                "kartik-v/yii2-krajee-base": "~1.7"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\dialog\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "An asset bundle for bootstrap3-dialog for Yii 2.0 framework.",
+            "homepage": "https://github.com/kartik-v/yii2-dialog",
+            "keywords": [
+                "alert",
+                "bootstrap",
+                "dialog",
+                "extension",
+                "modal",
+                "yii2"
+            ],
+            "time": "2016-02-22 10:58:46"
+        },
+        {
             "name": "kartik-v/yii2-export",
             "version": "v1.2.5",
             "source": {
@@ -596,15 +656,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "0de680803dbe09baab83b03f1f13037bd19fa4a4"
+                "reference": "acbe6b3e6d3f38c41d5003683690b6d21720cd32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/0de680803dbe09baab83b03f1f13037bd19fa4a4",
-                "reference": "0de680803dbe09baab83b03f1f13037bd19fa4a4",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/acbe6b3e6d3f38c41d5003683690b6d21720cd32",
+                "reference": "acbe6b3e6d3f38c41d5003683690b6d21720cd32",
                 "shasum": ""
             },
             "require": {
+                "kartik-v/yii2-dialog": "~1.0",
                 "kartik-v/yii2-krajee-base": "~1.7"
             },
             "type": "yii2-extension",
@@ -637,7 +698,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-06-09 10:21:32"
+            "time": "2016-06-25 19:31:09"
         },
         {
             "name": "kartik-v/yii2-helpers",
@@ -1045,66 +1106,17 @@
             "time": "2016-01-10 12:18:38"
         },
         {
-            "name": "kartik-v/yii2-widget-depdrop",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kartik-v/yii2-widget-depdrop.git",
-                "reference": "6918ca6f7d7be153c80f6aa9c261f9b333293e9c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-depdrop/zipball/6918ca6f7d7be153c80f6aa9c261f9b333293e9c",
-                "reference": "6918ca6f7d7be153c80f6aa9c261f9b333293e9c",
-                "shasum": ""
-            },
-            "require": {
-                "kartik-v/dependent-dropdown": "~1.4",
-                "kartik-v/yii2-krajee-base": "~1.7"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "kartik\\depdrop\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Kartik Visweswaran",
-                    "email": "kartikv2@gmail.com",
-                    "homepage": "http://www.krajee.com/"
-                }
-            ],
-            "description": "Widget that enables setting up dependent dropdowns with nested dependencies (sub repo split from yii2-widgets)",
-            "homepage": "https://github.com/kartik-v/yii2-widget-depdrop",
-            "keywords": [
-                "dependent",
-                "dropdown",
-                "extension",
-                "form",
-                "jquery",
-                "plugin",
-                "widget",
-                "yii2"
-            ],
-            "time": "2016-01-10 17:30:48"
-        },
-        {
             "name": "kartik-v/yii2-widget-fileinput",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-fileinput.git",
-                "reference": "14cda11159a217db3056160e0ec8303979a9febd"
+                "reference": "3b8f6819f2cd01becff5251b8b952ac3e57b903a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/14cda11159a217db3056160e0ec8303979a9febd",
-                "reference": "14cda11159a217db3056160e0ec8303979a9febd",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/3b8f6819f2cd01becff5251b8b952ac3e57b903a",
+                "reference": "3b8f6819f2cd01becff5251b8b952ac3e57b903a",
                 "shasum": ""
             },
             "require": {
@@ -1146,60 +1158,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-06-03 18:15:55"
-        },
-        {
-            "name": "kartik-v/yii2-widget-select2",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kartik-v/yii2-widget-select2.git",
-                "reference": "00c29bf2ea42df7be2ae6aa2b2be049807a8134b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/00c29bf2ea42df7be2ae6aa2b2be049807a8134b",
-                "reference": "00c29bf2ea42df7be2ae6aa2b2be049807a8134b",
-                "shasum": ""
-            },
-            "require": {
-                "kartik-v/yii2-krajee-base": "~1.7"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "kartik\\select2\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Kartik Visweswaran",
-                    "email": "kartikv2@gmail.com",
-                    "homepage": "http://www.krajee.com/"
-                }
-            ],
-            "description": "Enhanced Yii2 wrapper for the Select2 jQuery plugin (sub repo split from yii2-widgets).",
-            "homepage": "https://github.com/kartik-v/yii2-widget-select2",
-            "keywords": [
-                "dropdown",
-                "extension",
-                "form",
-                "jquery",
-                "plugin",
-                "select2",
-                "widget",
-                "yii2"
-            ],
-            "time": "2016-06-03 10:10:39"
+            "time": "2016-06-16 06:53:01"
         },
         {
             "name": "kartik-v/yii2-widget-timepicker",
@@ -1300,16 +1259,16 @@
         },
         {
             "name": "mdmsoft/yii2-admin",
-            "version": "2.6",
+            "version": "2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mdmsoft/yii2-admin.git",
-                "reference": "d29660bbb340aabb237c6f59a97b746f6de85292"
+                "reference": "f1711779ea3c19e334d9774d223a9682e693b31e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mdmsoft/yii2-admin/zipball/d29660bbb340aabb237c6f59a97b746f6de85292",
-                "reference": "d29660bbb340aabb237c6f59a97b746f6de85292",
+                "url": "https://api.github.com/repos/mdmsoft/yii2-admin/zipball/f1711779ea3c19e334d9774d223a9682e693b31e",
+                "reference": "f1711779ea3c19e334d9774d223a9682e693b31e",
                 "shasum": ""
             },
             "require": {
@@ -1354,7 +1313,7 @@
                 "rbac",
                 "yii"
             ],
-            "time": "2016-04-14 01:21:32"
+            "time": "2016-05-20 23:38:13"
         },
         {
             "name": "mpdf/mpdf",
@@ -2169,9 +2128,7 @@
         "kartik-v/yii2-password": 20,
         "kartik-v/yii2-widget-activeform": 20,
         "kartik-v/yii2-widget-datepicker": 20,
-        "kartik-v/yii2-widget-depdrop": 20,
         "kartik-v/yii2-widget-fileinput": 20,
-        "kartik-v/yii2-widget-select2": 20,
         "kartik-v/yii2-helpers": 20
     },
     "prefer-stable": false,
