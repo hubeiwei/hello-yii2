@@ -146,7 +146,6 @@ class ArticleController extends ModuleController
             $form->published_at = date('Y-m-d H:i');
         }
 
-
         return $this->render('create', [
             'model' => $form,
         ]);

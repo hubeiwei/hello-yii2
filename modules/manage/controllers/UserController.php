@@ -63,9 +63,7 @@ class UserController extends ModuleController
             $flow = $user->save(false);
             if ($flow) {
                 $user_detail->user_id = $user->user_id;
-            }
-            if ($flow && !$user_detail->save()) {
-                $flow = false;
+                $flow = $user_detail->save();
             }
             if ($flow) {
                 $transaction->commit();

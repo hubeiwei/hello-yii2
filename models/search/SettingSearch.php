@@ -14,11 +14,11 @@ use yii\data\ActiveDataProvider;
 class SettingSearch extends Setting
 {
     /**
-     * 因为'creater.username'和'updater.username'都往user表的username取值，
-     * 按'creater.username'排序的时候绝对找不到creater这个表，看看sql语句就知道了，'updater.username'也是如此，
+     * 因为"creater.username"和"updater.username"都往user表的username取值，
+     * 按"creater.username"排序的时候绝对找不到"creater"这个表，看看sql语句就知道了，"updater.username"也是如此，
      * 我发现把这两个属性设置在SettingSearch里，在表格里就不能排序了。
-     * 但搜索也是类似的问题，所以最终我决定把表格的attribute设置成'created_by'和'updated_by'，
-     * 下面的Filter也是牺牲掉了一点性能以及'created_by'、'updated_by'的搜索，详情还是拉下去看吧。
+     * 但搜索也是类似的问题，所以最终我决定把GridColumns里的这两个字段的attribute设置成"created_by"和"updated_by"，
+     * 下面的Filter也是牺牲掉了一点性能以及"created_by"、"updated_by"的搜索，详情还是拉下去看吧。
      *
      * TODO 这里暂时先这样吧，我不懂怎么解决这个问题
      *

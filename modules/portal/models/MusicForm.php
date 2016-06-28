@@ -65,7 +65,7 @@ class MusicForm extends Model
         if (!$this->hasErrors()) {
             $extension = FileHelper::MUSIC_EXTENSION;
             if ($this->music_file->extension != $extension) {
-                $this->addError('music_file', '扩展名不是' . $extension);
+                $this->addError($attribute, '扩展名不是' . $extension);
             }
         }
     }

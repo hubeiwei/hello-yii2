@@ -64,7 +64,7 @@ class Music extends MusicBase
                  * @see yii\behaviors\AttributeBehavior::$attributes 详情看这里
                  * @see BlameableBehavior::init() 默认配置在这里，只要你字段跟这个配置对上了，配一个class就可以了，比如下面的时间戳
                  *
-                 * 这是有bug的，$model->save()的时候先检查规则，再插入这个字段，所以这个字段不能有非空的规则
+                 * 这是有bug的，$model->save()的时候先检查规则，再插入这个字段，所以这个字段不能有非空的规则，如果确定数据是合法的，可以使用$model->save(false)
                  */
                 'attributes' => [
                     self::EVENT_BEFORE_INSERT => ['user_id'],

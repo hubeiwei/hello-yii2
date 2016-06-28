@@ -94,8 +94,8 @@ class MusicSearch extends Music
         }
 
         /**
-         * 以下的Filter顾名思义，搜索后对上面已经查询出来的数据进行过滤，对一些复杂的查询也可以尝试这样用
-         * 有些字段改成'表名.字段名'，用Model::tableName()拼接的好处是，你以后改了表名，只需在Model里修改就好了，
+         * 以下的Filter顾名思义，搜索后对上面已经查询出来的数据进行过滤，对一些复杂的查询也可以尝试这样用，
+         * 有些字段改成"表名.字段名"，用Model::tableName()拼接的好处是，你以后改了表名，只需在Model里修改就好了，
          * 而且这个tableName()的方法也决定了你的Model查询数据时是往哪个表查，从而可以随意取Model的名字，
          * @see Music::tableName()
          * @see User::tableName()
@@ -112,11 +112,9 @@ class MusicSearch extends Music
         $query->andFilterWhere(['like', 'track_title', $this->track_title])
             ->andFilterWhere(['like', User::tableName() . '.username', $this->getAttribute('user.username')]);
 
-        //在别人项目抠过来的，这个方法可以实现在表格用类似[>1]和[>2 <=5]之类的方法搜索，还没具体用到的字段，所以先用在id吧
         $query->compare('id', $this->id)
             ->compare(self::tableName() . '.user_id', $this->user_id);
 
-        //在别人项目抠过来的，按时间范围筛选数据
         $query->timeFilterRange(self::tableName() . '.created_at', $this->created_at, false)
             ->timeFilterRange(self::tableName() . '.updated_at', $this->updated_at, false);
 
