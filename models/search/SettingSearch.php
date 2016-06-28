@@ -101,8 +101,8 @@ class SettingSearch extends Setting
 
         $query->compare('id', $this->id);
 
-        $query->timeFilterRange('created_at', $this->created_at)
-            ->timeFilterRange('updated_at', $this->updated_at);
+        $query->timeRangeFilter('created_at', $this->created_at)
+            ->timeRangeFilter('updated_at', $this->updated_at);
 
         return $dataProvider;
     }

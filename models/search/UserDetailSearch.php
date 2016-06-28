@@ -76,8 +76,8 @@ class UserDetailSearch extends UserDetail
         $query->compare('id', $this->id);
         $query->compare('user_id', $this->user_id);
 
-        $query->timeFilterRange('birthday', $this->birthday);
-        $query->timeFilterRange('updated_at', $this->updated_at);
+        $query->timeRangeFilter('birthday', $this->birthday);
+        $query->timeRangeFilter('updated_at', $this->updated_at);
 
         return $dataProvider;
     }

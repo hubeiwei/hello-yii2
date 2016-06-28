@@ -61,7 +61,7 @@ class HuActiveQuery extends ActiveQuery
      * @param bool $date_only
      * @return $this
      */
-    public function timeFilterRange($attribute, $value, $date_only = true)
+    public function timeRangeFilter($attribute, $value, $date_only = true)
     {
         if ($value != '') {
             $value = "$value";

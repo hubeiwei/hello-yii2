@@ -80,9 +80,9 @@ class ArticleSearch extends Article
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', User::tableName() . '.username', $this->getAttribute('user.username')]);
 
-        $query->timeFilterRange('published_at', $this->published_at);
-        $query->timeFilterRange(self::tableName() . '.created_at', $this->created_at);
-        $query->timeFilterRange(self::tableName() . '.updated_at', $this->updated_at);
+        $query->timeRangeFilter('published_at', $this->published_at);
+        $query->timeRangeFilter(self::tableName() . '.created_at', $this->created_at);
+        $query->timeRangeFilter(self::tableName() . '.updated_at', $this->updated_at);
 
         return $dataProvider;
     }
@@ -116,9 +116,9 @@ class ArticleSearch extends Article
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'content', $this->content]);
 
-        $query->timeFilterRange('published_at', $this->published_at);
-        $query->timeFilterRange('created_at', $this->created_at);
-        $query->timeFilterRange('updated_at', $this->updated_at);
+        $query->timeRangeFilter('published_at', $this->published_at);
+        $query->timeRangeFilter('created_at', $this->created_at);
+        $query->timeRangeFilter('updated_at', $this->updated_at);
 
         return $dataProvider;
     }
