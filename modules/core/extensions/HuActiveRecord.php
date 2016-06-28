@@ -47,7 +47,7 @@ class HuActiveRecord extends ActiveRecord
     }
 
     /**
-     * @param null $names
+     * @param array|null $names
      * @param array $except
      * @return array
      */

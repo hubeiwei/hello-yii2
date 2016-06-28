@@ -11,33 +11,65 @@ namespace app\modules\core\extensions;
 
 use yii\captcha\CaptchaAction;
 
+/**
+ * 虽然验证码action只配了一个，
+ * 但为了方便改属性以及不让控制器的代码过多，
+ * 就继承了一份来改写，同时也能加上中文注释
+ */
 class HuCaptchaAction extends CaptchaAction
 {
-//    public $testLimit = 3;
-
-//    public $width = 120;
-
-//    public $height = 50;
-
-//    public $padding = 2;
-
-//    public $backColor = 0xFFFFFF;
-
-//    public $foreColor = 0x2040A0;
-
-//    public $transparent = false;
+    /**
+     * @var int 相同验证码的显示次数
+     */
+    public $testLimit = 3;
 
     /**
-     * @var int 生成验证码的最小长度
+     * @var int 宽度
+     */
+    public $width = 120;
+
+    /**
+     * @var int 高度
+     */
+    public $height = 50;
+
+    /**
+     * @var int 图片与字符间的padding
+     */
+    public $padding = 2;
+
+    /**
+     * @var int 背景色
+     */
+    public $backColor = 0xFFFFFF;
+
+    /**
+     * @var int 前景色
+     */
+    public $foreColor = 0x2040A0;
+
+    /**
+     * @var bool 是否透明
+     */
+    public $transparent = false;
+
+    /**
+     * @var int 验证码的最小长度
      */
     public $minLength = 4;
 
     /**
-     * @var int 生成验证码的最大长度
+     * @var int 验证码的最大长度
      */
     public $maxLength = 4;
 
-//    public $offset = -2;
+    /**
+     * @var int 字符间距
+     */
+    public $offset = -2;
 
-//    public $fontFile = '@yii/captcha/SpicyRice.ttf';
+    /**
+     * @var string 字体文件
+     */
+    public $fontFile = '@yii/captcha/SpicyRice.ttf';
 }

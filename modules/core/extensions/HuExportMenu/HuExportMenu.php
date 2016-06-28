@@ -7,9 +7,6 @@ use Yii;
 /**
  * 需要依赖kartik-v/yii2-export
  * @link https://github.com/kartik-v/yii2-export
- *
- * Class HuExportMenu
- * @package app\modules\core\extensions\HuExportMenu
  */
 class HuExportMenu extends ExportMenu
 {

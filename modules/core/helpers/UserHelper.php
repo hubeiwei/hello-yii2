@@ -23,15 +23,6 @@ use app\models\User;
  */
 class UserHelper
 {
-    public static $questions = [
-        '我的名字',
-        '我妈妈的名字',
-        '我爸爸的名字',
-        '我的生日',
-        '我的电话',
-        '我喜欢的动物',
-    ];
-
     /**
      * 获取用户实例，默认返回当前登录的用户实例
      *
@@ -76,7 +67,7 @@ class UserHelper
     /**
      * 获取用户ID，默认返回当前登录的用户ID
      *
-     * @param null $userName
+     * @param string|null $userName
      * @return bool|int|string
      */
     public static function getUserId($userName = null)
@@ -103,7 +94,7 @@ class UserHelper
         } else if ($userId == 0) {
             return $zero_name;
         } else {
-            $username = User::find()->select(['username'])->where(['user_id' => $userId])->scalar();
+            $username = User::find()->select(['username'])->where(['user_id' => $userId])->limit(1)->scalar();
             if ($username) {
                 return $username;
             }

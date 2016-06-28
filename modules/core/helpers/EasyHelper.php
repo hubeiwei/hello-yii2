@@ -10,7 +10,6 @@
 namespace app\modules\core\helpers;
 
 use Yii;
-use app\models\User;
 use yii\db\Transaction;
 
 class EasyHelper
@@ -72,6 +71,7 @@ class EasyHelper
         if (isset($global[$key])) {
             return $global[$key];
         }
+        return null;
     }
 
     public static function setGlobal($key, $value)
@@ -116,18 +116,20 @@ class EasyHelper
     /**
      * 字符串拼接
      *
-     * 抠别人的，还没感受到实际作用
+     * For example:
      *
      * ```php
-     * $string = EasyHelper:stringFormat('{0}{1}{2}', '1', '2', '3');
-     * return $string;//123
+     * $string = 'A:{0},B:{1},C:{2}';
+     * return EasyHelper:stringFormat($string, 'a', 'b', 'c');//A:a,B:b,C:c
      * ```
+     *
+     * @return string
      */
     public static function stringFormat()
     {
         $args = func_get_args();
         if (count($args) == 0) {
-            return;
+            return null;
         }
         if (count($args) == 1) {
             return $args[0];

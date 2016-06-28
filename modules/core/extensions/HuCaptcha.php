@@ -12,10 +12,9 @@ namespace app\modules\core\extensions;
 use yii\captcha\Captcha;
 
 /**
- * Class HuCaptcha
- * @package app\modules\core\extensions
- * 
- * @see Captcha
+ * 因为很多地方都用到验证码，
+ * 不能每个验证码都把那么多值配一遍，很难看也很难维护，
+ * 所以继承一份来改写是最好的方法
  */
 class HuCaptcha extends Captcha
 {

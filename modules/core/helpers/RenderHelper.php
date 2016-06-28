@@ -14,15 +14,10 @@ use app\modules\core\extensions\HuGridView;
 use kartik\daterange\DateRangePicker;
 use yii\helpers\Html;
 
-/**
- * Class RenderHelper
- * Created by Dex
- * @package app\modules\core\helpers
- */
 class RenderHelper
 {
     /**
-     * 表格用到的，筛选状态性别之类的下拉框
+     * 表格用到的，筛选枚举类字段的下拉框
      *
      * @param string $name 格式为'ModelSearch[attributeName]'
      * @param string $value

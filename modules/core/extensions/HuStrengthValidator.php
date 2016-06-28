@@ -12,11 +12,12 @@ namespace app\modules\core\extensions;
 use kartik\password\StrengthValidator;
 
 /**
+ * 目前只用到一个密码验证，
+ * 但为了方便改属性以及不让控制器的代码过多，
+ * 就继承了一份来改写，同时也能加上中文注释
+ * 
  * 需要依赖kartik-v/yii2-password
  * @link https://github.com/kartik-v/yii2-password
- * 
- * Class HuStrengthValidator
- * @package app\modules\core\extensions
  */
 class HuStrengthValidator extends StrengthValidator
 {
@@ -31,7 +32,7 @@ class HuStrengthValidator extends StrengthValidator
     public $userAttribute = 'username';
 
     /**
-     * @var bool 是否允许密码里有email，默认true不允许
+     * @var bool 是否允许密码里有email
      */
     public $hasEmail = true;
 
@@ -46,7 +47,7 @@ class HuStrengthValidator extends StrengthValidator
     public $max = 20;
 
     /**
-     * @var bool 允许空格，默认false不允许
+     * @var bool 允许空格
      */
     public $allowSpaces = false;
 

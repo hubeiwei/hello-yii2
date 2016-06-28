@@ -11,45 +11,61 @@ namespace app\modules\core\extensions;
 
 use app\modules\core\helpers\EasyHelper;
 use yii\db\ActiveQuery;
-use yii\db\Command;
 
 class HuActiveQuery extends ActiveQuery
 {
-    public function compare($column, $raw)
+    /**
+     * @param string $attribute
+     *
+     * @param string $conditionString
+     * 条件语句类似">1,<3"或">1 <3"，如果输入">1, <3"会被转换成">1,,<3"，这也没关系，
+     * 如果你有阅读源码的习惯，你应该能看到有一个return被注释掉，用continue取代它了，测试了一下是没有问题的，如果有问题的话就提出吧
+     * @see EasyHelper::unifyLimiter()
+     *
+     * @return $this
+     */
+    public function compare($attribute, $conditionString)
     {
-        $raw = "$raw";
-        $conditions = explode(',', EasyHelper::unifyLimiter($raw));
+        $value = '';
 
+        $conditionString = "$conditionString";
+        $conditions = explode(',', EasyHelper::unifyLimiter($conditionString));
         foreach ($conditions as $condition) {
             if (preg_match('/^(?:\s*(<>|<=|>=|<|>|=))?(.*)$/', $condition, $matches)) {
                 $value = $matches[2];
                 $op = $matches[1];
-            } else
+            } else {
                 $op = '';
+            }
 
-            if ($value === '')
-                return $this;
+            if ($value === '') {
+//                return $this;
+                continue;
+            }
 
-            if ($op === '')
+            if ($op === '') {
                 $op = '=';
+            }
 
-            $this->andFilterWhere([$op, $column, $value]);
+            $this->andFilterWhere([$op, $attribute, $value]);
         }
 
         return $this;
     }
 
     /**
-     * @param $column
-     * @param $raw
+     * @see app\modules\core\helpers\RenderHelper::dateRangePicker()
+     *
+     * @param string $attribute
+     * @param string $value
      * @param bool $date_only
      * @return $this
      */
-    public function timeFilterRange($column, $raw, $date_only = true)
+    public function timeFilterRange($attribute, $value, $date_only = true)
     {
-        if ($raw != '') {
-            $raw = "$raw";
-            $conditions = explode('-', $raw);
+        if ($value != '') {
+            $value = "$value";
+            $conditions = explode('-', $value);
 
             $from = strtotime(trim($conditions[0]));
             if (!$from || !isset($conditions[1])) {
@@ -63,7 +79,7 @@ class HuActiveQuery extends ActiveQuery
             }
 
             if (isset($conditions[0]) && isset($conditions[1])) {
-                $this->andFilterWhere(['between', $column, $from, $to]);
+                $this->andFilterWhere(['between', $attribute, $from, $to]);
             }
         }
         return $this;

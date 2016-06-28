@@ -11,6 +11,12 @@ namespace app\modules\core\extensions;
 
 use yii\widgets\ActiveForm;
 
+/**
+ * 为了统一控制表单的宽度，
+ * 不能每个表单都把那么多值配一遍，很难看也很难维护，
+ * 所以继承一份来改写是最好的方法，
+ * 当然这并不是所有地方都要用到。
+ */
 class HuActiveForm extends ActiveForm
 {
     public $options = [
