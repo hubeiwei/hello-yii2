@@ -1,8 +1,5 @@
 <?php
 
-use app\modules\core\helpers\EasyHelper;
-use yii\helpers\Html;
-
 /**
  * @var $this yii\web\View
  * @var $model app\models\Article
@@ -16,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>作者：<?= $model->user->username ?></p>
 
-    <p>发布时间：<?= EasyHelper::timestampToDate($model->published_at, 'Y-m-d H:i') ?></p>
+    <p>发布时间：<?= Yii::$app->formatter->asDatetime($model->published_at, 'Y-m-d H:i') ?></p>
 
     <hr>
 

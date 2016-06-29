@@ -45,6 +45,10 @@ $config = [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['Guest'],//默认角色
         ],
+        'formatter' => [
+            'dateFormat' => 'php:Y-m-d',
+            'datetimeFormat' => 'php:Y-m-d H:i:s',
+        ],
     ],
     'params' => $params,
     'language' => 'zh-CN',

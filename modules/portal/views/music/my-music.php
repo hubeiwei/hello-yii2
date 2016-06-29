@@ -1,7 +1,6 @@
 <?php
 
 use app\models\Music;
-use app\modules\core\helpers\EasyHelper;
 use app\modules\core\helpers\FileHelper;
 use app\modules\core\helpers\RenderHelper;
 use kartik\grid\ActionColumn;
@@ -52,17 +51,13 @@ $gridColumns = [
     ],
     [
         'attribute' => 'created_at',
-        'value' => function ($model) {
-            return EasyHelper::timestampToDate($model->created_at);
-        },
+        'format' => 'dateTime',
         'filter' => RenderHelper::dateRangePicker('MusicSearch[created_at]', false),
         'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'updated_at',
-        'value' => function ($model) {
-            return EasyHelper::timestampToDate($model->updated_at);
-        },
+        'format' => 'dateTime',
         'filter' => RenderHelper::dateRangePicker('MusicSearch[updated_at]', false),
         'headerOptions' => ['width' => 160],
     ],

@@ -1,7 +1,6 @@
 <?php
 
 use app\models\UserDetail;
-use app\modules\core\helpers\EasyHelper;
 use app\modules\core\helpers\RenderHelper;
 use kartik\grid\ActionColumn;
 use kartik\grid\SerialColumn;
@@ -45,9 +44,7 @@ $gridColumns = [
     ],
     [
         'attribute' => 'birthday',
-        'value' => function ($model) {
-            return EasyHelper::timestampToDate($model->birthday, 'Y-m-d');
-        },
+        'format' => 'date',
         'filter' => RenderHelper::dateRangePicker('UserDetailSearch[birthday]'),
         'headerOptions' => ['width' => 100],
     ],
@@ -58,9 +55,7 @@ $gridColumns = [
     ],
     [
         'attribute' => 'updated_at',
-        'value' => function ($model) {
-            return EasyHelper::timestampToDate($model->updated_at);
-        },
+        'format' => 'dateTime',
         'filter' => RenderHelper::dateRangePicker('UserDetailSearch[updated_at]'),
         'headerOptions' => ['width' => 160],
     ],

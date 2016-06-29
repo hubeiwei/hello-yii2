@@ -1,7 +1,6 @@
 <?php
 
 use app\models\Article;
-use app\modules\core\helpers\EasyHelper;
 use app\modules\core\helpers\RenderHelper;
 use kartik\grid\ActionColumn;
 use kartik\grid\SerialColumn;
@@ -30,9 +29,7 @@ $gridColumns = [
     ],
     [
         'attribute' => 'published_at',
-        'value' => function ($model) {
-            return EasyHelper::timestampToDate($model->published_at, 'Y-m-d H:i');
-        },
+        'format' => ['dateTime', 'php:Y-m-d H:i'],
         'filter' => RenderHelper::dateRangePicker('ArticleSearch[published_at]', false),
         'headerOptions' => ['width' => 160],
     ],
@@ -62,17 +59,13 @@ $gridColumns = [
     ],
     [
         'attribute' => 'created_at',
-        'value' => function ($model) {
-            return EasyHelper::timestampToDate($model->created_at);
-        },
+        'format' => 'dateTime',
         'filter' => RenderHelper::dateRangePicker('ArticleSearch[created_at]', false),
         'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'updated_at',
-        'value' => function ($model) {
-            return EasyHelper::timestampToDate($model->updated_at);
-        },
+        'format' => 'dateTime',
         'filter' => RenderHelper::dateRangePicker('ArticleSearch[updated_at]', false),
         'headerOptions' => ['width' => 160],
     ],

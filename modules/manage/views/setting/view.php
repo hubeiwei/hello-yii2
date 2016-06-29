@@ -1,7 +1,6 @@
 <?php
 
 use app\models\Setting;
-use app\modules\core\helpers\EasyHelper;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -45,14 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'tag',
             'creater.username',
             'updater.username',
-            [
-                'attribute' => 'created_at',
-                'value' => EasyHelper::timestampToDate($model->created_at),
-            ],
-            [
-                'attribute' => 'updated_at',
-                'value' => EasyHelper::timestampToDate($model->updated_at),
-            ],
+            'updated_at:created_at',
+            'updated_at:dateTime',
         ],
     ]) ?>
 

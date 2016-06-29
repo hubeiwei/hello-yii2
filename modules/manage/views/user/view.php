@@ -1,7 +1,6 @@
 <?php
 
 use app\models\User;
-use app\modules\core\helpers\EasyHelper;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -48,18 +47,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'auth_key',
             'access_token',
-            [
-                'attribute' => 'created_at',
-                'value' => EasyHelper::timestampToDate($model->created_at),
-            ],
-            [
-                'attribute' => 'updated_at',
-                'value' => EasyHelper::timestampToDate($model->updated_at),
-            ],
-            [
-                'attribute' => 'last_login',
-                'value' => EasyHelper::timestampToDate($model->last_login),
-            ],
+            'created_at:dateTime',
+            'updated_at:dateTime',
+            'last_login:dateTime',
             'last_ip',
         ],
     ]) ?>

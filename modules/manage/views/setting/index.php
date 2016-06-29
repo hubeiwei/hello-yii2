@@ -1,7 +1,6 @@
 <?php
 
 use app\models\Setting;
-use app\modules\core\helpers\EasyHelper;
 use app\modules\core\helpers\RenderHelper;
 use yii\helpers\Html;
 use kartik\grid\SerialColumn;
@@ -45,17 +44,13 @@ $gridColumns = [
     ],
     [
         'attribute' => 'created_at',
-        'value' => function ($model) {
-            return EasyHelper::timestampToDate($model->created_at);
-        },
+        'format' => 'dateTime',
         'filter' => RenderHelper::dateRangePicker('SettingSearch[created_at]'),
         'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'updated_at',
-        'value' => function ($model) {
-            return EasyHelper::timestampToDate($model->updated_at);
-        },
+        'format' => 'dateTime',
         'filter' => RenderHelper::dateRangePicker('SettingSearch[updated_at]'),
         'headerOptions' => ['width' => 160],
     ],

@@ -1,7 +1,6 @@
 <?php
 
 use app\models\Music;
-use app\modules\core\helpers\EasyHelper;
 use app\modules\core\helpers\FileHelper;
 use app\modules\core\helpers\RenderHelper;
 use app\modules\core\helpers\UserHelper;
@@ -59,9 +58,8 @@ $gridColumns = [
             return Music::$visible_map[$model->visible];
         },
         'filter' => RenderHelper::dropDownFilter('MusicSearch[visible]', $searchModel->visible, Music::$visible_map),
-        'headerOptions' => ['width' => 100],
-        //只有管理员才能看到此列
         'visible' => UserHelper::userIsAdmin(),
+        'headerOptions' => ['width' => 100],
     ],
     [
         'attribute' => 'status',
@@ -69,27 +67,21 @@ $gridColumns = [
             return Music::$status_map[$model->status];
         },
         'filter' => RenderHelper::dropDownFilter('MusicSearch[status]', $searchModel->status, Music::$status_map),
-        'headerOptions' => ['width' => 100],
-        //只有管理员才能看到此列
         'visible' => UserHelper::userIsAdmin(),
+        'headerOptions' => ['width' => 100],
     ],
     [
         'attribute' => 'created_at',
-        'value' => function ($model) {
-            return EasyHelper::timestampToDate($model->created_at);
-        },
+        'format' => 'dateTime',
         'filter' => RenderHelper::dateRangePicker('MusicSearch[created_at]', false),
         'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'updated_at',
-        'value' => function ($model) {
-            return EasyHelper::timestampToDate($model->updated_at);
-        },
+        'format' => 'dateTime',
         'filter' => RenderHelper::dateRangePicker('MusicSearch[updated_at]', false),
-        'headerOptions' => ['width' => 160],
-        //感觉要这个字段没什么用，只让管理员才能看到吧
         'visible' => UserHelper::userIsAdmin(),
+        'headerOptions' => ['width' => 160],
     ],
 
     [

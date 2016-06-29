@@ -1,7 +1,6 @@
 <?php
 
 use app\models\Article;
-use app\modules\core\helpers\EasyHelper;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -35,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'user.username',
             [
                 'attribute' => 'published_at',
-                'value' => EasyHelper::timestampToDate($model->published_at, 'Y-m-d H:i'),
+                'format' => ['dateTime', 'php:Y-m-d H:i'],
             ],
             [
                 'attribute' => 'visible',
@@ -49,14 +48,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'status',
                 'value' => Article::$status_map[$model->status],
             ],
-            [
-                'attribute' => 'created_at',
-                'value' => EasyHelper::timestampToDate($model->created_at),
-            ],
-            [
-                'attribute' => 'updated_at',
-                'value' => EasyHelper::timestampToDate($model->updated_at),
-            ],
+            'created_at:dateTime',
+            'updated_at:dateTime',
         ],
     ]) ?>
 

@@ -1,7 +1,6 @@
 <?php
 
 use app\models\UserDetail;
-use app\modules\core\helpers\EasyHelper;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -35,19 +34,13 @@ $this->params['breadcrumbs'][] = $model->user->username;
                 'attribute' => 'gender',
                 'value' => UserDetail::$gender_map[$model->gender],
             ],
-            [
-                'attribute' => 'birthday',
-                'value' => EasyHelper::timestampToDate($model->birthday, 'Y年m月d日'),
-            ],
+            'birthday:date',
             'email:email',
             'phone',
             'resume',
             'security_question',
             'security_answer',
-            [
-                'attribute' => 'updated_at',
-                'value' => EasyHelper::timestampToDate($model->updated_at),
-            ],
+            'updated_at:dateTime',
         ],
     ]) ?>
 
