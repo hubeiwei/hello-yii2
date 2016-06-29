@@ -1,6 +1,5 @@
 <?php
 
-use app\models\UserDetail;
 use yii\helpers\Html;
 
 /**

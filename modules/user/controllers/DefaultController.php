@@ -123,8 +123,7 @@ class DefaultController extends ModuleController
         if ($form->load(Yii::$app->request->post())) {
             if ($form->validate()) {
                 $model->setAttributes($form->getAttributes());
-                $model->birthday = $form->birthday ? strtotime($form->birthday) : 0;
-                $model->updated_at = time();
+                $model->birthday = $form->birthday ? strtotime($form->birthday) : null;
                 if ($model->save()) {
                     EasyHelper::setSuccessMsg('修改成功');
                     return $this->redirect(['detail', 'id' => $model->id]);
@@ -135,7 +134,7 @@ class DefaultController extends ModuleController
             }
         } else {
             $form->setAttributes($model->getAttributes());
-            $form->birthday = $model->birthday ? date('Y-m-d', $model->birthday) : '';
+            $form->birthday = EasyHelper::timestampToDate($model->birthday, 'Y-m-d');
         }
 
         return $this->render('detail', [
