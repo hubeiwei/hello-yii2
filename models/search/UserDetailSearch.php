@@ -13,13 +13,6 @@ use app\models\UserDetail;
  */
 class UserDetailSearch extends UserDetail
 {
-    public function attributes()
-    {
-        return array_merge(parent::attributes(), [
-            'user.username',
-        ]);
-    }
-
     /**
      * @inheritdoc
      */
@@ -48,7 +41,7 @@ class UserDetailSearch extends UserDetail
      */
     public function search($params)
     {
-        $query = UserDetail::find()->with('user');
+        $query = UserDetail::find()->joinWith('user');
 
         // add conditions that should always apply here
 
@@ -71,7 +64,7 @@ class UserDetailSearch extends UserDetail
             ->andFilterWhere(['like', 'resume', $this->resume])
             ->andFilterWhere(['like', 'security_question', $this->security_question])
             ->andFilterWhere(['like', 'security_answer', $this->security_answer])
-            ->andFilterWhere(['like', User::tableName() . 'username', $this->getAttribute('user.username')]);
+            ->andFilterWhere(['like', User::tableName() . '.username', $this->getAttribute('user.username')]);
 
         $query->compare('id', $this->id);
         $query->compare('user_id', $this->user_id);

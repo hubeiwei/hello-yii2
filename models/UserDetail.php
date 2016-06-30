@@ -51,6 +51,7 @@ class UserDetail extends UserDetailBase
     public function attributes()
     {
         return array_merge(parent::attributes(), [
+            'user.username',
         ]);
     }
 
