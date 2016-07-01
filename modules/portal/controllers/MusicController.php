@@ -19,6 +19,9 @@ use yii\web\UploadedFile;
  */
 class MusicController extends ModuleController
 {
+    /**
+     * @inheritdoc
+     */
     public function behaviors()
     {
         return [
@@ -56,8 +59,6 @@ class MusicController extends ModuleController
     }
 
     /**
-     * gii生成的代码，这个方法我还没改过，所以就别研究这个了
-     *
      * Lists all Music models.
      * @return mixed
      */
@@ -72,11 +73,6 @@ class MusicController extends ModuleController
         ]);
     }
 
-    /**
-     * 和上面一样，只是改了个searchMyMusic
-     *
-     * @return string
-     */
     public function actionMyMusic()
     {
         $searchModel = new MusicSearch();
@@ -95,28 +91,11 @@ class MusicController extends ModuleController
      */
     public function actionCreate()
     {
-        /**
-         * 自己建一个MusicUploadForm的类来验证文件，
-         * 是因为Music的music_file字段是存字符串的
-         * 全部规则混在Music里面会导致save不成功
-         */
         $form = new MusicForm();
         $form->scenario = 'create';
 
-        /**
-         * 我的套路是这样的：
-         * 在post的数据把MusicUploadForm里面的rules()的字段load下来，然后执行validate()方法来验证rules，
-         * 不符合rules返回false，并在MusicUploadForm->error添加了内容，
-         * 然后因为我这流程的结构，会继续回到create页面，在create页面如果Model有错误则会在对应字段下显示错误，
-         * 同理，因为MusicUploadForm已经load了你提交的内容，所以回到create页面还能看到你原来填写的内容，
-         * 因此，create和update两个表单如果没有什么特殊要求的话，可以共用一个生成的表单，这里就共用了_form.php。
-         *
-         * 你可以把rules()里的某个字段的规则删掉，看看load之后MusicUploadForm的这个字段有没有值。
-         * @see MusicUploadForm::rules()
-         * @see MusicFormBase::rules()
-         */
         if ($form->load(Yii::$app->request->post())) {
-            $form->music_file = UploadedFile::getInstance($form, 'music_file');//文件是不能直接收到的，得这样
+            $form->music_file = UploadedFile::getInstance($form, 'music_file');
             if ($form->validate()) {
                 $filename = FileHelper::generateFileName();
                 $savePath = FileHelper::getMusicFullPath($filename);
@@ -128,12 +107,12 @@ class MusicController extends ModuleController
                         EasyHelper::setSuccessMsg('添加成功');
                         return $this->redirect(['index']);
                     } else {
-                        unlink($savePath);//删除文件
+                        unlink($savePath);
                         EasyHelper::setErrorMsg('添加失败');
                         $form->addErrors($model->getErrors());
                     }
                 } else {
-                    $form->addError('music_file', '文件上传失败');//向music_file属性添加一个错误
+                    $form->addError('music_file', '文件上传失败');
                 }
             }
         }

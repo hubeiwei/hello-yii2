@@ -24,6 +24,9 @@ class ArticleForm extends Model
     public $status = Article::STATUS_ENABLE;
     public $verifyCode;
 
+    /**
+     * @inheritdoc
+     */
     public function attributeLabels()
     {
         return [
@@ -36,6 +39,9 @@ class ArticleForm extends Model
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [

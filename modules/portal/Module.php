@@ -2,10 +2,19 @@
 
 namespace app\modules\portal;
 
+/**
+ * portal module definition class
+ */
 class Module extends \yii\base\Module
 {
+    /**
+     * @inheritdoc
+     */
     public $controllerNamespace = 'app\modules\portal\controllers';
 
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         parent::init();

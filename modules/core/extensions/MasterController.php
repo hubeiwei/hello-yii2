@@ -10,16 +10,22 @@ use yii\web\Controller;
 class MasterController extends Controller
 {
 
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         parent::init();
 //        $this->maintenance();
     }
 
+    /**
+     * @inheritdoc
+     */
     public function behaviors()
     {
-        $behaviors = parent::behaviors();
-        return $behaviors;
+        return array_merge(parent::behaviors(), [
+        ]);
     }
 
 //    private function maintenance()

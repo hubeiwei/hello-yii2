@@ -6,9 +6,9 @@ use app\models\search\SettingSearch;
 use app\models\Setting;
 use app\modules\core\helpers\EasyHelper;
 use app\modules\manage\controllers\base\ModuleController;
+use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
-use Yii;
 
 /**
  * SettingController implements the CRUD actions for Setting model.

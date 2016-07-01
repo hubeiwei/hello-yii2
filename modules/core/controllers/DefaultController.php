@@ -8,6 +8,9 @@ use yii\web\ErrorAction;
 
 class DefaultController extends ModuleController
 {
+    /**
+     * @inheritdoc
+     */
     public function actions()
     {
         return [

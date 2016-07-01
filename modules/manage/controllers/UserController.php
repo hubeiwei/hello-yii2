@@ -2,12 +2,12 @@
 
 namespace app\modules\manage\controllers;
 
+use app\models\search\UserSearch;
+use app\models\User;
 use app\models\UserDetail;
 use app\modules\core\helpers\EasyHelper;
-use Yii;
-use app\models\User;
-use app\models\search\UserSearch;
 use app\modules\manage\controllers\base\ModuleController;
+use Yii;
 use yii\web\NotFoundHttpException;
 
 /**

@@ -9,8 +9,8 @@
 
 namespace app\modules\core\helpers;
 
-use Yii;
 use app\models\User;
+use Yii;
 
 /**
  * Class UserHelper

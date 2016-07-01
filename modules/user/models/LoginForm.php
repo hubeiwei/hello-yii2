@@ -2,10 +2,10 @@
 
 namespace app\modules\user\models;
 
-use Yii;
 use app\models\User;
 use app\modules\core\extensions\HuCaptchaValidator;
 use app\modules\core\helpers\EasyHelper;
+use Yii;
 use yii\base\Model;
 
 class LoginForm extends Model
@@ -31,7 +31,7 @@ class LoginForm extends Model
     }
 
     /**
-     * @return array the validation rules.
+     * @inheritdoc
      */
     public function rules()
     {

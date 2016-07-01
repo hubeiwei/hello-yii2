@@ -15,6 +15,9 @@ use Yii;
 
 class DefaultController extends ModuleController
 {
+    /**
+     * @inheritdoc
+     */
     public function behaviors()
     {
         return [
@@ -118,7 +121,7 @@ class DefaultController extends ModuleController
     public function actionDetail()
     {
         $model = UserDetail::findOne(['user_id' => UserHelper::getUserId()]);
-        $form = new UserDetailForm();//在前端验证用的类，为了用验证码，另外就是日期的问题，数据库用的是时间戳，前端让用户选择日期
+        $form = new UserDetailForm();
 
         if ($form->load(Yii::$app->request->post())) {
             if ($form->validate()) {

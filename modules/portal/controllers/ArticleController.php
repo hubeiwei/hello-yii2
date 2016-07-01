@@ -4,13 +4,11 @@ namespace app\modules\portal\controllers;
 
 use app\models\Article;
 use app\models\search\ArticleSearch;
-use app\models\User;
 use app\modules\core\helpers\EasyHelper;
 use app\modules\core\helpers\UserHelper;
 use app\modules\portal\controllers\base\ModuleController;
 use app\modules\portal\models\ArticleForm;
 use Yii;
-use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 
@@ -57,9 +55,8 @@ class ArticleController extends ModuleController
     }
 
     /**
-     * TODO 我只会用GridView，现在自己弄的还没想好怎么做个好用的搜索，暂时先这样吧
-     *
-     * @return string
+     * Lists all Article models.
+     * @return mixed
      */
     public function actionIndex()
     {
@@ -83,6 +80,11 @@ class ArticleController extends ModuleController
         ]);
     }
 
+    /**
+     * Displays a single Article model.
+     * @param string $id
+     * @return mixed
+     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -97,6 +99,11 @@ class ArticleController extends ModuleController
         ]);
     }
 
+    /**
+     * Creates a new Article model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
     public function actionCreate()
     {
         $form = new ArticleForm();
@@ -123,6 +130,12 @@ class ArticleController extends ModuleController
         ]);
     }
 
+    /**
+     * Updates an existing Article model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param string $id
+     * @return mixed
+     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -156,6 +169,12 @@ class ArticleController extends ModuleController
         ]);
     }
 
+    /**
+     * Deletes an existing Article model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param string $id
+     * @return mixed
+     */
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
@@ -173,6 +192,13 @@ class ArticleController extends ModuleController
         return $this->redirect(['index']);
     }
 
+    /**
+     * Finds the Article model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param string $id
+     * @return Article the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
     protected function findModel($id)
     {
         if (($model = Article::findOne($id)) !== null) {

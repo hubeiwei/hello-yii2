@@ -17,7 +17,9 @@ use yii\base\Model;
 class MusicForm extends Model
 {
     public $track_title;
-    /** @var \yii\web\UploadedFile */
+    /**
+     * @var \yii\web\UploadedFile
+     */
     public $music_file;
     public $visible;
     public $status = Music::STATUS_ENABLE;
@@ -37,6 +39,9 @@ class MusicForm extends Model
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function scenarios()
     {
         return [
@@ -45,6 +50,9 @@ class MusicForm extends Model
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
