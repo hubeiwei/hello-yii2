@@ -3,10 +3,10 @@
 namespace app\models\search;
 
 use app\models\User;
+use app\models\UserDetail;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\UserDetail;
 
 /**
  * UserDetailSearch represents the model behind the search form about `app\models\UserDetail`.

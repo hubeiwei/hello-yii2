@@ -2,12 +2,12 @@
 
 namespace app\models\search;
 
+use app\models\Article;
 use app\models\User;
 use app\modules\core\helpers\UserHelper;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Article;
 
 /**
  * ArticleSearch represents the model behind the search form about `app\models\Article`.
