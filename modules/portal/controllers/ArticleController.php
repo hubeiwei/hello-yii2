@@ -63,41 +63,13 @@ class ArticleController extends ModuleController
      */
     public function actionIndex()
     {
-        $data = Article::find()
-            ->select([
-                'id',
-                'title',
-                'created_by',
-                'user.username',
-                'FROM_UNIXTIME(`published_at`, \'%m-%d %H:%i\' ) AS published_at'
-            ])
-            ->where(['<=', 'published_at', time()])
-            ->where([
-                'visible' => Article::VISIBLE_YES,
-                Article::tableName() . '.status' => Article::STATUS_ENABLE,
-            ])
-            ->leftJoin(User::tableName(), User::tableName() . '.user_id = ' . Article::tableName() . '.created_by')
-            ->orderBy(['published_at' => SORT_DESC]);
-
-        $pages = new Pagination([
-            'totalCount' => $data->count(),
-            'pageSize' => 10,
-        ]);
-
-        $articles = $data->offset($pages->offset)->limit($pages->limit)->asArray()->all();
-
-        return $this->render('index', [
-            'articles' => $articles,
-            'pages' => $pages,
-        ]);
-
-        /*$searchModel = new ArticleSearch();
+        $searchModel = new ArticleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ]);*/
+        ]);
     }
 
     public function actionMyArticle()

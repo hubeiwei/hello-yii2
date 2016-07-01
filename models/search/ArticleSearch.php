@@ -46,18 +46,26 @@ class ArticleSearch extends Article
         $query = self::find()->joinWith('user');
 
         if (!UserHelper::userIsAdmin()) {
-            $query->where(['visible' => self::VISIBLE_YES, self::tableName() . '.status' => self::STATUS_ENABLE]);
+            $query->where([
+                'visible' => self::VISIBLE_YES,
+                self::tableName() . '.status' => self::STATUS_ENABLE,
+            ])->where(['<=', 'published_at', time()]);
         }
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['defaultOrder' => ['created_at' => SORT_DESC]],
 //            'pagination' => [
 //                'pageSize' => 15,
 //            ],
         ]);
+
+        if (UserHelper::userIsAdmin()) {
+            $dataProvider->sort = ['defaultOrder' => ['created_at' => SORT_DESC]];
+        } else {
+            $dataProvider->sort = ['defaultOrder' => ['published_at' => SORT_DESC]];
+        }
 
         $this->load($params);
 

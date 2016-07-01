@@ -1,21 +1,14 @@
 <?php
 
 use app\models\Article;
-use app\modules\core\helpers\RenderHelper;
-use kartik\grid\ActionColumn;
-use kartik\grid\SerialColumn;
 use yii\bootstrap\ButtonDropdown;
-use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\grid\GridView;
 use yii\widgets\LinkPager;
 
 /**
  * @var $this yii\web\View
  * @var $searchModel app\models\search\ArticleSearch
  * @var $dataProvider yii\data\ActiveDataProvider
- * @var $articles
- * @var $pages yii\data\Pagination;
  */
 
 $this->title = '文章';
@@ -47,12 +40,12 @@ $this->title = '文章';
         </div>-->
         <div class="list-group">
             <?php
-            if (count($articles)) {
-                foreach ($articles as $article) {
+            if (count($dataProvider->models)) {
+                foreach ($dataProvider->models as $article) {
                     ?>
                     <a class="list-group-item" href="<?= Url::to(['view-article', 'id' => $article['id']]) ?>">
-                        <span class="badge"><?= $article['published_at'] ?></span>
-                        <span class="badge"><?= $article['username'] ?></span>
+                        <span class="badge"><?= Yii::$app->formatter->asDatetime($article['published_at'], 'php:m-d H:i') ?></span>
+                        <span class="badge"><?= $article['user']['username'] ?></span>
                         <?= $article['title'] ?>
                     </a>
                     <?php
@@ -64,7 +57,7 @@ $this->title = '文章';
             }
             ?>
         </div>
-        <?= LinkPager::widget(['pagination' => $pages]) ?>
+        <?= LinkPager::widget(['pagination' => $dataProvider->pagination]) ?>
     </div>
 
 </div>
