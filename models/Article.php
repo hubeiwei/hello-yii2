@@ -50,10 +50,7 @@ class Article extends ArticleBase
     ];
 
     /**
-     * 详细注释在Music这个Model里面了
-     * @see Music::behaviors()
-     *
-     * @return array
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -68,6 +65,9 @@ class Article extends ArticleBase
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return array_merge(parent::rules(), [
@@ -77,6 +77,9 @@ class Article extends ArticleBase
         ]);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function attributes()
     {
         return array_merge(parent::attributes(), [
@@ -84,6 +87,9 @@ class Article extends ArticleBase
         ]);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function attributeLabels()
     {
         return array_merge(parent::attributeLabels(), [
@@ -98,6 +104,7 @@ class Article extends ArticleBase
 
     /**
      * 解析文章
+     * 
      * @return string
      */
     public function processArticle()

@@ -20,10 +20,7 @@ class Setting extends SettingBase
     ];
 
     /**
-     * 详细注释在Music这个Model里面了
-     * @see Music::behaviors()
-     *
-     * @return array
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -33,6 +30,9 @@ class Setting extends SettingBase
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return array_merge(parent::rules(), [
@@ -40,12 +40,18 @@ class Setting extends SettingBase
         ]);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function attributes()
     {
         return array_merge(parent::attributes(), [
         ]);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function attributeLabels()
     {
         return array_merge(parent::attributeLabels(), [

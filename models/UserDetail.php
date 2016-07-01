@@ -23,10 +23,7 @@ class UserDetail extends UserDetailBase
     ];
 
     /**
-     * 详细注释在Music这个Model里面了
-     * @see Music::behaviors()
-     *
-     * @return array
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -41,6 +38,9 @@ class UserDetail extends UserDetailBase
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return array_merge(parent::rules(), [
@@ -48,6 +48,9 @@ class UserDetail extends UserDetailBase
         ]);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function attributes()
     {
         return array_merge(parent::attributes(), [
@@ -55,6 +58,9 @@ class UserDetail extends UserDetailBase
         ]);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function attributeLabels()
     {
         return array_merge(parent::attributeLabels(), [
