@@ -101,7 +101,7 @@ $config = [
         'class' => 'mdm\admin\components\AccessControl',
         //允许所有身份访问的路由，开头不要像写url那样加/，亲测无效，无限跳转到登录
         'allowActions' => [
-//            'debug/*',
+            'debug/*',
 //            'gii/*',
 //            'admin/*',
             'redactor/*',
