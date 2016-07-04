@@ -57,10 +57,7 @@ ManageAssets::register($this);
             <div class="col-md-3 col-lg-2 hidden-sm hidden-xs">
                 <div class="list-group" id="nav-menu">
                     <?php
-                    /**
-                     * TODO 这种做法当currentUrl格式不是"/模块/控制器"的情况下会报错，需要把站点根目录部署为/web
-                     */
-                    $currentUrl = Url::current();
+                    $currentUrl = explode('?', Url::current())[0];
                     $currentUrlSnippet = explode('/', $currentUrl);
                     $currentUrlPath = '/' . $currentUrlSnippet[1] . '/' . $currentUrlSnippet[2];
 
@@ -74,7 +71,7 @@ ManageAssets::register($this);
                             $menuUrl = 'javascript:void(0)';
                         }
 
-                        //控制样式
+                        //高亮一级菜单
                         if ($currentUrl == $menuUrl) {
                             $active = ' active';
                         } else {
@@ -98,7 +95,7 @@ ManageAssets::register($this);
                                 $itemUrlSnippet = explode('/', $itemUrl);
                                 $itemUrlPath = '/' . $itemUrlSnippet[1] . '/' . $itemUrlSnippet[2];
 
-                                //高亮父级菜单，根据url上的"/模块/控制器"来判断
+                                //高亮一级菜单
                                 if ($currentUrlPath == $itemUrlPath) {
                                     $activeMenu = 'nav-menu-' . $menuKey;
                                 }
