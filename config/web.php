@@ -17,12 +17,11 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-            'loginUrl' => ['/user/default/login'],//登录的url，权限管理需要，游客访问一些需要权限的url时会往该链接跳转
+            'loginUrl' => ['/user/default/login'],
         ],
         'errorHandler' => [
             'errorAction' => '/core/default/error',//挪地方了
         ],
-        //邮箱
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             // send all mails to a file by default. You have to set
@@ -40,10 +39,9 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        //权限管理
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
-            'defaultRoles' => ['Guest'],//默认角色
+            'defaultRoles' => ['Guest'],
         ],
         'formatter' => [
             'dateFormat' => 'php:Y-m-d',
@@ -53,7 +51,7 @@ $config = [
     'params' => $params,
     'language' => 'zh-CN',
     'timeZone' => 'Asia/Shanghai',
-    'defaultRoute' => '/portal/article',//访问入口文件后默认转到的url
+    'defaultRoute' => '/portal/article',
     'modules' => [
         'gridview' => [
             'class' => 'kartik\grid\Module',
@@ -96,10 +94,8 @@ $config = [
             'class' => 'app\modules\portal\Module',
         ],
     ],
-    //访问控制
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
-        //允许所有身份访问的路由，开头不要像写url那样加/，亲测无效，无限跳转到登录
         'allowActions' => [
             'debug/*',
 //            'gii/*',
@@ -119,11 +115,6 @@ $config['components']['urlManager'] = [
     'enablePrettyUrl' => true,
     'showScriptName' => false,
 
-    /**
-     * 之前因为照顾到没有配apache的rewrite的同学，
-     * 用到这些别名的地方都改回去了，
-     * 现在这些别名也只是方便手敲而已
-     */
     'rules' => [
         'login' => '/user/default/login',
         'logout' => '/user/default/logout',
@@ -142,7 +133,6 @@ if (YII_ENV_DEV) {
             '192.168.*.*',
         ],
     ];
-    //外网专用，有兴趣的去研究一下$_SERVER与header的关系
     if (isset($_SERVER['HTTP_LaoHu'])) {
         $config['modules']['debug']['allowedIPs'] = ['*.*.*.*'];
     };
