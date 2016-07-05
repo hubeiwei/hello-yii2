@@ -26,13 +26,13 @@ class UserDetailForm extends Model
     {
         return [
             ['gender', 'in', 'range' => UserDetail::$gender_array],
-            ['birthday', 'date', 'format' => 'php:Y-m-d'],//我觉得其实只要是日期能转成时间戳就好了，居然还要特定一个格式，但这样也没有什么不好的
+            ['birthday', 'date', 'format' => 'php:Y-m-d'],
             ['email', 'email'],
             ['email', 'string', 'max' => 100],
             ['phone', 'number'],
             ['phone', 'string', 'length' => 11],
             ['phone', 'match', 'pattern' => '/^1[34578]\d{9}$/'],
-            ['resume', 'safe'],//其实这个没啥验证应该不用写的，但我发现不写的话load不到数据，就学那些SearchModel写个safe好了
+            ['resume', 'safe'],
             ['verifyCode', 'required'],
             ['verifyCode', 'string', 'length' => 4],
             ['verifyCode', HuCaptchaValidator::className()],
