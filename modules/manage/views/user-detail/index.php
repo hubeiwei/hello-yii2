@@ -25,7 +25,7 @@ $gridColumns = [
     [
         'attribute' => 'user.username',
         'value' => function ($model) {
-            return Html::a($model->user['username'], ['index', 'UserDetailSearch[user_id]' => $model->user_id]);
+            return Html::a($model->user['username'], ['user/index', 'UserSearch[user_id]' => $model->user_id]);
         },
         'format' => 'html',
         'headerOptions' => ['width' => 160],

@@ -67,7 +67,7 @@ class UserDetailSearch extends UserDetail
             ->andFilterWhere(['like', User::tableName() . '.username', $this->getAttribute('user.username')]);
 
         $query->compare('id', $this->id);
-        $query->compare('user_id', $this->user_id);
+        $query->compare(self::tableName() . '.user_id', $this->user_id);
 
         $query->timeRangeFilter('birthday', $this->birthday);
         $query->timeRangeFilter('updated_at', $this->updated_at);
