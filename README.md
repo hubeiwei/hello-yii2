@@ -27,6 +27,8 @@
 1. 你要有[composer](http://docs.phpcomposer.com/)，以及创建一个`utf8`数据库，在**数据库配置文件**配置好相关参数后，执行以下命令：
 
 ```
+composer self-update
+composer global require "fxp/composer-asset-plugin:^1.2.0"
 composer install
 yii migrate --migrationPath=@yii/rbac/migrations
 yii migrate/to m140602_111327_create_menu_table --migrationPath=@mdm/admin/migrations
@@ -46,13 +48,7 @@ yii migrate
 
 ## 部署遇到问题怎么办？
 
-1. 我只测试过migration能正常导入数据而已，自己很懒，没有深入测，也没有人看过这个项目给我反馈问题，遇到问题加QQ联系吧。
-
-2. 可能有些同学执行`composer install`后，`/vendor`目录里没有`bower`目录，尝试执行以下命令再重新执行一次`composer install`，[参考链接](https://segmentfault.com/q/1010000004047286)
-
-```
-composer global require "fxp/composer-asset-plugin:~1.1.1"
-```
+* 我只测试过migration能正常导入数据而已，自己很懒，没有深入测，也没有人看过这个项目给我反馈问题，遇到问题加QQ联系吧。
 
 # 打赏
 
