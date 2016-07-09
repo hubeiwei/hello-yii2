@@ -89,25 +89,22 @@ class DefaultController extends ModuleController
                 $user_detail = new UserDetail();
 
                 $user->username = $form->username;
-                $user->password = $form->password;
+                $user->generateAuthKey();
+                $user->setPassword($form->password);
                 $user->email = $form->email;
 
-                $transaction = EasyHelper::beginTransaction();//开启事务
+                $transaction = EasyHelper::beginTransaction();
                 $flow = $user->save(false);
                 if ($flow) {
                     $user_detail->user_id = $user->id;
-                }
-                if ($flow && !$user_detail->save()) {
-                    $flow = false;
+                    $flow = $user_detail->save(false);
                 }
                 if ($flow) {
-                    $transaction->commit();//提交事务
+                    $transaction->commit();
                     EasyHelper::setSuccessMsg('注册成功');
                     return $this->redirect('login');
                 } else {
-                    $transaction->rollBack();//回滚事务
-                    $form->addErrors($user->getErrors());
-                    $form->addErrors($user_detail->getErrors());
+                    $transaction->rollBack();
                     EasyHelper::setErrorMsg('注册失败');
                 }
             }

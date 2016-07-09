@@ -46,7 +46,7 @@ ManageAssets::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => '返回前台', 'url' => Yii::$app->homeUrl],
-            ['label' => '登出(' . UserHelper::getUserName() . ')', 'url' => ['/user/default/logout']],
+            ['label' => '登出(' . UserHelper::getUserName() . ')', 'url' => ['/logout']],
         ],
     ]);
 

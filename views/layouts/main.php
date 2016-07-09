@@ -53,12 +53,12 @@ AppAsset::register($this);
             ],
             [
                 'label' => '登录',
-                'url' => ['/user/default/login'],
+                'url' => ['/login'],
                 'visible' => UserHelper::userIsGuest(),
             ],
             [
                 'label' => '注册',
-                'url' => ['/user/default/register'],
+                'url' => ['/register'],
                 'visible' => UserHelper::userIsGuest(),
             ],
             [
@@ -80,7 +80,7 @@ AppAsset::register($this);
                     '<li class="divider"></li>',
                     [
                         'label' => '登出',
-                        'url' => ['/user/default/logout'],
+                        'url' => ['/logout'],
                     ],
                 ],
             ],

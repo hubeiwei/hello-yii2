@@ -14,47 +14,6 @@ class m160523_015948_init extends Migration
         $tableInnoDBOptions = 'ENGINE=InnoDB CHARACTER SET utf8';
         $tableMyISAMOptions = 'ENGINE=MyISAM CHARACTER SET utf8';
 
-        $this->createTable(User::tableName(), [
-            'id' => $this->primaryKey(10)->unsigned(),
-            'username' => $this->string(20)->notNull()->unique()->comment('用户名'),
-            'password' => $this->string(255)->notNull()->comment('密码'),
-            'passkey' => $this->char(6)->notNull(),
-            'status' => 'enum(\'Y\',\'N\') DEFAULT \'Y\' COMMENT \'状态\'',
-            'auth_key' => $this->char(64)->notNull()->unique(),
-            'access_token' => $this->char(64)->notNull()->unique(),
-            'created_at' => $this->integer(11)->unsigned()->comment('创建时间'),
-            'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
-            'last_login' => $this->integer(11)->unsigned()->comment('最后登录时间'),
-            'last_ip' => $this->char(15)->comment('最后登录IP'),
-        ], $tableInnoDBOptions);
-
-        $user = new User();
-        $attributes = $user->attributes();
-        unset($attributes[0]);//user_id
-        unset($attributes[5]);//status
-        unset($attributes[10]);//last_login
-        unset($attributes[11]);//last_ip
-        $this->batchInsert($user::tableName(), $attributes, [
-            [
-                'hu',
-                '$2y$13$/pWZHbHrDBHQfp99VO7qvuoID7C.REZOfIkqOaDGhNurHrdna.l6G',
-                'PGWY7_',
-                Yii::$app->security->generateRandomString(64),
-                Yii::$app->security->generateRandomString(64),
-                time(),
-                time(),
-            ],
-            [
-                'test',
-                '$2y$13$jokKL4zwtjY8Rtw0uKjWdOS1O7ast2e9rosNw1/1Dq2NJJ3C9mPT.',
-                'ML-ncP',
-                Yii::$app->security->generateRandomString(64),
-                Yii::$app->security->generateRandomString(64),
-                time(),
-                time(),
-            ],
-        ]);
-
         $this->createTable(UserDetail::tableName(), [
             'id' => $this->primaryKey(10)->unsigned(),
             'user_id' => $this->integer(10)->notNull()->unique()->unsigned()->comment('用户ID'),
@@ -65,8 +24,6 @@ class m160523_015948_init extends Migration
             'resume' => $this->string(100)->comment('简介'),
             'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
         ], $tableInnoDBOptions);
-
-        $this->batchInsert(UserDetail::tableName(), ['user_id', 'updated_at'], [[1, time()], [2, time()]]);
 
         $this->createTable(Article::tableName(), [
             'id' => $this->primaryKey(10)->unsigned(),
@@ -105,26 +62,57 @@ class m160523_015948_init extends Migration
             'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
         ], $tableMyISAMOptions . ' COMMENT=\'网站配置\'');
 
+        //插入数据
+        $time = time();
+        
+        $this->batchInsert(User::tableName(), [
+            'username',
+            'auth_key',
+            'password_hash',
+            'email',
+            'created_at',
+            'updated_at',
+        ], [
+            [
+                'hu',
+                Yii::$app->security->generateRandomString(),
+                '$2y$13$GseYzG9z1Q87wVsGJ9DdleP/QHSPoPbAdLr3y4D8gDCFq2BRuIYQu',
+                'hubeiwei1234@qq.com',
+                $time,
+                $time,
+            ],
+            [
+                'test',
+                Yii::$app->security->generateRandomString(),
+                '$2y$13$bkTA/HShzVF8P2uZDRZgbe5jPftXwO3xIJnF5gjph63xtFKs9bEpS',
+                'hubeiwei@hotmail.com',
+                $time,
+                $time,
+            ],
+        ]);
+
+        $this->batchInsert(UserDetail::tableName(), ['user_id', 'updated_at'], [[1, $time], [2, $time]]);
+
         //以下是插入rbac相关的数据
         $this->batchInsert('auth_item', ['name', 'type', 'created_at', 'updated_at'], [
-            ['/*', 2, time(), time()],
-            ['/admin/*', 2, time(), time()],
-            ['/admin/default/index', 2, time(), time()],
-            ['/gii/*', 2, time(), time()],
-            ['/gii/default/index', 2, time(), time()],
-            ['/manage/default/*', 2, time(), time()],
-            ['/manage/default/index', 2, time(), time()],
-            ['/manage/setting/*', 2, time(), time()],
-            ['/manage/setting/index', 2, time(), time()],
-            ['/manage/user-detail/*', 2, time(), time()],
-            ['/manage/user-detail/index', 2, time(), time()],
-            ['/manage/user/*', 2, time(), time()],
-            ['/manage/user/index', 2, time(), time()],
+            ['/*', 2, $time, $time],
+            ['/admin/*', 2, $time, $time],
+            ['/admin/default/index', 2, $time, $time],
+            ['/gii/*', 2, $time, $time],
+            ['/gii/default/index', 2, $time, $time],
+            ['/manage/default/*', 2, $time, $time],
+            ['/manage/default/index', 2, $time, $time],
+            ['/manage/setting/*', 2, $time, $time],
+            ['/manage/setting/index', 2, $time, $time],
+            ['/manage/user-detail/*', 2, $time, $time],
+            ['/manage/user-detail/index', 2, $time, $time],
+            ['/manage/user/*', 2, $time, $time],
+            ['/manage/user/index', 2, $time, $time],
         ]);
 
         $this->batchInsert('auth_item', ['name', 'type', 'description', 'created_at', 'updated_at'], [
-            ['Guest', 1, '访客', time(), time()],
-            ['SuperAdmin', 1, '超管', time(), time()],
+            ['Guest', 1, '访客', $time, $time],
+            ['SuperAdmin', 1, '超管', $time, $time],
         ]);
 
         $this->insert('auth_item_child', ['parent' => 'SuperAdmin', 'child' => '/*']);
@@ -132,7 +120,7 @@ class m160523_015948_init extends Migration
         $this->insert('auth_assignment', [
             'item_name' => 'SuperAdmin',
             'user_id' => '1',
-            'created_at' => time(),
+            'created_at' => $time,
         ]);
 
         $this->batchInsert('menu', ['name', 'parent', 'route', 'order'], [

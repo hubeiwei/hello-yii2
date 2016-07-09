@@ -18,7 +18,7 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id', 'username'/*, 'password', 'passkey'*/, 'status'/*, 'auth_key', 'access_token'*/, 'created_at', 'updated_at', 'last_login', 'last_ip'], 'safe'],
+            [['id', 'username'/*, 'password_hash'*/, 'status'/*, 'auth_key'*/, 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -62,17 +62,14 @@ class UserSearch extends User
         ]);
 
         $query->andFilterWhere(['like', 'username', $this->username])
-//            ->andFilterWhere(['like', 'password', $this->password])
-//            ->andFilterWhere(['like', 'passkey', $this->passkey])
+//            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
 //            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
-//            ->andFilterWhere(['like', 'access_token', $this->access_token])
         ;
 
         $query->compare('user_id', $this->id);
 
         $query->timeRangeFilter('created_at', $this->created_at);
         $query->timeRangeFilter('updated_at', $this->updated_at);
-        $query->timeRangeFilter('last_login', $this->last_login);
 
         return $dataProvider;
     }

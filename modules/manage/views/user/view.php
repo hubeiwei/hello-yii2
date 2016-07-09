@@ -35,18 +35,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'username',
-            'password',
-            'passkey',
+            'password_hash',
             [
                 'attribute' => 'status',
                 'value' => User::$status_map[$model->status],
             ],
             'auth_key',
-            'access_token',
             'created_at:dateTime',
             'updated_at:dateTime',
-            'last_login:dateTime',
-            'last_ip',
         ],
     ]) ?>
 

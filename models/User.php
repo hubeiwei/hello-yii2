@@ -9,17 +9,15 @@ use yii\web\IdentityInterface;
 
 class User extends UserBase implements IdentityInterface
 {
-    const COMMON_KEY = 'LaoHu';
-
-    const STATUS_DISABLE = 'N';
-    const STATUS_ENABLE = 'Y';
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 10;
     public static $status_array = [
-        self::STATUS_DISABLE,
-        self::STATUS_ENABLE,
+        self::STATUS_INACTIVE,
+        self::STATUS_ACTIVE,
     ];
     public static $status_map = [
-        self::STATUS_DISABLE => '禁用',
-        self::STATUS_ENABLE => '启用',
+        self::STATUS_INACTIVE => '禁用',
+        self::STATUS_ACTIVE => '启用',
     ];
 
     /**
@@ -38,8 +36,9 @@ class User extends UserBase implements IdentityInterface
     public function rules()
     {
         return array_merge(parent::rules(), [
-            ['password', 'string', 'min' => 8],
+            ['password_hash', 'string', 'min' => 8],
             ['status', 'in', 'range' => self::$status_array],
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
         ]);
     }
 
@@ -64,27 +63,6 @@ class User extends UserBase implements IdentityInterface
     /**
      * @inheritdoc
      */
-    public function beforeSave($insert)
-    {
-        if (parent::beforeSave($insert)) {
-            if ($insert) {
-                $this->passkey = Yii::$app->security->generateRandomString(6);
-                $this->access_token = Yii::$app->security->generateRandomString(64);
-                $this->hashPassword();
-            }
-
-            /**
-             * TODO 主动登录后更新auth_key可以踢掉其他端的，但是要其他端下一次打开浏览器才生效，研究发现要把cookie里的session_id删掉才能做到立即踢掉，以后再研究能不能马上把用户踢掉
-             */
-            $this->auth_key = Yii::$app->security->generateRandomString(64);
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * @inheritdoc
-     */
     public static function findIdentity($id)
     {
         return self::findOne($id);
@@ -95,11 +73,6 @@ class User extends UserBase implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        /** @var self $user */
-        $user = self::find()->where(['access_token' => $token, 'status' => self::STATUS_ENABLE])->limit(1)->one();
-        if ($user->access_token === $token) {
-            return $user;
-        }
         return null;
     }
 
@@ -124,28 +97,37 @@ class User extends UserBase implements IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
-        if($this->status == self::STATUS_ENABLE) {
-            return $this->auth_key === $authKey;
+        if ($this->status == self::STATUS_ACTIVE) {
+            return $this->getAuthKey() === $authKey;
         }
         return false;
     }
 
-    public function encryptPassword($password)
-    {
-        $password = md5($password) . md5(self::COMMON_KEY . $this->passkey);
-        return $password;
-    }
-
     public function validatePassword($password)
     {
-        $password = $this->encryptPassword($password);
-        return Yii::$app->security->validatePassword($password, $this->password);
+        return Yii::$app->security->validatePassword($password, $this->password_hash);
     }
 
-    public function hashPassword()
+    public function setPassword($password)
     {
-        $password = $this->encryptPassword($this->password);
-        $this->password = Yii::$app->security->generatePasswordHash($password);
+        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
 
+    /**
+     * TODO 主动登录后更新auth_key可以踢掉其他端的，但是要其他端下一次打开浏览器才生效，研究发现要把cookie里的session_id删掉才能做到立即踢掉，以后再研究能不能马上把用户踢掉
+     */
+    public function generateAuthKey()
+    {
+        $this->auth_key = Yii::$app->security->generateRandomString();
+    }
+
+    public function generatePasswordResetToken()
+    {
+        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
+    }
+
+    public function removePasswordResetToken()
+    {
+        $this->password_reset_token = null;
+    }
 }

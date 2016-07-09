@@ -4,6 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
+    'name' => 'LaoHu Yii2',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
@@ -15,9 +16,10 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-            'loginUrl' => ['/user/default/login'],
+            'identityClass' => 'app\models\User',
+            'loginUrl' => ['/login'],
+//            'identityClass' => 'mdm\admin\models\User',
         ],
         'errorHandler' => [
             'errorAction' => '/core/default/error',
@@ -27,7 +29,19 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.163.com',
+                'port' => '25',
+                'username' => 'hubeiwei1234@163.com',
+                'password' => 'Hu407519063',
+                'encryption' => 'tls',
+            ],
+            'messageConfig' => [
+                'charset' => 'UTF-8',
+                'from' => ['hubeiwei1234@163.com' => '老胡']
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -117,6 +131,9 @@ $config['components']['urlManager'] = [
         'login' => '/user/default/login',
         'logout' => '/user/default/logout',
         'register' => '/user/default/register',
+//        'login' => '/admin/user/login',
+//        'logout' => '/admin/user/logout',
+//        'register' => '/admin/user/signup',
     ],
 ];
 
