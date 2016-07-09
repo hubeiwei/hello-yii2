@@ -1,8 +1,6 @@
 # 说明
 
-该分支用来研究[mdmsoft/yii2-admin](https://github.com/mdmsoft/yii2-admin)里一套用户相关的功能。
-
-**只要你能看到这句话，证明现在这个分支还在开发中，还不能正常使用**
+建立了该分支是为了研究[mdmsoft/yii2-admin](https://github.com/mdmsoft/yii2-admin)模块里一套用户相关的功能，用该模块自带的用户表替换了原有的用户表，现在应该可以使用了，还没发现什么问题。
 
 这是我在空闲时间用yii2-basic来练手的项目，目前还在学习中，在此分享给大家，希望能得到些指点和建议，多学到点东西，也希望有同样热爱yii2的同学和我多多交流，互相学习，我的QQ是494364222。
 
@@ -39,7 +37,7 @@ yii migrate --migrationPath=@mdm/admin/migrations
 yii migrate
 ```
 
-2. 因为后台菜单需要，需要把站点根目录设置为`/web`，apache需要开启rewrite，nginx还没用过，自行解决吧，以后再考虑如何处理这个问题。
+2. 因为路由规则与后台菜单需要，需要把站点根目录设置为`/web`，apache需要开启rewrite，nginx还没用过，自行解决吧，以后再考虑如何处理这个问题。
 
 ## 使用
 
