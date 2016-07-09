@@ -15,8 +15,6 @@ use Yii;
  * @property string $email
  * @property string $phone
  * @property string $resume
- * @property string $security_question
- * @property string $security_answer
  * @property string $updated_at
  */
 class UserDetailBase extends \app\modules\core\extensions\HuActiveRecord
@@ -40,8 +38,6 @@ class UserDetailBase extends \app\modules\core\extensions\HuActiveRecord
             [['gender'], 'string'],
             [['avatar_file', 'email', 'resume'], 'string', 'max' => 100],
             [['phone'], 'string', 'max' => 11],
-            [['security_question'], 'string', 'max' => 30],
-            [['security_answer'], 'string', 'max' => 64],
             [['user_id'], 'unique'],
             [['email'], 'unique'],
             [['phone'], 'unique'],
@@ -62,8 +58,6 @@ class UserDetailBase extends \app\modules\core\extensions\HuActiveRecord
             'email' => '邮箱',
             'phone' => '电话',
             'resume' => '简介',
-            'security_question' => '密保问题',
-            'security_answer' => '密保答案',
             'updated_at' => '修改时间',
         ];
     }

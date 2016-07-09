@@ -38,8 +38,6 @@ $this->params['breadcrumbs'][] = $model->user->username;
             'email:email',
             'phone',
             'resume',
-            'security_question',
-            'security_answer',
             'updated_at:dateTime',
         ],
     ]) ?>

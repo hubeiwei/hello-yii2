@@ -67,8 +67,6 @@ class m160523_015948_init extends Migration
             'email' => $this->string(100)->unique()->comment('邮箱'),
             'phone' => $this->string(11)->unique()->comment('电话'),
             'resume' => $this->string(100)->comment('简介'),
-            'security_question' => $this->string(30)->comment('密保问题'),
-            'security_answer' => $this->string(64)->comment('密保答案'),
             'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
         ], $tableInnoDBOptions);
 
