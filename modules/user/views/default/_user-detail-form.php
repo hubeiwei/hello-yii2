@@ -34,8 +34,6 @@ use yii\helpers\Html;
         ],
     ]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'phone')->textInput(['maxlength' => 11]) ?>
 
     <?= $form->field($model, 'resume')->textarea(['maxlength' => 100, 'rows' => 3]) ?>

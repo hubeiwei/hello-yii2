@@ -48,7 +48,6 @@ $gridColumns = [
         'filter' => RenderHelper::dateRangePicker('UserDetailSearch[birthday]'),
         'headerOptions' => ['width' => 100],
     ],
-    'email:email',
     [
         'attribute' => 'phone',
         'headerOptions' => ['width' => 120],

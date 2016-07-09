@@ -90,12 +90,12 @@ class DefaultController extends ModuleController
 
                 $user->username = $form->username;
                 $user->password = $form->password;
+                $user->email = $form->email;
 
                 $transaction = EasyHelper::beginTransaction();//开启事务
                 $flow = $user->save(false);
                 if ($flow) {
                     $user_detail->user_id = $user->user_id;
-                    $user_detail->email = $form->email;
                 }
                 if ($flow && !$user_detail->save()) {
                     $flow = false;

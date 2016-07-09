@@ -19,7 +19,7 @@ class UserDetailSearch extends UserDetail
     public function rules()
     {
         return [
-            [['id', 'user_id', 'birthday', 'gender', 'email', 'phone', 'resume', 'updated_at', 'user.username'], 'safe'],
+            [['id', 'user_id', 'birthday', 'gender', 'phone', 'resume', 'updated_at', 'user.username'], 'safe'],
         ];
     }
 
@@ -59,7 +59,6 @@ class UserDetailSearch extends UserDetail
 
         // grid filtering conditions
         $query->andFilterWhere(['like', 'gender', $this->gender])
-            ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'phone', $this->phone])
             ->andFilterWhere(['like', 'resume', $this->resume])
             ->andFilterWhere(['like', User::tableName() . '.username', $this->getAttribute('user.username')]);

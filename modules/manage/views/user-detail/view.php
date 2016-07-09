@@ -35,7 +35,6 @@ $this->params['breadcrumbs'][] = $model->user->username;
                 'value' => UserDetail::$gender_map[$model->gender],
             ],
             'birthday:date',
-            'email:email',
             'phone',
             'resume',
             'updated_at:dateTime',

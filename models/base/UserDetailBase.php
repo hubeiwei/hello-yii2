@@ -12,7 +12,6 @@ use Yii;
  * @property string $avatar_file
  * @property string $gender
  * @property string $birthday
- * @property string $email
  * @property string $phone
  * @property string $resume
  * @property string $updated_at
@@ -36,10 +35,9 @@ class UserDetailBase extends \app\modules\core\extensions\HuActiveRecord
             [['user_id'], 'required'],
             [['user_id', 'birthday', 'updated_at'], 'integer'],
             [['gender'], 'string'],
-            [['avatar_file', 'email', 'resume'], 'string', 'max' => 100],
+            [['avatar_file', 'resume'], 'string', 'max' => 100],
             [['phone'], 'string', 'max' => 11],
             [['user_id'], 'unique'],
-            [['email'], 'unique'],
             [['phone'], 'unique'],
         ];
     }
@@ -55,7 +53,6 @@ class UserDetailBase extends \app\modules\core\extensions\HuActiveRecord
             'avatar_file' => '头像文件',
             'gender' => '性别',
             'birthday' => '生日',
-            'email' => '邮箱',
             'phone' => '电话',
             'resume' => '简介',
             'updated_at' => '修改时间',

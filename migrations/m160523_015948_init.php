@@ -61,7 +61,6 @@ class m160523_015948_init extends Migration
             'avatar_file' => $this->string(100)->defaultValue(null)->comment('头像文件'),
             'gender' => 'enum(\'0\',\'1\',\'2\') DEFAULT \'0\' COMMENT \'性别\'',
             'birthday' => $this->integer(11)->unsigned()->comment('生日'),
-            'email' => $this->string(100)->unique()->comment('邮箱'),
             'phone' => $this->string(11)->unique()->comment('电话'),
             'resume' => $this->string(100)->comment('简介'),
             'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
@@ -69,7 +68,6 @@ class m160523_015948_init extends Migration
 
         $this->batchInsert(UserDetail::tableName(), ['user_id', 'updated_at'], [[1, time()], [2, time()]]);
 
-        //migration是迁移，不是用来控制数据库版本的，所以我直接把新表加在这里
         $this->createTable(Article::tableName(), [
             'id' => $this->primaryKey(10)->unsigned(),
             'title' => $this->string(20)->notNull()->comment('标题'),

@@ -17,7 +17,6 @@ class UserDetailForm extends Model
 {
     public $gender;
     public $birthday;
-    public $email;
     public $phone;
     public $resume;
     public $verifyCode;
@@ -27,8 +26,6 @@ class UserDetailForm extends Model
         return [
             ['gender', 'in', 'range' => UserDetail::$gender_array],
             ['birthday', 'date', 'format' => 'php:Y-m-d'],
-            ['email', 'email'],
-            ['email', 'string', 'max' => 100],
             ['phone', 'number'],
             ['phone', 'string', 'length' => 11],
             ['phone', 'match', 'pattern' => '/^1[34578]\d{9}$/'],
@@ -44,7 +41,6 @@ class UserDetailForm extends Model
         return [
             'gender' => '性别',
             'birthday' => '生日',
-            'email' => '邮箱',
             'phone' => '电话',
             'resume' => '简介',
             'verifyCode' => '验证码',
