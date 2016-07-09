@@ -1,6 +1,8 @@
 # 说明
 
-为了研究[mdmsoft/yii2-admin](https://github.com/mdmsoft/yii2-admin)的用户管理以及修改密码、找回密码等功能，另外建了2.0分支，不再更新master分支。
+该分支用来研究[mdmsoft/yii2-admin](https://github.com/mdmsoft/yii2-admin)里一套用户相关的功能。
+
+**只要你能看到这句话，证明现在这个分支还在开发中，还不能正常使用**
 
 这是我在空闲时间用yii2-basic来练手的项目，目前还在学习中，在此分享给大家，希望能得到些指点和建议，多学到点东西，也希望有同样热爱yii2的同学和我多多交流，互相学习，我的QQ是494364222。
 
@@ -33,7 +35,7 @@ composer self-update
 composer global require "fxp/composer-asset-plugin:^1.2.0"
 composer install
 yii migrate --migrationPath=@yii/rbac/migrations
-yii migrate/to m140602_111327_create_menu_table --migrationPath=@mdm/admin/migrations
+yii migrate --migrationPath=@mdm/admin/migrations
 yii migrate
 ```
 
