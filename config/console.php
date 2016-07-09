@@ -3,7 +3,6 @@
 Yii::setAlias('@tests', dirname(__DIR__) . '/tests/codeception');
 
 $params = require(__DIR__ . '/params.php');
-$db = require(__DIR__ . '/db.php');
 
 $config = [
     'id' => 'basic-console',
@@ -22,8 +21,6 @@ $config = [
                 ],
             ],
         ],
-        'db' => $db,
-        //不在这里弄这个的话，没法用migration，我以前是不用配的，不知道为什么突然就要了
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],
@@ -37,6 +34,8 @@ $config = [
     ],
 
 ];
+
+$config['components'] = array_merge($config['components'], require(__DIR__ . '/db.php'));
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
