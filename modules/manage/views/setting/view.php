@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'tag',
             'creater.username',
             'updater.username',
-            'updated_at:created_at',
+            'created_at:dateTime',
             'updated_at:dateTime',
         ],
     ]) ?>
