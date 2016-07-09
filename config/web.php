@@ -20,7 +20,7 @@ $config = [
             'loginUrl' => ['/user/default/login'],
         ],
         'errorHandler' => [
-            'errorAction' => '/core/default/error',//挪地方了
+            'errorAction' => '/core/default/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -38,7 +38,6 @@ $config = [
                 ],
             ],
         ],
-        'db' => require(__DIR__ . '/db.php'),
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['Guest'],
@@ -85,7 +84,7 @@ $config = [
         'manage' => [
             'class' => 'app\modules\manage\Module',
         ],
-        //前台用户用到的，比如登录、登出、注册、找回密码、修改密码什么的
+        //用户相关，例如登录、登出、注册等
         'user' => [
             'class' => 'app\modules\user\Module',
         ],
@@ -121,6 +120,8 @@ $config['components']['urlManager'] = [
         'register' => '/user/default/register',
     ],
 ];
+
+$config['components'] = array_merge($config['components'], require(__DIR__ . '/db.php'));
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment

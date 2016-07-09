@@ -57,9 +57,9 @@ class DefaultController extends ModuleController
     public function actionLogin()
     {
         $model = new LoginForm();
-        
+
         if ($model->load(Yii::$app->request->post())) {
-            if($model->login()){
+            if ($model->login()) {
                 EasyHelper::setSuccessMsg('登录成功');
                 return $this->goHome();
             } else {
