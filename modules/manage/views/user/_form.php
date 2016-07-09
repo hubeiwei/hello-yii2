@@ -15,7 +15,10 @@ use yii\helpers\Html;
 
     <?php $form = HuActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'username')->textInput([
+        'autofocus' => true,
+        'maxlength' => true,
+    ]) ?>
 
     <?php
     if ($model->isNewRecord) {

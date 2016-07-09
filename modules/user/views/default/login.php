@@ -17,8 +17,8 @@ $this->title = '登录';
     <?php $form = HuActiveForm::begin(); ?>
 
     <?= $form->field($model, 'username')->textInput([
-        'maxlength' => true,
         'autofocus' => true,
+        'maxlength' => true,
     ]) ?>
 
     <?= $form->field($model, 'password')->passwordInput([
