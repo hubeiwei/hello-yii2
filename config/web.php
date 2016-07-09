@@ -61,7 +61,6 @@ $config = [
             'controllerMap' => [
                 'assignment' => [
                     'class' => 'mdm\admin\controllers\AssignmentController',
-                    'idField' => 'user_id',
                     'searchClass' => 'app\models\search\UserSearch',
                 ]
             ],

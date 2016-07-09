@@ -34,7 +34,7 @@ class UserHelper
         if ($userId == 0) {
             return Yii::$app->user->identity;
         } else {
-            return User::find()->where(['user_id' => $userId])->limit(1)->one();
+            return User::find()->where(['id' => $userId])->limit(1)->one();
         }
     }
 
@@ -69,7 +69,7 @@ class UserHelper
     public static function getUserId($userName = null)
     {
         if ($userName) {
-            return User::find()->select(['user_id'])->where(['username' => $userName])->limit(1)->scalar();
+            return User::find()->select(['id'])->where(['username' => $userName])->limit(1)->scalar();
         } else {
             return Yii::$app->user->id;
         }
@@ -90,7 +90,7 @@ class UserHelper
         } else if ($userId == 0) {
             return $zero_name;
         } else {
-            $username = User::find()->select(['username'])->where(['user_id' => $userId])->limit(1)->scalar();
+            $username = User::find()->select(['username'])->where(['id' => $userId])->limit(1)->scalar();
             if ($username) {
                 return $username;
             }

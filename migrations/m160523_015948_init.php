@@ -15,7 +15,7 @@ class m160523_015948_init extends Migration
         $tableMyISAMOptions = 'ENGINE=MyISAM CHARACTER SET utf8';
 
         $this->createTable(User::tableName(), [
-            'user_id' => $this->primaryKey(10)->unsigned(),
+            'id' => $this->primaryKey(10)->unsigned(),
             'username' => $this->string(20)->notNull()->unique()->comment('用户名'),
             'password' => $this->string(255)->notNull()->comment('密码'),
             'passkey' => $this->char(6)->notNull(),

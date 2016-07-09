@@ -58,7 +58,6 @@ class User extends UserBase implements IdentityInterface
     public function attributeLabels()
     {
         return array_merge(parent::attributeLabels(), [
-            'user_id' => 'ID',
         ]);
     }
 
@@ -109,7 +108,7 @@ class User extends UserBase implements IdentityInterface
      */
     public function getId()
     {
-        return $this->user_id;
+        return $this->id;
     }
 
     /**

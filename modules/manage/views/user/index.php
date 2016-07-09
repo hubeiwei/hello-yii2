@@ -19,7 +19,7 @@ $gridColumns = [
     ['class' => SerialColumn::className()],
 
     [
-        'attribute' => 'user_id',
+        'attribute' => 'id',
         'headerOptions' => ['width' => 80],
     ],
     'username',

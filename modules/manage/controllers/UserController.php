@@ -62,13 +62,13 @@ class UserController extends ModuleController
             $transaction = EasyHelper::beginTransaction();
             $flow = $user->save(false);
             if ($flow) {
-                $user_detail->user_id = $user->user_id;
+                $user_detail->user_id = $user->id;
                 $flow = $user_detail->save();
             }
             if ($flow) {
                 $transaction->commit();
                 EasyHelper::setSuccessMsg('添加成功');
-                return $this->redirect(['view', 'id' => $user->user_id]);
+                return $this->redirect(['view', 'id' => $user->id]);
             } else {
                 $transaction->rollBack();
                 if ($user->hasErrors()) {
@@ -97,7 +97,7 @@ class UserController extends ModuleController
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
                 EasyHelper::setSuccessMsg('修改成功');
-                return $this->redirect(['view', 'id' => $model->user_id]);
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         }
 

@@ -62,11 +62,11 @@ class Setting extends SettingBase
 
     public function getCreater()
     {
-        return $this->hasOne(User::className(), ['user_id' => 'created_by']);
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
 
     public function getUpdater()
     {
-        return $this->hasOne(User::className(), ['user_id' => 'updated_by']);
+        return $this->hasOne(User::className(), ['id' => 'updated_by']);
     }
 }

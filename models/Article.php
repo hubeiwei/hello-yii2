@@ -99,7 +99,7 @@ class Article extends ArticleBase
 
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['user_id' => 'created_by']);
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
 
     /**

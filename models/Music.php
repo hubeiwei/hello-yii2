@@ -80,12 +80,6 @@ class Music extends MusicBase
 
     public function getUser()
     {
-        /**
-         * 第一个参数是字符串，填写带完整命名空间的类名，如果想方便重构，直接调用Model的className()方法
-         * @see Object::className()
-         *
-         * 第二个参数，生成的SQL是on user.user_id = music.user_id，注意左右顺序
-         */
-        return $this->hasOne(User::className(), ['user_id' => 'user_id']);
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }

@@ -95,7 +95,7 @@ class DefaultController extends ModuleController
                 $transaction = EasyHelper::beginTransaction();//开启事务
                 $flow = $user->save(false);
                 if ($flow) {
-                    $user_detail->user_id = $user->user_id;
+                    $user_detail->user_id = $user->id;
                 }
                 if ($flow && !$user_detail->save()) {
                     $flow = false;

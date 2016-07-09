@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 $this->title = '修改用户: ' . $model->username;
 $this->params['breadcrumbs'][] = ['label' => '用户管理', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->username, 'url' => ['view', 'id' => $model->user_id]];
+$this->params['breadcrumbs'][] = ['label' => $model->username, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = '修改';
 ?>
 <div class="sys-user-update">

@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "user".
  *
- * @property string $user_id
+ * @property string $id
  * @property string $username
  * @property string $password
  * @property string $passkey
@@ -54,7 +54,7 @@ class UserBase extends \app\modules\core\extensions\HuActiveRecord
     public function attributeLabels()
     {
         return [
-            'user_id' => 'User ID',
+            'id' => 'ID',
             'username' => '用户名',
             'password' => '密码',
             'passkey' => 'Passkey',
