@@ -15,7 +15,10 @@ use yii\helpers\Html;
 
     <?php $form = HuActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'key')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'key')->textInput([
+        'autofocus' => true,
+        'maxlength' => true,
+    ]) ?>
 
     <?= $form->field($model, 'value')->textarea(['rows' => 3]) ?>
 

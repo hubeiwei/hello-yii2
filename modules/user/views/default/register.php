@@ -24,7 +24,10 @@ $this->title = '快速注册';
 
     <?php $form = HuActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'username')->textInput([
+        'autofocus' => true,
+        'maxlength' => true,
+    ]) ?>
 
     <?= $form->field($model, 'password')->widget(PasswordInput::className(), ['options' => ['maxlength' => 20]]) ?>
 
