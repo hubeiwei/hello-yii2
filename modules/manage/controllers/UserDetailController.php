@@ -70,7 +70,7 @@ class UserDetailController extends ModuleController
         }
 
         return $this->render('update', [
-            'user_id' => $model->user_id,
+            'id' => $model->id,
             'username' => $model->user->username,
             'model' => $form,
         ]);
