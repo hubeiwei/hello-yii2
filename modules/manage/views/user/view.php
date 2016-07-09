@@ -41,10 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'status',
                 'value' => User::$status_map[$model->status],
             ],
-            [
-                'attribute' => 'type',
-                'value' => User::$type_map[$model->type],
-            ],
             'auth_key',
             'access_token',
             'created_at:dateTime',

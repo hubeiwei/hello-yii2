@@ -49,19 +49,15 @@ class UserHelper
     }
 
     /**
-     * @param int $userId
+     * 判断当前访客是否是管理员
+     *
+     * 统一封装在这有利于以后改动设计时不需要对项目进行很大改动
+     *
      * @return bool
      */
-    public static function userIsAdmin($userId = 0)
+    public static function userIsAdmin()
     {
         return Yii::$app->user->can('SuperAdmin');
-//        if ($userId == 0 && !self::userIsGuest()) {
-//            return self::getUserInstance()->type == User::type_admin;
-//        } else if ($userId > 0) {
-//            return User::find()->select(['type'])->where(['user_id' => $userId])->limit(1)->scalar() == User::type_admin;
-//        } else {
-//            return false;
-//        }
     }
 
     /**

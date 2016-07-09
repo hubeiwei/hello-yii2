@@ -24,14 +24,6 @@ $gridColumns = [
     ],
     'username',
     [
-        'attribute' => 'type',
-        'value' => function ($model) {
-            return User::$type_map[$model->type];
-        },
-        'filter' => RenderHelper::dropDownFilter('UserSearch[type]', $searchModel->type, User::$type_map),
-        'headerOptions' => ['width' => 120],
-    ],
-    [
         'attribute' => 'status',
         'value' => function ($model) {
             return User::$status_map[$model->status];

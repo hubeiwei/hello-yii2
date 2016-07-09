@@ -11,7 +11,6 @@ use Yii;
  * @property string $username
  * @property string $password
  * @property string $passkey
- * @property string $type
  * @property string $status
  * @property string $auth_key
  * @property string $access_token
@@ -37,7 +36,6 @@ class UserBase extends \app\modules\core\extensions\HuActiveRecord
     {
         return [
             [['username', 'password', 'passkey', 'auth_key', 'access_token'], 'required'],
-            [['type', 'status'], 'string'],
             [['created_at', 'updated_at', 'last_login'], 'integer'],
             [['username'], 'string', 'max' => 20],
             [['password'], 'string', 'max' => 255],
@@ -60,7 +58,6 @@ class UserBase extends \app\modules\core\extensions\HuActiveRecord
             'username' => '用户名',
             'password' => '密码',
             'passkey' => 'Passkey',
-            'type' => '用户类型',
             'status' => '状态',
             'auth_key' => 'Auth Key',
             'access_token' => 'Access Token',

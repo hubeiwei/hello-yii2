@@ -11,17 +11,6 @@ class User extends UserBase implements IdentityInterface
 {
     const COMMON_KEY = 'LaoHu';
 
-    const TYPE_MEMBER = 'Member';
-    const TYPE_ADMIN = 'Admin';
-    public static $type_array = [
-        self::TYPE_MEMBER,
-        self::TYPE_ADMIN,
-    ];
-    public static $type_map = [
-        self::TYPE_MEMBER => '用户',
-        self::TYPE_ADMIN => '管理员',
-    ];
-
     const STATUS_DISABLE = 'N';
     const STATUS_ENABLE = 'Y';
     public static $status_array = [
@@ -50,7 +39,6 @@ class User extends UserBase implements IdentityInterface
     {
         return array_merge(parent::rules(), [
             ['password', 'string', 'min' => 8],
-            ['type', 'in', 'range' => self::$type_array],
             ['status', 'in', 'range' => self::$status_array],
         ]);
     }

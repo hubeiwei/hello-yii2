@@ -23,8 +23,6 @@ use yii\helpers\Html;
     };
     ?>
 
-    <?= $form->field($model, 'type')->dropDownList(User::$type_map) ?>
-
     <?= $form->field($model, 'status')->dropDownList(User::$status_map) ?>
 
     <div class="form-group">

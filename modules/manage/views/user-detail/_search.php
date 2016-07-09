@@ -33,10 +33,6 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'resume') ?>
 
-    <?php // echo $form->field($model, 'security_question') ?>
-
-    <?php // echo $form->field($model, 'security_answer') ?>
-
     <?php // echo $form->field($model, 'updated_at') ?>
 
     <div class="form-group">

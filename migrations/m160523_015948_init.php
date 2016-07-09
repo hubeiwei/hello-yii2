@@ -19,7 +19,6 @@ class m160523_015948_init extends Migration
             'username' => $this->string(20)->notNull()->unique()->comment('用户名'),
             'password' => $this->string(255)->notNull()->comment('密码'),
             'passkey' => $this->char(6)->notNull(),
-            'type' => 'enum(\'Member\',\'Admin\') NOT NULL DEFAULT \'Member\' COMMENT \'用户类型\'',
             'status' => 'enum(\'Y\',\'N\') DEFAULT \'Y\' COMMENT \'状态\'',
             'auth_key' => $this->char(64)->notNull()->unique(),
             'access_token' => $this->char(64)->notNull()->unique(),
@@ -40,7 +39,6 @@ class m160523_015948_init extends Migration
                 'hu',
                 '$2y$13$/pWZHbHrDBHQfp99VO7qvuoID7C.REZOfIkqOaDGhNurHrdna.l6G',
                 'PGWY7_',
-                'Admin',
                 Yii::$app->security->generateRandomString(64),
                 Yii::$app->security->generateRandomString(64),
                 time(),
@@ -50,7 +48,6 @@ class m160523_015948_init extends Migration
                 'test',
                 '$2y$13$jokKL4zwtjY8Rtw0uKjWdOS1O7ast2e9rosNw1/1Dq2NJJ3C9mPT.',
                 'ML-ncP',
-                'Member',
                 Yii::$app->security->generateRandomString(64),
                 Yii::$app->security->generateRandomString(64),
                 time(),
@@ -67,8 +64,6 @@ class m160523_015948_init extends Migration
             'email' => $this->string(100)->unique()->comment('邮箱'),
             'phone' => $this->string(11)->unique()->comment('电话'),
             'resume' => $this->string(100)->comment('简介'),
-            'security_question' => $this->string(30)->comment('密保问题'),
-            'security_answer' => $this->string(64)->comment('密保答案'),
             'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
         ], $tableInnoDBOptions);
 
