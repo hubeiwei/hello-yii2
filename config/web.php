@@ -111,7 +111,7 @@ $config = [
         'allowActions' => [
             'debug/*',
 //            'gii/*',
-//            'admin/*',
+            'admin/*',
             'redactor/*',
             'core/*',
             'portal/*',
