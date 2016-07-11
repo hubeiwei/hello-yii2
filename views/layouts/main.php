@@ -102,26 +102,23 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]);
 
-        //获取成功消息提示
         if (Yii::$app->session->hasFlash('success')) {
             echo Alert::widget([
                 'type' => Alert::TYPE_SUCCESS,
-                'title' => Yii::$app->session->getFlash('success'),
+                'body' => Yii::$app->session->getFlash('success'),
                 'delay' => 10000,
             ]);
         }
-        //获取消息提示
         if (Yii::$app->session->hasFlash('info')) {
             echo Alert::widget([
-                'title' => Yii::$app->session->getFlash('info'),
+                'body' => Yii::$app->session->getFlash('info'),
                 'delay' => 10000,
             ]);
         }
-        //获取错误消息提示
         if (Yii::$app->session->hasFlash('error')) {
             echo Alert::widget([
                 'type' => Alert::TYPE_DANGER,
-                'title' => Yii::$app->session->getFlash('error'),
+                'body' => Yii::$app->session->getFlash('error'),
                 'delay' => 10000,
             ]);
         }
