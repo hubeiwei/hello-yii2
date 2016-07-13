@@ -20,13 +20,14 @@
 
 ## 配置
 
-1. 在php扩展方面，composer和yii2都需要openssl扩展；我用的是mysql，需要pdo_mysql扩展；弄了文件上传的功能，需要fileinfo扩展。（因为还没开始学缓存什么的，所以可以用php7，速度很快）
+* 在php扩展方面，composer和yii2都需要openssl扩展；我用的是mysql，需要pdo_mysql扩展；弄了文件上传的功能，需要fileinfo扩展。（因为还没开始学缓存什么的，所以可以用php7，速度很快）
 
-2. 因为要上传文件，需要去`php.ini`把`post_max_size`和`upload_max_filesize`两个值配置一下，程序上的文件大小限制在FileHelper类里，目前的设置是20MB
+* 因为要上传文件，需要去`php.ini`把`post_max_size`和`upload_max_filesize`两个值配置一下，程序上的文件大小限制在FileHelper类里，目前的设置是20MB
 
 ## 安装
 
-1. 你要有[composer](http://docs.phpcomposer.com/)，以及创建一个`utf8`数据库，因为用了新的用户表结构，所以不能和master分支共用一个数据库，在**数据库配置文件**配置好相关参数后，执行以下命令：
+* 你要有[composer](http://docs.phpcomposer.com/)，以及创建一个`utf8`数据库，因为用了新的用户表结构，所以不能和master分支共用一个数据库，在**数据库配置文件**配置好相关参数后，执行以下命令：
+
 ```
 composer self-update
 composer global require "fxp/composer-asset-plugin:^1.2.0"
@@ -36,13 +37,13 @@ yii migrate --migrationPath=@mdm/admin/migrations
 yii migrate
 ```
 
-2. 因为路由规则与后台菜单需要，需要把站点根目录设置为`/web`，apache需要开启rewrite，nginx还没用过，自行解决吧，以后再考虑如何处理这个问题。
+* 因为路由规则与后台菜单需要，需要把站点根目录设置为`/web`，apache需要开启rewrite，nginx还没用过，自行解决吧，以后再考虑如何处理这个问题。
 
 ## 使用
 
-1. 虽然我在**配置文件**配置好了我的163邮箱，但还是请改成自己的，谢谢合作。
+* 虽然我在**配置文件**配置好了我的163邮箱，但还是请改成自己的，谢谢合作。
 
-2. 用户名和密码如下：
+* 用户名和密码如下：
 
 身份 | 用户名 | 密码 |
 ---|---|---
