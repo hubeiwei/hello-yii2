@@ -24,11 +24,11 @@ $config = [
         'errorHandler' => [
             'errorAction' => '/core/default/error',
         ],
+        /**
+         * TODO 如果你要运行我的项目，请把以下邮箱配置改成自己的，谢谢合作
+         */
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
             'useFileTransport' => false,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
