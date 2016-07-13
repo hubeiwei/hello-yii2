@@ -20,13 +20,13 @@
 
 ## 配置
 
-1. composer和yii2都需要openssl扩展，我用的是mysql，要开pdo_mysql扩展，弄了文件上传的功能，需要fileinfo扩展。（因为还没开始学缓存什么的，所以可以用php7，速度很快）
+* composer和yii2都需要openssl扩展，我用的是mysql，要开pdo_mysql扩展，弄了文件上传的功能，需要fileinfo扩展。（因为还没开始学缓存什么的，所以可以用php7，速度很快）
 
-2. 因为要上传文件，需要去`php.ini`把`post_max_size`和`upload_max_filesize`两个值配置一下，程序上的文件大小限制在FileHelper类里，目前的设置是20MB
+* 因为要上传文件，需要去`php.ini`把`post_max_size`和`upload_max_filesize`两个值配置一下，程序上的文件大小限制在FileHelper类里，目前的设置是20MB
 
 ## 安装
 
-1. 你要有[composer](http://docs.phpcomposer.com/)，以及创建一个`utf8`数据库，在**数据库配置文件**配置好相关参数后，执行以下命令：
+* 你要有[composer](http://docs.phpcomposer.com/)，以及创建一个`utf8`数据库，在**数据库配置文件**配置好相关参数后，执行以下命令：
 
 ```
 composer self-update
@@ -37,11 +37,11 @@ yii migrate/to m140602_111327_create_menu_table --migrationPath=@mdm/admin/migra
 yii migrate
 ```
 
-2. 因为后台菜单需要，需要把站点根目录设置为`/web`，apache需要开启rewrite，nginx还没用过，自行解决吧，以后再考虑如何处理这个问题。
+* 因为后台菜单需要，需要把站点根目录设置为`/web`，apache需要开启rewrite，nginx还没用过，自行解决吧，以后再考虑如何处理这个问题。
 
 ## 使用
 
-1. 用户名和密码如下：
+* 用户名和密码如下：
 
 身份 | 用户名 | 密码 |
 ---|---|---
@@ -50,7 +50,7 @@ yii migrate
 
 ## 部署遇到问题怎么办？
 
-* 我只测试过migration能正常导入数据而已，自己很懒，没有深入测，也没有人看过这个项目给我反馈问题，遇到问题加QQ联系吧。
+我只测试过migration能正常导入数据而已，自己很懒，没有深入测，也没有人看过这个项目给我反馈问题，遇到问题加QQ联系吧。
 
 # 打赏
 
