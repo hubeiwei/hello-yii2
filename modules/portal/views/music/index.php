@@ -120,7 +120,7 @@ $gridColumns = [
     $(".play-list-item").click(function () {
         $("#track_title").html($(this).html());
         var player = $("#player")[0];
-        var musicSrc = "<?= FileHelper::getMusicPathUrl() ?>" + $(this).data("music") + "<?= FileHelper::getMusicExtension('.') ?>";
+        var musicSrc = "<?= FileHelper::getMusicPathUrl() ?>" + $(this).data("music") + "." + "<?= FileHelper::MUSIC_EXTENSION ?>";
         if (player.src == musicSrc && !player.paused) {
             player.pause();
         } else if (player.src == musicSrc && player.paused) {

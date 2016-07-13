@@ -37,30 +37,6 @@ class FileHelper
     }
 
     /**
-     * 获取音乐文件扩展名
-     * 感觉其实没必要弄这个方法，好像就是为了拼接而已
-     *
-     * @param string $dot 只是为了方便拼接"."
-     * @return string
-     */
-    public static function getMusicExtension($dot = '')
-    {
-        return $dot . self::MUSIC_EXTENSION;
-    }
-
-    /**
-     * 获取音乐文件路径
-     * 感觉其实没必要弄这个方法，好像就是为了拼接而已
-     *
-     * @param string $basePath 只是为了方便拼接路径
-     * @return string
-     */
-    public static function getMusicPath($basePath = '')
-    {
-        return $basePath . self::MUSIC_PATH;
-    }
-
-    /**
      * 获取音乐目录的完整磁盘路径
      * 这样做的目的是让项目搭载在任何目录和系统下都能上传文件
      *
@@ -69,7 +45,7 @@ class FileHelper
      */
     public static function getMusicFullPath($fileName)
     {
-        return Yii::$app->basePath . self::getMusicPath('/web/') . $fileName . self::getMusicExtension('.');
+        return Yii::$app->basePath . '/web/' . self::MUSIC_PATH . $fileName . '.' . self::MUSIC_EXTENSION;
     }
 
     /**
@@ -79,7 +55,7 @@ class FileHelper
      */
     public static function getMusicPathUrl()
     {
-        return Url::to('@web' . self::getMusicPath('/'), true);
+        return Url::to('@web/' . self::MUSIC_PATH, true);
     }
 
     /**
@@ -90,6 +66,6 @@ class FileHelper
      */
     public static function getMusicFullUrl($fileName)
     {
-        return self::getMusicPathUrl() . $fileName . self::getMusicExtension('.');
+        return self::getMusicPathUrl() . $fileName . '.' . self::MUSIC_EXTENSION;
     }
 }
