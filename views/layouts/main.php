@@ -5,7 +5,7 @@
 
 use app\assets\AppAsset;
 use app\modules\core\helpers\UserHelper;
-use kartik\alert\Alert;
+use kartik\growl\Growl;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
@@ -103,23 +103,45 @@ AppAsset::register($this);
         ]);
 
         if (Yii::$app->session->hasFlash('success')) {
-            echo Alert::widget([
-                'type' => Alert::TYPE_SUCCESS,
+            echo Growl::widget([
+                'type' => Growl::TYPE_SUCCESS,
+                'icon' => 'glyphicon glyphicon-ok-sign',
                 'body' => Yii::$app->session->getFlash('success'),
-                'delay' => 10000,
+                'pluginOptions' => [
+                    'showProgressbar' => true,
+                    'placement' => [
+                        'from' => 'top',
+                        'align' => 'center',
+                    ]
+                ]
             ]);
         }
         if (Yii::$app->session->hasFlash('info')) {
-            echo Alert::widget([
+            echo Growl::widget([
+                'type' => Growl::TYPE_INFO,
+                'icon' => 'glyphicon glyphicon-info-sign',
                 'body' => Yii::$app->session->getFlash('info'),
-                'delay' => 10000,
+                'pluginOptions' => [
+                    'showProgressbar' => true,
+                    'placement' => [
+                        'from' => 'top',
+                        'align' => 'center',
+                    ]
+                ]
             ]);
         }
         if (Yii::$app->session->hasFlash('error')) {
-            echo Alert::widget([
-                'type' => Alert::TYPE_DANGER,
+            echo Growl::widget([
+                'type' => Growl::TYPE_DANGER,
+                'icon' => 'glyphicon glyphicon-remove-sign',
                 'body' => Yii::$app->session->getFlash('error'),
-                'delay' => 10000,
+                'pluginOptions' => [
+                    'showProgressbar' => true,
+                    'placement' => [
+                        'from' => 'top',
+                        'align' => 'center',
+                    ]
+                ]
             ]);
         }
         ?>
