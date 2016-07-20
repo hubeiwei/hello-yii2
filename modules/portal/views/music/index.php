@@ -52,7 +52,7 @@ $gridColumns = [
     [
         'attribute' => 'created_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker('MusicSearch[created_at]', false),
+        'filter' => RenderHelper::dateRangePicker($searchModel, 'created_at', false),
         'headerOptions' => ['width' => 160],
     ],
 ];
