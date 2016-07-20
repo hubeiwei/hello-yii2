@@ -114,6 +114,8 @@ class m160523_015948_init extends Migration
             ['/admin/default/index', 2, time(), time()],
             ['/gii/*', 2, time(), time()],
             ['/gii/default/index', 2, time(), time()],
+            ['/manage/article/*', 2, time(), time()],
+            ['/manage/article/index', 2, time(), time()],
             ['/manage/default/*', 2, time(), time()],
             ['/manage/default/index', 2, time(), time()],
             ['/manage/setting/*', 2, time(), time()],
