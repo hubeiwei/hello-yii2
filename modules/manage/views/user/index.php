@@ -34,19 +34,19 @@ $gridColumns = [
     [
         'attribute' => 'created_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker('UserSearch[created_at]'),
+        'filter' => RenderHelper::dateRangePicker($searchModel, 'created_at'),
         'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'updated_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker('UserSearch[updated_at]'),
+        'filter' => RenderHelper::dateRangePicker($searchModel, 'updated_at'),
         'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'last_login',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker('UserSearch[last_login]'),
+        'filter' => RenderHelper::dateRangePicker($searchModel, 'last_login'),
         'headerOptions' => ['width' => 160],
     ],
     'last_ip',

@@ -26,7 +26,7 @@ $gridColumns = [
     [
         'attribute' => 'published_at',
         'format' => ['dateTime', 'php:Y-m-d H:i'],
-        'filter' => RenderHelper::dateRangePicker('ArticleSearch[published_at]', false),
+        'filter' => RenderHelper::dateRangePicker($searchModel, 'published_at', false),
         'headerOptions' => ['width' => 160],
     ],
     [
@@ -56,13 +56,13 @@ $gridColumns = [
     [
         'attribute' => 'created_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker('ArticleSearch[created_at]', false),
+        'filter' => RenderHelper::dateRangePicker($searchModel, 'created_at', false),
         'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'updated_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker('ArticleSearch[updated_at]', false),
+        'filter' => RenderHelper::dateRangePicker($searchModel, 'updated_at', false),
         'headerOptions' => ['width' => 160],
     ],
 

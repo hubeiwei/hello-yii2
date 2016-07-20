@@ -32,15 +32,17 @@ class RenderHelper
     /**
      * 表格用到的，筛选日期范围
      *
-     * @param $name
+     * @param $searchModel
+     * @param $attribute
      * @param bool $dateOnly
      * @return string
      * @throws \Exception
      */
-    public static function dateRangePicker($name, $dateOnly = true)
+    public static function dateRangePicker($searchModel, $attribute, $dateOnly = true)
     {
         $setting = [
-            'name' => $name,
+            'model' => $searchModel,
+            'attribute' => $attribute,
             'convertFormat' => true,
             'readonly' => true,
             'pluginOptions' => [

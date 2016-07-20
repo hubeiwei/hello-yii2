@@ -45,13 +45,13 @@ $gridColumns = [
     [
         'attribute' => 'created_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker('SettingSearch[created_at]'),
+        'filter' => RenderHelper::dateRangePicker($searchModel, 'created_at'),
         'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'updated_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker('SettingSearch[updated_at]'),
+        'filter' => RenderHelper::dateRangePicker($searchModel, 'updated_at'),
         'headerOptions' => ['width' => 160],
     ],
 

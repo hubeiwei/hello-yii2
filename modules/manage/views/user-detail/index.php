@@ -45,7 +45,7 @@ $gridColumns = [
     [
         'attribute' => 'birthday',
         'format' => 'date',
-        'filter' => RenderHelper::dateRangePicker('UserDetailSearch[birthday]'),
+        'filter' => RenderHelper::dateRangePicker($searchModel, 'birthday'),
         'headerOptions' => ['width' => 100],
     ],
     'email:email',
@@ -56,7 +56,7 @@ $gridColumns = [
     [
         'attribute' => 'updated_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker('UserDetailSearch[updated_at]'),
+        'filter' => RenderHelper::dateRangePicker($searchModel, 'updated_at'),
         'headerOptions' => ['width' => 160],
     ],
 
