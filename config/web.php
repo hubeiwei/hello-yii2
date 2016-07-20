@@ -60,6 +60,13 @@ $config = [
             'dateFormat' => 'php:Y-m-d',
             'datetimeFormat' => 'php:Y-m-d H:i:s',
         ],
+        'assetManager' => [
+            'bundles' => [
+                'nezhelskoy\highlight\HighlightAsset' => [
+                    'css' => ['dist/styles/github.css'],
+                ],
+            ]
+        ],
     ],
     'params' => $params,
     'language' => 'zh-CN',
