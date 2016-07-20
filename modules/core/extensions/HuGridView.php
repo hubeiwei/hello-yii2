@@ -23,4 +23,6 @@ class HuGridView extends GridView
     public $responsiveWrap = false;
 
     public $hover = true;
+
+    public $export = false;
 }
