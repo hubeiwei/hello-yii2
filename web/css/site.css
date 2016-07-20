@@ -135,3 +135,7 @@ a.desc:after {
 .article-body table tr:nth-child(2n) {
     background-color: #f8f8f8;
 }
+
+.article-body pre {
+    padding: 0;
+}

@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Article;
+use nezhelskoy\highlight\HighlightAsset;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -12,6 +13,8 @@ use yii\widgets\DetailView;
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => '文章', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+HighlightAsset::register($this);
 ?>
 <div class="article-view">
 
