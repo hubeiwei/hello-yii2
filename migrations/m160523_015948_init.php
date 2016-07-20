@@ -100,8 +100,12 @@ class m160523_015948_init extends Migration
             ['/admin/default/index', 2, $time, $time],
             ['/gii/*', 2, $time, $time],
             ['/gii/default/index', 2, $time, $time],
+            ['/manage/article/*', 2, $time, $time],
+            ['/manage/article/index', 2, $time, $time],
             ['/manage/default/*', 2, $time, $time],
             ['/manage/default/index', 2, $time, $time],
+            ['/manage/music/*', 2, $time, $time],
+            ['/manage/music/index', 2, $time, $time],
             ['/manage/setting/*', 2, $time, $time],
             ['/manage/setting/index', 2, $time, $time],
             ['/manage/user-detail/*', 2, $time, $time],
@@ -125,14 +129,16 @@ class m160523_015948_init extends Migration
 
         $this->batchInsert('menu', ['name', 'parent', 'route', 'order'], [
             ['首页', null, '/manage/default/index', 1],
-            ['文章管理', null, '/manage/article/index', 2],
+            ['前台', null, null, 2],
+            ['文章管理', 2, '/manage/article/index', 1],
+            ['音乐管理', 2, '/manage/article/index', 2],
             ['用户', null, null, 3],
-            ['用户管理', 3, '/manage/user/index', 1],
-            ['用户资料', 3, '/manage/user-detail/index', 2],
+            ['用户管理', 5, '/manage/user/index', 1],
+            ['用户资料', 5, '/manage/user-detail/index', 2],
             ['系统', null, null, 4],
-            ['网站配置', 6, '/manage/setting/index', 1],
-            ['权限管理', 6, '/admin/default/index', 2],
-            ['代码生成', 6, '/gii/default/index', 3],
+            ['网站配置', 8, '/manage/setting/index', 1],
+            ['权限管理', 8, '/admin/default/index', 2],
+            ['代码生成', 8, '/gii/default/index', 3],
         ]);
     }
 

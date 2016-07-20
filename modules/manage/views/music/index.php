@@ -1,7 +1,9 @@
 <?php
 
+use app\models\Music;
 use app\modules\core\helpers\FileHelper;
 use app\modules\core\helpers\RenderHelper;
+use kartik\grid\ActionColumn;
 use kartik\grid\SerialColumn;
 use yii\helpers\Html;
 
@@ -12,19 +14,8 @@ use yii\helpers\Html;
  */
 
 $this->title = '音乐';
-//$this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 
-/**
- * 数组里可以直接写字段名
- * 也可以写成['attribute' => '字段名']
- * 还可以写成['attribute' => '字段名', 'value' => '字段名或function']，值以value为准，label以attribute为准
- * 还可以写成['label' => '任意', 'value' => '字段名或function']
- * @see \yii\grid\GridView 详情还是来这里看
- *
- * 配置项可以结合我的代码看下面这两个
- * @see \yii\grid\DataColumn
- * @see \kartik\grid\DataColumn
- */
 $gridColumns = [
     ['class' => SerialColumn::className()],
 
@@ -50,10 +41,37 @@ $gridColumns = [
         'headerOptions' => ['width' => 160],
     ],
     [
+        'attribute' => 'visible',
+        'value' => function ($model) {
+            return Music::$visible_map[$model->visible];
+        },
+        'filter' => RenderHelper::dropDownFilter('MusicSearch[visible]', $searchModel->visible, Music::$visible_map),
+        'headerOptions' => ['width' => 100],
+    ],
+    [
+        'attribute' => 'status',
+        'value' => function ($model) {
+            return Music::$status_map[$model->status];
+        },
+        'filter' => RenderHelper::dropDownFilter('MusicSearch[status]', $searchModel->status, Music::$status_map),
+        'headerOptions' => ['width' => 100],
+    ],
+    [
         'attribute' => 'created_at',
         'format' => 'dateTime',
         'filter' => RenderHelper::dateRangePicker('MusicSearch[created_at]', false),
         'headerOptions' => ['width' => 160],
+    ],
+    [
+        'attribute' => 'updated_at',
+        'format' => 'dateTime',
+        'filter' => RenderHelper::dateRangePicker('MusicSearch[updated_at]', false),
+        'headerOptions' => ['width' => 160],
+    ],
+
+    [
+        'class' => ActionColumn::className(),
+        'template' => '{update} {delete}',
     ],
 ];
 ?>
@@ -64,10 +82,6 @@ $gridColumns = [
     <audio id="player" src="" controls></audio>
 
     <hr>
-
-    <p>
-        <?= Html::a('添加音乐', ['create'], ['class' => 'btn btn-info']) ?>
-    </p>
 
     <?= RenderHelper::gridView($dataProvider, $searchModel, $gridColumns) ?>
 

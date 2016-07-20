@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\portal\controllers;
+namespace app\modules\manage\controllers;
 
 use app\models\Music;
 use app\models\search\MusicSearch;
 use app\modules\core\helpers\EasyHelper;
 use app\modules\core\helpers\FileHelper;
 use app\modules\core\helpers\UserHelper;
-use app\modules\portal\controllers\base\ModuleController;
+use app\modules\manage\controllers\base\ModuleController;
 use app\modules\portal\models\MusicForm;
 use Yii;
 use yii\filters\AccessControl;
@@ -19,45 +19,6 @@ use yii\web\UploadedFile;
  */
 class MusicController extends ModuleController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => [
-                    'index',
-                    'my-music',
-                    'create',
-                    'update',
-                    'delete',
-                ],
-                'rules' => [
-                    //所有人都能访问index
-                    [
-                        'allow' => true,
-                        'actions' => [
-                            'index',
-                        ],
-                    ],
-                    //已登录用户能访问的
-                    [
-                        'allow' => true,
-                        'actions' => [
-                            'my-music',
-                            'create',
-                            'update',
-                            'delete',
-                        ],
-                        'roles' => ['@'],//@已登录，?未登录
-                    ],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Music models.
      * @return mixed
@@ -73,55 +34,6 @@ class MusicController extends ModuleController
         ]);
     }
 
-    public function actionMyMusic()
-    {
-        $searchModel = new MusicSearch();
-        $dataProvider = $searchModel->searchMyMusic(Yii::$app->request->queryParams);
-
-        return $this->render('my-music', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
-     * Creates a new Music model.
-     * If creation is successful, the browser will be redirected to the 'index' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $form = new MusicForm();
-        $form->scenario = 'create';
-
-        if ($form->load(Yii::$app->request->post())) {
-            $form->music_file = UploadedFile::getInstance($form, 'music_file');
-            if ($form->validate()) {
-                $filename = FileHelper::generateFileName();
-                $savePath = FileHelper::getMusicFullPath($filename);
-                if ($form->music_file->saveAs($savePath)) {
-                    $model = new Music();
-                    $model->setAttributes($form->getAttributes());
-                    $model->music_file = $filename;
-                    if ($model->save()) {
-                        EasyHelper::setSuccessMsg('添加成功');
-                        return $this->redirect(['index']);
-                    } else {
-                        unlink($savePath);
-                        EasyHelper::setErrorMsg('添加失败');
-                        $form->addErrors($model->getErrors());
-                    }
-                } else {
-                    $form->addError('music_file', '文件上传失败');
-                }
-            }
-        }
-
-        return $this->render('create', [
-            'model' => $form,
-        ]);
-    }
-
     /**
      * Updates an existing Music model.
      * If update is successful, the browser will be redirected to the 'index' page.
@@ -131,11 +43,6 @@ class MusicController extends ModuleController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if (!UserHelper::isBelongToUser($model->user_id)) {
-            EasyHelper::setErrorMsg('不可修改其他人的数据');
-            return $this->redirect(['index']);
-        }
 
         $form = new MusicForm();
         $form->scenario = 'update';
@@ -190,7 +97,7 @@ class MusicController extends ModuleController
             $form->setAttributes($model->getAttributes());
         }
 
-        return $this->render('update', [
+        return $this->render('@app/modules/portal/views/music/update', [
             'model' => $form,
         ]);
     }
@@ -205,18 +112,14 @@ class MusicController extends ModuleController
     {
         $model = $this->findModel($id);
 
-        if (UserHelper::isBelongToUser($model->user_id)) {
-            if ($model->delete()) {
-                unlink(FileHelper::getMusicFullPath($model->music_file));
-                EasyHelper::setSuccessMsg('删除成功');
-            } else {
-                EasyHelper::setErrorMsg('删除失败');
-            }
+        if ($model->delete()) {
+            unlink(FileHelper::getMusicFullPath($model->music_file));
+            EasyHelper::setSuccessMsg('删除成功');
         } else {
-            EasyHelper::setErrorMsg('不能删除其他人的数据');
+            EasyHelper::setErrorMsg('删除失败');
         }
 
-        return $this->redirect(['my-music']);
+        return $this->redirect(['index']);
     }
 
     /**

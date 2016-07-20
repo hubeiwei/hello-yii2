@@ -189,7 +189,7 @@ class ArticleController extends ModuleController
             EasyHelper::setErrorMsg('不能删除其他人的数据');
         }
 
-        return $this->redirect(['index']);
+        return $this->redirect(['my-article']);
     }
 
     /**
