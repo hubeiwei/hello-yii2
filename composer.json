@@ -22,7 +22,6 @@
         "kartik-v/yii2-krajee-base": "dev-master",
         "kartik-v/yii2-grid": "@dev",
         "kartik-v/yii2-export": "@dev",
-        "kartik-v/yii2-mpdf": "@dev",
         "kartik-v/yii2-date-range": "1.6.3",
         "kartik-v/yii2-password": "@dev",
         "kartik-v/yii2-widget-activeform": "@dev",
