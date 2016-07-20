@@ -77,6 +77,10 @@ $gridColumns = [
 ?>
 <div class="music-index">
 
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <hr>
+
     <h2 id="track_title">点击标题播放音乐</h2>
 
     <audio id="player" src="" controls></audio>
