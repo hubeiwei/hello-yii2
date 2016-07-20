@@ -28,33 +28,6 @@ class m160523_015948_init extends Migration
             'last_ip' => $this->char(15)->comment('最后登录IP'),
         ], $tableInnoDBOptions);
 
-        $user = new User();
-        $attributes = $user->attributes();
-        unset($attributes[0]);//user_id
-        unset($attributes[5]);//status
-        unset($attributes[10]);//last_login
-        unset($attributes[11]);//last_ip
-        $this->batchInsert($user::tableName(), $attributes, [
-            [
-                'hu',
-                '$2y$13$/pWZHbHrDBHQfp99VO7qvuoID7C.REZOfIkqOaDGhNurHrdna.l6G',
-                'PGWY7_',
-                Yii::$app->security->generateRandomString(64),
-                Yii::$app->security->generateRandomString(64),
-                time(),
-                time(),
-            ],
-            [
-                'test',
-                '$2y$13$jokKL4zwtjY8Rtw0uKjWdOS1O7ast2e9rosNw1/1Dq2NJJ3C9mPT.',
-                'ML-ncP',
-                Yii::$app->security->generateRandomString(64),
-                Yii::$app->security->generateRandomString(64),
-                time(),
-                time(),
-            ],
-        ]);
-
         $this->createTable(UserDetail::tableName(), [
             'id' => $this->primaryKey(10)->unsigned(),
             'user_id' => $this->integer(10)->notNull()->unique()->unsigned()->comment('用户ID'),
@@ -67,9 +40,6 @@ class m160523_015948_init extends Migration
             'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
         ], $tableInnoDBOptions);
 
-        $this->batchInsert(UserDetail::tableName(), ['user_id', 'updated_at'], [[1, time()], [2, time()]]);
-
-        //migration是迁移，不是用来控制数据库版本的，所以我直接把新表加在这里
         $this->createTable(Article::tableName(), [
             'id' => $this->primaryKey(10)->unsigned(),
             'title' => $this->string(20)->notNull()->comment('标题'),
@@ -107,28 +77,60 @@ class m160523_015948_init extends Migration
             'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
         ], $tableMyISAMOptions . ' COMMENT=\'网站配置\'');
 
+        //插入数据
+        $time = time();
+
+        $user = new User();
+        $attributes = $user->attributes();
+        unset($attributes[0]);//user_id
+        unset($attributes[5]);//status
+        unset($attributes[10]);//last_login
+        unset($attributes[11]);//last_ip
+        $this->batchInsert($user::tableName(), $attributes, [
+            [
+                'hu',
+                '$2y$13$/pWZHbHrDBHQfp99VO7qvuoID7C.REZOfIkqOaDGhNurHrdna.l6G',
+                'PGWY7_',
+                Yii::$app->security->generateRandomString(64),
+                Yii::$app->security->generateRandomString(64),
+                $time,
+                $time,
+            ],
+            [
+                'test',
+                '$2y$13$jokKL4zwtjY8Rtw0uKjWdOS1O7ast2e9rosNw1/1Dq2NJJ3C9mPT.',
+                'ML-ncP',
+                Yii::$app->security->generateRandomString(64),
+                Yii::$app->security->generateRandomString(64),
+                $time,
+                $time,
+            ],
+        ]);
+        
+        $this->batchInsert(UserDetail::tableName(), ['user_id', 'updated_at'], [[1, $time], [2, $time]]);
+        
         //以下是插入rbac相关的数据
         $this->batchInsert('auth_item', ['name', 'type', 'created_at', 'updated_at'], [
-            ['/*', 2, time(), time()],
-            ['/admin/*', 2, time(), time()],
-            ['/admin/default/index', 2, time(), time()],
-            ['/gii/*', 2, time(), time()],
-            ['/gii/default/index', 2, time(), time()],
-            ['/manage/article/*', 2, time(), time()],
-            ['/manage/article/index', 2, time(), time()],
-            ['/manage/default/*', 2, time(), time()],
-            ['/manage/default/index', 2, time(), time()],
-            ['/manage/setting/*', 2, time(), time()],
-            ['/manage/setting/index', 2, time(), time()],
-            ['/manage/user-detail/*', 2, time(), time()],
-            ['/manage/user-detail/index', 2, time(), time()],
-            ['/manage/user/*', 2, time(), time()],
-            ['/manage/user/index', 2, time(), time()],
+            ['/*', 2, $time, $time],
+            ['/admin/*', 2, $time, $time],
+            ['/admin/default/index', 2, $time, $time],
+            ['/gii/*', 2, $time, $time],
+            ['/gii/default/index', 2, $time, $time],
+            ['/manage/article/*', 2, $time, $time],
+            ['/manage/article/index', 2, $time, $time],
+            ['/manage/default/*', 2, $time, $time],
+            ['/manage/default/index', 2, $time, $time],
+            ['/manage/setting/*', 2, $time, $time],
+            ['/manage/setting/index', 2, $time, $time],
+            ['/manage/user-detail/*', 2, $time, $time],
+            ['/manage/user-detail/index', 2, $time, $time],
+            ['/manage/user/*', 2, $time, $time],
+            ['/manage/user/index', 2, $time, $time],
         ]);
 
         $this->batchInsert('auth_item', ['name', 'type', 'description', 'created_at', 'updated_at'], [
-            ['Guest', 1, '访客', time(), time()],
-            ['SuperAdmin', 1, '超管', time(), time()],
+            ['Guest', 1, '访客', $time, $time],
+            ['SuperAdmin', 1, '超管', $time, $time],
         ]);
 
         $this->insert('auth_item_child', ['parent' => 'SuperAdmin', 'child' => '/*']);
@@ -136,7 +138,7 @@ class m160523_015948_init extends Migration
         $this->insert('auth_assignment', [
             'item_name' => 'SuperAdmin',
             'user_id' => '1',
-            'created_at' => time(),
+            'created_at' => $time,
         ]);
 
         $this->batchInsert('menu', ['name', 'parent', 'route', 'order'], [
