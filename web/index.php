@@ -1,7 +1,7 @@
 <?php
 
 // comment out the following two lines when deployed to production
-if (isset($_SERVER['HTTP_LaoHu']) || strpos($_SERVER['SERVER_ADDR'], '127.0') === 0 || strpos($_SERVER['SERVER_ADDR'], '192.168') === 0
+if (isset($_SERVER['HTTP_LaoHu']) || strpos($_SERVER['SERVER_ADDR'], '127.0.0.1') === 0 || strpos($_SERVER['SERVER_ADDR'], '192.168') === 0
 ) {
     defined('YII_DEBUG') or define('YII_DEBUG', true);
     defined('YII_ENV') or define('YII_ENV', 'dev');
