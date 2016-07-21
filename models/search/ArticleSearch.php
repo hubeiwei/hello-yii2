@@ -57,6 +57,9 @@ class ArticleSearch extends Article
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => ['defaultOrder' => ['published_at' => SORT_DESC]],
+            'pagination' => [
+                'pageSize' => 15,
+            ],
         ]);
 
         $this->load($params);
@@ -95,6 +98,7 @@ class ArticleSearch extends Article
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => ['defaultOrder' => ['created_at' => SORT_DESC]],
         ]);
 
         $this->load($params);
