@@ -5,6 +5,7 @@ use app\models\Music;
 use app\models\Setting;
 use app\models\User;
 use app\models\UserDetail;
+use Faker\Factory;
 use yii\db\Migration;
 
 class m160523_015948_init extends Migration
@@ -64,6 +65,7 @@ class m160523_015948_init extends Migration
 
         //插入数据
         $time = time();
+        $faker = Factory::create();
         
         $this->batchInsert(User::tableName(), [
             'username',
@@ -77,7 +79,7 @@ class m160523_015948_init extends Migration
                 'hu',
                 Yii::$app->security->generateRandomString(),
                 '$2y$13$GseYzG9z1Q87wVsGJ9DdleP/QHSPoPbAdLr3y4D8gDCFq2BRuIYQu',
-                'hubeiwei1234@qq.com',
+                $faker->email,
                 $time,
                 $time,
             ],
@@ -85,13 +87,35 @@ class m160523_015948_init extends Migration
                 'test',
                 Yii::$app->security->generateRandomString(),
                 '$2y$13$bkTA/HShzVF8P2uZDRZgbe5jPftXwO3xIJnF5gjph63xtFKs9bEpS',
-                'hubeiwei@hotmail.com',
+                $faker->email,
                 $time,
                 $time,
             ],
         ]);
 
         $this->batchInsert(UserDetail::tableName(), ['user_id', 'updated_at'], [[1, $time], [2, $time]]);
+
+        $articles = [];
+        for ($i = 0; $i < 50; $i++) {
+            $articles[] = [
+                'title' => $faker->text(rand(10, 20)),
+                'created_by' => mt_rand(1, 2),
+                'published_at' => mt_rand($time, strtotime('+12 hour')),
+                'content' => $faker->text(rand(500, 2000)),
+                'type' => Article::TYPE_MARKDOWN,
+                'created_at' => $time,
+                'updated_at' => $time,
+            ];
+        }
+        $this->batchInsert(Article::tableName(), [
+            'title',
+            'created_by',
+            'published_at',
+            'content',
+            'type',
+            'created_at',
+            'updated_at'
+        ], $articles);
 
         //以下是插入rbac相关的数据
         $this->batchInsert('auth_item', ['name', 'type', 'created_at', 'updated_at'], [
