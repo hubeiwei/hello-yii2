@@ -17,7 +17,7 @@ HighlightAsset::register($this);
 
     <p>作者：<?= $model->user->username ?></p>
 
-    <p>发布时间：<?= Yii::$app->formatter->asDatetime($model->published_at, 'Y-m-d H:i') ?></p>
+    <p>发布时间：<?= date('Y-m-d H:i', $model->published_at) ?></p>
 
     <hr>
 

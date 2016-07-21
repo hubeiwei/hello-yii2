@@ -55,8 +55,7 @@ $this->title = '文章';
                         foreach ($dataProvider->models as $article) {
                             ?>
                             <a class="list-group-item" href="<?= Url::to(['view-article', 'id' => $article['id']]) ?>">
-                                <span
-                                    class="badge"><?= Yii::$app->formatter->asDatetime($article['published_at'], 'php:m-d H:i') ?></span>
+                                <span class="badge"><?= date('m-d H:i', $article['published_at']) ?></span>
                                 <span class="badge"><?= $article['user']['username'] ?></span>
                                 <?= $article['title'] ?>
                             </a>

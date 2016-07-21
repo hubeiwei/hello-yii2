@@ -100,7 +100,7 @@ class m160523_015948_init extends Migration
             $articles[] = [
                 'title' => $faker->text(rand(10, 20)),
                 'created_by' => mt_rand(1, 2),
-                'published_at' => mt_rand($time, strtotime('+12 hour')),
+                'published_at' => mt_rand(strtotime('-1 day'), strtotime('+6 hour')),
                 'content' => $faker->text(rand(500, 2000)),
                 'type' => Article::TYPE_MARKDOWN,
                 'created_at' => $time,
