@@ -168,7 +168,6 @@ class m160523_015948_init extends Migration
 
     public function down()
     {
-        $this->dropTable(User::tableName());
         $this->dropTable(UserDetail::tableName());
         $this->dropTable(Article::tableName());
         $this->dropTable(Music::tableName());
