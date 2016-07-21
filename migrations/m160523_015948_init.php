@@ -174,7 +174,7 @@ class m160523_015948_init extends Migration
         $this->dropTable(Setting::tableName());
 
         //其实都可以用truncateTable的，但是auth_item这个表居然不能用，反正没有自增id，用delete就好
-        $this->delete('menu');
+        $this->truncateTable('menu');
         $this->delete('auth_assignment');
         $this->delete('auth_item_child');
         $this->delete('auth_item');
