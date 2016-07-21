@@ -13,13 +13,10 @@ use yii\widgets\LinkPager;
  */
 
 $this->title = '文章';
-//$this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 ?>
 <div class="article-index">
-
-    <div class="col-md-3 pull-right-md">
-        <div class="panel">
-            <div class="panel-body">
+    <div class="row">
+        <div class="col-md-3 pull-right-md">
                 <?= ButtonDropdown::widget([
                     'label' => '发布文章',
                     'containerOptions' => [
@@ -46,36 +43,36 @@ $this->title = '文章';
                         ]
                     ],
                 ]) ?>
-            </div>
         </div>
-    </div>
-    <div class="col-md-9">
-        <div class="panel">
-            <div class="panel-heading nav-tabs">
-                <span class="glyphicon glyphicon-list-alt"></span> 最新文章
-            </div>
-            <div class="list-group">
-                <?php
-                if (count($dataProvider->models)) {
-                    foreach ($dataProvider->models as $article) {
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading nav-tabs">
+                    <span class="glyphicon glyphicon-list-alt"></span> 最新文章
+                </div>
+                <div class="list-group">
+                    <?php
+                    if (count($dataProvider->models)) {
+                        foreach ($dataProvider->models as $article) {
+                            ?>
+                            <a class="list-group-item" href="<?= Url::to(['view-article', 'id' => $article['id']]) ?>">
+                                <span
+                                    class="badge"><?= Yii::$app->formatter->asDatetime($article['published_at'], 'php:m-d H:i') ?></span>
+                                <span class="badge"><?= $article['user']['username'] ?></span>
+                                <?= $article['title'] ?>
+                            </a>
+                            <?php
+                        }
+                    } else {
                         ?>
-                        <a class="list-group-item" href="<?= Url::to(['view-article', 'id' => $article['id']]) ?>">
-                            <span
-                                class="badge"><?= Yii::$app->formatter->asDatetime($article['published_at'], 'php:m-d H:i') ?></span>
-                            <span class="badge"><?= $article['user']['username'] ?></span>
-                            <?= $article['title'] ?>
-                        </a>
+                        <div class="list-group-item">没有数据</div>
                         <?php
                     }
-                } else {
                     ?>
-                    <div class="list-group-item">没有数据</div>
-                    <?php
-                }
-                ?>
+                </div>
+                <div style="text-align: center;">
+                    <?= LinkPager::widget(['pagination' => $dataProvider->pagination]) ?>
+                </div>
             </div>
-            <?= LinkPager::widget(['pagination' => $dataProvider->pagination]) ?>
         </div>
     </div>
-
 </div>

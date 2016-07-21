@@ -75,8 +75,6 @@ $gridColumns = [
 ?>
 <div class="article-index">
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <?= ButtonDropdown::widget([
         'label' => '发布文章',
         'containerOptions' => [

@@ -4,10 +4,12 @@ use kartik\daterange\DateRangePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\search\ArticleSearch */
-/* @var $form yii\widgets\ActiveForm */
-/* @var $sort yii\data\Sort */
+/**
+ * @var $this yii\web\View
+ * @var $model app\models\search\ArticleSearch
+ * @var $form yii\widgets\ActiveForm
+ * @var $sort yii\data\Sort
+ */
 ?>
 
 <div class="article-search">

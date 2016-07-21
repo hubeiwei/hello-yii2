@@ -89,6 +89,7 @@ AppAsset::register($this);
 
     NavBar::end();
     ?>
+
     <div class="container">
         <?php
         echo Breadcrumbs::widget([
@@ -145,10 +146,11 @@ AppAsset::register($this);
             ]);
         }
         ?>
+
         <h1><?= Html::encode($this->title) ?></h1>
 
-        <div class="panel">
-            <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-body">
                 <?= $content ?>
             </div>
         </div>
@@ -157,7 +159,6 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; LaoHu Yii2 <?= date('Y') ?></p>
-
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>

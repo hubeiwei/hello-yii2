@@ -1,8 +1,5 @@
 <?php
 
-use app\models\Article;
-use yii\helpers\Html;
-
 /**
  * @var $this yii\web\View
  * @var $model app\modules\portal\models\ArticleForm

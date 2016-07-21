@@ -71,6 +71,7 @@ $gridColumns = [
 <div class="music-index">
 
     <h2 id="track_title">点击标题播放音乐</h2>
+
     <audio id="player" src="" controls></audio>
 
     <hr>
