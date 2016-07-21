@@ -56,16 +56,8 @@ class ArticleSearch extends Article
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-//            'pagination' => [
-//                'pageSize' => 15,
-//            ],
+            'sort' => ['defaultOrder' => ['published_at' => SORT_DESC]],
         ]);
-
-        if (UserHelper::userIsAdmin()) {
-            $dataProvider->sort = ['defaultOrder' => ['created_at' => SORT_DESC]];
-        } else {
-            $dataProvider->sort = ['defaultOrder' => ['published_at' => SORT_DESC]];
-        }
 
         $this->load($params);
 

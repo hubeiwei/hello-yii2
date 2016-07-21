@@ -92,6 +92,12 @@ a.desc:after {
 
 /*自定和覆盖的样式*/
 
+@media (min-width: 992px) {
+    .pull-right-md {
+        float: right;
+    }
+}
+
 .table-responsive table th {
     text-align: center;
 }

@@ -1,11 +1,13 @@
 <?php
 
+use kartik\daterange\DateRangePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\search\ArticleSearch */
 /* @var $form yii\widgets\ActiveForm */
+/* @var $sort yii\data\Sort */
 ?>
 
 <div class="article-search">
@@ -15,31 +17,27 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'title')->textInput()->label($sort->link('title')) ?>
 
-    <?= $form->field($model, 'title') ?>
+    <?= $form->field($model, 'content')->textInput()->label($sort->link('content')) ?>
 
-    <?= $form->field($model, 'content') ?>
+    <?= $form->field($model, 'user.username')->textInput()->label($sort->link('user.username')) ?>
 
-    <?= $form->field($model, 'category') ?>
-
-    <?= $form->field($model, 'type') ?>
-
-    <?php // echo $form->field($model, 'created_by') ?>
-
-    <?php // echo $form->field($model, 'published_at') ?>
-
-    <?php // echo $form->field($model, 'visible') ?>
-
-    <?php // echo $form->field($model, 'status') ?>
-
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
+    <?= $form->field($model, 'published_at')->widget(DateRangePicker::className(), [
+        'convertFormat' => true,
+        'readonly' => true,
+        'pluginOptions' => [
+            'separator' => ' - ',
+            'format' => 'Y/m/d H:i',
+            'timePicker' => true,
+            'timePicker12Hour' => false,
+            'timePickerIncrement' => 1,
+        ],
+    ])->label($sort->link('published_at')) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('重置', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

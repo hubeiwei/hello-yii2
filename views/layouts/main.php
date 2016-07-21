@@ -145,11 +145,10 @@ AppAsset::register($this);
             ]);
         }
         ?>
-        <div class="panel panel-default">
-            <div class="panel-heading media">
-                <h1 class="media-heading"><?= Html::encode($this->title) ?></h1>
-            </div>
-            <div class="panel-body">
+        <h1><?= Html::encode($this->title) ?></h1>
+
+        <div class="panel">
+            <div class="row">
                 <?= $content ?>
             </div>
         </div>
