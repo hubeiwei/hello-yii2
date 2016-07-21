@@ -51,7 +51,7 @@ $this->title = '文章';
                 </div>
                 <div class="list-group">
                     <?php
-                    if (count($dataProvider->models)) {
+                    if ($dataProvider->totalCount) {
                         foreach ($dataProvider->models as $article) {
                             ?>
                             <a class="list-group-item" href="<?= Url::to(['view-article', 'id' => $article['id']]) ?>">
