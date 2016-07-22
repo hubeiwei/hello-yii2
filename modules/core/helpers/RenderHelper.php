@@ -71,29 +71,33 @@ class RenderHelper
      * @param $searchModel
      * @param $gridColumns
      * @param bool $hasExport
+     * @param bool $hasToolbar
      * @return string
      * @throws \Exception
      */
-    public static function gridView($dataProvider, $searchModel, $gridColumns, $hasExport = false)
+    public static function gridView($dataProvider, $searchModel, $gridColumns, $hasExport = false, $hasToolbar = true)
     {
+        $config = [
+            'dataProvider' => $dataProvider,
+            'columns' => $gridColumns,
+        ];
+
         $data = '';
 
         //ExportMenu
         if ($hasExport) {
             $data .= '<p>';
-            $data .= HuExportMenu::widget([
-                'dataProvider' => $dataProvider,
-                'columns' => $gridColumns,
-            ]);
+            $data .= HuExportMenu::widget($config);
             $data .= '</p>';
         }
 
+        $gridConfig = $config + ['filterModel' => $searchModel];
+        if ($hasToolbar) {
+            $gridConfig += ['layout' => '<p>{toolbar}</p>{summary}{items}{pager}'];
+        }
+
         //GridView
-        $data .= HuGridView::widget([
-            'dataProvider' => $dataProvider,
-            'filterModel' => $searchModel,
-            'columns' => $gridColumns,
-        ]);
+        $data .= HuGridView::widget($gridConfig);
 
         return $data;
     }
