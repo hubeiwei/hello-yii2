@@ -22,9 +22,11 @@ use yii\helpers\Html;
 
     <?php
     if ($model->isNewRecord) {
-        echo $form->field($model, 'password')->passwordInput(['maxlength' => true]);
+        echo $form->field($model, 'password_hash')->passwordInput(['maxlength' => true])->label('密码');
     };
     ?>
+
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->dropDownList(User::$status_map) ?>
 

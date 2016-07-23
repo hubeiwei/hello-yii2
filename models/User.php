@@ -30,6 +30,18 @@ class User extends UserBase implements IdentityInterface
         ];
     }
 
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($insert) {
+                $this->encryptPassword();
+            }
+            $this->generateAuthKey();
+            return true;
+        }
+        return false;
+    }
+
     /**
      * @inheritdoc
      */
@@ -108,9 +120,9 @@ class User extends UserBase implements IdentityInterface
         return Yii::$app->security->validatePassword($password, $this->password_hash);
     }
 
-    public function setPassword($password)
+    public function encryptPassword()
     {
-        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
+        $this->password_hash = Yii::$app->security->generatePasswordHash($this->password_hash);
     }
 
     /**

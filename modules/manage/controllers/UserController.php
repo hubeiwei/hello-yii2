@@ -15,11 +15,6 @@ use yii\web\NotFoundHttpException;
  */
 class UserController extends ModuleController
 {
-    public function init()
-    {
-        parent::init();
-    }
-
     /**
      * Lists all User models.
      * @return mixed
@@ -57,11 +52,11 @@ class UserController extends ModuleController
         $user = new User();
 
         if ($user->load(Yii::$app->request->post())) {
-            $user_detail = new UserDetail();
 
             $transaction = EasyHelper::beginTransaction();
             $flow = $user->save(false);
             if ($flow) {
+                $user_detail = new UserDetail();
                 $user_detail->user_id = $user->id;
                 $flow = $user_detail->save();
             }
@@ -71,11 +66,7 @@ class UserController extends ModuleController
                 return $this->redirect(['view', 'id' => $user->id]);
             } else {
                 $transaction->rollBack();
-                if ($user->hasErrors()) {
-                    EasyHelper::setErrorMsg($user->getFirstErrorString());
-                } else if ($user_detail->hasErrors()) {
-                    EasyHelper::setErrorMsg($user_detail->getFirstErrorString());
-                }
+                EasyHelper::setErrorMsg('添加失败');
             }
         }
 

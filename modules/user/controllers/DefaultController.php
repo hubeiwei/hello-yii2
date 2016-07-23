@@ -86,16 +86,13 @@ class DefaultController extends ModuleController
         if ($form->load(Yii::$app->request->post())) {
             if ($form->validate()) {
                 $user = new User();
-                $user_detail = new UserDetail();
-
-                $user->username = $form->username;
-                $user->generateAuthKey();
-                $user->setPassword($form->password);
-                $user->email = $form->email;
+                $user->setAttributes($form->getAttributes());
+                $user->password_hash = $form->password;
 
                 $transaction = EasyHelper::beginTransaction();
                 $flow = $user->save(false);
                 if ($flow) {
+                    $user_detail = new UserDetail();
                     $user_detail->user_id = $user->id;
                     $flow = $user_detail->save(false);
                 }

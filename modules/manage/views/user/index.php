@@ -23,6 +23,7 @@ $gridColumns = [
         'headerOptions' => ['width' => 80],
     ],
     'username',
+    'email:email',
     [
         'attribute' => 'status',
         'value' => function ($model) {
