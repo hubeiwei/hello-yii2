@@ -4,10 +4,9 @@ use app\models\Article;
 use app\models\Music;
 use app\models\Setting;
 use app\models\UserDetail;
-
 use yii\db\Migration;
 
-class m160523_015948_created_tables extends Migration
+class m160723_062425_create_tables extends Migration
 {
     public function up()
     {

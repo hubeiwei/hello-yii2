@@ -78,12 +78,16 @@ $config = [
         ],
         'admin' => [
             'class' => 'mdm\admin\Module',
-            'layout' => 'left-menu',
+            'layout' => '@app/modules/manage/views/layouts/main',
             'controllerMap' => [
                 'assignment' => [
                     'class' => 'mdm\admin\controllers\AssignmentController',
                     'searchClass' => 'app\models\search\UserSearch',
-                ]
+                ],
+                'user' => [
+                    'class' => 'mdm\admin\controllers\UserController',
+                    'layout' => 'main',
+                ],
             ],
         ],
         'redactor' => [
@@ -118,7 +122,7 @@ $config = [
         'allowActions' => [
             'debug/*',
 //            'gii/*',
-            'admin/*',
+//            'admin',
             'redactor/*',
             'core/*',
             'portal/*',
