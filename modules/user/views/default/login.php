@@ -34,6 +34,7 @@ $this->title = '登录';
     <div class="form-group">
         <div class="col-md-offset-2 col-md-12">
             <?= Html::submitButton('登录', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+            <?= Html::a('重置密码', ['/user/security/request-password-reset'], ['class' => 'btn btn-danger']) ?>
         </div>
     </div>
 

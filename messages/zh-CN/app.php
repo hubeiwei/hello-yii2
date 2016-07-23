@@ -9,6 +9,7 @@
 
 return [
     'Username' => '用户名',
+    'Password' => '密码',
     'Password Hash' => '哈希密码',
     'Password Reset Token' => '密码重置口令',
     'Email' => '邮箱',

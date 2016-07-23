@@ -40,7 +40,7 @@ $config = [
             ],
             'messageConfig' => [
                 'charset' => 'UTF-8',
-                'from' => ['hubeiwei1234@163.com' => '老胡']
+                'from' => ['hubeiwei1234@163.com' => '老胡'],
             ],
         ],
         'log' => [
@@ -86,7 +86,7 @@ $config = [
                 ],
                 'user' => [
                     'class' => 'mdm\admin\controllers\UserController',
-                    'layout' => 'main',
+                    'layout' => '@app/views/layouts/main',
                 ],
             ],
         ],
@@ -122,7 +122,7 @@ $config = [
         'allowActions' => [
             'debug/*',
 //            'gii/*',
-//            'admin',
+//            'admin/*',
             'redactor/*',
             'core/*',
             'portal/*',
