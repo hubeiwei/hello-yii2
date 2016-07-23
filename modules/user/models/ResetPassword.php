@@ -3,6 +3,8 @@
 namespace app\modules\user\models;
 
 use app\models\User;
+use app\modules\core\extensions\HuCaptchaValidator;
+use app\modules\core\extensions\HuStrengthValidator;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\base\Model;
@@ -13,6 +15,8 @@ use yii\base\Model;
 class ResetPassword extends Model
 {
     public $password;
+    public $password_repeat;
+    public $verifyCode;
     /**
      * @var User
      */
@@ -28,11 +32,11 @@ class ResetPassword extends Model
     public function __construct($token, $config = [])
     {
         if (empty($token) || !is_string($token)) {
-            throw new InvalidParamException('Password reset token cannot be blank.');
+            throw new InvalidParamException('密码重置口令不能为空');
         }
         $this->_user = User::findByPasswordResetToken($token);
         if (!$this->_user) {
-            throw new InvalidParamException('Wrong password reset token.');
+            throw new InvalidParamException('错误的密码重置口令');
         }
         parent::__construct($config);
     }
@@ -45,13 +49,19 @@ class ResetPassword extends Model
         return [
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+            ['password', HuStrengthValidator::className(), 'hasUser' => false],
+            ['password_repeat', 'compare', 'compareAttribute' => 'password'],
+            ['verifyCode', 'string', 'length' => 4],
+            ['verifyCode', HuCaptchaValidator::className()],
         ];
     }
 
     public function attributeLabels()
     {
         return [
-            'password' => Yii::t('app', 'Password'),
+            'password' => Yii::t('app', 'New Password'),
+            'password_repeat' => Yii::t('app', 'Password Repeat'),
+            'verifyCode' => Yii::t('app', 'Verify Code'),
         ];
     }
 

@@ -24,25 +24,6 @@ $config = [
         'errorHandler' => [
             'errorAction' => '/core/default/error',
         ],
-        /**
-         * TODO 如果你要运行我的项目，请把以下邮箱配置改成自己的，谢谢合作
-         */
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            'useFileTransport' => false,
-            'transport' => [
-                'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.163.com',
-                'port' => '25',
-                'username' => 'hubeiwei1234@163.com',
-                'password' => 'Hu407519063',
-                'encryption' => 'tls',
-            ],
-            'messageConfig' => [
-                'charset' => 'UTF-8',
-                'from' => ['hubeiwei1234@163.com' => '老胡'],
-            ],
-        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -128,6 +109,28 @@ $config = [
             'portal/*',
             'user/*',
         ]
+    ],
+];
+
+/**
+ * TODO 如果你要运行我的项目，请把以下邮箱配置改成自己的，谢谢合作
+ */
+$config['components']['mailer'] = [
+    'class' => 'yii\swiftmailer\Mailer',
+    'useFileTransport' => false,
+    'transport' => [
+        'class' => 'Swift_SmtpTransport',
+        'host' => 'smtp.163.com',
+        'port' => '25',
+        'username' => 'hubeiwei1234@163.com',
+        'password' => 'Hu407519063',
+        'encryption' => 'tls',
+    ],
+    'messageConfig' => [
+        'charset' => 'UTF-8',
+        'from' => [
+            'hubeiwei1234@163.com' => $config['name'] . ' robot',
+        ],
     ],
 ];
 

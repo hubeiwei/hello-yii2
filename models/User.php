@@ -9,6 +9,9 @@ use yii\web\IdentityInterface;
 
 class User extends UserBase implements IdentityInterface
 {
+    /** @var int second */
+    const PASSWORD_RESET_TOKEN_EXPIRE = 600;
+
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 10;
     public static $status_array = [
@@ -143,10 +146,9 @@ class User extends UserBase implements IdentityInterface
         if (empty($token)) {
             return false;
         }
-        $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         $parts = explode('_', $token);
         $timestamp = (int)end($parts);
-        return $timestamp + $expire >= time();
+        return ($timestamp + self::PASSWORD_RESET_TOKEN_EXPIRE) >= time();
     }
 
     public static function findByPasswordResetToken($token)
