@@ -57,6 +57,9 @@ ManageAssets::register($this);
             <div class="col-md-3 col-lg-2 hidden-sm hidden-xs">
                 <div class="list-group" id="nav-menu">
                     <?php
+                    /**
+                     * TODO 目前输出菜单的代码只能支持到二级，以后再尝试解决这个问题。
+                     */
                     $currentUrl = explode('?', Url::current())[0];
                     $currentUrlSnippet = explode('/', $currentUrl);
                     $currentUrlPath = '/' . $currentUrlSnippet[1] . '/' . $currentUrlSnippet[2];
