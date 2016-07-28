@@ -144,13 +144,15 @@ class EasyHelper
      *
      * 该方法只是为了让不同数据库的component开启事务时都能让IDE提示代码
      *
-     * @param string $db
+     * @param string $dbComponentName
      * @param string $isolationLevel
-     * @return \yii\db\Transaction
+     * @return Transaction
      */
-    public static function beginTransaction($db = 'db', $isolationLevel = Transaction::SERIALIZABLE)
+    public static function beginTransaction($dbComponentName = 'db', $isolationLevel = Transaction::SERIALIZABLE)
     {
-        return Yii::$app->$db->beginTransaction($isolationLevel);
+        /** @var \yii\db\Connection $db */
+        $db = Yii::$app->$dbComponentName;
+        return $db->beginTransaction($isolationLevel);
     }
 
     /**
