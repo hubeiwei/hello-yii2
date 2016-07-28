@@ -107,7 +107,7 @@ class EasyHelper
             return null;
         }
         if ($timestamp == -1) {
-            return date($format, time());
+            return date($format);
         } else {
             return date($format, $timestamp);
         }

@@ -1,12 +1,11 @@
 <?php
 
-use app\models\Article;
 use app\models\User;
 use app\models\UserDetail;
 use Faker\Factory;
 use yii\db\Migration;
 
-class m160723_062438_insert_data extends Migration
+class m160728_084255_insert_user extends Migration
 {
     public function up()
     {
@@ -41,28 +40,6 @@ class m160723_062438_insert_data extends Migration
 
         $this->batchInsert(UserDetail::tableName(), ['user_id', 'updated_at'], [[1, $time], [2, $time]]);
 
-        $articles = [];
-        for ($i = 0; $i < 50; $i++) {
-            $articles[] = [
-                'title' => $faker->text(rand(10, 20)),
-                'created_by' => mt_rand(1, 2),
-                'published_at' => mt_rand(strtotime('-1 day'), strtotime('+6 hour')),
-                'content' => $faker->text(rand(1000, 3000)),
-                'type' => Article::TYPE_MARKDOWN,
-                'created_at' => $time,
-                'updated_at' => $time,
-            ];
-        }
-        $this->batchInsert(Article::tableName(), [
-            'title',
-            'created_by',
-            'published_at',
-            'content',
-            'type',
-            'created_at',
-            'updated_at'
-        ], $articles);
-
         $this->insert('auth_assignment', [
             'item_name' => 'SuperAdmin',
             'user_id' => 1,
@@ -72,11 +49,9 @@ class m160723_062438_insert_data extends Migration
 
     public function down()
     {
-        $this->truncateTable(Article::tableName());
+        $this->delete('auth_assignment');
         $this->truncateTable(UserDetail::tableName());
         $this->truncateTable(User::tableName());
-
-        $this->delete('auth_assignment');
     }
 
     /*
