@@ -22,12 +22,9 @@ class HuCaptcha extends Captcha
 
     public $imageOptions = [
         'alt' => '验证码',
-        'style' => [
-            'margin-top' => '15px',
-        ],
     ];
 
-    public $template = '{input}{image}';
+    public $template = '<div class="row"><div class="col-xs-4">{input}</div><div class="col-xs-8">{image}</div></div>';
 
     public $options = [
         'class' => 'form-control',

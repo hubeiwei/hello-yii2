@@ -26,7 +26,7 @@ class HuCaptchaAction extends CaptchaAction
     /**
      * @var int 宽度
      */
-    public $width = 120;
+    public $width = 100;
 
     /**
      * @var int 高度
@@ -54,12 +54,12 @@ class HuCaptchaAction extends CaptchaAction
     public $transparent = false;
 
     /**
-     * @var int 验证码的最小长度
+     * @var int 生成验证码的最小长度
      */
     public $minLength = 4;
 
     /**
-     * @var int 验证码的最大长度
+     * @var int 生成验证码的最大长度
      */
     public $maxLength = 4;
 
