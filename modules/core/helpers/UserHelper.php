@@ -56,12 +56,20 @@ class UserHelper
      * @param string|null $userName
      * @return bool|int|string
      */
+    /**
+     * @param null $userName
+     * @return false|int|null|string
+     */
     public static function getUserId($userName = null)
     {
         if ($userName) {
             return User::find()->select(['id'])->where(['username' => $userName])->limit(1)->scalar();
         } else {
-            return Yii::$app->user->id;
+            if (Yii::$app->user->id == null) {
+                return Yii::$app->user->id;
+            } else {
+                return 0;
+            }
         }
     }
 
