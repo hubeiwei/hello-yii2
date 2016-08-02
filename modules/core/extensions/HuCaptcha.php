@@ -20,7 +20,12 @@ class HuCaptcha extends Captcha
 {
     public $captchaAction = '/core/default/captcha';
 
-    public $imageOptions = ['alt' => '验证码'];
+    public $imageOptions = [
+        'alt' => '验证码',
+        'style' => [
+            'margin-top' => '15px',
+        ],
+    ];
 
     public $template = '{input}{image}';
 
