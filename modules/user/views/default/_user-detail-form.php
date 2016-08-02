@@ -8,21 +8,20 @@
  */
 
 use app\models\UserDetail;
-use app\modules\core\extensions\HuActiveForm;
 use app\modules\core\extensions\HuCaptcha;
 use kartik\date\DatePicker;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /**
  * @var $this yii\web\View
- * @var $form HuActiveForm
  * @var $model app\modules\user\models\UserDetailForm
  */
 ?>
 
 <div class="user-detail-form">
 
-    <?php $form = HuActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'gender')->dropDownList(UserDetail::$gender_map) ?>
 
@@ -40,12 +39,8 @@ use yii\helpers\Html;
 
     <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-12">
-            <?= Html::submitButton('修改', ['class' => 'btn btn-primary']) ?>
-        </div>
-    </div>
+    <?= Html::submitButton('修改', ['class' => 'btn btn-primary']) ?>
 
-    <?php HuActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
 
 </div>

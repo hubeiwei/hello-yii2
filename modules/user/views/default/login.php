@@ -1,8 +1,8 @@
 <?php
 
-use app\modules\core\extensions\HuActiveForm;
 use app\modules\core\extensions\HuCaptcha;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /**
  * @var $this yii\web\View
@@ -10,11 +10,10 @@ use yii\helpers\Html;
  */
 
 $this->title = '登录';
-//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
 
-    <?php $form = HuActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'username')->textInput([
         'autofocus' => true,
@@ -27,17 +26,12 @@ $this->title = '登录';
 
     <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
 
-    <?= $form->field($model, 'rememberMe', [
-        'template' => '<div class="col-md-offset-2 col-md-3">{input}{label}</div><div class="col-md-7">{error}</div>',
-    ])->checkbox() ?>
+    <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-12">
-            <?= Html::submitButton('登录', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-            <?= Html::a('找回密码', ['/user/security/request-password-reset'], ['class' => 'btn btn-danger']) ?>
-        </div>
-    </div>
+    <?= Html::submitButton('登录', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
 
-    <?php HuActiveForm::end(); ?>
+    <?= Html::a('找回密码', ['/user/security/request-password-reset'], ['class' => 'btn btn-danger']) ?>
+
+    <?php ActiveForm::end(); ?>
 
 </div>

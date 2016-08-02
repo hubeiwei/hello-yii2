@@ -64,6 +64,8 @@ class SettingController extends ModuleController
      */
     public function actionCreate()
     {
+        $this->layout = 'manage_form';
+
         $model = new Setting();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -84,6 +86,8 @@ class SettingController extends ModuleController
      */
     public function actionUpdate($id)
     {
+        $this->layout = 'manage_form';
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

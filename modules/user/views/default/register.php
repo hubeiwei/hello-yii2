@@ -7,10 +7,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
-use app\modules\core\extensions\HuActiveForm;
 use app\modules\core\extensions\HuCaptcha;
 use kartik\password\PasswordInput;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /**
  * @var $this yii\web\View
@@ -18,11 +18,10 @@ use yii\helpers\Html;
  */
 
 $this->title = '快速注册';
-//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-register">
 
-    <?php $form = HuActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'username')->textInput([
         'autofocus' => true,
@@ -37,12 +36,8 @@ $this->title = '快速注册';
 
     <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-12">
-            <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
-        </div>
-    </div>
+    <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
 
-    <?php HuActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
 
 </div>

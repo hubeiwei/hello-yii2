@@ -24,11 +24,10 @@ $this->title = '重置密码';
 
             <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
 
-            <div class="form-group">
-                <?= Html::submitButton('重置密码', ['class' => 'btn btn-primary']) ?>
-            </div>
+            <?= Html::submitButton('重置密码', ['class' => 'btn btn-primary']) ?>
 
             <?php ActiveForm::end(); ?>
+
         </div>
     </div>
 </div>

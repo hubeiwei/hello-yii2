@@ -1,16 +1,15 @@
 <?php
 
 use app\models\Music;
-use app\modules\core\extensions\HuActiveForm;
 use app\modules\core\extensions\HuCaptcha;
 use app\modules\core\helpers\UserHelper;
 use kartik\file\FileInput;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /**
  * @var $this yii\web\View
  * @var $model app\modules\portal\models\MusicForm
- * @var $form HuActiveForm
  */
 ?>
 
@@ -21,9 +20,8 @@ use yii\helpers\Html;
      * Yii2.0.8如果用了$form->field()->fileInput()，会自动生成enctype="multipart/form-data"
      * 现在用了kartik\file\FileInput，得自己写
      */
-    $form = HuActiveForm::begin([
-        //options覆盖了，得重新配class
-        'options' => ['class' => 'form-horizontal', 'enctype' => 'multipart/form-data'],
+    $form = ActiveForm::begin([
+        'options' => ['enctype' => 'multipart/form-data'],
     ]);
     ?>
 
@@ -53,12 +51,8 @@ use yii\helpers\Html;
 
     <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-12">
-            <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
-        </div>
-    </div>
+    <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
 
-    <?php HuActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
 
 </div>
