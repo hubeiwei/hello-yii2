@@ -46,7 +46,7 @@ use yii\helpers\Html;
     <?= $form->field($model, 'visible')->dropDownList(Music::$visible_map) ?>
 
     <?php
-    if (UserHelper::userIsAdmin()) {
+    if (UserHelper::isAdmin()) {
         echo $form->field($model, 'status')->dropDownList(Music::$status_map);
     }
     ?>

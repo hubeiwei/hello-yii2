@@ -16,7 +16,7 @@ class SecurityController extends ModuleController
     {
         $model = new PasswordResetRequest();
 
-        if ($model->load(Yii::$app->getRequest()->post()) && $model->validate()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
                 EasyHelper::setSuccessMsg('发送成功，请前往您的邮箱查看');
                 return $this->goHome();

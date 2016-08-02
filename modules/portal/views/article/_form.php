@@ -45,7 +45,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'type', ['template' => '{input}'])->hiddenInput() ?>
 
     <?php
-    if (UserHelper::userIsAdmin()) {
+    if (UserHelper::isAdmin()) {
         echo $form->field($model, 'status')->dropDownList(Article::$status_map);
     }
     ?>

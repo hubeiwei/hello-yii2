@@ -49,21 +49,21 @@ AppAsset::register($this);
             [
                 'label' => '后台管理',
                 'url' => ['/manage'],
-                'visible' => UserHelper::userIsAdmin(),
+                'visible' => UserHelper::isAdmin(),
             ],
             [
                 'label' => '登录',
-                'url' => ['/login'],
-                'visible' => UserHelper::userIsGuest(),
+                'url' => Yii::$app->user->loginUrl,
+                'visible' => Yii::$app->user->isGuest,
             ],
             [
                 'label' => '注册',
                 'url' => ['/register'],
-                'visible' => UserHelper::userIsGuest(),
+                'visible' => Yii::$app->user->isGuest,
             ],
             [
                 'label' => UserHelper::getUserName(),
-                'visible' => !UserHelper::userIsGuest(),
+                'visible' => !Yii::$app->user->isGuest,
                 'items' => [
                     [
                         'label' => '个人资料',

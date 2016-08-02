@@ -68,7 +68,7 @@ class MusicController extends ModuleController
                 if ($flow) {
                     $model->track_title = $form->track_title;
                     $model->visible = $form->visible;
-                    if (UserHelper::userIsAdmin()) {
+                    if (UserHelper::isAdmin()) {
                         $model->status = $form->status;
                     }
 

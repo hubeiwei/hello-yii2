@@ -39,23 +39,13 @@ class UserHelper
     }
 
     /**
-     * 判断当前访客是否已登录
-     *
-     * @return bool 访客未登录返回true，已登录返回false
-     */
-    public static function userIsGuest()
-    {
-        return Yii::$app->user->isGuest;
-    }
-
-    /**
      * 判断当前访客是否是管理员
      *
      * 统一封装在这有利于以后改动设计时不需要对项目进行很大改动
      *
      * @return bool
      */
-    public static function userIsAdmin()
+    public static function isAdmin()
     {
         return Yii::$app->user->can('SuperAdmin');
     }
@@ -85,7 +75,7 @@ class UserHelper
      */
     public static function getUserName($userId = -1, $default = null, $zero_name = 'System')
     {
-        if ($userId == -1 && !self::userIsGuest()) {
+        if ($userId == -1 && !Yii::$app->user->isGuest) {
             return self::getUserInstance()->username;
         } else if ($userId == 0) {
             return $zero_name;
@@ -107,7 +97,7 @@ class UserHelper
      */
     public static function isBelongToUser($userId, $allowAdmin = true)
     {
-        if ($allowAdmin && self::userIsAdmin()) {
+        if ($allowAdmin && self::isAdmin()) {
             return true;
         }
         return self::getUserId() == $userId;

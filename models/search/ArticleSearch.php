@@ -45,7 +45,7 @@ class ArticleSearch extends Article
     {
         $query = self::find()->joinWith('user');
 
-        if (!UserHelper::userIsAdmin()) {
+        if (!UserHelper::isAdmin()) {
             $query->where([
                 'visible' => self::VISIBLE_YES,
                 self::tableName() . '.status' => self::STATUS_ENABLE,
