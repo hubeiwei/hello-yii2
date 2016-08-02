@@ -53,7 +53,7 @@ class m160723_055600_insert_rbac_data extends Migration
             ['首页', null, '/manage/default/index', 1],
             ['前台', null, null, 2],
             ['文章管理', 2, '/manage/article/index', 1],
-            ['音乐管理', 2, '/manage/article/index', 2],
+            ['音乐管理', 2, '/manage/music/index', 2],
             ['用户', null, null, 3],
             ['用户管理', 5, '/manage/user/index', 1],
             ['用户资料', 5, '/manage/user-detail/index', 2],
