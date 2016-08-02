@@ -3,6 +3,7 @@
 namespace app\modules\user\models;
 
 use app\models\User;
+use app\modules\core\extensions\HuCaptchaValidator;
 use Yii;
 use yii\base\Model;
 
@@ -12,6 +13,7 @@ use yii\base\Model;
 class PasswordResetRequest extends Model
 {
     public $email;
+    public $verifyCode;
 
     /**
      * @inheritdoc
@@ -25,8 +27,10 @@ class PasswordResetRequest extends Model
             ['email', 'exist',
                 'targetClass' => User::className(),
                 'filter' => ['status' => User::STATUS_ACTIVE],
-                'message' => '该邮箱不存在'
+                'message' => '该邮箱不存在',
             ],
+            ['verifyCode', 'string', 'length' => 4],
+            ['verifyCode', HuCaptchaValidator::className()],
         ];
     }
 
@@ -34,6 +38,7 @@ class PasswordResetRequest extends Model
     {
         return [
             'email' => Yii::t('app', 'Email'),
+            'verifyCode' => Yii::t('app', 'Verify Code'),
         ];
     }
 
@@ -55,7 +60,10 @@ class PasswordResetRequest extends Model
                 $user->generatePasswordResetToken();
             }
             if ($user->save()) {
-                return Yii::$app->mailer->compose(['html' => 'sendPasswordResetToken-html', 'text' => 'sendPasswordResetToken-text'], ['user' => $user])
+                return Yii::$app->mailer->compose([
+                    'html' => 'sendPasswordResetToken-html',
+                    'text' => 'sendPasswordResetToken-text',
+                ], ['user' => $user])
                     ->setTo($this->email)
                     ->setSubject('Password reset for ' . Yii::$app->name)
                     ->send();

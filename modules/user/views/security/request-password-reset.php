@@ -1,5 +1,6 @@
 <?php
 
+use app\modules\core\extensions\HuCaptcha;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
@@ -11,18 +12,15 @@ use yii\bootstrap\ActiveForm;
 $this->title = '找回密码';
 ?>
 <div class="site-request-password-reset">
-    <div class="row">
-        <div class="col-md-5">
 
-            <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
-            <?= $form->field($model, 'email')->textInput(['placeholder' => '请输入您注册时的邮箱']) ?>
+    <?= $form->field($model, 'email')->textInput(['placeholder' => '请输入您注册时的邮箱']) ?>
 
-            <div class="form-group">
-                <?= Html::submitButton('发送', ['class' => 'btn btn-primary']) ?>
-            </div>
+    <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
 
-            <?php ActiveForm::end(); ?>
-        </div>
-    </div>
+    <?= Html::submitButton('发送', ['class' => 'btn btn-primary']) ?>
+
+    <?php ActiveForm::end(); ?>
+
 </div>
