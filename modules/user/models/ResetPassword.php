@@ -47,7 +47,7 @@ class ResetPassword extends Model
     public function rules()
     {
         return [
-            ['password', 'required'],
+            [['password', 'password_repeat'], 'required'],
             ['password', 'string', 'min' => 6],
             ['password', HuStrengthValidator::className(), 'hasUser' => false],
             ['password_repeat', 'compare', 'compareAttribute' => 'password'],

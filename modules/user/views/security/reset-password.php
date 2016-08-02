@@ -13,21 +13,17 @@ use yii\bootstrap\ActiveForm;
 $this->title = '重置密码';
 ?>
 <div class="site-reset-password">
-    <div class="row">
-        <div class="col-md-5">
 
-            <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
-            <?= $form->field($model, 'password')->widget(PasswordInput::className(), ['options' => ['maxlength' => 20]]) ?>
+    <?= $form->field($model, 'password')->widget(PasswordInput::className(), ['options' => ['maxlength' => 20]]) ?>
 
-            <?= $form->field($model, 'password_repeat')->passwordInput(['maxlength' => 20]) ?>
+    <?= $form->field($model, 'password_repeat')->passwordInput(['maxlength' => 20]) ?>
 
-            <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
+    <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
 
-            <?= Html::submitButton('重置密码', ['class' => 'btn btn-primary']) ?>
+    <?= Html::submitButton('重置密码', ['class' => 'btn btn-primary']) ?>
 
-            <?php ActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
 
-        </div>
-    </div>
 </div>
