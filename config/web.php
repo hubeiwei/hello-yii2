@@ -19,7 +19,6 @@ $config = [
             'enableAutoLogin' => true,
             'identityClass' => 'app\models\User',
             'loginUrl' => ['/login'],
-//            'identityClass' => 'mdm\admin\models\User',
         ],
         'errorHandler' => [
             'errorAction' => '/core/default/error',
@@ -65,10 +64,6 @@ $config = [
                     'class' => 'mdm\admin\controllers\AssignmentController',
                     'searchClass' => 'app\models\search\UserSearch',
                 ],
-                'user' => [
-                    'class' => 'mdm\admin\controllers\UserController',
-                    'layout' => '@app/views/layouts/main',
-                ],
             ],
         ],
         'redactor' => [
@@ -89,7 +84,7 @@ $config = [
         'manage' => [
             'class' => 'app\modules\manage\Module',
         ],
-        //用户相关，例如登录、登出、注册等
+        //用户
         'user' => [
             'class' => 'app\modules\user\Module',
         ],
@@ -102,8 +97,6 @@ $config = [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
             'debug/*',
-//            'gii/*',
-//            'admin/*',
             'redactor/*',
             'core/*',
             'portal/*',
@@ -140,14 +133,10 @@ $config['components']['mailer'] = [
 $config['components']['urlManager'] = [
     'enablePrettyUrl' => true,
     'showScriptName' => false,
-
     'rules' => [
         'login' => '/user/default/login',
         'logout' => '/user/default/logout',
         'register' => '/user/default/register',
-//        'login' => '/admin/user/login',
-//        'logout' => '/admin/user/logout',
-//        'register' => '/admin/user/signup',
     ],
 ];
 
