@@ -65,7 +65,7 @@ class UserHelper
         if ($userName) {
             return User::find()->select(['id'])->where(['username' => $userName])->limit(1)->scalar();
         } else {
-            if (Yii::$app->user->id == null) {
+            if (Yii::$app->user->id != null) {
                 return Yii::$app->user->id;
             } else {
                 return 0;
