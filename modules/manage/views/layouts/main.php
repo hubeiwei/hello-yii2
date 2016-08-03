@@ -14,6 +14,8 @@ use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 
 ManageAssets::register($this);
+
+$assignedMenu = MenuHelper::getAssignedMenu(UserHelper::getUserId());
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -39,7 +41,7 @@ ManageAssets::register($this);
 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-left'],
-        'items' => MenuHelper::getAssignedMenu(UserHelper::getUserId()),
+        'items' => $assignedMenu,
     ]);
 
     echo Nav::widget([
@@ -65,8 +67,7 @@ ManageAssets::register($this);
                     $currentUrlPath = '/' . $currentUrlSnippet[1] . '/' . $currentUrlSnippet[2];
 
                     $activeMenu = '';
-                    $menu = MenuHelper::getAssignedMenu(UserHelper::getUserId());
-                    foreach ($menu as $menuKey => $menuValue) {
+                    foreach ($assignedMenu as $menuKey => $menuValue) {
                         $menuUrl = $menuValue['url'][0];
 
                         //提升体验
@@ -164,6 +165,7 @@ ManageAssets::register($this);
                 ?>
 
                 <?= $content ?>
+
             </div>
         </div>
     </div>

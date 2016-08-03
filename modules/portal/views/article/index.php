@@ -3,6 +3,7 @@
 use app\models\Article;
 use yii\bootstrap\ButtonDropdown;
 use yii\bootstrap\Collapse;
+use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
@@ -15,6 +16,11 @@ use yii\widgets\LinkPager;
 $this->title = '文章';
 ?>
 <div class="article-index">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <hr>
+
     <div class="row">
         <div class="col-md-3 pull-right-md">
                 <?= ButtonDropdown::widget([

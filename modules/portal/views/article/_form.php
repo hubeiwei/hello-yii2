@@ -53,7 +53,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton('提交', ['class' => 'btn btn-primary btn-block']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

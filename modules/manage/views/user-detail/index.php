@@ -73,8 +73,6 @@ $gridColumns = [
 
     <hr>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <?= RenderHelper::gridView($dataProvider, $searchModel, $gridColumns, true) ?>
     
 </div>

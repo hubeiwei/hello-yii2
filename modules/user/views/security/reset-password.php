@@ -14,6 +14,10 @@ $this->title = '重置密码';
 ?>
 <div class="site-reset-password">
 
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <hr>
+
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'password')->widget(PasswordInput::className(), ['options' => ['maxlength' => 20]]) ?>
@@ -22,7 +26,9 @@ $this->title = '重置密码';
 
     <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
 
-    <?= Html::submitButton('重置密码', ['class' => 'btn btn-primary']) ?>
+    <div class="form-group">
+        <?= Html::submitButton('重置密码', ['class' => 'btn btn-primary btn-block']) ?>
+    </div>
 
     <?php ActiveForm::end(); ?>
 

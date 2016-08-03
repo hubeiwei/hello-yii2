@@ -29,7 +29,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status')->dropDownList(User::$status_map) ?>
 
-    <?= Html::submitButton($model->isNewRecord ? '添加' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? '添加' : '修改', ['class' => 'btn btn-block ' . ($model->isNewRecord ? 'btn-success' : 'btn-primary')]) ?>
+    </div>
 
     <?php ActiveForm::end(); ?>
 

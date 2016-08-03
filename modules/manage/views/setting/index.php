@@ -64,8 +64,6 @@ $gridColumns = [
 
     <hr>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
         <?= Html::a('添加配置', ['create'], ['class' => 'btn btn-info']) ?>
     </p>

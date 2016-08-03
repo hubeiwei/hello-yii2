@@ -39,7 +39,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
 
-    <?= Html::submitButton('修改', ['class' => 'btn btn-primary']) ?>
+    <div class="form-group">
+        <?= Html::submitButton('保存', ['class' => 'btn btn-primary btn-block']) ?>
+    </div>
 
     <?php ActiveForm::end(); ?>
 

@@ -17,9 +17,13 @@ use yii\widgets\ActiveForm;
  * @var $model app\modules\user\models\RegisterForm
  */
 
-$this->title = '快速注册';
+$this->title = '注册';
 ?>
 <div class="site-register">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <hr>
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -36,7 +40,9 @@ $this->title = '快速注册';
 
     <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
 
-    <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
+    <div class="form-group">
+        <?= Html::submitButton('注册', ['class' => 'btn btn-primary btn-block']) ?>
+    </div>
 
     <?php ActiveForm::end(); ?>
 

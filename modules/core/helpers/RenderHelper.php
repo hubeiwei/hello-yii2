@@ -75,7 +75,7 @@ class RenderHelper
      * @return string
      * @throws \Exception
      */
-    public static function gridView($dataProvider, $searchModel, $gridColumns, $hasExport = false, $hasToolbar = true)
+    public static function gridView($dataProvider, $searchModel, $gridColumns, $hasExport = false, $hasToolbar = false)
     {
         $config = [
             'dataProvider' => $dataProvider,

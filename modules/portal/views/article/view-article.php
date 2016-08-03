@@ -1,6 +1,7 @@
 <?php
 
 use nezhelskoy\highlight\HighlightAsset;
+use yii\helpers\Html;
 
 /**
  * @var $this yii\web\View
@@ -14,6 +15,10 @@ $this->params['breadcrumbs'][] = $this->title;
 HighlightAsset::register($this);
 ?>
 <div class="article-view">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <hr>
 
     <p>作者：<?= $model->user->username ?></p>
 

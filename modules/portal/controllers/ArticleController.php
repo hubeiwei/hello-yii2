@@ -106,6 +106,8 @@ class ArticleController extends ModuleController
      */
     public function actionCreate()
     {
+        $this->layout = '@app/views/layouts/form';
+
         $form = new ArticleForm();
         $form->type = Yii::$app->request->get('type', Article::TYPE_MARKDOWN);
 
@@ -138,6 +140,8 @@ class ArticleController extends ModuleController
      */
     public function actionUpdate($id)
     {
+        $this->layout = '@app/views/layouts/form';
+
         $model = $this->findModel($id);
 
         if (!UserHelper::isBelongToUser($model->created_by)) {
