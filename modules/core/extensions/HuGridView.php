@@ -18,6 +18,11 @@ use kartik\grid\GridView;
  */
 class HuGridView extends GridView
 {
+    public $pager = [
+        'firstPageLabel' => '首页',
+        'lastPageLabel' => '尾页',
+    ];
+
     public $resizableColumns = false;
 
     public $responsiveWrap = false;
@@ -25,4 +30,6 @@ class HuGridView extends GridView
     public $hover = true;
 
     public $export = false;
+
+//    public $showPageSummary = true;
 }

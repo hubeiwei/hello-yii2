@@ -10,6 +10,8 @@ use Yii;
  */
 class HuExportMenu extends ExportMenu
 {
+//    public $batchSize = 500;
+
     /**
      * 打算在这里弄个导出时临时修改内存的，还在建设中
      *
