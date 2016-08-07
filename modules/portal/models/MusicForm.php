@@ -11,7 +11,7 @@ namespace app\modules\portal\models;
 
 use app\models\Music;
 use app\modules\core\extensions\HuCaptchaValidator;
-use app\modules\core\helpers\FileHelper;
+use app\modules\core\helpers\UserHelper;
 use yii\base\Model;
 
 class MusicForm extends Model
@@ -44,10 +44,15 @@ class MusicForm extends Model
      */
     public function scenarios()
     {
-        return [
-            'create' => ['track_title', 'music_file', 'visible', 'status', 'verifyCode'],
-            'update' => ['track_title', 'music_file', 'visible', 'status', 'verifyCode'],
+        $baseScenarios = ['track_title', 'music_file', 'visible', 'verifyCode'];
+        $scenarios = [
+            'create' => $baseScenarios += ['status'],
+            'update' => $baseScenarios,
         ];
+        if (UserHelper::isAdmin()) {
+            $scenarios['update'] += ['status'];
+        }
+        return $scenarios;
     }
 
     /**
@@ -57,7 +62,7 @@ class MusicForm extends Model
     {
         return [
             ['music_file', 'required', 'on' => 'create'],
-            ['music_file', 'file', 'maxSize' => FileHelper::MUSIC_SIZE],
+            ['music_file', 'file', 'maxSize' => Music::MUSIC_SIZE],
             ['music_file', 'verifyExtension'],//自带的格式验证经常不准，另外写了一个
             [['track_title', 'verifyCode'], 'required'],
             ['track_title', 'string', 'max' => 50],
@@ -71,9 +76,8 @@ class MusicForm extends Model
     public function verifyExtension($attribute, $params)
     {
         if (!$this->hasErrors()) {
-            $extension = FileHelper::MUSIC_EXTENSION;
-            if ($this->music_file->extension != $extension) {
-                $this->addError($attribute, '扩展名不是' . $extension);
+            if (!in_array($this->music_file->extension, Music::MUSIC_EXTENSION)) {
+                $this->addError($attribute, '扩展名无效');
             }
         }
     }

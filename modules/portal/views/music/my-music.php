@@ -1,7 +1,6 @@
 <?php
 
 use app\models\Music;
-use app\modules\core\helpers\FileHelper;
 use app\modules\core\helpers\RenderHelper;
 use kartik\grid\ActionColumn;
 use kartik\grid\SerialColumn;
@@ -91,7 +90,7 @@ $gridColumns = [
     $(".playlist").click(function () {
         $("#track_title").html($(this).html());
         var player = $("#player")[0];
-        var musicSrc = "<?= FileHelper::getMusicPathUrl() ?>" + $(this).data("music") + "." + "<?= FileHelper::MUSIC_EXTENSION ?>";
+        var musicSrc = "<?= Music::getMusicPathUrl() ?>" + $(this).data("music");
         if (player.src == musicSrc && !player.paused) {
             player.pause();
         } else if (player.src == musicSrc && player.paused) {
