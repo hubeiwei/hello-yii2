@@ -32,7 +32,7 @@ $assignedMenu = MenuHelper::getAssignedMenu(UserHelper::getUserId());
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => '网站后台',
+        'brandLabel' => Yii::$app->name . '后台',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -172,7 +172,7 @@ $assignedMenu = MenuHelper::getAssignedMenu(UserHelper::getUserId());
 </div>
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; LaoHu Yii2 <?= date('Y') ?></p>
+        <p class="pull-left">&copy; <?= Yii::$app->name . ' ' . date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

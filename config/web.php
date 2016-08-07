@@ -4,7 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
-    'name' => 'LaoHu Yii2',
+    'name' => 'Hello Yii2',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
