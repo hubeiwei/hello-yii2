@@ -54,10 +54,6 @@ class UserHelper
      * 获取用户ID，默认返回当前登录的用户ID
      *
      * @param string|null $userName
-     * @return bool|int|string
-     */
-    /**
-     * @param null $userName
      * @return false|int|null|string
      */
     public static function getUserId($userName = null)
