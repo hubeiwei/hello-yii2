@@ -10,10 +10,10 @@
 /**
  * Used for enhanced IDE code auto-completion.
  */
-class Yii extends \yii\BaseYii
+class Yii
 {
     /**
-     * @var \yii\console\Application|\yii\web\Application|MyWebApplication
+     * @var MyApplication
      */
     public static $app;
 }
@@ -21,13 +21,13 @@ class Yii extends \yii\BaseYii
 /**
  * @property User $user
  */
-abstract class MyWebApplication extends yii\web\Application
+class MyApplication
 {
 }
 
 /**
- * @property \app\models\User|\yii\web\IdentityInterface|null $identity
+ * @property \app\models\User $identity
  */
-class User extends \yii\web\User
+class User
 {
 }
