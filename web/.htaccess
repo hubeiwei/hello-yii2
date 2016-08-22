@@ -1,12 +1,4 @@
-#    Header set Access-Control-Allow-Origin *
-    Options +FollowSymLinks
-    IndexIgnore */*
-    RewriteEngine on
-    RewriteBase /
-
-    # if a directory or a file exists, use it directly
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-
-    # otherwise forward it to index.php
-    RewriteRule . index.php
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php

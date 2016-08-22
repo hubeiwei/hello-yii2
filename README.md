@@ -18,15 +18,15 @@
 
 # 项目部署
 
-## 配置
+## PHP配置
 
-* 在php扩展方面，composer和yii2都需要openssl扩展；我用的是mysql，需要pdo_mysql扩展；弄了文件上传的功能，需要fileinfo扩展。（因为还没开始学缓存什么的，所以可以用php7，速度很快）
+* 在php扩展方面，composer和yii2都需要openssl扩展；我用的是mysql，需要pdo_mysql扩展；弄了文件上传的功能，需要fileinfo扩展。
 
-* 因为要上传文件，需要去`php.ini`把`post_max_size`和`upload_max_filesize`两个值配置一下，程序上的文件大小限制在FileHelper类里，目前的设置是20MB
+* 因为要上传文件，需要去`php.ini`把`post_max_size`和`upload_max_filesize`两个值配置一下，程序上的文件大小限制在`app\models\Music`类里，目前的设置是20MB
 
 ## 安装
 
-* 你要有[composer](http://docs.phpcomposer.com/)，以及创建一个`utf8`数据库，因为用了新的用户表结构，所以不能和master分支共用一个数据库，在**数据库配置文件**配置好相关参数后，执行以下命令：
+* 你要有[composer](http://docs.phpcomposer.com/)，并创建一个`utf8`数据库，因为用了新的用户表结构，所以不能和master分支共用一个数据库，在**数据库配置文件**配置好相关参数后，执行以下命令：
 
 ```
 composer self-update
@@ -37,11 +37,26 @@ yii migrate --migrationPath=@mdm/admin/migrations
 yii migrate
 ```
 
-* 因为路由规则与后台菜单需要，需要把站点根目录设置为`/web`，apache需要开启rewrite，nginx还没用过，自行解决吧，以后再考虑如何处理这个问题。
+## 服务器配置
+
+因为路由规则与后台菜单需要，需要把`/web`设置为站点根目录。
+
+apache需要开启rewrite，`.htaccess`文件我已经配置放在`/web`目录里了。vhost配置可以和以下那么简单：
+
+```
+<VirtualHost *:80>
+    DocumentRoot "path/to/hello-yii2/web"
+    ServerName hello-yii2.dev
+</VirtualHost>
+```
+
+nginx可以参考[这篇文章](http://www.getyii.com/topic/31)。
+
+详情可以直接参考[官方文档](http://www.yiiframework.com/doc-2.0/guide-start-installation.html#configuring-web-servers)。
 
 ## 使用
 
-* 虽然我在**配置文件**配置好了我的163邮箱，但还是请改成自己的，谢谢合作。
+* 虽然我在**配置文件**配置好了我的163邮箱，但希望还是改成自己的邮箱，谢谢。
 
 * 后台的侧边菜单只能支持到二级，所以在添加菜单的时候需要注意，以后我再尝试解决这个问题。
 
@@ -58,7 +73,7 @@ yii migrate
 
 # 打赏
 
-如果觉得我的项目做的好的话，就给我打赏吧，以后我会用这些钱来学习以及购买服务器。
+如果觉得我的项目做的好的话，就给我打赏吧，以后我会更有动力去学习和分享更多yii2的内容。
 
 ![wechat](https://raw.githubusercontent.com/hubeiwei/hello-yii2/master/web/wechat_pay.png "微信")
 
