@@ -4,9 +4,9 @@
 
 这是我在空闲时间用yii2-basic来练手的项目，目前还在学习中，在此分享给大家，希望能得到些指点和建议，多学到点东西，也希望有同样热爱yii2的同学和我多多交流，互相学习，我的QQ是494364222。
 
-我的代码是在gii生成的基础上修改而来的，如果哪里看不懂或者代码还有更好的写法的话，就多多和我交流吧。
+我强迫症很严重，所以有可能会经常把代码简化，或者删改注释，或者把一些封装方式和方法的顺序以及一些命名会经常改来改去的，请见谅。
 
-另外就是我强迫症很严重，所以有可能会经常把代码简化，或者删改注释，或者把一些封装方式和方法的顺序以及一些命名会经常改来改去的，请见谅。
+# 结构
 
 （写给初学者的）除了框架本身的**入口文件**`/web/index.php`和**配置文件**`/config/web.php`以及**数据库配置文件**`/config/db.php`以外，其他你只需关注的地方如下：
 
@@ -14,7 +14,40 @@
 ---|---
 /models | model
 /modules | 模块，主要的东西都在这里了，模块的注释在**配置文件**里
-/views | 只是放一个布局文件而已
+/views | 目前只是放布局文件而已
+
+我的代码是在gii生成的model和CRUD代码上修改而来的，如果你也是这个套路的话，那我的代码应该不怎么难理解，需要说明一下的是model这一部分，首先我用gii生成model到`/models/base`目录下，取名为'ModelBase'，接着会在`/models`目录下新建一个'Model'来继承'ModelBase'，并加入以下几个方法来覆盖父类，以及一些关联查询的方法。
+
+```php
+/**
+ * @inheritdoc
+ */
+public function rules()
+{
+    return array_merge(parent::rules(), [
+    ]);
+}
+
+/**
+ * @inheritdoc
+ */
+public function attributes()
+{
+    return array_merge(parent::attributes(), [
+    ]);
+}
+
+/**
+ * @inheritdoc
+ */
+public function attributeLabels()
+{
+    return array_merge(parent::attributeLabels(), [
+    ]);
+}
+```
+
+这样做的好处是修改了数据库表结构后重新生成model可以直接覆盖'ModelBase'。
 
 # 项目部署
 
