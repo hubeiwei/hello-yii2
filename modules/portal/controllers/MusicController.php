@@ -90,8 +90,6 @@ class MusicController extends ModuleController
      */
     public function actionCreate()
     {
-        $this->layout = '@app/views/layouts/form';
-
         $form = new MusicForm();
         $form->scenario = 'create';
         if ($form->load(Yii::$app->request->post())) {
@@ -126,8 +124,6 @@ class MusicController extends ModuleController
      */
     public function actionUpdate($id)
     {
-        $this->layout = '@app/views/layouts/form';
-
         $model = $this->findModel($id);
 
         if (!UserHelper::isBelongToUser($model->user_id)) {

@@ -50,8 +50,6 @@ class UserDetailController extends ModuleController
      */
     public function actionUpdate($id)
     {
-        $this->layout = 'manage_form';
-
         $model = $this->findModel($id);
         $form = new UserDetailForm();
 

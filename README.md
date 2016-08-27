@@ -8,13 +8,27 @@
 
 # 结构
 
-（写给初学者的）除了框架本身的**入口文件**`/web/index.php`和**配置文件**`/config/web.php`以及**数据库配置文件**`/config/db.php`以外，其他你只需关注的地方如下：
+## 文件和目录
+
+（写给初学者的）除了**入口文件**`/web/index.php`、**配置文件**`/config/web.php`、**数据库配置文件**`/config/db.php`以外，其他你只需关注的地方如下：
 
 目录 | 说明
 ---|---
-/models | model
-/modules | 模块，主要的东西都在这里了，模块的注释在**配置文件**里
-/views | 目前只是放布局文件而已
+models | Model
+modules | 模块，主要的东西都在这里了，模块的注释在**配置文件**里
+views | 目前只是放布局文件而已
+
+## 视图布局
+
+```
+master(最外层)
+├ frontend(前台外层)
+│ ├ main(前台)
+│ └ user_form(用户模块表单)
+└ backend(后台)
+```
+
+## Model
 
 我的代码是在gii生成的model和CRUD代码上修改而来的，如果你也是这个套路的话，那我的代码应该不怎么难理解，需要说明一下的是model这一部分，首先我用gii生成model到`/models/base`目录下，取名为'ModelBase'，接着会在`/models`目录下新建一个'Model'来继承'ModelBase'，并加入以下几个方法来覆盖父类，以及一些关联查询的方法。
 

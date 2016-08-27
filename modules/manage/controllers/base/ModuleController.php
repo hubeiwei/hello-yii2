@@ -11,6 +11,6 @@ class ModuleController extends MasterController
     public function init()
     {
         parent::init();
-        $this->layout = 'main';
+        $this->layout = '@app/views/layouts/backend';
     }
 }

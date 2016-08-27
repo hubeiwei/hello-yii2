@@ -49,8 +49,6 @@ class UserController extends ModuleController
      */
     public function actionCreate()
     {
-        $this->layout = 'manage_form';
-
         $user = new User();
 
         if ($user->load(Yii::$app->request->post())) {
@@ -85,8 +83,6 @@ class UserController extends ModuleController
      */
     public function actionUpdate($id)
     {
-        $this->layout = 'manage_form';
-
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {

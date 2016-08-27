@@ -58,7 +58,7 @@ $config = [
         ],
         'admin' => [
             'class' => 'mdm\admin\Module',
-            'layout' => '@app/modules/manage/views/layouts/main',
+            'layout' => '@app/views/layouts/backend',
             'controllerMap' => [
                 'assignment' => [
                     'class' => 'mdm\admin\controllers\AssignmentController',
