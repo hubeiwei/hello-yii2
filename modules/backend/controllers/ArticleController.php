@@ -1,11 +1,11 @@
 <?php
 
-namespace app\modules\manage\controllers;
+namespace app\modules\backend\controllers;
 
 use app\models\Article;
 use app\models\search\ArticleSearch;
 use app\modules\core\helpers\EasyHelper;
-use app\modules\manage\controllers\base\ModuleController;
+use app\modules\backend\controllers\base\ModuleController;
 use app\modules\frontend\models\ArticleForm;
 use Yii;
 use yii\web\NotFoundHttpException;

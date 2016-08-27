@@ -25,18 +25,18 @@ class m160723_055600_insert_rbac_data extends Migration
             ['/admin/rule/index', 2, $time, $time],
             ['/gii/*', 2, $time, $time],
             ['/gii/default/index', 2, $time, $time],
-            ['/manage/article/*', 2, $time, $time],
-            ['/manage/article/index', 2, $time, $time],
-            ['/manage/default/*', 2, $time, $time],
-            ['/manage/default/index', 2, $time, $time],
-            ['/manage/music/*', 2, $time, $time],
-            ['/manage/music/index', 2, $time, $time],
-            ['/manage/setting/*', 2, $time, $time],
-            ['/manage/setting/index', 2, $time, $time],
-            ['/manage/user-detail/*', 2, $time, $time],
-            ['/manage/user-detail/index', 2, $time, $time],
-            ['/manage/user/*', 2, $time, $time],
-            ['/manage/user/index', 2, $time, $time],
+            ['/backend/article/*', 2, $time, $time],
+            ['/backend/article/index', 2, $time, $time],
+            ['/backend/default/*', 2, $time, $time],
+            ['/backend/default/index', 2, $time, $time],
+            ['/backend/music/*', 2, $time, $time],
+            ['/backend/music/index', 2, $time, $time],
+            ['/backend/setting/*', 2, $time, $time],
+            ['/backend/setting/index', 2, $time, $time],
+            ['/backend/user-detail/*', 2, $time, $time],
+            ['/backend/user-detail/index', 2, $time, $time],
+            ['/backend/user/*', 2, $time, $time],
+            ['/backend/user/index', 2, $time, $time],
         ]);
 
         $this->batchInsert('auth_item', ['name', 'type', 'description', 'created_at', 'updated_at'], [
@@ -50,13 +50,13 @@ class m160723_055600_insert_rbac_data extends Migration
         ]);
 
         $this->batchInsert('menu', ['name', 'parent', 'route', 'order'], [
-            ['首页', null, '/manage/default/index', 1],
+            ['首页', null, '/backend/default/index', 1],
             ['前台', null, null, 2],
-            ['文章管理', 2, '/manage/article/index', 1],
-            ['音乐管理', 2, '/manage/music/index', 2],
+            ['文章管理', 2, '/backend/article/index', 1],
+            ['音乐管理', 2, '/backend/music/index', 2],
             ['用户', null, null, 3],
-            ['用户管理', 5, '/manage/user/index', 1],
-            ['用户资料', 5, '/manage/user-detail/index', 2],
+            ['用户管理', 5, '/backend/user/index', 1],
+            ['用户资料', 5, '/backend/user-detail/index', 2],
             ['权限管理', null, null, 4],
             ['分配', 8, '/admin/assignment/index', 1],
             ['角色列表', 8, '/admin/role/index', 2],
@@ -65,7 +65,7 @@ class m160723_055600_insert_rbac_data extends Migration
             ['菜单列表', 8, '/admin/menu/index', 5],
             ['路由列表', 8, '/admin/route/index', 6],
             ['系统', null, null, 5],
-            ['网站配置', 15, '/manage/setting/index', 1],
+            ['网站配置', 15, '/backend/setting/index', 1],
             ['代码生成', 15, '/gii/default/index', 2],
         ]);
     }

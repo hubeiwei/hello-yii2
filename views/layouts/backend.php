@@ -15,7 +15,7 @@ use yii\widgets\Breadcrumbs;
  * @var $content string
  */
 
-$this->registerCssFile('@web/css/manage.css', ['depends' => AppAsset::className()]);
+$this->registerCssFile('@web/css/backend.css', ['depends' => AppAsset::className()]);
 
 $assignedMenu = MenuHelper::getAssignedMenu(UserHelper::getUserId());
 
@@ -126,7 +126,7 @@ NavBar::end();
             echo Breadcrumbs::widget([
                 'homeLink' => [
                     'label' => '首页',
-                    'url' => '/manage'
+                    'url' => ['/backend'],
                 ],
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]);

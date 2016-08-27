@@ -32,7 +32,7 @@ echo Nav::widget([
     'items' => [
         [
             'label' => '后台管理',
-            'url' => ['/manage'],
+            'url' => ['/backend'],
             'visible' => UserHelper::isAdmin(),
         ],
         [

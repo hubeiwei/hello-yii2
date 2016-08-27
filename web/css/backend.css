@@ -12,7 +12,11 @@ html, body {
     border-radius: 0;
 }
 
-.submenu a:hover, .submenu a.active, .submenu a.active, .submenu a.active:hover, .submenu a.active:active {
+.submenu a:hover,
+.submenu a.active,
+.submenu a.active,
+.submenu a.active:hover,
+.submenu a.active:active {
     background: #44b5f6;
     border-color: #44b5f6;
     color: #fff;

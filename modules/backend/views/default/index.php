@@ -9,7 +9,7 @@ use yii\helpers\Html;
 $this->title = '首页';
 //$this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 ?>
-<div class="manage-default-index">
+<div class="backend-default-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

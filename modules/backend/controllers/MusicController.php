@@ -1,11 +1,11 @@
 <?php
 
-namespace app\modules\manage\controllers;
+namespace app\modules\backend\controllers;
 
 use app\models\Music;
 use app\models\search\MusicSearch;
 use app\modules\core\helpers\EasyHelper;
-use app\modules\manage\controllers\base\ModuleController;
+use app\modules\backend\controllers\base\ModuleController;
 use app\modules\frontend\models\MusicForm;
 use Yii;
 use yii\web\NotFoundHttpException;

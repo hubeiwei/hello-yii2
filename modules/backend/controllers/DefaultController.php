@@ -1,10 +1,10 @@
 <?php
-namespace app\modules\manage\controllers;
+namespace app\modules\backend\controllers;
 
-use app\modules\manage\controllers\base\ModuleController;
+use app\modules\backend\controllers\base\ModuleController;
 
 /**
- * Default controller for the `manage` module
+ * Default controller for the `backend` module
  */
 class DefaultController extends ModuleController
 {

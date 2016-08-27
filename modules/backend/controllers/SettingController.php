@@ -1,11 +1,11 @@
 <?php
 
-namespace app\modules\manage\controllers;
+namespace app\modules\backend\controllers;
 
 use app\models\search\SettingSearch;
 use app\models\Setting;
 use app\modules\core\helpers\EasyHelper;
-use app\modules\manage\controllers\base\ModuleController;
+use app\modules\backend\controllers\base\ModuleController;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;

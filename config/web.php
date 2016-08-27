@@ -85,8 +85,8 @@ $config = [
             'class' => 'app\modules\frontend\Module',
         ],
         //后台
-        'manage' => [
-            'class' => 'app\modules\manage\Module',
+        'backend' => [
+            'class' => 'app\modules\backend\Module',
         ],
         //用户
         'user' => [
