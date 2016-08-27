@@ -22,8 +22,8 @@ NavBar::begin([
 echo Nav::widget([
     'options' => ['class' => 'navbar-nav navbar-left'],
     'items' => [
-        ['label' => '文章', 'url' => ['/portal/article/index']],
-        ['label' => '音乐', 'url' => ['/portal/music/index']],
+        ['label' => '文章', 'url' => ['/frontend/article/index']],
+        ['label' => '音乐', 'url' => ['/frontend/music/index']],
     ],
 ]);
 
@@ -55,11 +55,11 @@ echo Nav::widget([
                 ],
                 [
                     'label' => '我的文章',
-                    'url' => ['/portal/article/my-article'],
+                    'url' => ['/frontend/article/my-article'],
                 ],
                 [
                     'label' => '我的音乐',
-                    'url' => ['/portal/music/my-music'],
+                    'url' => ['/frontend/music/my-music'],
                 ],
                 '<li class="divider"></li>',
                 [

@@ -1,5 +1,5 @@
 <?php
-namespace app\modules\portal\controllers\base;
+namespace app\modules\frontend\controllers\base;
 
 use app\modules\core\extensions\MasterController;
 

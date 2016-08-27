@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 
 /**
  * @var $this yii\web\View
- * @var $model app\modules\portal\models\ArticleForm
+ * @var $model app\modules\frontend\models\ArticleForm
  * @var $form yii\widgets\ActiveForm
  */
 ?>

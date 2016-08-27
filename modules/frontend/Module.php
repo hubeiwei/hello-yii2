@@ -1,16 +1,20 @@
 <?php
 
-namespace app\modules\portal;
+namespace app\modules\frontend;
 
 /**
- * portal module definition class
+ * frontend module definition class
  */
 class Module extends \yii\base\Module
 {
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'app\modules\portal\controllers';
+    public $controllerNamespace = 'app\modules\frontend\controllers';
+    /**
+     * @inheritdoc
+     */
+    public $defaultRoute = 'article';
 
     /**
      * @inheritdoc

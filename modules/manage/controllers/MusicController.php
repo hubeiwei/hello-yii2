@@ -6,7 +6,7 @@ use app\models\Music;
 use app\models\search\MusicSearch;
 use app\modules\core\helpers\EasyHelper;
 use app\modules\manage\controllers\base\ModuleController;
-use app\modules\portal\models\MusicForm;
+use app\modules\frontend\models\MusicForm;
 use Yii;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
@@ -79,7 +79,7 @@ class MusicController extends ModuleController
             $form->setAttributes($model->getAttributes());
         }
 
-        return $this->render('@app/modules/portal/views/music/update', [
+        return $this->render('@app/modules/frontend/views/music/update', [
             'model' => $form,
         ]);
     }

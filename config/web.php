@@ -51,7 +51,7 @@ $config = [
     'params' => $params,
     'language' => 'zh-CN',
     'timeZone' => 'Asia/Shanghai',
-    'defaultRoute' => '/portal/article',
+    'defaultRoute' => '/frontend',
     'modules' => [
         'gridview' => [
             'class' => 'kartik\grid\Module',
@@ -80,6 +80,10 @@ $config = [
         'core' => [
             'class' => 'app\modules\core\Module',
         ],
+        //前台
+        'frontend' => [
+            'class' => 'app\modules\frontend\Module',
+        ],
         //后台
         'manage' => [
             'class' => 'app\modules\manage\Module',
@@ -88,10 +92,6 @@ $config = [
         'user' => [
             'class' => 'app\modules\user\Module',
         ],
-        //前台
-        'portal' => [
-            'class' => 'app\modules\portal\Module',
-        ],
     ],
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
@@ -99,7 +99,7 @@ $config = [
             'debug/*',
             'redactor/*',
             'core/*',
-            'portal/*',
+            'frontend/*',
             'user/*',
         ]
     ],

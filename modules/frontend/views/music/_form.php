@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 
 /**
  * @var $this yii\web\View
- * @var $model app\modules\portal\models\MusicForm
+ * @var $model app\modules\frontend\models\MusicForm
  */
 ?>
 

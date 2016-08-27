@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace app\modules\portal\models;
+namespace app\modules\frontend\models;
 
 use app\models\Music;
 use app\modules\core\extensions\HuCaptchaValidator;

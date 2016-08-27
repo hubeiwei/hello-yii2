@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\portal\controllers;
+namespace app\modules\frontend\controllers;
 
 use app\models\Music;
 use app\models\search\MusicSearch;
 use app\modules\core\helpers\EasyHelper;
 use app\modules\core\helpers\UserHelper;
-use app\modules\portal\controllers\base\ModuleController;
-use app\modules\portal\models\MusicForm;
+use app\modules\frontend\controllers\base\ModuleController;
+use app\modules\frontend\models\MusicForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;

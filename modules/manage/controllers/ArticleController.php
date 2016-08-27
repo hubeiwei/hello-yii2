@@ -6,7 +6,7 @@ use app\models\Article;
 use app\models\search\ArticleSearch;
 use app\modules\core\helpers\EasyHelper;
 use app\modules\manage\controllers\base\ModuleController;
-use app\modules\portal\models\ArticleForm;
+use app\modules\frontend\models\ArticleForm;
 use Yii;
 use yii\web\NotFoundHttpException;
 
@@ -38,7 +38,7 @@ class ArticleController extends ModuleController
      */
     public function actionView($id)
     {
-        return $this->render('@app/modules/portal/views/article/view', [
+        return $this->render('@app/modules/frontend/views/article/view', [
             'model' => $this->findModel($id),
         ]);
     }
@@ -71,7 +71,7 @@ class ArticleController extends ModuleController
             $form->published_at = date('Y-m-d H:i', $model->published_at);
         }
 
-        return $this->render('@app/modules/portal/views/article/update', [
+        return $this->render('@app/modules/frontend/views/article/update', [
             'model' => $form,
             'id' => $model->id,
         ]);

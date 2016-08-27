@@ -4,14 +4,15 @@ use yii\helpers\Html;
 
 /**
  * @var $this yii\web\View
- * @var $model app\modules\portal\models\MusicForm
+ * @var $model app\modules\frontend\models\MusicForm
  */
 
-$this->title = '上传音乐';
+$this->title = '修改音乐: ' . $model->track_title;
 $this->params['breadcrumbs'][] = ['label' => '音乐', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = ['label' => $model->track_title];
+$this->params['breadcrumbs'][] = '修改';
 ?>
-<div class="music-create">
+<div class="music-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

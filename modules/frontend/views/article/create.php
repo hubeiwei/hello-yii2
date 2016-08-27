@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 /**
  * @var $this yii\web\View
- * @var $model app\modules\portal\models\ArticleForm
+ * @var $model app\modules\frontend\models\ArticleForm
  */
 
 $this->title = '发布文章';
