@@ -30,36 +30,7 @@ master(最外层)
 
 ## Model
 
-我的代码是在gii生成的model和CRUD代码上修改而来的，如果你也是这个套路的话，那我的代码应该不怎么难理解，需要说明一下的是model这一部分，首先我用gii生成model到`/models/base`目录下，取名为'ModelBase'，接着会在`/models`目录下新建一个'Model'来继承'ModelBase'，并加入以下几个方法来覆盖父类，以及一些关联查询的方法。
-
-```php
-/**
- * @inheritdoc
- */
-public function rules()
-{
-    return array_merge(parent::rules(), [
-    ]);
-}
-
-/**
- * @inheritdoc
- */
-public function attributes()
-{
-    return array_merge(parent::attributes(), [
-    ]);
-}
-
-/**
- * @inheritdoc
- */
-public function attributeLabels()
-{
-    return array_merge(parent::attributeLabels(), [
-    ]);
-}
-```
+我的代码是在gii生成的model和CRUD代码上修改而来的，如果你也是这个套路的话，那我的代码应该不怎么难理解，需要说明一下的是model这一部分，首先我用gii生成model到`/models/base`目录下，取名为'ModelBase'，接着会在`/models`目录下新建一个'Model'来继承'ModelBase'，以后有代码都写到'Model'里。
 
 这样做的好处是修改了数据库表结构后重新生成model可以直接覆盖'ModelBase'。
 
