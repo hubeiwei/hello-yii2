@@ -98,11 +98,11 @@ a.desc:after {
     }
 }
 
-.table-responsive table th {
+.grid-view th {
     text-align: center;
 }
 
-.table-responsive table td {
+.grid-view td {
     text-align: center;
 }
 
