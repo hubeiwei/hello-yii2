@@ -1,16 +1,16 @@
 <?php
 
+use app\assets\AppAsset;
+use yii\helpers\Html;
+
 /**
  * @var $this \yii\web\View
  * @var $content string
  */
 
-use app\assets\AppAsset;
-use yii\helpers\Html;
-
 AppAsset::register($this);
+$this->beginPage();
 ?>
-<?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>

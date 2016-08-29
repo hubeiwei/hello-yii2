@@ -73,7 +73,6 @@ echo Nav::widget([
 
 NavBar::end();
 ?>
-
 <div class="container">
     <?php
     echo Breadcrumbs::widget([
@@ -137,4 +136,3 @@ NavBar::end();
     ?>
 </div>
 <?php $this->endContent(); ?>
-

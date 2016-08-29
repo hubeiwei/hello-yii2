@@ -127,9 +127,6 @@ $config['components']['mailer'] = [
     ],
 ];
 
-/**
- * TODO 因为后台菜单需要，所以需要把站点根目录设置为/web，apache需要开启rewrite，nginx还没用过，自行解决吧，以后再考虑如何处理这个问题。
- */
 $config['components']['urlManager'] = [
     'enablePrettyUrl' => true,
     'showScriptName' => false,

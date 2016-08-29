@@ -17,9 +17,9 @@ use yii\widgets\Breadcrumbs;
 
 $this->registerCssFile('@web/css/backend.css', ['depends' => AppAsset::className()]);
 
-$assignedMenu = MenuHelper::getAssignedMenu(UserHelper::getUserId());
-
 $this->beginContent('@app/views/layouts/master.php');
+
+$assignedMenu = MenuHelper::getAssignedMenu(UserHelper::getUserId());
 
 NavBar::begin([
     'brandLabel' => Yii::$app->name . '后台',
@@ -50,7 +50,7 @@ NavBar::end();
             <div class="list-group" id="nav-menu">
                 <?php
                 /**
-                 * TODO 目前输出菜单的代码只能支持到二级，以后再尝试解决这个问题。
+                 * TODO 只支持到二级
                  */
                 $currentUrl = explode('?', Url::current())[0];
                 $currentUrlSnippet = explode('/', $currentUrl);
