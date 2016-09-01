@@ -112,9 +112,9 @@ NavBar::end();
                     ?>
                     <script>
                         var active_menu = $("[data-target = '#<?=$activeMenu ?>']");
-                        active_menu.attr("class", active_menu.attr("class") + " active");
+                        active_menu.addClass("active");
                         var active_menu_group = $("#<?=$activeMenu ?>");
-                        active_menu_group.attr("class", active_menu_group.attr("class") + " in");
+                        active_menu_group.addClass("in");
                     </script>
                     <?php
                 }
