@@ -1,5 +1,5 @@
 <?php
-namespace app\modules\core\extensions\HuExportMenu;
+namespace app\modules\core\extensions;
 
 use kartik\export\ExportMenu;
 use Yii;
@@ -10,6 +10,12 @@ use Yii;
  */
 class HuExportMenu extends ExportMenu
 {
+    public $exportFormView = '@vendor/kartik-v/yii2-export/views/_form';
+
+    public $exportColumnsView = '@vendor/kartik-v/yii2-export/views/_columns';
+
+    public $afterSaveView = '@vendor/kartik-v/yii2-export/views/_view';
+
 //    public $batchSize = 500;
 
     /**
