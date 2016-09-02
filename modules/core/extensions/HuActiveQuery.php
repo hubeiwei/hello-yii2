@@ -54,7 +54,7 @@ class HuActiveQuery extends ActiveQuery
     }
 
     /**
-     * @see app\modules\core\helpers\RenderHelper::dateRangePicker()
+     * @see \app\modules\core\helpers\RenderHelper::dateRangePicker()
      *
      * @param string $attribute
      * @param string $value
@@ -69,13 +69,13 @@ class HuActiveQuery extends ActiveQuery
 
             $from = strtotime(trim($conditions[0]));
             if (!$from || !isset($conditions[1])) {
-                return false;
+                return $this;
             }
 
             if ($date_only) {
                 $to = strtotime(trim($conditions[1])) + 60 * 60 * 24;
             } else {
-                $to = strtotime(trim($conditions[1]));
+                $to = strtotime(trim($conditions[1]) . ':59');// TODO 目前的时间插件只能精确到分，所以结尾时间需要加上':59'
             }
 
             if (isset($conditions[0]) && isset($conditions[1])) {
