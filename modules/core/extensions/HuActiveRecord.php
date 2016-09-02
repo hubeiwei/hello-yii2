@@ -77,5 +77,6 @@ class HuActiveRecord extends ActiveRecord
         if ($this->hasErrors()) {
             return array_values($this->getErrors())[0][0];
         }
+        return '';
     }
 }

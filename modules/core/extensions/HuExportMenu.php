@@ -2,7 +2,6 @@
 namespace app\modules\core\extensions;
 
 use kartik\export\ExportMenu;
-use Yii;
 
 /**
  * 需要依赖kartik-v/yii2-export
