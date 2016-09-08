@@ -44,12 +44,17 @@ master(最外层)
 
 ## 安装
 
-* 你要有[composer](http://docs.phpcomposer.com/)，并创建一个`utf8`数据库，因为用了新的用户表结构，所以不能和master分支共用一个数据库，在**数据库配置文件**配置好相关参数后，执行以下命令：
+你要有[composer](http://docs.phpcomposer.com/)，执行以下命令：
 
 ```
 composer self-update
 composer global require "fxp/composer-asset-plugin:^1.2.0"
 composer install
+```
+
+创建一个`utf8`数据库，因为用了新的用户表结构，所以不能和master分支共用一个数据库，在**数据库配置文件**配置好相关参数后，执行以下命令：
+
+```
 yii migrate --migrationPath=@yii/rbac/migrations
 yii migrate --migrationPath=@mdm/admin/migrations
 yii migrate
@@ -59,7 +64,7 @@ yii migrate
 
 因为路由规则与后台菜单需要，需要把`/web`设置为站点根目录。
 
-apache需要开启rewrite，`.htaccess`文件我已经配置放在`/web`目录里了。vhost配置可以和以下那么简单：
+apache需要开启rewrite，`.htaccess`文件我已经配置好放在`/web`目录里了。vhost配置可以和以下那么简单：
 
 ```
 <VirtualHost *:80>
