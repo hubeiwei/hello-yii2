@@ -1,6 +1,7 @@
 <?php
 
 use app\modules\core\extensions\HuCaptcha;
+use kartik\password\PasswordInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -24,8 +25,12 @@ $this->title = '登录';
         'maxlength' => true,
     ]) ?>
 
-    <?= $form->field($model, 'password')->passwordInput([
-        'maxlength' => true,
+    <?= $form->field($model, 'password')->widget(PasswordInput::className(), [
+        'options' => ['maxlength' => 20],
+        'pluginOptions' => [
+            'showMeter' => false,
+            'mainTemplate' => '{input}',
+        ],
     ]) ?>
 
     <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
