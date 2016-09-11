@@ -46,20 +46,26 @@ class RenderHelper
             'convertFormat' => true,
             'readonly' => true,
             'pluginOptions' => [
-                'separator' => ' - ',
+                'showDropdowns' => true,
+                'locale' => [
+                    'separator' => ' - ',
+                ]
             ],
         ];
 
         if ($dateOnly) {
-            $setting['pluginOptions'] += [
+            $setting['pluginOptions']['locale'] += [
                 'format' => 'Y/m/d',
             ];
         } else {
+            $setting['pluginOptions']['locale'] += [
+                'format' => 'Y/m/d H:i:s',
+            ];
             $setting['pluginOptions'] += [
-                'format' => 'Y/m/d H:i',
                 'timePicker' => true,
-                'timePicker12Hour' => false,
+                'timePicker24Hour' => true,
                 'timePickerIncrement' => 1,
+                'timePickerSeconds' => true,
             ];
         }
 

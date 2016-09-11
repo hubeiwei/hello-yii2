@@ -73,9 +73,9 @@ class HuActiveQuery extends ActiveQuery
             }
 
             if ($date_only) {
-                $to = strtotime(trim($conditions[1])) + 60 * 60 * 24;
+                $to = strtotime(trim($conditions[1])) + 24 * 60 * 60;
             } else {
-                $to = strtotime(trim($conditions[1]) . ':59');// TODO 目前的时间插件只能精确到分，所以结尾时间需要加上':59'
+                $to = strtotime(trim($conditions[1]));
             }
 
             if (isset($conditions[0]) && isset($conditions[1])) {
