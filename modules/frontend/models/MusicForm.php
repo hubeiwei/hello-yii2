@@ -76,7 +76,7 @@ class MusicForm extends Model
     public function verifyExtension($attribute, $params)
     {
         if (!$this->hasErrors()) {
-            if (!in_array($this->music_file->extension, Music::MUSIC_EXTENSION)) {
+            if (!in_array($this->music_file->extension, Music::$music_extension)) {
                 $this->addError($attribute, '扩展名无效');
             }
         }

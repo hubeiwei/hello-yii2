@@ -12,8 +12,8 @@ use yii\helpers\Url;
 class Music extends MusicBase
 {
     const MUSIC_PATH = 'file/music/';
-    const MUSIC_EXTENSION = ['mp3'];
     const MUSIC_SIZE = 20971520;
+    public static $music_extension = ['mp3'];
 
     const VISIBLE_YES = 'Y';
     const VISIBLE_NO = 'N';
