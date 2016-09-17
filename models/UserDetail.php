@@ -3,7 +3,6 @@
 namespace app\models;
 
 use app\models\base\UserDetailBase;
-use Yii;
 use yii\behaviors\TimestampBehavior;
 
 class UserDetail extends UserDetailBase
@@ -45,16 +44,6 @@ class UserDetail extends UserDetailBase
     {
         return array_merge(parent::rules(), [
             ['gender', 'in', 'range' => self::$gender_array],
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributes()
-    {
-        return array_merge(parent::attributes(), [
-            'user.username',
         ]);
     }
 

@@ -18,17 +18,13 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 $gridColumns = [
     ['class' => SerialColumn::className()],
 
+    'user_id',
     [
-        'attribute' => 'user_id',
-        'headerOptions' => ['width' => 100],
-    ],
-    [
-        'attribute' => 'user.username',
+        'attribute' => 'username',
         'value' => function ($model) {
             return Html::a($model->user['username'], ['user/index', 'UserSearch[id]' => $model->user_id]);
         },
         'format' => 'html',
-        'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'avatar_file',
@@ -40,23 +36,17 @@ $gridColumns = [
             return UserDetail::$gender_map[$model->gender];
         },
         'filter' => RenderHelper::dropDownFilter('UserDetailSearch[gender]', $searchModel->gender, UserDetail::$gender_map),
-        'headerOptions' => ['width' => 100],
     ],
     [
         'attribute' => 'birthday',
         'format' => 'date',
         'filter' => RenderHelper::dateRangePicker($searchModel, 'birthday'),
-        'headerOptions' => ['width' => 100],
     ],
-    [
-        'attribute' => 'phone',
-        'headerOptions' => ['width' => 120],
-    ],
+    'phone',
     [
         'attribute' => 'updated_at',
         'format' => 'dateTime',
         'filter' => RenderHelper::dateRangePicker($searchModel, 'updated_at'),
-        'headerOptions' => ['width' => 160],
     ],
 
     [
