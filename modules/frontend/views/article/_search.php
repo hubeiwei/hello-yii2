@@ -27,13 +27,16 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'published_at')->widget(DateRangePicker::className(), [
         'convertFormat' => true,
-        'readonly' => true,
         'pluginOptions' => [
-            'separator' => ' - ',
-            'format' => 'Y/m/d H:i',
+            'showDropdowns' => true,
+            'locale' => [
+                'separator' => ' - ',
+                'format' => 'Y/m/d H:i:s',
+            ],
             'timePicker' => true,
-            'timePicker12Hour' => false,
+            'timePicker24Hour' => true,
             'timePickerIncrement' => 1,
+            'timePickerSeconds' => true,
         ],
     ])->label($sort->link('published_at')) ?>
 

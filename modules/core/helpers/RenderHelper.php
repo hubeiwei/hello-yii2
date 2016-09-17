@@ -44,7 +44,6 @@ class RenderHelper
             'model' => $searchModel,
             'attribute' => $attribute,
             'convertFormat' => true,
-            'readonly' => true,
             'pluginOptions' => [
                 'showDropdowns' => true,
                 'locale' => [
@@ -54,13 +53,9 @@ class RenderHelper
         ];
 
         if ($dateOnly) {
-            $setting['pluginOptions']['locale'] += [
-                'format' => 'Y/m/d',
-            ];
+            $setting['pluginOptions']['locale']['format'] = 'Y/m/d';
         } else {
-            $setting['pluginOptions']['locale'] += [
-                'format' => 'Y/m/d H:i:s',
-            ];
+            $setting['pluginOptions']['locale']['format'] = 'Y/m/d H:i:s';
             $setting['pluginOptions'] += [
                 'timePicker' => true,
                 'timePicker24Hour' => true,
