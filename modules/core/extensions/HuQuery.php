@@ -1,18 +1,17 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: HBW
- * Date: 2016/4/1
- * Time: 23:35
- * To change this template use File | Setting | File Templates.
+ * User: hubeiwei
+ * Date: 2016/9/17
+ * Time: 18:39
  */
 
 namespace app\modules\core\extensions;
 
 use app\modules\core\helpers\EasyHelper;
-use yii\db\ActiveQuery;
+use yii\db\Query;
 
-class HuActiveQuery extends ActiveQuery
+class HuQuery extends Query
 {
     /**
      * @param string $attribute
