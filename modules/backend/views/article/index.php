@@ -75,6 +75,6 @@ $gridColumns = [
 
     <hr>
 
-    <?= RenderHelper::gridView($dataProvider, $searchModel, $gridColumns) ?>
+    <?= RenderHelper::gridView($dataProvider, $gridColumns, $searchModel) ?>
 
 </div>

@@ -69,37 +69,31 @@ class RenderHelper
 
     /**
      * @param $dataProvider
-     * @param $searchModel
      * @param $gridColumns
+     * @param $searchModel
      * @param bool $hasExport
      * @param bool $hasToolbar
      * @return string
      * @throws \Exception
      */
-    public static function gridView($dataProvider, $searchModel, $gridColumns, $hasExport = false, $hasToolbar = false)
+    public static function gridView($dataProvider, $gridColumns, $searchModel = null, $hasExport = false, $hasToolbar = false)
     {
         $config = [
             'dataProvider' => $dataProvider,
             'columns' => $gridColumns,
         ];
 
-        $data = '';
+        $export = $hasExport ? HuExportMenu::widget($config) : '';
 
-        //ExportMenu
-        if ($hasExport) {
-            $data .= '<p>';
-            $data .= HuExportMenu::widget($config);
-            $data .= '</p>';
+        $gridConfig = $config;
+        if ($searchModel !== null) {
+            $gridConfig['filterModel'] = $searchModel;
+        }
+        $toolBar = $hasToolbar ? '{toolbar}' : '';
+        if ($export || $toolBar) {
+            $gridConfig += ['layout' => '<p>' . $toolBar . $export . '</p>{summary}{items}{pager}'];
         }
 
-        $gridConfig = $config + ['filterModel' => $searchModel];
-        if ($hasToolbar) {
-            $gridConfig += ['layout' => '<p>{toolbar}</p>{summary}{items}{pager}'];
-        }
-
-        //GridView
-        $data .= HuGridView::widget($gridConfig);
-
-        return $data;
+        return HuGridView::widget($gridConfig);
     }
 }

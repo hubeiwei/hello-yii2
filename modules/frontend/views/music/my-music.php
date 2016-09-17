@@ -83,7 +83,7 @@ $gridColumns = [
         <?= Html::a('添加音乐', ['create'], ['class' => 'btn btn-info']) ?>
     </p>
 
-    <?= RenderHelper::gridView($dataProvider, $searchModel, $gridColumns) ?>
+    <?= RenderHelper::gridView($dataProvider, $gridColumns, $searchModel) ?>
 
 </div>
 <script>

@@ -58,6 +58,6 @@ $gridColumns = [
         <?= Html::a('添加用户', ['create'], ['class' => 'btn btn-info']) ?>
     </p>
 
-    <?= RenderHelper::gridView($dataProvider, $searchModel, $gridColumns) ?>
+    <?= RenderHelper::gridView($dataProvider, $gridColumns, $searchModel) ?>
     
 </div>
