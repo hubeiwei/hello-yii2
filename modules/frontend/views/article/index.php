@@ -9,7 +9,10 @@ use yii\widgets\LinkPager;
 
 /**
  * @var $this yii\web\View
- * @var $searchModel app\models\search\ArticleSearch
+ * @var $title string
+ * @var $content string
+ * @var $username string
+ * @var $published_at string
  * @var $dataProvider yii\data\ActiveDataProvider
  */
 
@@ -43,8 +46,11 @@ $this->title = '文章';
                     [
                         'label' => '搜索文章',
                         'content' => $this->render('_search', [
-                            'model' => $searchModel,
                             'sort' => $dataProvider->sort,
+                            'title' => $title,
+                            'content' => $content,
+                            'username' => $username,
+                            'published_at' => $published_at,
                         ]),
                     ]
                 ],
@@ -62,7 +68,7 @@ $this->title = '文章';
                             ?>
                             <a class="list-group-item" href="<?= Url::to(['view-article', 'id' => $article['id']]) ?>">
                                 <span class="badge"><?= date('m-d H:i', $article['published_at']) ?></span>
-                                <span class="badge"><?= $article['user']['username'] ?></span>
+                                <span class="badge"><?= $article['username'] ?></span>
                                 <?= $article['title'] ?>
                             </a>
                             <?php

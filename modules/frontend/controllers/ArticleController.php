@@ -4,11 +4,14 @@ namespace app\modules\frontend\controllers;
 
 use app\models\Article;
 use app\models\search\ArticleSearch;
+use app\models\User;
+use app\modules\core\extensions\HuQuery;
 use app\modules\core\helpers\EasyHelper;
 use app\modules\core\helpers\UserHelper;
 use app\modules\frontend\controllers\base\ModuleController;
 use app\modules\frontend\models\ArticleForm;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 
@@ -60,11 +63,51 @@ class ArticleController extends ModuleController
      */
     public function actionIndex()
     {
-        $searchModel = new ArticleSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $title = Yii::$app->request->get('title');
+        $content = Yii::$app->request->get('content');
+        $username = Yii::$app->request->get('username');
+        $published_at = Yii::$app->request->get('published_at');
+
+        $query = (new HuQuery())
+            ->from(['article' => Article::tableName()])
+            ->select([
+                'article.id',
+                'title',
+                'published_at',
+                'user.username',
+            ])
+            ->leftJoin(['user' => User::tableName()], 'user.id = article.created_by')
+            ->where([
+                'visible' => Article::VISIBLE_YES,
+                'article.status' => Article::STATUS_ENABLE,
+            ])
+            ->andWhere(['<=', 'published_at', time()])
+            ->andFilterWhere(['like', 'title', $title])
+            ->andFilterWhere(['like', 'content', $content])
+            ->andFilterWhere(['user.username' => $username])
+            ->timeRangeFilter('published_at', $published_at, true);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => ['published_at' => SORT_DESC],
+                'attributes' => [
+                    'title',
+                    'content',
+                    'username',
+                    'published_at',
+                ],
+            ],
+            'pagination' => [
+                'pageSize' => 15,
+            ],
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
+            'title' => $title,
+            'content' => $content,
+            'username' => $username,
+            'published_at' => $published_at,
             'dataProvider' => $dataProvider,
         ]);
     }
