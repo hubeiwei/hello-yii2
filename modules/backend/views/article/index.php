@@ -20,7 +20,7 @@ $gridColumns = [
 
     'title',
     [
-        'attribute' => 'user.username',
+        'attribute' => 'username',
         'headerOptions' => ['width' => 160],
     ],
     [
@@ -74,8 +74,6 @@ $gridColumns = [
     <h1><?= Html::encode($this->title) ?></h1>
 
     <hr>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= RenderHelper::gridView($dataProvider, $searchModel, $gridColumns) ?>
 

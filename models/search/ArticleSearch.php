@@ -21,8 +21,28 @@ class ArticleSearch extends Article
     {
         return [
             [['id', 'created_by'], 'integer'],
-            [['title', 'published_at', 'content', 'visible', 'type', 'status', 'created_at', 'updated_at', 'user.username'], 'safe'],
+            [['title', 'published_at', 'content', 'visible', 'type', 'status', 'created_at', 'updated_at', 'username'], 'safe'],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), [
+            'username',
+        ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return array_merge(parent::attributeLabels(), [
+            'username' => '作者',
+        ]);
     }
 
     /**
@@ -43,23 +63,28 @@ class ArticleSearch extends Article
      */
     public function search($params)
     {
-        $query = self::find()->joinWith('user');
-
-        if (!UserHelper::isAdmin()) {
-            $query->where([
-                'visible' => self::VISIBLE_YES,
-                self::tableName() . '.status' => self::STATUS_ENABLE,
-            ])->where(['<=', 'published_at', time()]);
-        }
+        $query = self::find()
+            ->from(['article' => self::tableName()])
+            ->select([
+                'article.id',
+                'title',
+                'created_by',
+                'published_at',
+                'content',
+                'visible',
+                'type',
+                'article.status',
+                'article.created_at',
+                'article.updated_at',
+                'user.username',
+            ])
+            ->leftJoin(['user' => User::tableName()], 'user.id = article.created_by');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['defaultOrder' => ['published_at' => SORT_DESC]],
-            'pagination' => [
-                'pageSize' => 15,
-            ],
+            'sort' => ['defaultOrder' => ['created_at' => SORT_DESC]],
         ]);
 
         $this->load($params);
@@ -76,23 +101,23 @@ class ArticleSearch extends Article
             'created_by' => $this->created_by,
             'type' => $this->type,
             'visible' => $this->visible,
-            self::tableName() . '.status' => $this->status,
+            'article.status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'content', $this->content])
-            ->andFilterWhere(['like', User::tableName() . '.username', $this->getAttribute('user.username')]);
+            ->andFilterWhere(['like', 'user.username', $this->getAttribute('username')]);
 
         $query->timeRangeFilter('published_at', $this->published_at);
-        $query->timeRangeFilter(self::tableName() . '.created_at', $this->created_at);
-        $query->timeRangeFilter(self::tableName() . '.updated_at', $this->updated_at);
+        $query->timeRangeFilter('article.created_at', $this->created_at);
+        $query->timeRangeFilter('article.updated_at', $this->updated_at);
 
         return $dataProvider;
     }
 
     public function searchMyArticle($params)
     {
-        $query = Article::find()->where(['created_by' => UserHelper::getUserId()]);
+        $query = self::find()->where(['created_by' => UserHelper::getUserId()]);
 
         // add conditions that should always apply here
 

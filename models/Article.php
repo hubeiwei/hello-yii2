@@ -77,26 +77,6 @@ class Article extends ArticleBase
         ]);
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function attributes()
-    {
-        return array_merge(parent::attributes(), [
-            'user.username',
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return array_merge(parent::attributeLabels(), [
-            'user.username' => '作者',
-        ]);
-    }
-
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'created_by']);
