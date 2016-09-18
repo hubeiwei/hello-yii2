@@ -20,7 +20,7 @@ class MusicSearch extends Music
     public function rules()
     {
         return [
-            [['id', 'user_id', 'track_title', 'visible', 'status', 'created_at', 'updated_at', 'user.username'], 'safe'],
+            [['id', 'user_id', 'track_title', 'visible', 'status', 'created_at', 'updated_at', 'username'], 'safe'],
         ];
     }
 
@@ -34,6 +34,26 @@ class MusicSearch extends Music
     }
 
     /**
+     * @inheritdoc
+     */
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), [
+            'username',
+        ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return array_merge(parent::attributeLabels(), [
+            'username' => '上传者',
+        ]);
+    }
+
+    /**
      * Creates data provider instance with search query applied
      *
      * @param array $params
@@ -42,7 +62,20 @@ class MusicSearch extends Music
      */
     public function search($params)
     {
-        $query = Music::find()->joinWith('user');
+        $query = self::find()
+            ->from(['music' => self::tableName()])
+            ->select([
+                'music.id',
+                'track_title',
+                'music_file',
+                'user_id',
+                'visible',
+                'music.status',
+                'music.created_at',
+                'music.updated_at',
+                'user.username',
+            ])
+            ->leftJoin(['user' => User::tableName()], 'user.id = music.user_id');
 
         if (!UserHelper::isAdmin()) {
             $query->where(['visible' => self::VISIBLE_YES, self::tableName() . '.status' => self::STATUS_ENABLE]);
@@ -69,17 +102,17 @@ class MusicSearch extends Music
         // grid filtering conditions
         $query->andFilterWhere([
             'visible' => $this->visible,
-            self::tableName() . '.status' => $this->status,
+            'music.status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'track_title', $this->track_title])
-            ->andFilterWhere(['like', User::tableName() . '.username', $this->getAttribute('user.username')]);
+            ->andFilterWhere(['like', 'user.username', $this->getAttribute('username')]);
 
-        $query->compare('id', $this->id)
-            ->compare(self::tableName() . '.user_id', $this->user_id);
+        $query->compare('music.id', $this->id)
+            ->compare('user_id', $this->user_id);
 
-        $query->timeRangeFilter(self::tableName() . '.created_at', $this->created_at, false)
-            ->timeRangeFilter(self::tableName() . '.updated_at', $this->updated_at, false);
+        $query->timeRangeFilter('music.created_at', $this->created_at, false)
+            ->timeRangeFilter('music.updated_at', $this->updated_at, false);
 
         return $dataProvider;
     }

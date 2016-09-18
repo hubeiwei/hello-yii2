@@ -30,9 +30,9 @@ $gridColumns = [
         'format' => 'raw',
     ],
     [
-        'attribute' => 'user.username',
+        'attribute' => 'username',
         'value' => function ($model) {
-            return Html::a($model->user['username'], ['index', 'MusicSearch[user_id]' => $model->user_id]);
+            return Html::a($model->username, ['index', 'MusicSearch[user_id]' => $model->user_id]);
         },
         'format' => 'html',
         'headerOptions' => ['width' => 160],

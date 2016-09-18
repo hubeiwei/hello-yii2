@@ -64,26 +64,6 @@ class Music extends MusicBase
     }
 
     /**
-     * @inheritdoc
-     */
-    public function attributes()
-    {
-        return array_merge(parent::attributes(), [
-            'user.username',
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return array_merge(parent::attributeLabels(), [
-            'user.username' => '上传者',
-        ]);
-    }
-
-    /**
      * @param $file \yii\web\UploadedFile
      * @return bool
      */
