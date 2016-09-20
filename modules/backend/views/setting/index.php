@@ -2,6 +2,7 @@
 
 use app\models\Setting;
 use app\modules\core\helpers\RenderHelper;
+use app\modules\core\widget\DateRangePicker;
 use yii\helpers\Html;
 use kartik\grid\SerialColumn;
 use kartik\grid\ActionColumn;
@@ -45,13 +46,19 @@ $gridColumns = [
     [
         'attribute' => 'created_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker($searchModel, 'created_at'),
+        'filterType' => DateRangePicker::className(),
+        'filterWidgetOptions' => [
+            'dataOnly' => false,
+        ],
         'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'updated_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker($searchModel, 'updated_at'),
+        'filterType' => DateRangePicker::className(),
+        'filterWidgetOptions' => [
+            'dataOnly' => false,
+        ],
         'headerOptions' => ['width' => 160],
     ],
 

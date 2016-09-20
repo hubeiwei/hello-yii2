@@ -15,6 +15,12 @@ class HuExportMenu extends ExportMenu
 
     public $afterSaveView = '@vendor/kartik-v/yii2-export/views/_view';
 
+    /**
+     * @var string
+     * @see HuGridView::$pjaxSettings
+     */
+    public $pjaxContainerId = 'grid-pjax';
+
 //    public $batchSize = 500;
 
     /**

@@ -30,7 +30,7 @@ class RenderHelper
     }
 
     /**
-     * 表格用到的，筛选日期范围
+     * grid用到的，筛选日期范围，在pjax下无效，已经不再使用，暂时保留一段时间
      *
      * @param $searchModel
      * @param $attribute

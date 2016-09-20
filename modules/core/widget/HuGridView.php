@@ -23,13 +23,25 @@ class HuGridView extends GridView
         'lastPageLabel' => '尾页',
     ];
 
+    public $pjax = true;
+
+    /**
+     * @var array
+     * @see HuExportMenu::$pjaxContainerId
+     */
+    public $pjaxSettings = [
+        'options' => [
+            'id' => 'grid-pjax',
+        ],
+    ];
+
     public $resizableColumns = false;
 
     public $responsiveWrap = false;
 
     public $hover = true;
 
-    public $export = false;
-
 //    public $showPageSummary = true;
+
+    public $export = false;
 }

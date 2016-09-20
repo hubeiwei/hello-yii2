@@ -2,6 +2,7 @@
 
 use app\models\Article;
 use app\modules\core\helpers\RenderHelper;
+use app\modules\core\widget\DateRangePicker;
 use kartik\grid\ActionColumn;
 use kartik\grid\SerialColumn;
 use yii\bootstrap\ButtonDropdown;
@@ -30,7 +31,17 @@ $gridColumns = [
     [
         'attribute' => 'published_at',
         'format' => ['dateTime', 'php:Y-m-d H:i'],
-        'filter' => RenderHelper::dateRangePicker($searchModel, 'published_at', false),
+        'filterType' => DateRangePicker::className(),
+        'filterWidgetOptions' => [
+            'pluginOptions' => [
+                'locale' => [
+                    'format' => 'Y/m/d H:i',
+                ],
+                'timePicker' => true,
+                'timePicker24Hour' => true,
+                'timePickerIncrement' => 1,
+            ],
+        ],
         'headerOptions' => ['width' => 160],
     ],
     [
@@ -60,13 +71,19 @@ $gridColumns = [
     [
         'attribute' => 'created_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker($searchModel, 'created_at', false),
+        'filterType' => DateRangePicker::className(),
+        'filterWidgetOptions' => [
+            'dataOnly' => false,
+        ],
         'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'updated_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker($searchModel, 'updated_at', false),
+        'filterType' => DateRangePicker::className(),
+        'filterWidgetOptions' => [
+            'dataOnly' => false,
+        ],
         'headerOptions' => ['width' => 160],
     ],
 

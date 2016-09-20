@@ -52,7 +52,7 @@ class HuQuery extends Query
     }
 
     /**
-     * @see \app\modules\core\helpers\RenderHelper::dateRangePicker()
+     * @see \app\modules\core\widget\DateRangePicker
      *
      * @param string $attribute
      * @param string $value

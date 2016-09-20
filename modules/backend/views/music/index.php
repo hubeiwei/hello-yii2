@@ -2,6 +2,7 @@
 
 use app\models\Music;
 use app\modules\core\helpers\RenderHelper;
+use app\modules\core\widget\DateRangePicker;
 use kartik\grid\ActionColumn;
 use kartik\grid\SerialColumn;
 use yii\helpers\Html;
@@ -58,13 +59,19 @@ $gridColumns = [
     [
         'attribute' => 'created_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker($searchModel, 'created_at', false),
+        'filterType' => DateRangePicker::className(),
+        'filterWidgetOptions' => [
+            'dataOnly' => false,
+        ],
         'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'updated_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker($searchModel, 'updated_at', false),
+        'filterType' => DateRangePicker::className(),
+        'filterWidgetOptions' => [
+            'dataOnly' => false,
+        ],
         'headerOptions' => ['width' => 160],
     ],
 

@@ -2,6 +2,7 @@
 
 use app\models\UserDetail;
 use app\modules\core\helpers\RenderHelper;
+use app\modules\core\widget\DateRangePicker;
 use kartik\grid\ActionColumn;
 use kartik\grid\SerialColumn;
 use yii\helpers\Html;
@@ -40,13 +41,16 @@ $gridColumns = [
     [
         'attribute' => 'birthday',
         'format' => 'date',
-        'filter' => RenderHelper::dateRangePicker($searchModel, 'birthday'),
+        'filterType' => DateRangePicker::className(),
     ],
     'phone',
     [
         'attribute' => 'updated_at',
         'format' => 'dateTime',
-        'filter' => RenderHelper::dateRangePicker($searchModel, 'updated_at'),
+        'filterType' => DateRangePicker::className(),
+        'filterWidgetOptions' => [
+            'dataOnly' => false,
+        ],
     ],
 
     [
@@ -63,6 +67,6 @@ $gridColumns = [
 
     <hr>
 
-    <?= RenderHelper::gridView($dataProvider, $gridColumns, $searchModel, true) ?>
+    <?= RenderHelper::gridView($dataProvider, $gridColumns, $searchModel, true, true) ?>
     
 </div>
