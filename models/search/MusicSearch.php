@@ -78,7 +78,7 @@ class MusicSearch extends Music
             ->leftJoin(['user' => User::tableName()], 'user.id = music.user_id');
 
         if (!UserHelper::isAdmin()) {
-            $query->where(['visible' => self::VISIBLE_YES, self::tableName() . '.status' => self::STATUS_ENABLE]);
+            $query->where(['visible' => self::VISIBLE_YES, 'music.status' => self::STATUS_ENABLE]);
         }
 
         // add conditions that should always apply here
