@@ -1,7 +1,7 @@
 <?php
 
 use app\models\Article;
-use app\modules\core\extensions\HuCaptcha;
+use app\modules\core\widget\HuCaptcha;
 use app\modules\core\helpers\UserHelper;
 use ijackua\lepture\Markdowneditor;
 use kartik\datetime\DateTimePicker;

@@ -9,8 +9,8 @@
 
 namespace app\modules\core\helpers;
 
-use app\modules\core\extensions\HuExportMenu;
-use app\modules\core\extensions\HuGridView;
+use app\modules\core\widget\HuExportMenu;
+use app\modules\core\widget\HuGridView;
 use kartik\daterange\DateRangePicker;
 use yii\helpers\Html;
 

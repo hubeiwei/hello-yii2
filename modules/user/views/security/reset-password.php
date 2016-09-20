@@ -1,6 +1,6 @@
 <?php
 
-use app\modules\core\extensions\HuCaptcha;
+use app\modules\core\widget\HuCaptcha;
 use kartik\password\PasswordInput;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
