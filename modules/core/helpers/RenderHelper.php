@@ -46,6 +46,12 @@ class RenderHelper
         ];
 
         $export = !$hasExport ? '' : HuExportMenu::widget(ArrayHelper::merge($config, [
+            'exportConfig' => [
+                HuExportMenu::FORMAT_HTML => false,
+                HuExportMenu::FORMAT_TEXT => false,
+                HuExportMenu::FORMAT_PDF => false,
+                HuExportMenu::FORMAT_EXCEL => false,
+            ],
             'pjaxContainerId' => 'kartik-grid-pjax',
         ]));
 
