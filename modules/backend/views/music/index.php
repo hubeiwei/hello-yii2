@@ -61,7 +61,7 @@ $gridColumns = [
         'format' => 'dateTime',
         'filterType' => DateRangePicker::className(),
         'filterWidgetOptions' => [
-            'dataOnly' => false,
+            'dateOnly' => false,
         ],
         'headerOptions' => ['width' => 160],
     ],
@@ -70,7 +70,7 @@ $gridColumns = [
         'format' => 'dateTime',
         'filterType' => DateRangePicker::className(),
         'filterWidgetOptions' => [
-            'dataOnly' => false,
+            'dateOnly' => false,
         ],
         'headerOptions' => ['width' => 160],
     ],

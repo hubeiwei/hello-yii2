@@ -69,7 +69,7 @@ class DateRangePicker extends KartikDateRangePicker
         $this->pluginOptions['locale'] = $localeSettings;
     }
 
-    public function setDataOnly($value)
+    public function setDateOnly($value)
     {
         $this->_dateOnly = $value;
     }
