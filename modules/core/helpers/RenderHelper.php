@@ -11,7 +11,7 @@ namespace app\modules\core\helpers;
 
 use app\modules\core\widget\HuExportMenu;
 use app\modules\core\widget\HuGridView;
-use kartik\daterange\DateRangePicker;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 class RenderHelper
@@ -30,44 +30,6 @@ class RenderHelper
     }
 
     /**
-     * grid用到的，筛选日期范围，在pjax下无效，已经不再使用，暂时保留一段时间
-     *
-     * @param $searchModel
-     * @param $attribute
-     * @param bool $dateOnly
-     * @return string
-     * @throws \Exception
-     */
-    public static function dateRangePicker($searchModel, $attribute, $dateOnly = true)
-    {
-        $setting = [
-            'model' => $searchModel,
-            'attribute' => $attribute,
-            'convertFormat' => true,
-            'pluginOptions' => [
-                'showDropdowns' => true,
-                'locale' => [
-                    'separator' => ' - ',
-                ]
-            ],
-        ];
-
-        if ($dateOnly) {
-            $setting['pluginOptions']['locale']['format'] = 'Y/m/d';
-        } else {
-            $setting['pluginOptions']['locale']['format'] = 'Y/m/d H:i:s';
-            $setting['pluginOptions'] += [
-                'timePicker' => true,
-                'timePicker24Hour' => true,
-                'timePickerIncrement' => 1,
-                'timePickerSeconds' => true,
-            ];
-        }
-
-        return DateRangePicker::widget($setting);
-    }
-
-    /**
      * @param $dataProvider
      * @param $gridColumns
      * @param $searchModel
@@ -83,15 +45,24 @@ class RenderHelper
             'columns' => $gridColumns,
         ];
 
-        $export = $hasExport ? HuExportMenu::widget($config) : '';
+        $export = !$hasExport ? '' : HuExportMenu::widget(ArrayHelper::merge($config, [
+            'pjaxContainerId' => 'kartik-grid-pjax',
+        ]));
 
-        $gridConfig = $config;
+        $gridConfig = ArrayHelper::merge($config, [
+            'pjax' => true,
+            'pjaxSettings' => [
+                'options' => [
+                    'id' => 'kartik-grid-pjax',
+                ],
+            ],
+        ]);
         if ($searchModel !== null) {
             $gridConfig['filterModel'] = $searchModel;
         }
         $toolBar = $hasToolbar ? '{toolbar}' : '';
-        if ($export || $toolBar) {
-            $gridConfig += ['layout' => '<p>' . $toolBar . $export . '</p>{summary}{items}{pager}'];
+        if ($hasExport || $hasToolbar) {
+            $gridConfig['layout'] = '<p>' . $toolBar . $export . '</p>{summary}{items}{pager}';
         }
 
         return HuGridView::widget($gridConfig);
