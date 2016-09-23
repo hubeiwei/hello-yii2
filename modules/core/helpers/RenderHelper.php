@@ -13,6 +13,7 @@ use app\modules\core\widget\HuExportMenu;
 use app\modules\core\widget\HuGridView;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use Yii;
 
 class RenderHelper
 {
@@ -34,16 +35,17 @@ class RenderHelper
      * @param $gridColumns
      * @param $searchModel
      * @param bool $hasExport
-     * @param bool $hasToolbar
      * @return string
      * @throws \Exception
      */
-    public static function gridView($dataProvider, $gridColumns, $searchModel = null, $hasExport = false, $hasToolbar = false)
+    public static function gridView($dataProvider, $gridColumns, $searchModel = null, $hasExport = false)
     {
         $config = [
             'dataProvider' => $dataProvider,
             'columns' => $gridColumns,
         ];
+
+        $resetUrl = '<div class="btn-group">' . Html::a('<i class="glyphicon glyphicon-repeat"></i> 重置', [Yii::$app->controller->action->id], ['class' => 'btn btn-default']) . '</div>';
 
         $export = !$hasExport ? '' : HuExportMenu::widget(ArrayHelper::merge($config, [
             'exportConfig' => [
@@ -66,10 +68,7 @@ class RenderHelper
         if ($searchModel !== null) {
             $gridConfig['filterModel'] = $searchModel;
         }
-        $toolBar = $hasToolbar ? '{toolbar}' : '';
-        if ($hasExport || $hasToolbar) {
-            $gridConfig['layout'] = '<p>' . $toolBar . $export . '</p>{summary}{items}{pager}';
-        }
+        $gridConfig['layout'] = '<p>{toolbar}' . $resetUrl . $export . '</p>{summary}{items}{pager}';
 
         return HuGridView::widget($gridConfig);
     }
