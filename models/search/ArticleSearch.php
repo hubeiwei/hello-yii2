@@ -66,16 +66,7 @@ class ArticleSearch extends Article
         $query = self::find()
             ->from(['article' => self::tableName()])
             ->select([
-                'article.id',
-                'title',
-                'created_by',
-                'published_at',
-                'content',
-                'visible',
-                'type',
-                'article.status',
-                'article.created_at',
-                'article.updated_at',
+                'article.*',
                 'user.username',
             ])
             ->leftJoin(['user' => User::tableName()], 'user.id = article.created_by');

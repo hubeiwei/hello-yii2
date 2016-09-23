@@ -60,24 +60,6 @@ class User extends UserBase implements IdentityInterface
     /**
      * @inheritdoc
      */
-    public function attributes()
-    {
-        return array_merge(parent::attributes(), [
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return array_merge(parent::attributeLabels(), [
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
     public static function findIdentity($id)
     {
         return self::findOne($id);

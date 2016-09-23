@@ -65,14 +65,7 @@ class MusicSearch extends Music
         $query = self::find()
             ->from(['music' => self::tableName()])
             ->select([
-                'music.id',
-                'track_title',
-                'music_file',
-                'user_id',
-                'visible',
-                'music.status',
-                'music.created_at',
-                'music.updated_at',
+                'music.*',
                 'user.username',
             ])
             ->leftJoin(['user' => User::tableName()], 'user.id = music.user_id');
@@ -119,7 +112,7 @@ class MusicSearch extends Music
 
     public function searchMyMusic($params)
     {
-        $query = Music::find()->where(['user_id' => UserHelper::getUserId()]);
+        $query = self::find()->where(['user_id' => UserHelper::getUserId()]);
 
         // add conditions that should always apply here
 

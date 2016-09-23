@@ -64,13 +64,7 @@ class UserDetailSearch extends UserDetail
         $query = self::find()
             ->from(['detail' => self::tableName()])
             ->select([
-                'detail.id',
-                'detail.user_id',
-                'birthday',
-                'gender',
-                'phone',
-                'resume',
-                'detail.updated_at',
+                'detail.*',
                 'user.username'
             ])
             ->leftJoin(['user' => User::tableName()], 'user.id = detail.user_id');
