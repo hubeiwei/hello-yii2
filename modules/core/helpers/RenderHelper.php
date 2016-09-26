@@ -45,7 +45,7 @@ class RenderHelper
             'columns' => $gridColumns,
         ];
 
-        $resetUrl = '<div class="btn-group">' . Html::a('<i class="glyphicon glyphicon-repeat"></i> 重置', [Yii::$app->controller->action->id], ['class' => 'btn btn-default']) . '</div>';
+        $resetUrl = '<div class="btn-group">' . Html::a('<i class="glyphicon glyphicon-repeat"></i> 重置', [Yii::$app->controller->action->id], ['class' => 'btn btn-default', 'title' => '重置搜索条件', 'data' => ['pjax' => 'true']]) . '</div>';
 
         $export = !$hasExport ? '' : HuExportMenu::widget(ArrayHelper::merge($config, [
             'exportConfig' => [
@@ -68,7 +68,7 @@ class RenderHelper
         if ($searchModel !== null) {
             $gridConfig['filterModel'] = $searchModel;
         }
-        $gridConfig['layout'] = '<p>{toolbar}' . $resetUrl . $export . '</p>{summary}{items}{pager}';
+        $gridConfig['layout'] = '<p>' . $resetUrl . '{toolbar}' . $export . '</p>{summary}{items}{pager}';
 
         return HuGridView::widget($gridConfig);
     }
