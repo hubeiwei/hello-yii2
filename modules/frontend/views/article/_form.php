@@ -34,7 +34,6 @@ use yii\widgets\ActiveForm;
     ?>
 
     <?= $form->field($model, 'published_at')->widget(DateTimePicker::className(), [
-        'readonly' => true,
         'pluginOptions' => [
             'autoclose' => true,
         ],
