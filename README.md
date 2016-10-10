@@ -85,7 +85,7 @@ nginx可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
 * 用户名和密码如下：
 
-身份 | 用户名 | 密码 |
+身份 | 用户名 | 密码
 ---|---|---
 超级管理员 | hu | hbw12345
 普通用户 | test | qwer1234
@@ -101,3 +101,9 @@ nginx可以参考[这篇文章](http://www.getyii.com/topic/31)。
 ![wechat](https://raw.githubusercontent.com/hubeiwei/hello-yii2/master/web/wechat_pay.png "微信")
 
 ![alipay](https://raw.githubusercontent.com/hubeiwei/hello-yii2/master/web/ali_pay.jpg "支付宝")
+
+## 土豪榜：
+
+捐赠人 | 金额
+---|---
+[xiaocai314](https://github.com/xiaocai314) | 8.88
