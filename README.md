@@ -102,7 +102,7 @@ nginx可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
 ![alipay](https://raw.githubusercontent.com/hubeiwei/hello-yii2/master/web/ali_pay.jpg "支付宝")
 
-## 土豪榜：
+感谢以下这些朋友的支持。
 
 捐赠人 | 金额
 ---|---
