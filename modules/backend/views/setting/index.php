@@ -35,14 +35,7 @@ $gridColumns = [
         'filter' => RenderHelper::dropDownFilter('SettingSearch[status]', $searchModel->status, Setting::$status_map),
         'headerOptions' => ['width' => 100],
     ],
-    [
-        'attribute' => 'created_by',
-        'value' => 'creater.username',
-    ],
-    [
-        'attribute' => 'updated_by',
-        'value' => 'updater.username',
-    ],
+    'username',
     [
         'attribute' => 'created_at',
         'format' => 'dateTime',

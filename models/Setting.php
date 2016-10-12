@@ -25,7 +25,13 @@ class Setting extends SettingBase
     public function behaviors()
     {
         return [
-            BlameableBehavior::className(),
+            [
+                'class' => BlameableBehavior::className(),
+                'attributes' => [
+                    self::EVENT_BEFORE_INSERT => 'updated_by',
+                    self::EVENT_BEFORE_UPDATE => 'updated_by',
+                ],
+            ],
             TimestampBehavior::className(),
         ];
     }
@@ -40,33 +46,8 @@ class Setting extends SettingBase
         ]);
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function attributes()
+    public function getUser()
     {
-        return array_merge(parent::attributes(), [
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return array_merge(parent::attributeLabels(), [
-            'creater.username' => '创建者',
-            'updater.username' => '最后操作者',
-        ]);
-    }
-
-    public function getCreater()
-    {
-        return $this->hasOne(User::className(), ['id' => 'created_by']);
-    }
-
-    public function getUpdater()
-    {
-        return $this->hasOne(User::className(), ['id' => 'updated_by']);
+        return $this->hasOne(User::className(), ['id' => 'updated_by'])->from(['user' => User::tableName()]);
     }
 }
