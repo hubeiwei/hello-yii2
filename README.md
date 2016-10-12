@@ -1,8 +1,8 @@
 # 说明
 
-这是我在空闲时间用yii2-basic来练手的项目，目前还在学习中，在此分享给大家，希望能得到些指点和建议，多学到点东西，也希望有同样热爱yii2的同学和我多多交流，互相学习，我的QQ是494364222。
+这是我在空闲时间用yii2-basic来练习各种杂七杂八的插件的项目，希望同样热爱yii2的同学和我多多交流，互相学习，我的QQ是494364222。
 
-建立了该分支是为了研究[mdmsoft/yii2-admin](https://github.com/mdmsoft/yii2-admin)模块里的邮件找回密码功能（现在发现这貌似就是advanced版自带的），用该模块自带的用户表替换了原有的用户表(现在发现这貌似就是advanced版的用户表)。
+建立了该分支是为了研究[mdmsoft/yii2-admin](https://github.com/mdmsoft/yii2-admin)模块里的邮件找回密码功能（现在发现这貌似就是advanced版自带的），用该模块自带的用户表替换了原有的用户表(现在发现这貌似就是advanced版的用户表)，现在master分支算是废弃了。
 
 我强迫症很严重，所以有可能会经常把代码简化，或者删改注释，或者把一些封装方式和方法的顺序以及一些命名会经常改来改去的，请见谅。
 
@@ -38,7 +38,7 @@ master(最外层)
 
 ## PHP配置
 
-* 在php扩展方面，composer和yii2都需要openssl扩展；我用的是mysql，需要pdo_mysql扩展；弄了文件上传的功能，需要fileinfo扩展。
+* composer和yii2都需要openssl扩展；我用的是mysql，需要pdo_mysql扩展；弄了文件上传的功能，需要fileinfo扩展。
 
 * 因为要上传文件，需要去`php.ini`把`post_max_size`和`upload_max_filesize`两个值配置一下，程序上的文件大小限制在`app\models\Music`类里，目前的设置是20MB
 
