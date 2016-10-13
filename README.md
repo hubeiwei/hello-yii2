@@ -106,4 +106,5 @@ nginx可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
 捐赠人 | 金额
 ---|---
+东方不拔 | 30.00
 [xiaocai314](https://github.com/xiaocai314) | 8.88
