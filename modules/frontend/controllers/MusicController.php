@@ -137,7 +137,7 @@ class MusicController extends ModuleController
             $form->music_file = UploadedFile::getInstance($form, 'music_file');
             if ($form->validate()) {
                 $original_file_name = $model->music_file;//记录原文件名
-                $model->setAttributes($form->getAttributes());
+                $model->setAttributes($form->getAttributes(null, ['music_file']));
                 $flow = true;
 
                 //如果上传了文件，上传新文件
@@ -166,7 +166,7 @@ class MusicController extends ModuleController
                 }
             }
         } else {
-            $form->setAttributes($model->getAttributes());
+            $form->setAttributes($model->getAttributes(null, ['music_file']));
         }
 
         return $this->render('update', [

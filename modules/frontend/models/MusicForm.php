@@ -13,6 +13,7 @@ use app\models\Music;
 use app\modules\core\extensions\HuCaptchaValidator;
 use app\modules\core\helpers\UserHelper;
 use yii\base\Model;
+use yii\helpers\ArrayHelper;
 
 class MusicForm extends Model
 {
@@ -46,11 +47,11 @@ class MusicForm extends Model
     {
         $baseScenarios = ['track_title', 'music_file', 'visible', 'verifyCode'];
         $scenarios = [
-            'create' => $baseScenarios += ['status'],
+            'create' => ArrayHelper::merge($baseScenarios, ['status']),
             'update' => $baseScenarios,
         ];
         if (UserHelper::isAdmin()) {
-            $scenarios['update'] += ['status'];
+            $scenarios['update'] = ArrayHelper::merge($scenarios['update'], ['status']);
         }
         return $scenarios;
     }
