@@ -16,6 +16,7 @@ class DefaultController extends ModuleController
         return [
             'error' => [
                 'class' => ErrorAction::className(),
+                'view' => '@app/views/site/error.php',
             ],
             'captcha' => [
                 'class' => HuCaptchaAction::className(),
