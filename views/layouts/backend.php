@@ -1,6 +1,5 @@
 <?php
 
-use app\assets\AppAsset;
 use app\modules\core\helpers\UserHelper;
 use kartik\sidenav\SideNav;
 use mdm\admin\components\MenuHelper;
