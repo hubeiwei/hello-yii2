@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7b819e45b4430945af5ca3b9ad53d859",
-    "content-hash": "3231e4497307d61ad014160700d9f2f3",
+    "hash": "5c4e02d6d8befcf87a81fd8f50b51898",
+    "content-hash": "a0d2f61f15494a3521f85f95fad82198",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -557,7 +557,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/kartik-v/yii2-detail-view/741f56f37858f0745cd180a505c7ddbe60b01829.zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-detail-view/zipball/741f56f37858f0745cd180a505c7ddbe60b01829",
                 "reference": "741f56f37858f0745cd180a505c7ddbe60b01829",
                 "shasum": ""
             },
@@ -772,7 +772,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/kartik-v/yii2-helpers/f16003c8c9cfdaa50b4c9574cae9f0310946696c.zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-helpers/zipball/f16003c8c9cfdaa50b4c9574cae9f0310946696c",
                 "reference": "f16003c8c9cfdaa50b4c9574cae9f0310946696c",
                 "shasum": ""
             },
@@ -1177,7 +1177,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/kartik-v/yii2-widget-sidenav/02ee4f142d7dfbb316f878e538cc7b946f4502d2.zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-sidenav/zipball/02ee4f142d7dfbb316f878e538cc7b946f4502d2",
                 "reference": "02ee4f142d7dfbb316f878e538cc7b946f4502d2",
                 "shasum": ""
             },
