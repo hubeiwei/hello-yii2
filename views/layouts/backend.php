@@ -2,12 +2,11 @@
 
 use app\assets\AppAsset;
 use app\modules\core\helpers\UserHelper;
+use kartik\sidenav\SideNav;
 use mdm\admin\components\MenuHelper;
 use yii\bootstrap\Alert;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use yii\helpers\Html;
-use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 
 /**
@@ -47,79 +46,11 @@ NavBar::end();
 <div class="container">
     <div class="row">
         <div class="col-md-3 col-lg-2 hidden-sm hidden-xs">
-            <div class="list-group" id="nav-menu">
-                <?php
-                /**
-                 * TODO 只支持到二级
-                 */
-                $currentUrl = explode('?', Url::current())[0];
-                $currentUrlSnippet = explode('/', $currentUrl);
-                $currentUrlPath = '/' . $currentUrlSnippet[1] . '/' . $currentUrlSnippet[2];
-
-                $activeMenu = '';
-                foreach ($assignedMenu as $menuKey => $menuValue) {
-                    $menuUrl = $menuValue['url'][0];
-
-                    //提升体验
-                    if ($menuUrl == '#') {
-                        $menuUrl = 'javascript:void(0)';
-                    }
-
-                    //高亮一级菜单
-                    if ($currentUrl == $menuUrl) {
-                        $active = ' active';
-                    } else {
-                        $active = '';
-                    }
-
-                    echo Html::a($menuValue['label'], $menuUrl, [
-                        'class' => 'list-group-item' . $active,
-                        'data-toggle' => 'collapse',
-                        'data-parent' => '#nav-menu',
-                        'data-target' => '#nav-menu-' . $menuKey,
-                    ]);
-
-                    if (isset($menuValue['items'])) {
-                        echo Html::beginTag('div', [
-                            'id' => 'nav-menu-' . $menuKey,
-                            'class' => 'submenu collapse',
-                        ]);
-                        foreach ($menuValue['items'] as $itemKey => $itemValue) {
-                            $itemUrl = $itemValue['url'][0];
-                            $itemUrlSnippet = explode('/', $itemUrl);
-                            $itemUrlPath = '/' . $itemUrlSnippet[1] . '/' . $itemUrlSnippet[2];
-
-                            //高亮一级菜单
-                            if ($currentUrlPath == $itemUrlPath) {
-                                $activeMenu = 'nav-menu-' . $menuKey;
-                            }
-
-                            //高亮子链接
-                            if ($currentUrl == $itemUrl) {
-                                $active = ' active';
-                            } else {
-                                $active = '';
-                            }
-
-                            echo Html::a($itemValue['label'], $itemUrl, [
-                                'class' => 'list-group-item' . $active,
-                            ]);
-                        }
-                        echo Html::endTag('div');
-                    }
-                }
-                if ($activeMenu) {
-                    ?>
-                    <script>
-                        var active_menu = $("[data-target = '#<?=$activeMenu ?>']");
-                        active_menu.addClass("active");
-                        var active_menu_group = $("#<?=$activeMenu ?>");
-                        active_menu_group.addClass("in");
-                    </script>
-                    <?php
-                }
-                ?>
-            </div>
+            <?php
+            echo SideNav::widget([
+                'items' => $assignedMenu,
+            ]);
+            ?>
         </div>
         <div class="col-md-9 col-lg-10">
             <?php
