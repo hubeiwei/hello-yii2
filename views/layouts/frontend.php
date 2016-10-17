@@ -9,6 +9,14 @@ use yii\widgets\Breadcrumbs;
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+$css = <<<CSS
+html, body {
+    background-color: #f1f1f1;
+}
+CSS;
+
+$this->registerCss($css);
+
 $this->beginContent('@app/views/layouts/master.php');
 
 NavBar::begin([

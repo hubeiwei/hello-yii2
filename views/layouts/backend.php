@@ -14,7 +14,13 @@ use yii\widgets\Breadcrumbs;
  * @var $content string
  */
 
-$this->registerCssFile('@web/css/backend.css', ['depends' => AppAsset::className()]);
+$css = <<<CSS
+.container {
+    width: 100%;
+}
+CSS;
+
+$this->registerCss($css);
 
 $this->beginContent('@app/views/layouts/master.php');
 
