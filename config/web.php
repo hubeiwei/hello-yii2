@@ -106,7 +106,7 @@ $config = [
 ];
 
 /**
- * TODO 如果你要运行我的项目，请把以下邮箱配置改成自己的，谢谢合作
+ * TODO 在以下添加自己的邮箱配置，才可以使用邮件发送的功能
  */
 $config['components']['mailer'] = [
     'class' => 'yii\swiftmailer\Mailer',
@@ -115,8 +115,8 @@ $config['components']['mailer'] = [
         'class' => 'Swift_SmtpTransport',
         'host' => 'smtp.163.com',
         'port' => '25',
-        'username' => 'hubeiwei1234@163.com',
-        'password' => 'Hu407519063',
+        'username' => '',
+        'password' => '',
         'encryption' => 'tls',
     ],
     'messageConfig' => [

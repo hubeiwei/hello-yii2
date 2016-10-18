@@ -1,6 +1,6 @@
 # 说明
 
-这是我在空闲时间用yii2-basic来练习各种杂七杂八的插件的项目，希望同样热爱yii2的同学和我多多交流，互相学习，我的QQ是494364222。
+这是我在空闲时间用yii2-basic来练习各种杂七杂八的插件的项目。
 
 建立了该分支是为了研究[mdmsoft/yii2-admin](https://github.com/mdmsoft/yii2-admin)模块里的邮件找回密码功能（现在发现这貌似就是advanced版自带的），用该模块自带的用户表替换了原有的用户表(现在发现这貌似就是advanced版的用户表)，现在master分支算是废弃了。
 
@@ -38,9 +38,9 @@ master(最外层)
 
 ## PHP配置
 
-* composer和yii2都需要openssl扩展；我用的是mysql，需要pdo_mysql扩展；弄了文件上传的功能，需要fileinfo扩展。
+* 扩展：openssl、pdo_mysql、fileinfo
 
-* 因为要上传文件，需要去`php.ini`把`post_max_size`和`upload_max_filesize`两个值配置一下，程序上的文件大小限制在`app\models\Music`类里，目前的设置是20MB
+* 程序上的上传文件大小限制在`app\models\Music`里，目前的设置是20MB，`php.ini`的`post_max_size`和`upload_max_filesize`两个值需要配置一下，
 
 ## 安装
 
@@ -62,7 +62,7 @@ yii migrate
 
 ## 服务器配置
 
-因为路由规则与后台菜单需要，需要把`/web`设置为站点根目录。
+因为路由规则需要，需要把`/web`设置为站点根目录。
 
 apache需要开启rewrite，`.htaccess`文件我已经配置好放在`/web`目录里了。vhost配置可以和以下那么简单：
 
@@ -81,8 +81,6 @@ nginx可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
 * 虽然我在**配置文件**配置好了我的163邮箱，但希望还是改成自己的邮箱，谢谢。
 
-* 后台的侧边菜单代码目前只能支持到二级，所以在添加菜单的时候需要注意。
-
 * 用户名和密码如下：
 
 身份 | 用户名 | 密码
@@ -92,11 +90,11 @@ nginx可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
 ## 部署遇到问题怎么办？
 
-我只测试过migration能正常导入数据而已，自己很懒，没有深入测，也没有人看过这个项目给我反馈问题，遇到问题加QQ联系吧。
+发起一个issues。
 
 # 打赏
 
-如果觉得我的项目做的好的话，就给我打赏吧，以后我会更有动力去学习和分享更多yii2的内容。
+如果觉得我做的内容对你有帮助的话，求打赏，以后我会有更多动力去学习和分享更多yii2的内容。
 
 ![wechat](https://raw.githubusercontent.com/hubeiwei/hello-yii2/master/web/wechat_pay.png "微信")
 
