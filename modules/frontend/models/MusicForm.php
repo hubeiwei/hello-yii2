@@ -63,8 +63,7 @@ class MusicForm extends Model
     {
         return [
             ['music_file', 'required', 'on' => 'create'],
-            ['music_file', 'file', 'maxSize' => Music::MUSIC_SIZE],
-            ['music_file', 'verifyExtension'],//自带的格式验证经常不准，另外写了一个
+            ['music_file', 'file', 'extensions' => ['mp3'], 'checkExtensionByMimeType' => false, 'maxSize' => Music::MUSIC_SIZE],
             [['track_title', 'verifyCode'], 'required'],
             ['track_title', 'string', 'max' => 50],
             ['visible', 'in', 'range' => Music::$visible_array],
@@ -72,14 +71,5 @@ class MusicForm extends Model
             ['verifyCode', 'string', 'length' => 4],
             ['verifyCode', HuCaptchaValidator::className()],
         ];
-    }
-
-    public function verifyExtension($attribute, $params)
-    {
-        if (!$this->hasErrors()) {
-            if (!in_array($this->music_file->extension, Music::$music_extension)) {
-                $this->addError($attribute, '扩展名无效');
-            }
-        }
     }
 }
