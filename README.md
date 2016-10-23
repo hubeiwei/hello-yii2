@@ -102,8 +102,8 @@ nginx可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
 感谢以下这些朋友的支持。
 
-捐赠人 | 金额
----|---
-誓言 | 50.00
-东方不拔 | 30.00
-[xiaocai314](https://github.com/xiaocai314) | 8.88
+捐赠人 | QQ | 金额
+---|---|---
+誓言 | 443536249 | 50.00
+东方不拔 | 790292520 | 30.00
+[a boy with a mission](https://github.com/xiaocai314) | 727492986 | 8.88
