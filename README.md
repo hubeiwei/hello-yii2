@@ -1,38 +1,34 @@
+# 目录
+
+* [说明](#说明)
+
+* [项目部署](#项目部署)
+
+    * [PHP配置](#PHP配置)
+
+    * [安装第三方扩展和创建数据库表](#安装第三方扩展和创建数据库表)
+
+    * [服务器配置](#服务器配置)
+
+    * [使用](#使用)
+
+    * [部署遇到问题怎么办？](#部署遇到问题怎么办？)
+
+* [结构说明](#结构说明)
+
+    * [文件和目录](#文件和目录)
+
+    * [Model](#model)
+
+    * [Layout](#layout)
+
+* [打赏](#打赏)
+
 # 说明
 
 这是我在空闲时间用yii2-basic来练习各种杂七杂八的插件的项目。
 
-建立了该分支是为了研究[mdmsoft/yii2-admin](https://github.com/mdmsoft/yii2-admin)模块里的邮件找回密码功能（现在发现这貌似就是advanced版自带的），用该模块自带的用户表替换了原有的用户表(现在发现这貌似就是advanced版的用户表)，现在master分支算是废弃了。
-
-我强迫症很严重，所以有可能会经常把代码简化，或者删改注释，或者把一些封装方式和方法的顺序以及一些命名会经常改来改去的，请见谅。
-
-# 结构
-
-## 文件和目录
-
-（写给初学者的）除了**入口文件**`/web/index.php`、**配置文件**`/config/web.php`、**数据库配置文件**`/config/db.php`以外，其他你只需关注的地方如下：
-
-目录 | 说明
----|---
-models | Model，详情请[往下拉](#model)
-modules | 模块，主要的东西都在这里了，模块的注释在**配置文件**里
-views | 目前只是放布局文件而已，布局结构详情请[往下拉](#视图布局文件)
-
-## Model
-
-我的代码是在gii生成的model和CRUD代码上修改而来的，如果你也是这个套路的话，那我的代码应该不怎么难理解，需要说明一下的是model这一部分，首先我用gii生成model到`/models/base`目录下，取名为'ModelBase'，接着会在`/models`目录下新建一个'Model'来继承'ModelBase'，以后有代码都写到'Model'里。
-
-这样做的好处是修改了数据库表结构后重新生成model可以直接覆盖'ModelBase'。
-
-## 视图布局文件
-
-```
-master(最外层)
-├ frontend(前台外层)
-│ ├ main(前台)
-│ └ user_form(用户模块表单)
-└ backend(后台)
-```
+建立了该分支是为了研究[mdmsoft/yii2-admin](https://github.com/mdmsoft/yii2-admin)模块里的邮件找回密码功能，用该模块自带的用户表替换了原有的用户表（后来才发现这些都是advanced版自带的），现在master分支算是废弃了。
 
 # 项目部署
 
@@ -42,7 +38,7 @@ master(最外层)
 
 * 程序上的上传文件大小限制在`app\models\Music`里，目前的设置是20MB，`php.ini`的`post_max_size`和`upload_max_filesize`两个值需要配置一下，
 
-## 安装
+## 安装第三方扩展和创建数据库表
 
 你要有[composer](http://docs.phpcomposer.com/)，执行以下命令：
 
@@ -62,9 +58,9 @@ yii migrate
 
 ## 服务器配置
 
-因为路由规则需要，需要把`/web`设置为站点根目录。
+因为路由规则需要，需要把`web`设置为站点根目录。
 
-apache需要开启rewrite，`.htaccess`文件我已经配置好放在`/web`目录里了。vhost配置可以和以下那么简单：
+apache需要开启rewrite，`.htaccess`文件我已经配置好放在`web`目录里了。vhost配置可以和以下那么简单：
 
 ```
 <VirtualHost *:80>
@@ -91,6 +87,46 @@ nginx可以参考[这篇文章](http://www.getyii.com/topic/31)。
 ## 部署遇到问题怎么办？
 
 发起一个issues。
+
+# 结构说明
+
+我的代码是在gii生成的model和CRUD代码上修改而来的，如果你也是这个套路的话，那我的代码应该不怎么难理解，就model和原来的有些区别，详情请[往下拉](#model)。
+
+## 文件和目录
+
+（写给初学者的）除了**入口文件**`web/index.php`、**配置文件**`config/web.php`、**数据库配置文件**`config/db.php`以外，其他你只需关注的地方如下：
+
+目录 | 说明
+---|---
+models | Model，详情请[往下拉](#model)
+modules | 模块，控制器和视图都在这里了，模块的名字顾名思义
+views | 目前只是放布局文件而已，布局结构详情请[往下拉](#layout)
+
+另外没提到的资源、邮件模板、翻译、数据库迁移的文件不重要，想看的随便看看就好。
+
+## Model
+
+首先我用gii生成model到`models/base`目录下，取名为'ModelBase'，接着会在`models`目录下新建一个'Model'来继承'ModelBase'，以后有代码都写到'Model'里，这样做的好处是修改了数据库表结构后重新生成model可以直接覆盖'ModelBase'。
+
+## Layout
+
+```
+master(最外层)
+├ frontend(前台外层)
+│ ├ main(前台，layout会指向这里)
+│ └ user_form(用户模块表单，layout会指向这里)
+└ backend(后台，layout会指向这里)
+```
+
+配置了layout了地方：
+
+前台默认main
+
+用户模块表单：[详情](https://github.com/hubeiwei/hello-yii2/blob/2.0/modules/user/controllers/base/ModuleController.php#L14)
+
+后台：[详情](https://github.com/hubeiwei/hello-yii2/blob/2.0/modules/backend/controllers/base/ModuleController.php#L14)
+
+admin模块在**配置文件**里指向backend：[详情](https://github.com/hubeiwei/hello-yii2/blob/2.0/config/web.php#L61)
 
 # 打赏
 
