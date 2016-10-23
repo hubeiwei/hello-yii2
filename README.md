@@ -14,11 +14,17 @@
 
 目录 | 说明
 ---|---
-models | Model
+models | Model，详情请[往下拉](#model)
 modules | 模块，主要的东西都在这里了，模块的注释在**配置文件**里
-views | 目前只是放布局文件而已
+views | 目前只是放布局文件而已，布局结构详情请[往下拉](#视图布局文件)
 
-## 视图布局
+## Model
+
+我的代码是在gii生成的model和CRUD代码上修改而来的，如果你也是这个套路的话，那我的代码应该不怎么难理解，需要说明一下的是model这一部分，首先我用gii生成model到`/models/base`目录下，取名为'ModelBase'，接着会在`/models`目录下新建一个'Model'来继承'ModelBase'，以后有代码都写到'Model'里。
+
+这样做的好处是修改了数据库表结构后重新生成model可以直接覆盖'ModelBase'。
+
+## 视图布局文件
 
 ```
 master(最外层)
@@ -27,12 +33,6 @@ master(最外层)
 │ └ user_form(用户模块表单)
 └ backend(后台)
 ```
-
-## Model
-
-我的代码是在gii生成的model和CRUD代码上修改而来的，如果你也是这个套路的话，那我的代码应该不怎么难理解，需要说明一下的是model这一部分，首先我用gii生成model到`/models/base`目录下，取名为'ModelBase'，接着会在`/models`目录下新建一个'Model'来继承'ModelBase'，以后有代码都写到'Model'里。
-
-这样做的好处是修改了数据库表结构后重新生成model可以直接覆盖'ModelBase'。
 
 # 项目部署
 
