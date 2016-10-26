@@ -24,17 +24,17 @@ class HuCaptchaAction extends CaptchaAction
     public $testLimit = 3;
 
     /**
-     * @var int 宽度
+     * @var int
      */
     public $width = 100;
 
     /**
-     * @var int 高度
+     * @var int
      */
     public $height = 50;
 
     /**
-     * @var int 图片与字符间的padding
+     * @var int
      */
     public $padding = 2;
 
@@ -49,7 +49,7 @@ class HuCaptchaAction extends CaptchaAction
     public $foreColor = 0x2040A0;
 
     /**
-     * @var bool 是否透明
+     * @var bool 图片背景透明
      */
     public $transparent = false;
 

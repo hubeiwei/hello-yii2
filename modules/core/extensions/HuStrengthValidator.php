@@ -22,7 +22,8 @@ use kartik\password\StrengthValidator;
 class HuStrengthValidator extends StrengthValidator
 {
     /**
-     * @var bool 是否允许密码里有用户名，默认true不允许，默认用户名字段为username，如果不是请修改下面的配置
+     * @var bool 允许密码里有用户名，true为不允许
+     * @see $userAttribute
      */
     public $hasUser = true;
 
@@ -32,7 +33,7 @@ class HuStrengthValidator extends StrengthValidator
     public $userAttribute = 'username';
 
     /**
-     * @var bool 是否允许密码里有email
+     * @var bool 允许密码里有email，true为不允许
      */
     public $hasEmail = true;
 
@@ -47,7 +48,7 @@ class HuStrengthValidator extends StrengthValidator
     public $max = 20;
 
     /**
-     * @var bool 允许空格
+     * @var bool 允许空格，true为允许
      */
     public $allowSpaces = false;
 
