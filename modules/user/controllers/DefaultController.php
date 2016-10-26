@@ -23,12 +23,6 @@ class DefaultController extends ModuleController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => [
-                    'login',
-                    'logout',
-                    'register',
-                    'detail',
-                ],
                 'rules' => [
                     [
                         'allow' => true,

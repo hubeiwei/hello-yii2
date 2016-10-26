@@ -26,22 +26,13 @@ class MusicController extends ModuleController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => [
-                    'index',
-                    'my-music',
-                    'create',
-                    'update',
-                    'delete',
-                ],
                 'rules' => [
-                    //所有人都能访问index
                     [
                         'allow' => true,
                         'actions' => [
                             'index',
                         ],
                     ],
-                    //已登录用户能访问的
                     [
                         'allow' => true,
                         'actions' => [
@@ -50,7 +41,7 @@ class MusicController extends ModuleController
                             'update',
                             'delete',
                         ],
-                        'roles' => ['@'],//@已登录，?未登录
+                        'roles' => ['@'],
                     ],
                 ],
             ],

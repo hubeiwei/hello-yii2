@@ -28,13 +28,6 @@ class ArticleController extends ModuleController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => [
-                    'index',
-                    'my-article',
-                    'create',
-                    'update',
-                    'delete',
-                ],
                 'rules' => [
                     [
                         'allow' => true,
