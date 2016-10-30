@@ -17,7 +17,7 @@ class Alert extends Widget
     public $typeMap = [
         Message::TYPE_INFO => 'alert-info',
         Message::TYPE_SUCCESS => 'alert-success',
-        Message::TYPE_ERROR => 'alert-error',
+        Message::TYPE_ERROR => 'alert-danger',
         Message::TYPE_DANGER => 'alert-danger',
         Message::TYPE_WARNING => 'alert-warning'
     ];
@@ -36,7 +36,7 @@ class Alert extends Widget
                 foreach ($data as $i => $message) {
                     $this->_message .= YiiAlert::widget([
                         'body' => $message,
-                        'options' => $this->options,
+                        'options' => ['class' => $this->typeMap[$type]],
                     ]);
                 }
                 $session->removeFlash($type);
