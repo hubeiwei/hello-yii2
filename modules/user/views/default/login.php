@@ -1,6 +1,6 @@
 <?php
 
-use app\modules\core\widget\HuCaptcha;
+use app\modules\core\widgets\Captcha;
 use kartik\password\PasswordInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -33,7 +33,7 @@ $this->title = '登录';
         ],
     ]) ?>
 
-    <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
+    <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
 
     <?= $form->field($model, 'rememberMe')->checkbox() ?>
 

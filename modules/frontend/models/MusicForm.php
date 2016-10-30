@@ -10,7 +10,7 @@
 namespace app\modules\frontend\models;
 
 use app\models\Music;
-use app\modules\core\extensions\HuCaptchaValidator;
+use app\modules\core\extensions\CaptchaValidator;
 use app\modules\core\helpers\UserHelper;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
@@ -69,7 +69,7 @@ class MusicForm extends Model
             ['visible', 'in', 'range' => Music::$visible_array],
             ['status', 'in', 'range' => Music::$status_array],
             ['verifyCode', 'string', 'length' => 4],
-            ['verifyCode', HuCaptchaValidator::className()],
+            ['verifyCode', CaptchaValidator::className()],
         ];
     }
 }

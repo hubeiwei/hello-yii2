@@ -2,7 +2,7 @@
 
 use app\models\Music;
 use app\modules\core\helpers\RenderHelper;
-use app\modules\core\widget\DateRangePicker;
+use app\modules\core\widgets\DateRangePicker;
 use kartik\grid\SerialColumn;
 use yii\helpers\Html;
 

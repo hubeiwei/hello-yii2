@@ -1,7 +1,7 @@
 <?php
 
 use app\models\Music;
-use app\modules\core\widget\HuCaptcha;
+use app\modules\core\widgets\Captcha;
 use app\modules\core\helpers\UserHelper;
 use kartik\file\FileInput;
 use yii\helpers\Html;
@@ -49,7 +49,7 @@ use yii\widgets\ActiveForm;
     }
     ?>
 
-    <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
+    <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
 
     <div class="form-group">
         <?= Html::submitButton('提交', ['class' => 'btn btn-primary btn-block']) ?>

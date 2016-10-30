@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-use app\modules\core\widget\HuCaptcha;
+use app\modules\core\widgets\Captcha;
 use kartik\password\PasswordInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -38,7 +38,7 @@ $this->title = '注册';
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
+    <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
 
     <div class="form-group">
         <?= Html::submitButton('注册', ['class' => 'btn btn-primary btn-block']) ?>

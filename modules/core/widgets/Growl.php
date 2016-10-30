@@ -6,10 +6,10 @@
  * Time: 9:45
  */
 
-namespace app\modules\core\widget;
+namespace app\modules\core\widgets;
 
 use app\modules\core\helpers\Message;
-use kartik\growl\Growl as kartikGrowl;
+use kartik\growl\Growl as KartikGrowl;
 use Yii;
 use yii\bootstrap\Widget;
 
@@ -19,11 +19,11 @@ class Growl extends Widget
      * @var array
      */
     public $typeMap = [
-        Message::TYPE_INFO => kartikGrowl::TYPE_INFO,
-        Message::TYPE_SUCCESS => kartikGrowl::TYPE_SUCCESS,
-        Message::TYPE_ERROR => kartikGrowl::TYPE_DANGER,
-        Message::TYPE_DANGER => kartikGrowl::TYPE_DANGER,
-        Message::TYPE_WARNING => kartikGrowl::TYPE_WARNING,
+        Message::TYPE_INFO => KartikGrowl::TYPE_INFO,
+        Message::TYPE_SUCCESS => KartikGrowl::TYPE_SUCCESS,
+        Message::TYPE_ERROR => KartikGrowl::TYPE_DANGER,
+        Message::TYPE_DANGER => KartikGrowl::TYPE_DANGER,
+        Message::TYPE_WARNING => KartikGrowl::TYPE_WARNING,
     ];
 
     /**
@@ -50,7 +50,7 @@ class Growl extends Widget
             if (isset($this->typeMap[$type])) {
                 $data = (array)$data;
                 foreach ($data as $i => $message) {
-                    $this->_message .= kartikGrowl::widget([
+                    $this->_message .= KartikGrowl::widget([
                         'type' => $this->typeMap[$type],
                         'icon' => $this->iconMap[$type],
                         'body' => $message,

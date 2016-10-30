@@ -9,7 +9,7 @@
 
 namespace app\modules\core\extensions;
 
-use kartik\password\StrengthValidator;
+use kartik\password\StrengthValidator as KartikStrengthValidator;
 
 /**
  * 目前只用到一个密码验证，
@@ -19,7 +19,7 @@ use kartik\password\StrengthValidator;
  * 需要依赖kartik-v/yii2-password
  * @link https://github.com/kartik-v/yii2-password
  */
-class HuStrengthValidator extends StrengthValidator
+class StrengthValidator extends KartikStrengthValidator
 {
     /**
      * @var bool 允许密码里有用户名，true为不允许

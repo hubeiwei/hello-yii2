@@ -1,7 +1,7 @@
 <?php
 
 use app\modules\core\helpers\UserHelper;
-use app\modules\core\widget\Alert;
+use app\modules\core\widgets\Alert;
 use kartik\sidenav\SideNav;
 use mdm\admin\components\MenuHelper;
 use yii\bootstrap\Nav;

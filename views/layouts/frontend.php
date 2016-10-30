@@ -1,7 +1,7 @@
 <?php
 
 use app\modules\core\helpers\UserHelper;
-use app\modules\core\widget\Growl;
+use app\modules\core\widgets\Growl;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;

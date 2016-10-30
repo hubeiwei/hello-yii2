@@ -10,7 +10,7 @@
 namespace app\modules\user\models;
 
 use app\models\UserDetail;
-use app\modules\core\extensions\HuCaptchaValidator;
+use app\modules\core\extensions\CaptchaValidator;
 use yii\base\Model;
 
 class UserDetailForm extends Model
@@ -32,7 +32,7 @@ class UserDetailForm extends Model
             ['resume', 'safe'],
             ['verifyCode', 'required'],
             ['verifyCode', 'string', 'length' => 4],
-            ['verifyCode', HuCaptchaValidator::className()],
+            ['verifyCode', CaptchaValidator::className()],
         ];
     }
 

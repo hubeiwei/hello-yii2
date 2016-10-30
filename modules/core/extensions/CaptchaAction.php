@@ -9,14 +9,14 @@
 
 namespace app\modules\core\extensions;
 
-use yii\captcha\CaptchaAction;
+use yii\captcha\CaptchaAction as YiiCaptchaAction;
 
 /**
  * 虽然验证码action只配了一个，
  * 但为了方便改属性以及不让控制器的代码过多，
  * 就继承了一份来改写，同时也能加上中文注释
  */
-class HuCaptchaAction extends CaptchaAction
+class CaptchaAction extends YiiCaptchaAction
 {
     /**
      * @var int 相同验证码的显示次数

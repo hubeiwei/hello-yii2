@@ -9,14 +9,14 @@
 
 namespace app\modules\core\extensions;
 
-use yii\captcha\CaptchaValidator;
+use yii\captcha\CaptchaValidator as YiiCaptchaValidator;
 
 /**
  * 因为很多地方用到验证码，
  * 不能每个验证码都把那么多值配一遍，很难看也很难维护，
  * 所以继承一份来改写是最好的方法
  */
-class HuCaptchaValidator extends CaptchaValidator
+class CaptchaValidator extends YiiCaptchaValidator
 {
     /**
      * @var boolean 是否忽略空

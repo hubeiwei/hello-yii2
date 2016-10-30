@@ -10,7 +10,7 @@
 namespace app\modules\frontend\models;
 
 use app\models\Article;
-use app\modules\core\extensions\HuCaptchaValidator;
+use app\modules\core\extensions\CaptchaValidator;
 use yii\base\Model;
 use yii\validators\DateValidator;
 
@@ -53,7 +53,7 @@ class ArticleForm extends Model
             ['type', 'in', 'range' => Article::$type_array],
             ['status', 'in', 'range' => Article::$status_array],
             ['verifyCode', 'string', 'length' => 4],
-            ['verifyCode', HuCaptchaValidator::className()],
+            ['verifyCode', CaptchaValidator::className()],
         ];
     }
 }

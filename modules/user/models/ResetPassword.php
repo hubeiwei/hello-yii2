@@ -3,8 +3,8 @@
 namespace app\modules\user\models;
 
 use app\models\User;
-use app\modules\core\extensions\HuCaptchaValidator;
-use app\modules\core\extensions\HuStrengthValidator;
+use app\modules\core\extensions\CaptchaValidator;
+use app\modules\core\extensions\StrengthValidator;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\base\Model;
@@ -49,10 +49,10 @@ class ResetPassword extends Model
         return [
             [['password', 'password_repeat'], 'required'],
             ['password', 'string', 'min' => 6],
-            ['password', HuStrengthValidator::className(), 'hasUser' => false],
+            ['password', StrengthValidator::className(), 'hasUser' => false],
             ['password_repeat', 'compare', 'compareAttribute' => 'password'],
             ['verifyCode', 'string', 'length' => 4],
-            ['verifyCode', HuCaptchaValidator::className()],
+            ['verifyCode', CaptchaValidator::className()],
         ];
     }
 

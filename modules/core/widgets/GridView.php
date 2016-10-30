@@ -7,16 +7,16 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace app\modules\core\widget;
+namespace app\modules\core\widgets;
 
-use kartik\grid\GridView;
+use kartik\grid\GridView as KartikGridView;
 
 /**
  * 已经封装在RenderHelper了，
  * 但有特别需求时还是可以单独使用该类
  * @see \app\modules\core\helpers\RenderHelper::gridView()
  */
-class HuGridView extends GridView
+class GridView extends KartikGridView
 {
     public $pager = [
         'firstPageLabel' => '首页',

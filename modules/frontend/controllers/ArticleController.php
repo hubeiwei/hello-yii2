@@ -5,7 +5,7 @@ namespace app\modules\frontend\controllers;
 use app\models\Article;
 use app\models\search\ArticleSearch;
 use app\models\User;
-use app\modules\core\extensions\HuQuery;
+use app\modules\core\extensions\Query;
 use app\modules\core\helpers\Message;
 use app\modules\core\helpers\UserHelper;
 use app\modules\frontend\controllers\base\ModuleController;
@@ -61,7 +61,7 @@ class ArticleController extends ModuleController
         $username = Yii::$app->request->get('username');
         $published_at = Yii::$app->request->get('published_at');
 
-        $query = (new HuQuery())
+        $query = (new Query())
             ->from(['article' => Article::tableName()])
             ->select([
                 'article.id',

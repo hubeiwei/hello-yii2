@@ -1,18 +1,17 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: HBW
- * Date: 2016/4/1
- * Time: 23:35
- * To change this template use File | Setting | File Templates.
+ * User: hubeiwei
+ * Date: 2016/9/17
+ * Time: 18:39
  */
 
 namespace app\modules\core\extensions;
 
 use app\modules\core\helpers\EasyHelper;
-use yii\db\ActiveQuery;
+use yii\db\Query as YiiQuery;
 
-class HuActiveQuery extends ActiveQuery
+class Query extends YiiQuery
 {
     /**
      * @param string $attribute
@@ -53,7 +52,7 @@ class HuActiveQuery extends ActiveQuery
     }
 
     /**
-     * @see \app\modules\core\widget\DateRangePicker
+     * @see \app\modules\core\widgets\DateRangePicker
      *
      * @param string $attribute
      * @param string $value

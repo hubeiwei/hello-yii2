@@ -3,7 +3,7 @@
 namespace app\modules\user\models;
 
 use app\models\User;
-use app\modules\core\extensions\HuCaptchaValidator;
+use app\modules\core\extensions\CaptchaValidator;
 use Yii;
 use yii\base\Model;
 
@@ -30,7 +30,7 @@ class PasswordResetRequest extends Model
                 'message' => '该邮箱不存在',
             ],
             ['verifyCode', 'string', 'length' => 4],
-            ['verifyCode', HuCaptchaValidator::className()],
+            ['verifyCode', CaptchaValidator::className()],
         ];
     }
 

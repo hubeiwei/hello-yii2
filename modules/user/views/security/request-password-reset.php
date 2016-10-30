@@ -1,6 +1,6 @@
 <?php
 
-use app\modules\core\widget\HuCaptcha;
+use app\modules\core\widgets\Captcha;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
@@ -24,7 +24,7 @@ $this->title = '找回密码';
         'placeholder' => '请输入您注册时的邮箱',
     ]) ?>
 
-    <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
+    <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
 
     <div class="form-group">
         <?= Html::submitButton('发送邮件', ['class' => 'btn btn-primary btn-block']) ?>

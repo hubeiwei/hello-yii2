@@ -22,9 +22,9 @@ use yii\bootstrap\Widget;
  * Message::setErrorMsg(['error1', 'error2']);
  * ```
  *
- * 以下两个类支持批量输出所有类型以及数据类型为数组的消息
- * @see \app\modules\core\widget\Alert
- * @see \app\modules\core\widget\Growl
+ * 以下两个widget支持批量输出所有而且数据类型为数组的消息
+ * @see \app\modules\core\widgets\Alert
+ * @see \app\modules\core\widgets\Growl
  */
 class Message extends Widget
 {

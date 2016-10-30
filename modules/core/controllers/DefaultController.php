@@ -3,7 +3,7 @@
 namespace app\modules\core\controllers;
 
 use app\modules\core\controllers\base\ModuleController;
-use app\modules\core\extensions\HuCaptchaAction;
+use app\modules\core\extensions\CaptchaAction;
 use yii\web\ErrorAction;
 
 class DefaultController extends ModuleController
@@ -19,7 +19,7 @@ class DefaultController extends ModuleController
                 'view' => '@app/views/site/error.php',
             ],
             'captcha' => [
-                'class' => HuCaptchaAction::className(),
+                'class' => CaptchaAction::className(),
             ],
         ];
     }

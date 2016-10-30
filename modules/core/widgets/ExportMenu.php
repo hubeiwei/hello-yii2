@@ -1,13 +1,13 @@
 <?php
-namespace app\modules\core\widget;
+namespace app\modules\core\widgets;
 
-use kartik\export\ExportMenu;
+use kartik\export\ExportMenu as KartikExportMenu;
 
 /**
  * 需要依赖kartik-v/yii2-export
  * @link https://github.com/kartik-v/yii2-export
  */
-class HuExportMenu extends ExportMenu
+class ExportMenu extends KartikExportMenu
 {
     public $exportFormView = '@vendor/kartik-v/yii2-export/views/_form';
 

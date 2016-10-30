@@ -1,11 +1,12 @@
 <?php
 /**
- * @link http://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * Created by PhpStorm.
+ * User: hubeiwei
+ * Date: 2016/10/30
+ * Time: 9:43
  */
 
-namespace app\modules\core\widget;
+namespace app\modules\core\widgets;
 
 use app\modules\core\helpers\Message;
 use yii\bootstrap\Alert as YiiAlert;

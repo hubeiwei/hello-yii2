@@ -1,6 +1,6 @@
 <?php
 
-use app\modules\core\widget\HuCaptcha;
+use app\modules\core\widgets\Captcha;
 use kartik\password\PasswordInput;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
@@ -24,7 +24,7 @@ $this->title = '重置密码';
 
     <?= $form->field($model, 'password_repeat')->passwordInput(['maxlength' => 20]) ?>
 
-    <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
+    <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
 
     <div class="form-group">
         <?= Html::submitButton('重置密码', ['class' => 'btn btn-primary btn-block']) ?>

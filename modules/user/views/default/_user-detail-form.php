@@ -8,7 +8,7 @@
  */
 
 use app\models\UserDetail;
-use app\modules\core\widget\HuCaptcha;
+use app\modules\core\widgets\Captcha;
 use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -36,7 +36,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'resume')->textarea(['maxlength' => 100, 'rows' => 3]) ?>
 
-    <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
+    <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
 
     <div class="form-group">
         <?= Html::submitButton('保存', ['class' => 'btn btn-primary btn-block']) ?>

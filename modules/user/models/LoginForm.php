@@ -3,7 +3,7 @@
 namespace app\modules\user\models;
 
 use app\models\User;
-use app\modules\core\extensions\HuCaptchaValidator;
+use app\modules\core\extensions\CaptchaValidator;
 use app\modules\core\helpers\EasyHelper;
 use Yii;
 use yii\base\Model;
@@ -41,7 +41,7 @@ class LoginForm extends Model
             ['password', 'string', 'min' => 8, 'max' => 20],
             ['password', 'validatePassword'],
             [['verifyCode'], 'string', 'length' => 4],
-            [['verifyCode'], HuCaptchaValidator::className()],
+            [['verifyCode'], CaptchaValidator::className()],
             ['rememberMe', 'boolean'],
         ];
     }

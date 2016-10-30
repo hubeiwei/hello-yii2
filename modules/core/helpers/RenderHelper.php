@@ -9,8 +9,8 @@
 
 namespace app\modules\core\helpers;
 
-use app\modules\core\widget\HuExportMenu;
-use app\modules\core\widget\HuGridView;
+use app\modules\core\widgets\ExportMenu;
+use app\modules\core\widgets\GridView;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use Yii;
@@ -47,12 +47,12 @@ class RenderHelper
 
         $resetUrl = '<div class="btn-group">' . Html::a('<i class="glyphicon glyphicon-repeat"></i> 重置', [Yii::$app->controller->action->id], ['class' => 'btn btn-default', 'title' => '重置搜索条件', 'data' => ['pjax' => 'true']]) . '</div>';
 
-        $export = !$hasExport ? '' : HuExportMenu::widget(ArrayHelper::merge($config, [
+        $export = !$hasExport ? '' : ExportMenu::widget(ArrayHelper::merge($config, [
             'exportConfig' => [
-                HuExportMenu::FORMAT_HTML => false,
-                HuExportMenu::FORMAT_TEXT => false,
-                HuExportMenu::FORMAT_PDF => false,
-                HuExportMenu::FORMAT_EXCEL => false,
+                ExportMenu::FORMAT_HTML => false,
+                ExportMenu::FORMAT_TEXT => false,
+                ExportMenu::FORMAT_PDF => false,
+                ExportMenu::FORMAT_EXCEL => false,
             ],
             'pjaxContainerId' => 'kartik-grid-pjax',
         ]));
@@ -70,6 +70,6 @@ class RenderHelper
         }
         $gridConfig['layout'] = '<p>' . $resetUrl . '{toolbar}' . $export . '</p>{summary}{items}{pager}';
 
-        return HuGridView::widget($gridConfig);
+        return GridView::widget($gridConfig);
     }
 }

@@ -9,16 +9,16 @@
 
 namespace app\modules\core\extensions;
 
-use yii\db\ActiveRecord;
+use yii\db\ActiveRecord as YiiActiveRecord;
 
-class HuActiveRecord extends ActiveRecord
+class ActiveRecord extends YiiActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function find()
     {
-        return new HuActiveQuery(get_called_class());
+        return new ActiveQuery(get_called_class());
     }
 
     /**
