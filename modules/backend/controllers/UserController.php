@@ -5,8 +5,9 @@ namespace app\modules\backend\controllers;
 use app\models\search\UserSearch;
 use app\models\User;
 use app\models\UserDetail;
-use app\modules\core\helpers\EasyHelper;
 use app\modules\backend\controllers\base\ModuleController;
+use app\modules\core\helpers\EasyHelper;
+use app\modules\core\helpers\Message;
 use Yii;
 use yii\web\NotFoundHttpException;
 
@@ -62,11 +63,11 @@ class UserController extends ModuleController
             }
             if ($flow) {
                 $transaction->commit();
-                EasyHelper::setSuccessMsg('添加成功');
+                Message::setSuccessMsg('添加成功');
                 return $this->redirect(['view', 'id' => $user->id]);
             } else {
                 $transaction->rollBack();
-                EasyHelper::setErrorMsg('添加失败');
+                Message::setErrorMsg('添加失败');
             }
         }
 
@@ -87,7 +88,7 @@ class UserController extends ModuleController
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
-                EasyHelper::setSuccessMsg('修改成功');
+                Message::setSuccessMsg('修改成功');
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
@@ -111,10 +112,10 @@ class UserController extends ModuleController
         $transaction = EasyHelper::beginTransaction();
         if ($model->delete() && $userDetail->delete()) {
             $transaction->commit();
-            EasyHelper::setSuccessMsg('删除成功');
+            Message::setSuccessMsg('删除成功');
         } else {
             $transaction->rollBack();
-            EasyHelper::setErrorMsg('删除失败');
+            Message::setErrorMsg('删除失败');
         }
 
         return $this->redirect(['index']);

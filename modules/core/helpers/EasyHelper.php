@@ -14,57 +14,6 @@ use yii\db\Transaction;
 
 class EasyHelper
 {
-    /**
-     * 设置消息提示，获取消息的代码在两个布局文件里
-     *
-     * @param $value
-     * @param string $key
-     */
-    public static function setMessage($value, $key = 'info')
-    {
-        Yii::$app->session->setFlash($key, $value);
-    }
-
-    /**
-     * 设置成功消息
-     *
-     * @param $value
-     */
-    public static function setSuccessMsg($value)
-    {
-        self::setMessage($value, 'success');
-    }
-
-    /**
-     * 设置错误消息
-     *
-     * @param $value
-     */
-    public static function setErrorMsg($value)
-    {
-        self::setMessage($value, 'error');
-    }
-
-    public static function setSession($key, $value)
-    {
-        return Yii::$app->session[$key] = $value;
-    }
-
-    public static function getSession($key)
-    {
-        return Yii::$app->session[$key];
-    }
-
-    public static function getCache($key)
-    {
-        return Yii::$app->cache->get($key);
-    }
-
-    public static function setCache($key, $value, $expiration, $dependency = null)
-    {
-        return Yii::$app->cache->set($key, $value, $expiration, $dependency);
-    }
-
     public static function getGlobal($key)
     {
         $global = Yii::$app->params['global_variable'];
@@ -92,25 +41,6 @@ class EasyHelper
         else if (!empty($_SERVER['REMOTE_ADDR']))
             $ip = $_SERVER['REMOTE_ADDR'];
         return $ip;
-    }
-
-    /**
-     * 时间戳转日期
-     *
-     * @param int $timestamp 时间戳
-     * @param string $format 默认Y-m-d H:i:s
-     * @return string|null 时间戳为空时就不显示"1970..."了
-     */
-    public static function timestampToDate($timestamp = -1, $format = 'Y-m-d H:i:s')
-    {
-        if (!$timestamp) {
-            return null;
-        }
-        if ($timestamp == -1) {
-            return date($format);
-        } else {
-            return date($format, $timestamp);
-        }
     }
 
     /**
@@ -144,14 +74,15 @@ class EasyHelper
      *
      * 该方法只是为了让不同数据库的component开启事务时都能让IDE提示代码
      *
-     * @param string $dbComponentName
+     * @param \yii\db\Connection $db
      * @param string $isolationLevel
      * @return Transaction
      */
-    public static function beginTransaction($dbComponentName = 'db', $isolationLevel = Transaction::SERIALIZABLE)
+    public static function beginTransaction($db = null, $isolationLevel = Transaction::SERIALIZABLE)
     {
-        /** @var \yii\db\Connection $db */
-        $db = Yii::$app->$dbComponentName;
+        if ($db === null) {
+            $db = Yii::$app->db;
+        }
         return $db->beginTransaction($isolationLevel);
     }
 
@@ -161,7 +92,7 @@ class EasyHelper
      */
     public static function unifyLimiter($value)
     {
-        return str_replace(array(' ', '　', '，', '、', '
-'), ',', $value); //不要取消换行! 那是newline
+        return str_replace([' ', '　', '，', '、', '
+'], ',', $value); //不要取消换行! 那是newline
     }
 }

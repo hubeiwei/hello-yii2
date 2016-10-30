@@ -5,6 +5,7 @@ namespace app\modules\user\controllers;
 use app\models\User;
 use app\models\UserDetail;
 use app\modules\core\helpers\EasyHelper;
+use app\modules\core\helpers\Message;
 use app\modules\core\helpers\UserHelper;
 use app\modules\user\controllers\base\ModuleController;
 use app\modules\user\models\LoginForm;
@@ -54,10 +55,10 @@ class DefaultController extends ModuleController
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->login()) {
-                EasyHelper::setSuccessMsg('登录成功');
+                Message::setSuccessMsg('登录成功');
                 return $this->goHome();
             } else {
-                EasyHelper::setErrorMsg('登录失败');
+                Message::setErrorMsg('登录失败');
             }
         }
 
@@ -69,7 +70,7 @@ class DefaultController extends ModuleController
     public function actionLogout()
     {
         Yii::$app->user->logout();
-        EasyHelper::setMessage('已登出');
+        Message::setMessage('已登出');
         return $this->goHome();
     }
 
@@ -92,11 +93,11 @@ class DefaultController extends ModuleController
                 }
                 if ($flow) {
                     $transaction->commit();
-                    EasyHelper::setSuccessMsg('注册成功');
+                    Message::setSuccessMsg('注册成功');
                     return $this->redirect('login');
                 } else {
                     $transaction->rollBack();
-                    EasyHelper::setErrorMsg('注册失败');
+                    Message::setErrorMsg('注册失败');
                 }
             }
         }
@@ -116,16 +117,16 @@ class DefaultController extends ModuleController
                 $model->setAttributes($form->getAttributes());
                 $model->birthday = $form->birthday ? strtotime($form->birthday) : null;
                 if ($model->save()) {
-                    EasyHelper::setSuccessMsg('修改成功');
+                    Message::setSuccessMsg('修改成功');
                     return $this->redirect(['detail', 'id' => $model->id]);
                 } else {
-                    EasyHelper::setErrorMsg('修改失败');
+                    Message::setErrorMsg('修改失败');
                     $form->addErrors($model->getErrors());
                 }
             }
         } else {
             $form->setAttributes($model->getAttributes());
-            $form->birthday = EasyHelper::timestampToDate($model->birthday, 'Y-m-d');
+            $form->birthday = date('Y-m-d', $model->birthday);
         }
 
         return $this->render('detail', [

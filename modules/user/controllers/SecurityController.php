@@ -2,7 +2,7 @@
 
 namespace app\modules\user\controllers;
 
-use app\modules\core\helpers\EasyHelper;
+use app\modules\core\helpers\Message;
 use app\modules\user\controllers\base\ModuleController;
 use app\modules\user\models\PasswordResetRequest;
 use app\modules\user\models\ResetPassword;
@@ -18,10 +18,10 @@ class SecurityController extends ModuleController
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                EasyHelper::setSuccessMsg('发送成功，请前往您的邮箱查看');
+                Message::setSuccessMsg('发送成功，请前往您的邮箱查看');
                 return $this->goHome();
             } else {
-                EasyHelper::setErrorMsg('对不起，重置密码邮件发送失败');
+                Message::setErrorMsg('对不起，重置密码邮件发送失败');
             }
         }
 
@@ -39,7 +39,7 @@ class SecurityController extends ModuleController
         }
 
         if ($model->load(Yii::$app->getRequest()->post()) && $model->validate() && $model->resetPassword()) {
-            EasyHelper::setSuccessMsg('密码修改成功');
+            Message::setSuccessMsg('密码修改成功');
             return $this->goHome();
         }
 

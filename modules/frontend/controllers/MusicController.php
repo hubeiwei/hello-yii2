@@ -4,7 +4,7 @@ namespace app\modules\frontend\controllers;
 
 use app\models\Music;
 use app\models\search\MusicSearch;
-use app\modules\core\helpers\EasyHelper;
+use app\modules\core\helpers\Message;
 use app\modules\core\helpers\UserHelper;
 use app\modules\frontend\controllers\base\ModuleController;
 use app\modules\frontend\models\MusicForm;
@@ -90,11 +90,11 @@ class MusicController extends ModuleController
                 $model->setAttributes($form->getAttributes());
                 if ($model->uploadMusic($form->music_file)) {
                     if ($model->save(false)) {
-                        EasyHelper::setSuccessMsg('上传成功');
+                        Message::setSuccessMsg('上传成功');
                         return $this->redirect(['index']);
                     } else {
                         $model->deleteMusic();
-                        EasyHelper::setErrorMsg('上传失败');
+                        Message::setErrorMsg('上传失败');
                     }
                 } else {
                     $form->addError('music_file', '文件上传失败');
@@ -118,7 +118,7 @@ class MusicController extends ModuleController
         $model = $this->findModel($id);
 
         if (!UserHelper::isBelongToUser($model->user_id)) {
-            EasyHelper::setErrorMsg('不可修改其他人的数据');
+            Message::setErrorMsg('不可修改其他人的数据');
             return $this->redirect(['index']);
         }
 
@@ -145,14 +145,14 @@ class MusicController extends ModuleController
                         if ($form->music_file) {
                             unlink(Music::getMusicFullPath($original_file_name));
                         }
-                        EasyHelper::setSuccessMsg('修改成功');
+                        Message::setSuccessMsg('修改成功');
                         return $this->redirect(['index']);
                     } else {
                         //如果上传了新文件，删除新文件
                         if ($form->music_file) {
                             $model->deleteMusic();
                         }
-                        EasyHelper::setErrorMsg('修改失败');
+                        Message::setErrorMsg('修改失败');
                     }
                 }
             }
@@ -178,12 +178,12 @@ class MusicController extends ModuleController
         if (UserHelper::isBelongToUser($model->user_id)) {
             if ($model->delete()) {
                 $model->deleteMusic();
-                EasyHelper::setSuccessMsg('删除成功');
+                Message::setSuccessMsg('删除成功');
             } else {
-                EasyHelper::setErrorMsg('删除失败');
+                Message::setErrorMsg('删除失败');
             }
         } else {
-            EasyHelper::setErrorMsg('不能删除其他人的数据');
+            Message::setErrorMsg('不能删除其他人的数据');
         }
 
         return $this->redirect(['my-music']);

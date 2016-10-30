@@ -4,8 +4,8 @@ namespace app\modules\backend\controllers;
 
 use app\models\search\SettingSearch;
 use app\models\Setting;
-use app\modules\core\helpers\EasyHelper;
 use app\modules\backend\controllers\base\ModuleController;
+use app\modules\core\helpers\Message;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
@@ -67,7 +67,7 @@ class SettingController extends ModuleController
         $model = new Setting();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            EasyHelper::setSuccessMsg('添加成功');
+            Message::setSuccessMsg('添加成功');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -87,7 +87,7 @@ class SettingController extends ModuleController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            EasyHelper::setSuccessMsg('修改成功');
+            Message::setSuccessMsg('修改成功');
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -107,9 +107,9 @@ class SettingController extends ModuleController
         $model = $this->findModel($id);
 
         if ($model->delete()) {
-            EasyHelper::setSuccessMsg('删除成功');
+            Message::setSuccessMsg('删除成功');
         } else {
-            EasyHelper::setErrorMsg('删除失败');
+            Message::setErrorMsg('删除失败');
         }
         return $this->redirect(['index']);
     }

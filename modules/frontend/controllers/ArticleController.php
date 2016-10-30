@@ -6,7 +6,7 @@ use app\models\Article;
 use app\models\search\ArticleSearch;
 use app\models\User;
 use app\modules\core\extensions\HuQuery;
-use app\modules\core\helpers\EasyHelper;
+use app\modules\core\helpers\Message;
 use app\modules\core\helpers\UserHelper;
 use app\modules\frontend\controllers\base\ModuleController;
 use app\modules\frontend\models\ArticleForm;
@@ -151,10 +151,10 @@ class ArticleController extends ModuleController
                 $model->setAttributes($form->getAttributes());
                 $model->published_at = strtotime($form->published_at);
                 if ($model->save(false)) {
-                    EasyHelper::setSuccessMsg('发布成功');
+                    Message::setSuccessMsg('发布成功');
                     return $this->redirect(['view', 'id' => $model->id]);
                 } else {
-                    EasyHelper::setErrorMsg('发布失败');
+                    Message::setErrorMsg('发布失败');
                 }
             }
         } else {
@@ -177,7 +177,7 @@ class ArticleController extends ModuleController
         $model = $this->findModel($id);
 
         if (!UserHelper::isBelongToUser($model->created_by)) {
-            EasyHelper::setErrorMsg('不可修改其他人的数据');
+            Message::setErrorMsg('不可修改其他人的数据');
             return $this->redirect(['index']);
         }
 
@@ -188,10 +188,10 @@ class ArticleController extends ModuleController
                 $model->setAttributes($form->getAttributes());
                 $model->published_at = strtotime($form->published_at);
                 if ($model->save()) {
-                    EasyHelper::setSuccessMsg('修改成功');
+                    Message::setSuccessMsg('修改成功');
                     return $this->redirect(['view', 'id' => $model->id]);
                 } else {
-                    EasyHelper::setErrorMsg('修改失败');
+                    Message::setErrorMsg('修改失败');
                 }
             }
         } else {
@@ -217,12 +217,12 @@ class ArticleController extends ModuleController
 
         if (UserHelper::isBelongToUser($model->created_by)) {
             if ($model->delete()) {
-                EasyHelper::setSuccessMsg('删除成功');
+                Message::setSuccessMsg('删除成功');
             } else {
-                EasyHelper::setErrorMsg('删除失败');
+                Message::setErrorMsg('删除失败');
             }
         } else {
-            EasyHelper::setErrorMsg('不能删除其他人的数据');
+            Message::setErrorMsg('不能删除其他人的数据');
         }
 
         return $this->redirect(['my-article']);

@@ -4,8 +4,8 @@ namespace app\modules\backend\controllers;
 
 use app\models\search\UserDetailSearch;
 use app\models\UserDetail;
-use app\modules\core\helpers\EasyHelper;
 use app\modules\backend\controllers\base\ModuleController;
+use app\modules\core\helpers\Message;
 use app\modules\user\models\UserDetailForm;
 use Yii;
 use yii\web\NotFoundHttpException;
@@ -58,7 +58,7 @@ class UserDetailController extends ModuleController
                 $model->setAttributes($form->getAttributes());
                 $model->birthday = $form->birthday ? strtotime($form->birthday) : null;
                 if ($model->save()) {
-                    EasyHelper::setSuccessMsg('修改成功');
+                    Message::setSuccessMsg('修改成功');
                     return $this->redirect(['view', 'id' => $model->id]);
                 } else {
                     $form->addErrors($model->getErrors());
@@ -66,7 +66,7 @@ class UserDetailController extends ModuleController
             }
         } else {
             $form->setAttributes($model->getAttributes());
-            $form->birthday = EasyHelper::timestampToDate($model->birthday, 'Y-m-d');
+            $form->birthday = date('Y-m-d', $model->birthday);;
         }
 
         return $this->render('update', [

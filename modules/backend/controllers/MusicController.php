@@ -4,8 +4,8 @@ namespace app\modules\backend\controllers;
 
 use app\models\Music;
 use app\models\search\MusicSearch;
-use app\modules\core\helpers\EasyHelper;
 use app\modules\backend\controllers\base\ModuleController;
+use app\modules\core\helpers\Message;
 use app\modules\frontend\models\MusicForm;
 use Yii;
 use yii\web\NotFoundHttpException;
@@ -64,14 +64,14 @@ class MusicController extends ModuleController
                         if ($form->music_file) {
                             unlink(Music::getMusicFullPath($original_file_name));
                         }
-                        EasyHelper::setSuccessMsg('修改成功');
+                        Message::setSuccessMsg('修改成功');
                         return $this->redirect(['index']);
                     } else {
                         //如果上传了新文件，删除新文件
                         if ($form->music_file) {
                             $model->deleteMusic();
                         }
-                        EasyHelper::setErrorMsg('修改失败');
+                        Message::setErrorMsg('修改失败');
                     }
                 }
             }
@@ -96,9 +96,9 @@ class MusicController extends ModuleController
 
         if ($model->delete()) {
             $model->deleteMusic();
-            EasyHelper::setSuccessMsg('删除成功');
+            Message::setSuccessMsg('删除成功');
         } else {
-            EasyHelper::setErrorMsg('删除失败');
+            Message::setErrorMsg('删除失败');
         }
 
         return $this->redirect(['index']);

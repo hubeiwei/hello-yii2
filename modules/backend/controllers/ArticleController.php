@@ -4,8 +4,8 @@ namespace app\modules\backend\controllers;
 
 use app\models\Article;
 use app\models\search\ArticleSearch;
-use app\modules\core\helpers\EasyHelper;
 use app\modules\backend\controllers\base\ModuleController;
+use app\modules\core\helpers\Message;
 use app\modules\frontend\models\ArticleForm;
 use Yii;
 use yii\web\NotFoundHttpException;
@@ -60,10 +60,10 @@ class ArticleController extends ModuleController
                 $model->setAttributes($form->getAttributes());
                 $model->published_at = strtotime($form->published_at);
                 if ($model->save()) {
-                    EasyHelper::setSuccessMsg('修改成功');
+                    Message::setSuccessMsg('修改成功');
                     return $this->redirect(['view', 'id' => $model->id]);
                 } else {
-                    EasyHelper::setErrorMsg('修改失败');
+                    Message::setErrorMsg('修改失败');
                 }
             }
         } else {
@@ -88,9 +88,9 @@ class ArticleController extends ModuleController
         $model = $this->findModel($id);
 
         if ($model->delete()) {
-            EasyHelper::setSuccessMsg('删除成功');
+            Message::setSuccessMsg('删除成功');
         } else {
-            EasyHelper::setErrorMsg('删除失败');
+            Message::setErrorMsg('删除失败');
         }
 
         return $this->redirect(['index']);
