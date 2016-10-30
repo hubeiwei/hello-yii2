@@ -1,7 +1,7 @@
 <?php
 
 use app\modules\core\helpers\UserHelper;
-use kartik\growl\Growl;
+use app\modules\core\widget\Growl;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -94,51 +94,7 @@ NavBar::end();
         'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     ]);
 
-    //获取成功消息提示
-    if (Yii::$app->session->hasFlash('success')) {
-        echo Growl::widget([
-            'type' => Growl::TYPE_SUCCESS,
-            'icon' => 'glyphicon glyphicon-ok-sign',
-            'body' => Yii::$app->session->getFlash('success'),
-            'pluginOptions' => [
-                'showProgressbar' => true,
-                'placement' => [
-                    'from' => 'top',
-                    'align' => 'center',
-                ]
-            ]
-        ]);
-    }
-    //获取消息提示
-    if (Yii::$app->session->hasFlash('info')) {
-        echo Growl::widget([
-            'type' => Growl::TYPE_INFO,
-            'icon' => 'glyphicon glyphicon-info-sign',
-            'body' => Yii::$app->session->getFlash('info'),
-            'pluginOptions' => [
-                'showProgressbar' => true,
-                'placement' => [
-                    'from' => 'top',
-                    'align' => 'center',
-                ]
-            ]
-        ]);
-    }
-    //获取错误消息提示
-    if (Yii::$app->session->hasFlash('error')) {
-        echo Growl::widget([
-            'type' => Growl::TYPE_DANGER,
-            'icon' => 'glyphicon glyphicon-remove-sign',
-            'body' => Yii::$app->session->getFlash('error'),
-            'pluginOptions' => [
-                'showProgressbar' => true,
-                'placement' => [
-                    'from' => 'top',
-                    'align' => 'center',
-                ]
-            ]
-        ]);
-    }
+    echo Growl::widget();
 
     echo $content;
     ?>

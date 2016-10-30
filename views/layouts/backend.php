@@ -1,9 +1,9 @@
 <?php
 
 use app\modules\core\helpers\UserHelper;
+use app\modules\core\widget\Alert;
 use kartik\sidenav\SideNav;
 use mdm\admin\components\MenuHelper;
-use yii\bootstrap\Alert;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -65,27 +65,8 @@ NavBar::end();
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]);
 
-            //获取成功消息提示
-            if (Yii::$app->session->hasFlash('success')) {
-                echo Alert::widget([
-                    'options' => ['class' => 'alert-success'],
-                    'body' => Yii::$app->session->getFlash('success'),
-                ]);
-            }
-            //获取消息提示
-            if (Yii::$app->session->hasFlash('info')) {
-                echo Alert::widget([
-                    'options' => ['class' => 'alert-info'],
-                    'body' => Yii::$app->session->getFlash('info'),
-                ]);
-            }
-            //获取错误消息提示
-            if (Yii::$app->session->hasFlash('error')) {
-                echo Alert::widget([
-                    'options' => ['class' => 'alert-danger'],
-                    'body' => Yii::$app->session->getFlash('error'),
-                ]);
-            }
+            // 输出消息
+            echo Alert::widget();
 
             echo $content;
             ?>
