@@ -88,11 +88,11 @@ class EasyHelper
 
     /**
      * @param $value
-     * @return mixed
+     * @return string|array
      */
     public static function unifyLimiter($value)
     {
         return str_replace([' ', '　', '，', '、', '
-'], ',', $value); //不要取消换行! 那是newline
+'], ',', $value);// 不要取消换行！那是newline
     }
 }
