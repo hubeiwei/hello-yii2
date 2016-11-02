@@ -30,7 +30,7 @@ $gridColumns = [
         'value' => function ($model) {
             return User::$status_map[$model->status];
         },
-        'filter' => RenderHelper::dropDownFilter('UserSearch[status]', $searchModel->status, User::$status_map),
+        'filter' => RenderHelper::dropDownFilter($searchModel, 'status', User::$status_map),
         'headerOptions' => ['width' => 100],
     ],
     [

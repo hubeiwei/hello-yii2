@@ -36,7 +36,7 @@ $gridColumns = [
         'value' => function ($model) {
             return UserDetail::$gender_map[$model->gender];
         },
-        'filter' => RenderHelper::dropDownFilter('UserDetailSearch[gender]', $searchModel->gender, UserDetail::$gender_map),
+        'filter' => RenderHelper::dropDownFilter($searchModel, 'gender', UserDetail::$gender_map),
     ],
     [
         'attribute' => 'birthday',

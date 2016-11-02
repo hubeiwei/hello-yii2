@@ -32,7 +32,7 @@ $gridColumns = [
         'value' => function ($model) {
             return Setting::$status_map[$model->status];
         },
-        'filter' => RenderHelper::dropDownFilter('SettingSearch[status]', $searchModel->status, Setting::$status_map),
+        'filter' => RenderHelper::dropDownFilter($searchModel, 'status', Setting::$status_map),
         'headerOptions' => ['width' => 100],
     ],
     'username',

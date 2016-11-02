@@ -45,7 +45,7 @@ $gridColumns = [
         'value' => function ($model) {
             return Music::$visible_map[$model->visible];
         },
-        'filter' => RenderHelper::dropDownFilter('MusicSearch[visible]', $searchModel->visible, Music::$visible_map),
+        'filter' => RenderHelper::dropDownFilter($searchModel, 'visible', Music::$visible_map),
         'headerOptions' => ['width' => 100],
     ],
     [
@@ -53,7 +53,7 @@ $gridColumns = [
         'value' => function ($model) {
             return Music::$status_map[$model->status];
         },
-        'filter' => RenderHelper::dropDownFilter('MusicSearch[status]', $searchModel->status, Music::$status_map),
+        'filter' => RenderHelper::dropDownFilter($searchModel, 'status', Music::$status_map),
         'headerOptions' => ['width' => 100],
     ],
     [

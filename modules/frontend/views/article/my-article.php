@@ -49,7 +49,7 @@ $gridColumns = [
         'value' => function ($model) {
             return Article::$visible_map[$model->visible];
         },
-        'filter' => RenderHelper::dropDownFilter('ArticleSearch[visible]', $searchModel->visible, Article::$visible_map),
+        'filter' => RenderHelper::dropDownFilter($searchModel, 'visible', Article::$visible_map),
         'headerOptions' => ['width' => 100],
     ],
     [
@@ -57,7 +57,7 @@ $gridColumns = [
         'value' => function ($model) {
             return Article::$type_map[$model->type];
         },
-        'filter' => RenderHelper::dropDownFilter('ArticleSearch[type]', $searchModel->type, Article::$type_map),
+        'filter' => RenderHelper::dropDownFilter($searchModel, 'type', Article::$type_map),
         'headerOptions' => ['width' => 100],
     ],
     [
@@ -65,7 +65,7 @@ $gridColumns = [
         'value' => function ($model) {
             return Article::$status_map[$model->status];
         },
-        'filter' => RenderHelper::dropDownFilter('ArticleSearch[status]', $searchModel->status, Article::$status_map),
+        'filter' => RenderHelper::dropDownFilter($searchModel, 'status', Article::$status_map),
         'headerOptions' => ['width' => 100],
     ],
     [
