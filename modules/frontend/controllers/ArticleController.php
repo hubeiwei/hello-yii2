@@ -58,10 +58,11 @@ class ArticleController extends ModuleController
      */
     public function actionIndex()
     {
-        $title = Yii::$app->request->get('title');
-        $content = Yii::$app->request->get('content');
-        $username = Yii::$app->request->get('username');
-        $published_at = Yii::$app->request->get('published_at');
+        $request = Yii::$app->request;
+        $title = $request->get('title');
+        $content = $request->get('content');
+        $username = $request->get('username');
+        $published_at = $request->get('published_at');
 
         $query = (new Query())
             ->from(['article' => Article::tableName()])

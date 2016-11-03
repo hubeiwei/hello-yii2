@@ -12,15 +12,6 @@ namespace app\modules\core\helpers;
 use app\models\User;
 use Yii;
 
-/**
- * Class UserHelper
- * @package app\modules\core\helpers
- *
- * @property $user
- * @property $userInstance
- * @property $userId
- * @property $userName
- */
 class UserHelper
 {
     /**
