@@ -33,12 +33,14 @@ class ArticleController extends ModuleController
                         'allow' => true,
                         'actions' => [
                             'index',
+                            'view-article',
                         ],
                     ],
                     [
                         'allow' => true,
                         'actions' => [
                             'my-article',
+                            'view',
                             'create',
                             'update',
                             'delete',
