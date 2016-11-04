@@ -73,6 +73,12 @@ echo Nav::widget([
                 [
                     'label' => '登出',
                     'url' => ['/logout'],
+                    'linkOptions' => [
+                        'data' => [
+                            'confirm' => '确定要登出吗？',
+                            'method' => 'post',
+                        ],
+                    ],
                 ],
             ],
         ],

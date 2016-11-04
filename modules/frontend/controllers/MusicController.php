@@ -10,6 +10,7 @@ use app\modules\frontend\controllers\base\ModuleController;
 use app\modules\frontend\models\MusicForm;
 use Yii;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 
@@ -24,6 +25,12 @@ class MusicController extends ModuleController
     public function behaviors()
     {
         return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [

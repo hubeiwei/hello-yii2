@@ -13,6 +13,7 @@ use app\modules\user\models\RegisterForm;
 use app\modules\user\models\UserDetailForm;
 use yii\filters\AccessControl;
 use Yii;
+use yii\filters\VerbFilter;
 
 class DefaultController extends ModuleController
 {
@@ -22,6 +23,12 @@ class DefaultController extends ModuleController
     public function behaviors()
     {
         return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['POST'],
+                ],
+            ],
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [

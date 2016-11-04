@@ -8,6 +8,7 @@ use app\modules\backend\controllers\base\ModuleController;
 use app\modules\core\helpers\Message;
 use app\modules\frontend\models\ArticleForm;
 use Yii;
+use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -15,6 +16,20 @@ use yii\web\NotFoundHttpException;
  */
 class ArticleController extends ModuleController
 {
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
 
     /**
      * Lists all Article models.

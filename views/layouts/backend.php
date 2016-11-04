@@ -42,7 +42,16 @@ echo Nav::widget([
     'options' => ['class' => 'navbar-nav navbar-right'],
     'items' => [
         ['label' => '返回前台', 'url' => ['/frontend']],
-        ['label' => '登出(' . UserHelper::getUserName() . ')', 'url' => ['/logout']],
+        [
+            'label' => '登出(' . UserHelper::getUserName() . ')',
+            'url' => ['/logout'],
+            'linkOptions' => [
+                'data' => [
+                    'confirm' => '确定要登出吗？',
+                    'method' => 'post',
+                ],
+            ],
+        ],
     ],
 ]);
 
