@@ -8,6 +8,7 @@ use app\modules\backend\controllers\base\ModuleController;
 use app\modules\core\helpers\Message;
 use app\modules\frontend\models\MusicForm;
 use Yii;
+use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 
@@ -16,6 +17,21 @@ use yii\web\UploadedFile;
  */
 class MusicController extends ModuleController
 {
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+
     /**
      * Lists all Music models.
      * @return mixed

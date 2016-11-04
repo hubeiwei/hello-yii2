@@ -9,6 +9,7 @@ use app\modules\backend\controllers\base\ModuleController;
 use app\modules\core\helpers\EasyHelper;
 use app\modules\core\helpers\Message;
 use Yii;
+use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -16,6 +17,21 @@ use yii\web\NotFoundHttpException;
  */
 class UserController extends ModuleController
 {
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+
     /**
      * Lists all User models.
      * @return mixed
