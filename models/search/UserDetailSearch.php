@@ -4,7 +4,6 @@ namespace app\models\search;
 
 use app\models\User;
 use app\models\UserDetail;
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
@@ -61,6 +60,7 @@ class UserDetailSearch extends UserDetail
      */
     public function search($params)
     {
+        /** @var \app\modules\core\extensions\ActiveQuery $query */
         $query = self::find()
             ->from(['detail' => self::tableName()])
             ->select([
@@ -90,11 +90,11 @@ class UserDetailSearch extends UserDetail
             ->andFilterWhere(['like', 'resume', $this->resume])
             ->andFilterWhere(['like', 'user.username', $this->getAttribute('username')]);
 
-        $query->compare('detail.id', $this->id);
-        $query->compare('detail.user_id', $this->user_id);
+        $query->compare('detail.id', $this->id)
+            ->compare('detail.user_id', $this->user_id);
 
-        $query->timeRangeFilter('birthday', $this->birthday);
-        $query->timeRangeFilter('detail.updated_at', $this->updated_at, false);
+        $query->timeRangeFilter('birthday', $this->birthday)
+            ->timeRangeFilter('detail.updated_at', $this->updated_at, false);
 
         return $dataProvider;
     }

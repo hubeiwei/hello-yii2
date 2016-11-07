@@ -5,7 +5,6 @@ namespace app\models\search;
 use app\models\Music;
 use app\models\User;
 use app\modules\core\helpers\UserHelper;
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
@@ -62,6 +61,7 @@ class MusicSearch extends Music
      */
     public function search($params)
     {
+        /** @var \app\modules\core\extensions\ActiveQuery $query */
         $query = self::find()
             ->from(['music' => self::tableName()])
             ->select([

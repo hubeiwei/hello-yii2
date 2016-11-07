@@ -60,6 +60,7 @@ class SettingSearch extends Setting
      */
     public function search($params)
     {
+        /** @var \app\modules\core\extensions\ActiveQuery $query */
         $query = self::find()
             ->from(['setting' => self::tableName()])
             ->select([
