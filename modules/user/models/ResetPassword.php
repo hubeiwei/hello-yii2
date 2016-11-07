@@ -59,9 +59,9 @@ class ResetPassword extends Model
     public function attributeLabels()
     {
         return [
-            'password' => Yii::t('app', 'New Password'),
-            'password_repeat' => Yii::t('app', 'Password Repeat'),
-            'verifyCode' => Yii::t('app', 'Verify Code'),
+            'password' => '新密码',
+            'password_repeat' => '确认密码',
+            'verifyCode' => '验证码',
         ];
     }
 

@@ -37,8 +37,8 @@ class PasswordResetRequest extends Model
     public function attributeLabels()
     {
         return [
-            'email' => Yii::t('app', 'Email'),
-            'verifyCode' => Yii::t('app', 'Verify Code'),
+            'email' => '邮箱',
+            'verifyCode' => '验证码',
         ];
     }
 
