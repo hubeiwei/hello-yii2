@@ -29,7 +29,5 @@ class GridView extends KartikGridView
 
     public $hover = true;
 
-//    public $showPageSummary = true;
-
     public $export = false;
 }

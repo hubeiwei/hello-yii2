@@ -69,6 +69,7 @@ class RenderHelper
                     'id' => 'kartik-grid-pjax',
                 ],
             ],
+//            'showPageSummary' => true,
         ]);
         if ($searchModel !== null) {
             $gridConfig['filterModel'] = $searchModel;
