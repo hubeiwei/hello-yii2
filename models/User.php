@@ -149,4 +149,9 @@ class User extends UserBase implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+    public function getDetail()
+    {
+        return $this->hasOne(UserDetail::className(), ['user_id' => 'id']);
+    }
 }
