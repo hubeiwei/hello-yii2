@@ -11,15 +11,15 @@ namespace app\modules\core\helpers;
 
 use app\modules\core\widgets\ExportMenu;
 use app\modules\core\widgets\GridView;
+use Yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use Yii;
 
 class RenderHelper
 {
     /**
-     * 表格用到的，筛选枚举类字段的下拉框
+     * GridView枚举类字段搜索专用下拉框
      *
      * @param Model $model
      * @param string $attribute
@@ -29,7 +29,7 @@ class RenderHelper
     public static function dropDownFilter($model, $attribute, $list)
     {
         if ($model instanceof Model) {
-            return Html::dropDownList($model->formName() . '[' . $attribute . ']', $model->$attribute, ['' => '全部'] + $list, ['class' => 'form-control', 'style' => ['min-width' => '100px']]);
+            return Html::dropDownList($model->formName() . '[' . $attribute . ']', $model->$attribute, ['' => '全部'] + $list, ['class' => 'form-control', 'style' => ['min-width' => '120px']]);
         } else {
             return null;
         }
