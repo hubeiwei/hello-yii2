@@ -2,9 +2,9 @@
 
 use app\models\UserDetail;
 use app\modules\core\grid\ActionColumn;
+use app\modules\core\grid\SerialColumn;
 use app\modules\core\helpers\RenderHelper;
 use app\modules\core\widgets\DateRangePicker;
-use kartik\grid\SerialColumn;
 use yii\helpers\Html;
 
 /**

@@ -2,10 +2,10 @@
 
 use app\models\Setting;
 use app\modules\core\grid\ActionColumn;
+use app\modules\core\grid\SerialColumn;
 use app\modules\core\helpers\RenderHelper;
 use app\modules\core\widgets\DateRangePicker;
 use yii\helpers\Html;
-use kartik\grid\SerialColumn;
 
 /**
  * @var $this yii\web\View
