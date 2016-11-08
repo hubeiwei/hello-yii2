@@ -23,6 +23,8 @@ class GridView extends KartikGridView
         'lastPageLabel' => '尾页',
     ];
 
+    public $dataColumnClass = '\app\modules\core\grid\DataColumn';
+
     public $resizableColumns = false;
 
     public $responsiveWrap = false;
