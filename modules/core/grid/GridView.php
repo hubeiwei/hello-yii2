@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace app\modules\core\widgets;
+namespace app\modules\core\grid;
 
 use kartik\grid\GridView as KartikGridView;
 
