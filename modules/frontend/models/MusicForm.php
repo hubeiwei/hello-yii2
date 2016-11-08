@@ -10,7 +10,7 @@
 namespace app\modules\frontend\models;
 
 use app\models\Music;
-use app\modules\core\extensions\CaptchaValidator;
+use app\modules\core\captcha\CaptchaValidator;
 use app\modules\core\helpers\UserHelper;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;

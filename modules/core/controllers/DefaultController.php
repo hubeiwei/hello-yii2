@@ -2,8 +2,8 @@
 
 namespace app\modules\core\controllers;
 
+use app\modules\core\captcha\CaptchaAction;
 use app\modules\core\controllers\base\ModuleController;
-use app\modules\core\extensions\CaptchaAction;
 use yii\web\ErrorAction;
 
 class DefaultController extends ModuleController

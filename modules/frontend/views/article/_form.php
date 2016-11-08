@@ -1,7 +1,7 @@
 <?php
 
 use app\models\Article;
-use app\modules\core\widgets\Captcha;
+use app\modules\core\captcha\Captcha;
 use app\modules\core\helpers\UserHelper;
 use ijackua\lepture\Markdowneditor;
 use kartik\datetime\DateTimePicker;

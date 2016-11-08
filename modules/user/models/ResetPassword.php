@@ -3,9 +3,8 @@
 namespace app\modules\user\models;
 
 use app\models\User;
-use app\modules\core\extensions\CaptchaValidator;
+use app\modules\core\captcha\CaptchaValidator;
 use app\modules\core\extensions\StrengthValidator;
-use Yii;
 use yii\base\InvalidParamException;
 use yii\base\Model;
 

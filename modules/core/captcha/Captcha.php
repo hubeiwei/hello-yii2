@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace app\modules\core\widgets;
+namespace app\modules\core\captcha;
 
 use yii\captcha\Captcha as YiiCaptcha;
 

@@ -1,7 +1,7 @@
 <?php
 
 use app\models\Music;
-use app\modules\core\widgets\Captcha;
+use app\modules\core\captcha\Captcha;
 use app\modules\core\helpers\UserHelper;
 use kartik\file\FileInput;
 use yii\helpers\Html;

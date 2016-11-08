@@ -10,7 +10,7 @@
 namespace app\modules\user\models;
 
 use app\models\UserDetail;
-use app\modules\core\extensions\CaptchaValidator;
+use app\modules\core\captcha\CaptchaValidator;
 use yii\base\Model;
 
 class UserDetailForm extends Model

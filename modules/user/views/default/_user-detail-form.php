@@ -8,7 +8,7 @@
  */
 
 use app\models\UserDetail;
-use app\modules\core\widgets\Captcha;
+use app\modules\core\captcha\Captcha;
 use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
