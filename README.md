@@ -60,7 +60,7 @@ yii migrate
 
 因为路由规则需要，需要把`web`目录设置为站点根目录。
 
-apache需要开启rewrite，`.htaccess`文件我已经配置好放在`web`目录里了。vhost配置可以和以下那么简单：
+apache需要开启rewrite，`.htaccess`文件我已经配置好放在`web`目录里了。vhost配置可以和以下那么简单（视情况而定，我用的是集成环境PHPStudy）：
 
 ```
 <VirtualHost *:80>
