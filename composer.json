@@ -23,7 +23,7 @@
         "kartik-v/yii2-widget-sidenav": "*",
         "ijackua/yii2-lepture-markdown-editor-widget": "^1.0",
         "yiidoc/yii2-redactor": "*",
-        "nezhelskoy/yii2-highlight": "*"
+        "bower-asset/highlightjs": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

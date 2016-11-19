@@ -42,8 +42,8 @@ $config = [
         ],
         'assetManager' => [
             'bundles' => [
-                'nezhelskoy\highlight\HighlightAsset' => [
-                    'css' => ['dist/styles/github.css'],
+                'app\assets\HighlightAsset' => [
+                    'css' => ['styles/github.css'],
                 ],
             ]
         ],

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a1a780be49fbf22a0743faf7f4e68bac",
-    "content-hash": "a34dae4102961c2813bc4155628593ea",
+    "hash": "93801509214ae39dffde3950996ee866",
+    "content-hash": "32d71c0f4e59a1044169443402b8602b",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -108,6 +108,34 @@
                 "responsive",
                 "web"
             ]
+        },
+        {
+            "name": "bower-asset/highlightjs",
+            "version": "9.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/highlightjs.git",
+                "reference": "9f84fba3626a35c1482653b3f339aa49feba4c8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/highlightjs/zipball/9f84fba3626a35c1482653b3f339aa49feba4c8a",
+                "reference": "9f84fba3626a35c1482653b3f339aa49feba4c8a",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "highlight.pack.js",
+                    "styles/default.css"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "vendor",
+                    "components"
+                ]
+            }
         },
         {
             "name": "bower-asset/jquery",
@@ -553,12 +581,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-detail-view.git",
-                "reference": "741f56f37858f0745cd180a505c7ddbe60b01829"
+                "reference": "af3438e4f929a32029fe03491c980a7b741a2d3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-detail-view/zipball/741f56f37858f0745cd180a505c7ddbe60b01829",
-                "reference": "741f56f37858f0745cd180a505c7ddbe60b01829",
+                "url": "https://api.github.com/repos/kartik-v/yii2-detail-view/zipball/af3438e4f929a32029fe03491c980a7b741a2d3b",
+                "reference": "af3438e4f929a32029fe03491c980a7b741a2d3b",
                 "shasum": ""
             },
             "require": {
@@ -599,7 +627,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-10-16 12:32:54"
+            "time": "2016-11-05 15:24:31"
         },
         {
             "name": "kartik-v/yii2-dialog",
@@ -718,12 +746,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "448db13904dad68153ef466bbc905b916a2a5900"
+                "reference": "ff39cb3340510b5634f27108727f82c6ce9fb242"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/448db13904dad68153ef466bbc905b916a2a5900",
-                "reference": "448db13904dad68153ef466bbc905b916a2a5900",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/ff39cb3340510b5634f27108727f82c6ce9fb242",
+                "reference": "ff39cb3340510b5634f27108727f82c6ce9fb242",
                 "shasum": ""
             },
             "require": {
@@ -760,7 +788,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-10-22 16:52:42"
+            "time": "2016-11-05 15:33:03"
         },
         {
             "name": "kartik-v/yii2-helpers",
@@ -966,12 +994,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-datepicker.git",
-                "reference": "33c7f4751291eaa34413b7b82b1659ae44ea8b23"
+                "reference": "92e04c6a9ff90c4290db7566f68af429f2d641d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/33c7f4751291eaa34413b7b82b1659ae44ea8b23",
-                "reference": "33c7f4751291eaa34413b7b82b1659ae44ea8b23",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/92e04c6a9ff90c4290db7566f68af429f2d641d5",
+                "reference": "92e04c6a9ff90c4290db7566f68af429f2d641d5",
                 "shasum": ""
             },
             "require": {
@@ -1012,7 +1040,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-10-08 18:16:58"
+            "time": "2016-11-11 15:42:04"
         },
         {
             "name": "kartik-v/yii2-widget-datetimepicker",
@@ -1273,55 +1301,6 @@
                 "yii"
             ],
             "time": "2016-05-20 23:38:13"
-        },
-        {
-            "name": "nezhelskoy/yii2-highlight",
-            "version": "v1.2.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nezhelskoy/yii2-highlight.git",
-                "reference": "a2d09ca92878ee6b2172eda622e8dba5726cd935"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nezhelskoy/yii2-highlight/zipball/a2d09ca92878ee6b2172eda622e8dba5726cd935",
-                "reference": "a2d09ca92878ee6b2172eda622e8dba5726cd935",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "yiisoft/yii2": "~2"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "asset-installer-paths": {
-                    "bower-asset-library": "vendor/bower"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "nezhelskoy\\highlight\\": "src/",
-                    "nezhelskoy\\highlight\\examples\\": "examples/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Dmitry A. Nezhelskoy",
-                    "email": "dmitry@nezhelskoy.pro",
-                    "homepage": "http://nezhelskoy.pro"
-                }
-            ],
-            "description": "Yii2 highlight.js extension",
-            "keywords": [
-                "highlight",
-                "highlight.js",
-                "yii2"
-            ],
-            "time": "2016-09-05 18:30:31"
         },
         {
             "name": "phpoffice/phpexcel",

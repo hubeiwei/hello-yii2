@@ -1,7 +1,7 @@
 <?php
 
+use app\assets\HighlightAsset;
 use app\models\Article;
-use nezhelskoy\highlight\HighlightAsset;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 

@@ -1,6 +1,6 @@
 <?php
 
-use nezhelskoy\highlight\HighlightAsset;
+use app\assets\HighlightAsset;
 use yii\helpers\Html;
 
 /**
