@@ -7,7 +7,7 @@ use yii\db\Migration;
 
 class m160728_084255_insert_user extends Migration
 {
-    public function up()
+    public function safeUp()
     {
         $time = time();
         $faker = Factory::create();
@@ -47,21 +47,10 @@ class m160728_084255_insert_user extends Migration
         ]);
     }
 
-    public function down()
+    public function safeDown()
     {
         $this->delete('auth_assignment');
         $this->truncateTable(UserDetail::tableName());
         $this->truncateTable(User::tableName());
     }
-
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }

@@ -6,7 +6,7 @@ use yii\db\Migration;
 
 class m160728_084313_generate_article extends Migration
 {
-    public function up()
+    public function safeUp()
     {
         $time = time();
         $faker = Factory::create();
@@ -34,19 +34,8 @@ class m160728_084313_generate_article extends Migration
         ], $articles);
     }
 
-    public function down()
+    public function safeDown()
     {
         $this->truncateTable(Article::tableName());
     }
-
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }

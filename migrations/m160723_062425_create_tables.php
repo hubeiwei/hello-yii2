@@ -8,7 +8,7 @@ use yii\db\Migration;
 
 class m160723_062425_create_tables extends Migration
 {
-    public function up()
+    public function safeUp()
     {
         $tableInnoDBOptions = 'ENGINE=InnoDB CHARACTER SET utf8';
         $tableMyISAMOptions = 'ENGINE=MyISAM CHARACTER SET utf8';
@@ -35,7 +35,7 @@ class m160723_062425_create_tables extends Migration
             'status' => 'enum(\'Y\',\'N\') DEFAULT \'Y\' COMMENT \'状态\'',
             'created_at' => $this->integer(11)->unsigned()->comment('创建时间'),
             'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
-        ]);
+        ], $tableInnoDBOptions);
 
         $this->createTable(Music::tableName(), [
             'id' => $this->primaryKey(10)->unsigned(),
@@ -62,22 +62,11 @@ class m160723_062425_create_tables extends Migration
         ], $tableMyISAMOptions . ' COMMENT=\'网站配置\'');
     }
 
-    public function down()
+    public function safeDown()
     {
         $this->dropTable(UserDetail::tableName());
         $this->dropTable(Article::tableName());
         $this->dropTable(Music::tableName());
         $this->dropTable(Setting::tableName());
     }
-
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }

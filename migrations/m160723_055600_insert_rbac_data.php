@@ -4,7 +4,7 @@ use yii\db\Migration;
 
 class m160723_055600_insert_rbac_data extends Migration
 {
-    public function up()
+    public function safeUp()
     {
         $time = time();
 
@@ -70,21 +70,10 @@ class m160723_055600_insert_rbac_data extends Migration
         ]);
     }
 
-    public function down()
+    public function safeDown()
     {
         $this->truncateTable('menu');
         $this->delete('auth_item_child');
         $this->delete('auth_item');
     }
-
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }
