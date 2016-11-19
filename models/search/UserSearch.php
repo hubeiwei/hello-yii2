@@ -3,7 +3,6 @@
 namespace app\models\search;
 
 use app\models\User;
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
@@ -40,6 +39,7 @@ class UserSearch extends User
      */
     public function search($params)
     {
+        /** @var \app\modules\core\extensions\ActiveQuery $query */
         $query = self::find();
 
         // add conditions that should always apply here
@@ -66,8 +66,8 @@ class UserSearch extends User
 
         $query->compare('user_id', $this->id);
 
-        $query->timeRangeFilter('created_at', $this->created_at, false);
-        $query->timeRangeFilter('updated_at', $this->updated_at, false);
+        $query->timeRangeFilter('created_at', $this->created_at, false)
+            ->timeRangeFilter('updated_at', $this->updated_at, false);
 
         return $dataProvider;
     }

@@ -1,18 +1,9 @@
 {
-    "name": "hubeiwei/laohu-yii2",
-    "description": "练手用的项目",
-    "keywords": ["yii2", "framework", "basic", "project template"],
+    "name": "hubeiwei/hello-yii2",
+    "description": "练手用",
     "homepage": "https://github.com/hubeiwei/laohu-yii2",
     "type": "project",
     "license": "MIT",
-    "support": {
-        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
-        "forum": "http://www.yiiframework.com/forum/",
-        "wiki": "http://www.yiiframework.com/wiki/",
-        "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2"
-    },
-    "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.5",

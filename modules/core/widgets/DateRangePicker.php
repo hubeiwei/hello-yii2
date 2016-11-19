@@ -50,23 +50,8 @@ class DateRangePicker extends KartikDateRangePicker
      */
     protected function initLocale()
     {
-        $this->setLanguage('', Yii::getAlias('@vendor/kartik-v/yii2-date-range/assets/'));// 复写该方法是为了在此处加上了第二个路径参数，其他不变
-        if (empty($this->_langFile)) {
-            return;
-        }
-        $localeSettings = ArrayHelper::getValue($this->pluginOptions, 'locale', []);
-        $localeSettings += [
-            'applyLabel' => Yii::t('kvdrp', 'Apply'),
-            'cancelLabel' => Yii::t('kvdrp', 'Cancel'),
-            'fromLabel' => Yii::t('kvdrp', 'From'),
-            'toLabel' => Yii::t('kvdrp', 'To'),
-            'weekLabel' => Yii::t('kvdrp', 'W'),
-            'customRangeLabel' => Yii::t('kvdrp', 'Custom Range'),
-            'daysOfWeek' => new JsExpression('moment.weekdaysMin()'),
-            'monthNames' => new JsExpression('moment.monthsShort()'),
-            'firstDay' => new JsExpression('moment.localeData()._week.dow')
-        ];
-        $this->pluginOptions['locale'] = $localeSettings;
+        parent::initLocale();
+        $this->setLanguage('', Yii::getAlias('@vendor/kartik-v/yii2-date-range/assets/'));
     }
 
     public function setDateOnly($value)

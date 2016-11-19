@@ -10,7 +10,7 @@ class UserDetail extends UserDetailBase
     const GENDER_SECRECY = '0';
     const GENDER_MAN = '1';
     const GENDER_WOMAN = '2';
-    public static $gender_array = [
+    public static $gender_list = [
         self::GENDER_SECRECY,
         self::GENDER_MAN,
         self::GENDER_WOMAN,
@@ -43,7 +43,7 @@ class UserDetail extends UserDetailBase
     public function rules()
     {
         return array_merge(parent::rules(), [
-            ['gender', 'in', 'range' => self::$gender_array],
+            ['gender', 'in', 'range' => self::$gender_list],
         ]);
     }
 

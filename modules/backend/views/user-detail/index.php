@@ -48,9 +48,7 @@ $gridColumns = [
         'attribute' => 'updated_at',
         'format' => 'dateTime',
         'filterType' => DateRangePicker::className(),
-        'filterWidgetOptions' => [
-            'dateOnly' => false,
-        ],
+        'filterWidgetOptions' => ['dateOnly' => false],
     ],
 
     [

@@ -89,6 +89,11 @@ class DefaultController extends ModuleController
             if ($form->validate()) {
                 $user = new User();
                 $user->setAttributes($form->getAttributes());
+
+                /**
+                 * @see User::encryptPassword()
+                 * @see User::beforeSave()
+                 */
                 $user->password_hash = $form->password;
 
                 $transaction = EasyHelper::beginTransaction();

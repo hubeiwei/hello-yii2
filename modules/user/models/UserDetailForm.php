@@ -24,7 +24,7 @@ class UserDetailForm extends Model
     public function rules()
     {
         return [
-            ['gender', 'in', 'range' => UserDetail::$gender_array],
+            ['gender', 'in', 'range' => UserDetail::$gender_list],
             ['birthday', 'date', 'format' => 'php:Y-m-d'],
             ['phone', 'number'],
             ['phone', 'string', 'length' => 11],

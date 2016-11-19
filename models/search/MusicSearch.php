@@ -112,6 +112,7 @@ class MusicSearch extends Music
 
     public function searchMyMusic($params)
     {
+        /** @var \app\modules\core\extensions\ActiveQuery $query */
         $query = self::find()->where(['user_id' => UserHelper::getUserId()]);
 
         // add conditions that should always apply here
@@ -142,8 +143,8 @@ class MusicSearch extends Music
 
         $query->compare('id', $this->id);
 
-        $query->timeRangeFilter('created_at', $this->created_at, false);
-        $query->timeRangeFilter('updated_at', $this->updated_at, false);
+        $query->timeRangeFilter('created_at', $this->created_at, false)
+            ->timeRangeFilter('updated_at', $this->updated_at, false);
 
         return $dataProvider;
     }

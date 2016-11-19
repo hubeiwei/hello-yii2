@@ -74,7 +74,7 @@ class UserHelper
             return self::getUserInstance()->username;
         } else if ($userId == 0) {
             return $zero_name;
-        } else {
+        } else if ($userId > 0) {
             $username = User::find()->select(['username'])->where(['id' => $userId])->limit(1)->scalar();
             if ($username) {
                 return $username;

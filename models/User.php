@@ -2,8 +2,8 @@
 
 namespace app\models;
 
-use Yii;
 use app\models\base\UserBase;
+use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\web\IdentityInterface;
 
@@ -14,7 +14,7 @@ class User extends UserBase implements IdentityInterface
 
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 10;
-    public static $status_array = [
+    public static $status_list = [
         self::STATUS_INACTIVE,
         self::STATUS_ACTIVE,
     ];
@@ -22,6 +22,33 @@ class User extends UserBase implements IdentityInterface
         self::STATUS_INACTIVE => '禁用',
         self::STATUS_ACTIVE => '启用',
     ];
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return array_merge(parent::rules(), [
+            ['password_hash', 'string', 'min' => 8],
+            ['status', 'in', 'range' => self::$status_list],
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
+        ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return array_merge(parent::attributeLabels(), [
+            'username' => '用户名',
+            'password_reset_token' => '密码重置口令',
+            'email' => '邮箱',
+            'status' => '状态',
+            'created_at' => '创建时间',
+            'updated_at' => '修改时间',
+        ]);
+    }
 
     /**
      * @inheritdoc
@@ -43,18 +70,6 @@ class User extends UserBase implements IdentityInterface
             return true;
         }
         return false;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return array_merge(parent::rules(), [
-            ['password_hash', 'string', 'min' => 8],
-            ['status', 'in', 'range' => self::$status_array],
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-        ]);
     }
 
     /**
@@ -110,9 +125,6 @@ class User extends UserBase implements IdentityInterface
         $this->password_hash = Yii::$app->security->generatePasswordHash($this->password_hash);
     }
 
-    /**
-     * TODO 主动登录后更新auth_key可以踢掉其他端的，但是要其他端下一次打开浏览器才生效，研究发现要把cookie里的session_id删掉才能做到立即踢掉，以后再研究能不能马上把用户踢掉
-     */
     public function generateAuthKey()
     {
         $this->auth_key = Yii::$app->security->generateRandomString();

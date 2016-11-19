@@ -108,6 +108,7 @@ class ArticleSearch extends Article
 
     public function searchMyArticle($params)
     {
+        /** @var \app\modules\core\extensions\ActiveQuery $query */
         $query = self::find()->where(['created_by' => UserHelper::getUserId()]);
 
         // add conditions that should always apply here
@@ -136,9 +137,9 @@ class ArticleSearch extends Article
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'content', $this->content]);
 
-        $query->timeRangeFilter('published_at', $this->published_at);
-        $query->timeRangeFilter('created_at', $this->created_at);
-        $query->timeRangeFilter('updated_at', $this->updated_at);
+        $query->timeRangeFilter('published_at', $this->published_at)
+            ->timeRangeFilter('created_at', $this->created_at)
+            ->timeRangeFilter('updated_at', $this->updated_at);
 
         return $dataProvider;
     }

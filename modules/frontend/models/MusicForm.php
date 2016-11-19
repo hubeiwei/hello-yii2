@@ -66,8 +66,8 @@ class MusicForm extends Model
             ['music_file', 'file', 'extensions' => ['mp3'], 'checkExtensionByMimeType' => false, 'maxSize' => Music::MUSIC_SIZE],
             [['track_title', 'verifyCode'], 'required'],
             ['track_title', 'string', 'max' => 50],
-            ['visible', 'in', 'range' => Music::$visible_array],
-            ['status', 'in', 'range' => Music::$status_array],
+            ['visible', 'in', 'range' => Music::$visible_list],
+            ['status', 'in', 'range' => Music::$status_list],
             ['verifyCode', 'string', 'length' => 4],
             ['verifyCode', CaptchaValidator::className()],
         ];

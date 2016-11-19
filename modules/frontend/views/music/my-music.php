@@ -25,9 +25,7 @@ $gridColumns = [
         'value' => function ($model) {
             return Html::a($model->track_title, 'javascript:void(0)', [
                 'class' => 'playlist',
-                'style' => [
-                    'display' => 'block'
-                ],
+                'style' => ['display' => 'block'],
                 'data-music' => $model->music_file,
             ]);
         },
@@ -55,18 +53,14 @@ $gridColumns = [
         'attribute' => 'created_at',
         'format' => 'dateTime',
         'filterType' => DateRangePicker::className(),
-        'filterWidgetOptions' => [
-            'dateOnly' => false,
-        ],
+        'filterWidgetOptions' => ['dateOnly' => false],
         'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'updated_at',
         'format' => 'dateTime',
         'filterType' => DateRangePicker::className(),
-        'filterWidgetOptions' => [
-            'dateOnly' => false,
-        ],
+        'filterWidgetOptions' => ['dateOnly' => false],
         'headerOptions' => ['width' => 160],
     ],
 

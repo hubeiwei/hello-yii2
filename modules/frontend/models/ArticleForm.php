@@ -49,9 +49,9 @@ class ArticleForm extends Model
             ['title', 'string', 'max' => 20],
             ['content', 'string'],
             ['published_at', 'date', 'type' => DateValidator::TYPE_DATETIME, 'format' => 'php:Y-m-d H:i'],
-            ['visible', 'in', 'range' => Article::$visible_array],
-            ['type', 'in', 'range' => Article::$type_array],
-            ['status', 'in', 'range' => Article::$status_array],
+            ['visible', 'in', 'range' => Article::$visible_list],
+            ['type', 'in', 'range' => Article::$type_list],
+            ['status', 'in', 'range' => Article::$status_list],
             ['verifyCode', 'string', 'length' => 4],
             ['verifyCode', CaptchaValidator::className()],
         ];

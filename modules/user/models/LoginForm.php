@@ -72,7 +72,7 @@ class LoginForm extends Model
             $user = $this->getUser();
             $user->generateAuthKey();
             if ($user->save()) {
-                return Yii::$app->user->login($user, $this->rememberMe ? 60 * 60 * 24 * 7 : 0);
+                return Yii::$app->user->login($user, $this->rememberMe ? 7 * 24 * 60 * 60 : 0);
             }
         }
         return false;
