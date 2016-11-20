@@ -26,9 +26,7 @@
 
 # 说明
 
-这是我在空闲时间用yii2-basic来练习各种杂七杂八的插件的项目。
-
-建立了该分支是为了研究[mdmsoft/yii2-admin](https://github.com/mdmsoft/yii2-admin)模块里的邮件找回密码功能，用该模块自带的用户表替换了原有的用户表（后来才发现这些都是advanced版自带的），现在master分支算是废弃了。
+这是我在空闲时间用yii2-basic来研究各种杂七杂八的插件的项目，里面的代码不一定能在实际工作中使用，仅供参考。
 
 # 项目部署
 
@@ -48,7 +46,7 @@ composer global require "fxp/composer-asset-plugin:^1.2.0"
 composer install
 ```
 
-创建一个`utf8`数据库，因为用了新的用户表结构，所以不能和master分支共用一个数据库，在`config/db.php`文件配置好MySql相关参数后，执行以下命令：
+创建一个`utf8`数据库，在`config/db.php`文件配置好MySql相关参数后，执行以下命令：
 
 ```
 yii migrate --migrationPath=@yii/rbac/migrations
@@ -75,7 +73,7 @@ nginx可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
 ## 使用
 
-* 虽然我在**配置文件**配置好了我的163邮箱，但希望还是改成自己的邮箱，谢谢。
+* 在`config/web.php`里找到邮箱的配置并配置好，才能用找回密码的功能。
 
 * 用户名和密码如下：
 
@@ -83,10 +81,6 @@ nginx可以参考[这篇文章](http://www.getyii.com/topic/31)。
 ---|---|---
 超级管理员 | hu | hbw12345
 普通用户 | test | qwer1234
-
-## 部署遇到问题怎么办？
-
-发起一个issues。
 
 # 结构说明
 
@@ -98,7 +92,7 @@ nginx可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
 目录 | 说明
 ---|---
-models | Model，详情请[往下拉](#model)
+models | 放model的地方，详情请[往下拉](#model)
 modules | 模块，控制器和视图都在这里了，模块的名字顾名思义
 views | 目前只是放布局文件而已，布局结构详情请[往下拉](#layout)
 
