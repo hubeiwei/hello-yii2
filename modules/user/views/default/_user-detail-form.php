@@ -8,46 +8,40 @@
  */
 
 use app\models\UserDetail;
-use app\modules\core\extensions\HuActiveForm;
-use app\modules\core\extensions\HuCaptcha;
+use app\modules\core\captcha\Captcha;
 use kartik\date\DatePicker;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /**
  * @var $this yii\web\View
- * @var $form HuActiveForm
  * @var $model app\modules\user\models\UserDetailForm
  */
 ?>
 
 <div class="user-detail-form">
 
-    <?php $form = HuActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'gender')->dropDownList(UserDetail::$gender_map) ?>
 
     <?= $form->field($model, 'birthday')->widget(DatePicker::className(), [
-        'readonly' => true,
         'pluginOptions' => [
             'autoclose' => true,
             'format' => 'yyyy-mm-dd',
         ],
     ]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'phone')->textInput(['maxlength' => 11]) ?>
 
     <?= $form->field($model, 'resume')->textarea(['maxlength' => 100, 'rows' => 3]) ?>
 
-    <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
+    <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-12">
-            <?= Html::submitButton('修改', ['class' => 'btn btn-primary']) ?>
-        </div>
+        <?= Html::submitButton('保存', ['class' => 'btn btn-primary btn-block']) ?>
     </div>
 
-    <?php HuActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
 
 </div>

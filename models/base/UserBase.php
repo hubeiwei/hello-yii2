@@ -7,19 +7,17 @@ use Yii;
 /**
  * This is the model class for table "user".
  *
- * @property string $user_id
+ * @property integer $id
  * @property string $username
- * @property string $password
- * @property string $passkey
- * @property string $status
  * @property string $auth_key
- * @property string $access_token
- * @property string $created_at
- * @property string $updated_at
- * @property string $last_login
- * @property string $last_ip
+ * @property string $password_hash
+ * @property string $password_reset_token
+ * @property string $email
+ * @property integer $status
+ * @property integer $created_at
+ * @property integer $updated_at
  */
-class UserBase extends \app\modules\core\extensions\HuActiveRecord
+class UserBase extends \app\modules\core\extensions\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -35,16 +33,10 @@ class UserBase extends \app\modules\core\extensions\HuActiveRecord
     public function rules()
     {
         return [
-            [['username', 'password', 'passkey', 'auth_key', 'access_token'], 'required'],
-            [['created_at', 'updated_at', 'last_login'], 'integer'],
-            [['username'], 'string', 'max' => 20],
-            [['password'], 'string', 'max' => 255],
-            [['passkey'], 'string', 'max' => 6],
-            [['auth_key', 'access_token'], 'string', 'max' => 64],
-            [['last_ip'], 'string', 'max' => 15],
-            [['username'], 'unique'],
-            [['auth_key'], 'unique'],
-            [['access_token'], 'unique'],
+            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
+            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['username', 'auth_key'], 'string', 'max' => 32],
+            [['password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
         ];
     }
 
@@ -54,17 +46,15 @@ class UserBase extends \app\modules\core\extensions\HuActiveRecord
     public function attributeLabels()
     {
         return [
-            'user_id' => 'User ID',
-            'username' => '用户名',
-            'password' => '密码',
-            'passkey' => 'Passkey',
-            'status' => '状态',
-            'auth_key' => 'Auth Key',
-            'access_token' => 'Access Token',
-            'created_at' => '创建时间',
-            'updated_at' => '修改时间',
-            'last_login' => '最后登录时间',
-            'last_ip' => '最后登录IP',
+            'id' => Yii::t('app', 'ID'),
+            'username' => Yii::t('app', 'Username'),
+            'auth_key' => Yii::t('app', 'Auth Key'),
+            'password_hash' => Yii::t('app', 'Password Hash'),
+            'password_reset_token' => Yii::t('app', 'Password Reset Token'),
+            'email' => Yii::t('app', 'Email'),
+            'status' => Yii::t('app', 'Status'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
         ];
     }
 }

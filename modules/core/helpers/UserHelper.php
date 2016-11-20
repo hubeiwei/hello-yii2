@@ -12,15 +12,6 @@ namespace app\modules\core\helpers;
 use app\models\User;
 use Yii;
 
-/**
- * Class UserHelper
- * @package app\modules\core\helpers
- *
- * @property $user
- * @property $userInstance
- * @property $userId
- * @property $userName
- */
 class UserHelper
 {
     /**
@@ -34,18 +25,8 @@ class UserHelper
         if ($userId == 0) {
             return Yii::$app->user->identity;
         } else {
-            return User::find()->where(['user_id' => $userId])->limit(1)->one();
+            return User::find()->where(['id' => $userId])->limit(1)->one();
         }
-    }
-
-    /**
-     * 判断当前访客是否已登录
-     *
-     * @return bool 访客未登录返回true，已登录返回false
-     */
-    public static function userIsGuest()
-    {
-        return Yii::$app->user->isGuest;
     }
 
     /**
@@ -55,7 +36,7 @@ class UserHelper
      *
      * @return bool
      */
-    public static function userIsAdmin()
+    public static function isAdmin()
     {
         return Yii::$app->user->can('SuperAdmin');
     }
@@ -64,14 +45,18 @@ class UserHelper
      * 获取用户ID，默认返回当前登录的用户ID
      *
      * @param string|null $userName
-     * @return bool|int|string
+     * @return false|int|null|string
      */
     public static function getUserId($userName = null)
     {
         if ($userName) {
-            return User::find()->select(['user_id'])->where(['username' => $userName])->limit(1)->scalar();
+            return User::find()->select(['id'])->where(['username' => $userName])->limit(1)->scalar();
         } else {
-            return Yii::$app->user->id;
+            if (Yii::$app->user->id != null) {
+                return Yii::$app->user->id;
+            } else {
+                return 0;
+            }
         }
     }
 
@@ -85,12 +70,12 @@ class UserHelper
      */
     public static function getUserName($userId = -1, $default = null, $zero_name = 'System')
     {
-        if ($userId == -1 && !self::userIsGuest()) {
+        if ($userId == -1 && !Yii::$app->user->isGuest) {
             return self::getUserInstance()->username;
         } else if ($userId == 0) {
             return $zero_name;
-        } else {
-            $username = User::find()->select(['username'])->where(['user_id' => $userId])->limit(1)->scalar();
+        } else if ($userId > 0) {
+            $username = User::find()->select(['username'])->where(['id' => $userId])->limit(1)->scalar();
             if ($username) {
                 return $username;
             }
@@ -107,7 +92,7 @@ class UserHelper
      */
     public static function isBelongToUser($userId, $allowAdmin = true)
     {
-        if ($allowAdmin && self::userIsAdmin()) {
+        if ($allowAdmin && self::isAdmin()) {
             return true;
         }
         return self::getUserId() == $userId;

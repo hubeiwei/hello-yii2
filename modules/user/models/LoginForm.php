@@ -3,8 +3,7 @@
 namespace app\modules\user\models;
 
 use app\models\User;
-use app\modules\core\extensions\HuCaptchaValidator;
-use app\modules\core\helpers\EasyHelper;
+use app\modules\core\captcha\CaptchaValidator;
 use Yii;
 use yii\base\Model;
 
@@ -41,7 +40,7 @@ class LoginForm extends Model
             ['password', 'string', 'min' => 8, 'max' => 20],
             ['password', 'validatePassword'],
             [['verifyCode'], 'string', 'length' => 4],
-            [['verifyCode'], HuCaptchaValidator::className()],
+            [['verifyCode'], CaptchaValidator::className()],
             ['rememberMe', 'boolean'],
         ];
     }
@@ -71,12 +70,9 @@ class LoginForm extends Model
     {
         if ($this->validate()) {
             $user = $this->getUser();
-
-            $user->last_login = time();
-            $user->last_ip = EasyHelper::getRealIP();
-
+            $user->generateAuthKey();
             if ($user->save()) {
-                return Yii::$app->user->login($user, $this->rememberMe ? 60 * 60 * 24 * 7 : 0);
+                return Yii::$app->user->login($user, $this->rememberMe ? 7 * 24 * 60 * 60 : 0);
             }
         }
         return false;
@@ -90,7 +86,7 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::find()->where(['username' => $this->username, 'status' => User::STATUS_ENABLE])->limit(1)->one();
+            $this->_user = User::find()->where(['username' => $this->username, 'status' => User::STATUS_ACTIVE])->limit(1)->one();
         }
         return $this->_user;
     }

@@ -10,7 +10,7 @@ class Setting extends SettingBase
 {
     const STATUS_DISABLE = 'N';
     const STATUS_ENABLE = 'Y';
-    public static $status_array = [
+    public static $status_list = [
         self::STATUS_DISABLE,
         self::STATUS_ENABLE,
     ];
@@ -25,7 +25,13 @@ class Setting extends SettingBase
     public function behaviors()
     {
         return [
-            BlameableBehavior::className(),
+            [
+                'class' => BlameableBehavior::className(),
+                'attributes' => [
+                    self::EVENT_BEFORE_INSERT => 'updated_by',
+                    self::EVENT_BEFORE_UPDATE => 'updated_by',
+                ],
+            ],
             TimestampBehavior::className(),
         ];
     }
@@ -36,37 +42,12 @@ class Setting extends SettingBase
     public function rules()
     {
         return array_merge(parent::rules(), [
-            ['status', 'in', 'range' => self::$status_array],
+            ['status', 'in', 'range' => self::$status_list],
         ]);
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function attributes()
+    public function getUser()
     {
-        return array_merge(parent::attributes(), [
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return array_merge(parent::attributeLabels(), [
-            'creater.username' => '创建者',
-            'updater.username' => '最后操作者',
-        ]);
-    }
-
-    public function getCreater()
-    {
-        return $this->hasOne(User::className(), ['user_id' => 'created_by']);
-    }
-
-    public function getUpdater()
-    {
-        return $this->hasOne(User::className(), ['user_id' => 'updated_by']);
+        return $this->hasOne(User::className(), ['id' => 'updated_by'])->from(['user' => User::tableName()]);
     }
 }

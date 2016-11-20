@@ -18,7 +18,7 @@ class Article extends ArticleBase
 {
     const TYPE_HTML = 'H';
     const TYPE_MARKDOWN = 'M';
-    public static $type_array = [
+    public static $type_list = [
         self::TYPE_HTML,
         self::TYPE_MARKDOWN,
     ];
@@ -29,7 +29,7 @@ class Article extends ArticleBase
 
     const VISIBLE_YES = 'Y';
     const VISIBLE_NO = 'N';
-    public static $visible_array = [
+    public static $visible_list = [
         self::VISIBLE_YES,
         self::VISIBLE_NO,
     ];
@@ -40,7 +40,7 @@ class Article extends ArticleBase
 
     const STATUS_DISABLE = 'N';
     const STATUS_ENABLE = 'Y';
-    public static $status_array = [
+    public static $status_list = [
         self::STATUS_ENABLE,
         self::STATUS_DISABLE,
     ];
@@ -71,35 +71,15 @@ class Article extends ArticleBase
     public function rules()
     {
         return array_merge(parent::rules(), [
-            ['type', 'in', 'range' => self::$type_array],
-            ['visible', 'in', 'range' => self::$visible_array],
-            ['status', 'in', 'range' => self::$status_array],
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributes()
-    {
-        return array_merge(parent::attributes(), [
-            'user.username',
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return array_merge(parent::attributeLabels(), [
-            'user.username' => '作者',
+            ['type', 'in', 'range' => self::$type_list],
+            ['visible', 'in', 'range' => self::$visible_list],
+            ['status', 'in', 'range' => self::$status_list],
         ]);
     }
 
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['user_id' => 'created_by']);
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
 
     /**

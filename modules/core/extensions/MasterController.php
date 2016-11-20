@@ -2,9 +2,6 @@
 
 namespace app\modules\core\extensions;
 
-//use app\models\LogRequest;
-//use app\models\Setting;
-//use app\modules\core\helpers\DHelper;
 use yii\web\Controller;
 
 class MasterController extends Controller

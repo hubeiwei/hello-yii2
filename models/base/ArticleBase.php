@@ -18,7 +18,7 @@ use Yii;
  * @property string $created_at
  * @property string $updated_at
  */
-class ArticleBase extends \app\modules\core\extensions\HuActiveRecord
+class ArticleBase extends \app\modules\core\extensions\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -4,6 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
+    'name' => 'Hello Yii2',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
@@ -15,19 +16,12 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-            'loginUrl' => ['/user/default/login'],
+            'identityClass' => 'app\models\User',
+            'loginUrl' => ['/login'],
         ],
         'errorHandler' => [
             'errorAction' => '/core/default/error',
-        ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -48,8 +42,8 @@ $config = [
         ],
         'assetManager' => [
             'bundles' => [
-                'nezhelskoy\highlight\HighlightAsset' => [
-                    'css' => ['dist/styles/github.css'],
+                'app\assets\HighlightAsset' => [
+                    'css' => ['styles/github.css'],
                 ],
             ]
         ],
@@ -57,20 +51,19 @@ $config = [
     'params' => $params,
     'language' => 'zh-CN',
     'timeZone' => 'Asia/Shanghai',
-    'defaultRoute' => '/portal/article',
+    'defaultRoute' => '/frontend',
     'modules' => [
         'gridview' => [
             'class' => 'kartik\grid\Module',
         ],
         'admin' => [
             'class' => 'mdm\admin\Module',
-            'layout' => 'left-menu',
+            'layout' => '@app/views/layouts/backend',
             'controllerMap' => [
                 'assignment' => [
                     'class' => 'mdm\admin\controllers\AssignmentController',
-                    'idField' => 'user_id',
                     'searchClass' => 'app\models\search\UserSearch',
-                ]
+                ],
             ],
         ],
         'redactor' => [
@@ -87,40 +80,56 @@ $config = [
         'core' => [
             'class' => 'app\modules\core\Module',
         ],
-        //后台
-        'manage' => [
-            'class' => 'app\modules\manage\Module',
+        //前台
+        'frontend' => [
+            'class' => 'app\modules\frontend\Module',
         ],
-        //用户相关，例如登录、登出、注册等
+        //后台
+        'backend' => [
+            'class' => 'app\modules\backend\Module',
+        ],
+        //用户
         'user' => [
             'class' => 'app\modules\user\Module',
-        ],
-        //前台
-        'portal' => [
-            'class' => 'app\modules\portal\Module',
         ],
     ],
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
             'debug/*',
-//            'gii/*',
-//            'admin/*',
             'redactor/*',
             'core/*',
-            'portal/*',
+            'frontend/*',
             'user/*',
         ]
     ],
 ];
 
 /**
- * TODO 因为后台菜单需要，所以需要把站点根目录设置为/web，apache需要开启rewrite，nginx还没用过，自行解决吧，以后再考虑如何处理这个问题。
+ * TODO 在以下添加自己的邮箱配置，才可以使用邮件发送的功能
  */
+$config['components']['mailer'] = [
+    'class' => 'yii\swiftmailer\Mailer',
+    'useFileTransport' => false,
+    'transport' => [
+        'class' => 'Swift_SmtpTransport',
+        'host' => 'smtp.163.com',
+        'port' => '25',
+        'username' => '',
+        'password' => '',
+        'encryption' => 'tls',
+    ],
+    'messageConfig' => [
+        'charset' => 'UTF-8',
+        'from' => [
+            'hubeiwei1234@163.com' => $config['name'] . ' robot',
+        ],
+    ],
+];
+
 $config['components']['urlManager'] = [
     'enablePrettyUrl' => true,
     'showScriptName' => false,
-
     'rules' => [
         'login' => '/user/default/login',
         'logout' => '/user/default/logout',

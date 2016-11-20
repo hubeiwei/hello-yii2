@@ -9,8 +9,9 @@
 
 namespace app\modules\user\models;
 
-use app\modules\core\extensions\HuCaptchaValidator;
-use app\modules\core\extensions\HuStrengthValidator;
+use app\models\User;
+use app\modules\core\captcha\CaptchaValidator;
+use app\modules\core\extensions\StrengthValidator;
 use yii\base\Model;
 
 class RegisterForm extends Model
@@ -25,13 +26,15 @@ class RegisterForm extends Model
     {
         return [
             [['username', 'password', 'password_repeat', 'email', 'verifyCode'], 'required'],
+            [['username', 'email'], 'filter', 'filter' => 'trim'],
+            [['username', 'email'], 'unique', 'targetClass' => User::className()],
             ['username', 'string', 'max' => 20],
-            ['password', HuStrengthValidator::className()],
+            ['password', StrengthValidator::className()],
             ['password_repeat', 'compare', 'compareAttribute' => 'password'],
             ['email', 'email'],
             ['email', 'string', 'max' => 100],
             ['verifyCode', 'string', 'length' => 4],
-            ['verifyCode', HuCaptchaValidator::className()],
+            ['verifyCode', CaptchaValidator::className()],
         ];
     }
 

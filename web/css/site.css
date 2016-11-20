@@ -1,6 +1,5 @@
 html, body {
     height: 100%;
-    background-color: #f1f1f1;
 }
 
 .wrap {
@@ -92,11 +91,17 @@ a.desc:after {
 
 /*自定和覆盖的样式*/
 
-.table-responsive table th {
+@media (min-width: 992px) {
+    .pull-right-md {
+        float: right;
+    }
+}
+
+.grid-view th {
     text-align: center;
 }
 
-.table-responsive table td {
+.grid-view td {
     text-align: center;
 }
 

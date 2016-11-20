@@ -1,8 +1,9 @@
 <?php
 
-use app\modules\core\extensions\HuActiveForm;
-use app\modules\core\extensions\HuCaptcha;
+use app\modules\core\captcha\Captcha;
+use kartik\password\PasswordInput;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /**
  * @var $this yii\web\View
@@ -10,33 +11,44 @@ use yii\helpers\Html;
  */
 
 $this->title = '登录';
-//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
 
-    <?php $form = HuActiveForm::begin(); ?>
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <hr>
+
+    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'username')->textInput([
         'autofocus' => true,
         'maxlength' => true,
     ]) ?>
 
-    <?= $form->field($model, 'password')->passwordInput([
-        'maxlength' => true,
+    <?= $form->field($model, 'password')->widget(PasswordInput::className(), [
+        'options' => ['maxlength' => 20],
+        'pluginOptions' => [
+            'showMeter' => false,
+            'mainTemplate' => '{input}',
+        ],
     ]) ?>
 
-    <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
+    <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
 
-    <?= $form->field($model, 'rememberMe', [
-        'template' => '<div class="col-md-offset-2 col-md-3">{input}{label}</div><div class="col-md-7">{error}</div>',
-    ])->checkbox() ?>
+    <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-12">
-            <?= Html::submitButton('登录', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-        </div>
+        <?= Html::submitButton('登录', ['class' => 'btn btn-primary btn-block']) ?>
     </div>
 
-    <?php HuActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
+
+    <div class="form-group">
+        忘记密码？<?= Html::a('找回密码', ['/user/security/request-password-reset']) ?>
+    </div>
+
+    <div class="form-group">
+        还没有帐号？<?= Html::a('注册', ['/register']) ?>
+    </div>
 
 </div>

@@ -1,7 +1,5 @@
 <?php
 
-Yii::setAlias('@tests', dirname(__DIR__) . '/tests/codeception');
-
 $params = require(__DIR__ . '/params.php');
 
 $config = [
@@ -26,13 +24,13 @@ $config = [
         ],
     ],
     'params' => $params,
-
+    /*
     'controllerMap' => [
         'fixture' => [ // Fixture generation command line.
             'class' => 'yii\faker\FixtureController',
         ],
     ],
-
+    */
 ];
 
 $config['components'] = array_merge($config['components'], require(__DIR__ . '/db.php'));

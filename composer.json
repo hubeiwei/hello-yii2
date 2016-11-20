@@ -1,45 +1,34 @@
 {
-    "name": "hubeiwei/laohu-yii2",
-    "description": "练手用的项目",
-    "keywords": ["yii2", "framework", "basic", "project template"],
+    "name": "hubeiwei/hello-yii2",
+    "description": "练手用",
     "homepage": "https://github.com/hubeiwei/laohu-yii2",
     "type": "project",
     "license": "MIT",
-    "support": {
-        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
-        "forum": "http://www.yiiframework.com/forum/",
-        "wiki": "http://www.yiiframework.com/wiki/",
-        "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2"
-    },
-    "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
-        "yiisoft/yii2": ">=2.0.5",
-        "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*",
+        "yiisoft/yii2": "~2.0.5",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
         "mdmsoft/yii2-admin": "~2.0",
-        "kartik-v/yii2-krajee-base": "dev-master",
-        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-date-range": "dev-master",
+        "kartik-v/yii2-detail-view": "@dev",
         "kartik-v/yii2-export": "@dev",
-        "kartik-v/yii2-date-range": "1.6.3",
+        "kartik-v/yii2-grid": "@dev",
         "kartik-v/yii2-password": "@dev",
-        "kartik-v/yii2-widget-activeform": "@dev",
         "kartik-v/yii2-widget-alert": "*",
         "kartik-v/yii2-widget-datepicker": "@dev",
         "kartik-v/yii2-widget-datetimepicker": "*",
         "kartik-v/yii2-widget-fileinput": "@dev",
         "kartik-v/yii2-widget-growl": "*",
-        "kartik-v/yii2-widget-typeahead": "*",
+        "kartik-v/yii2-widget-sidenav": "*",
         "ijackua/yii2-lepture-markdown-editor-widget": "^1.0",
         "yiidoc/yii2-redactor": "*",
-        "nezhelskoy/yii2-highlight": "*"
+        "bower-asset/highlightjs": "*"
     },
     "require-dev": {
-        "yiisoft/yii2-codeception": "*",
-        "yiisoft/yii2-debug": "*",
-        "yiisoft/yii2-gii": "*",
-        "yiisoft/yii2-faker": "*"
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0"
     },
     "config": {
         "process-timeout": 1800

@@ -7,22 +7,25 @@
  * To change this template use File | Settings | File Templates.
  */
 
-use app\modules\core\extensions\HuActiveForm;
-use app\modules\core\extensions\HuCaptcha;
+use app\modules\core\captcha\Captcha;
 use kartik\password\PasswordInput;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /**
  * @var $this yii\web\View
  * @var $model app\modules\user\models\RegisterForm
  */
 
-$this->title = '快速注册';
-//$this->params['breadcrumbs'][] = $this->title;
+$this->title = '注册';
 ?>
 <div class="site-register">
 
-    <?php $form = HuActiveForm::begin(); ?>
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <hr>
+
+    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'username')->textInput([
         'autofocus' => true,
@@ -35,14 +38,12 @@ $this->title = '快速注册';
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'verifyCode')->widget(HuCaptcha::className()) ?>
+    <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-12">
-            <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
-        </div>
+        <?= Html::submitButton('注册', ['class' => 'btn btn-primary btn-block']) ?>
     </div>
 
-    <?php HuActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
 
 </div>

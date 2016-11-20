@@ -2,25 +2,53 @@
 
 namespace app\models;
 
-use Yii;
 use app\models\base\UserBase;
+use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\web\IdentityInterface;
 
 class User extends UserBase implements IdentityInterface
 {
-    const COMMON_KEY = 'LaoHu';
+    /** @var int second */
+    const PASSWORD_RESET_TOKEN_EXPIRE = 600;
 
-    const STATUS_DISABLE = 'N';
-    const STATUS_ENABLE = 'Y';
-    public static $status_array = [
-        self::STATUS_DISABLE,
-        self::STATUS_ENABLE,
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 10;
+    public static $status_list = [
+        self::STATUS_INACTIVE,
+        self::STATUS_ACTIVE,
     ];
     public static $status_map = [
-        self::STATUS_DISABLE => '禁用',
-        self::STATUS_ENABLE => '启用',
+        self::STATUS_INACTIVE => '禁用',
+        self::STATUS_ACTIVE => '启用',
     ];
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return array_merge(parent::rules(), [
+            ['password_hash', 'string', 'min' => 8],
+            ['status', 'in', 'range' => self::$status_list],
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
+        ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return array_merge(parent::attributeLabels(), [
+            'username' => '用户名',
+            'password_reset_token' => '密码重置口令',
+            'email' => '邮箱',
+            'status' => '状态',
+            'created_at' => '创建时间',
+            'updated_at' => '修改时间',
+        ]);
+    }
 
     /**
      * @inheritdoc
@@ -32,52 +60,13 @@ class User extends UserBase implements IdentityInterface
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return array_merge(parent::rules(), [
-            ['password', 'string', 'min' => 8],
-            ['status', 'in', 'range' => self::$status_array],
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributes()
-    {
-        return array_merge(parent::attributes(), [
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return array_merge(parent::attributeLabels(), [
-            'user_id' => 'ID',
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
             if ($insert) {
-                $this->passkey = Yii::$app->security->generateRandomString(6);
-                $this->access_token = Yii::$app->security->generateRandomString(64);
-                $this->hashPassword();
+                $this->encryptPassword();
             }
-
-            /**
-             * TODO 主动登录后更新auth_key可以踢掉其他端的，但是要其他端下一次打开浏览器才生效，研究发现要把cookie里的session_id删掉才能做到立即踢掉，以后再研究能不能马上把用户踢掉
-             */
-            $this->auth_key = Yii::$app->security->generateRandomString(64);
+            $this->generateAuthKey();
             return true;
         }
         return false;
@@ -96,11 +85,6 @@ class User extends UserBase implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        /** @var self $user */
-        $user = self::find()->where(['access_token' => $token, 'status' => self::STATUS_ENABLE])->limit(1)->one();
-        if ($user->access_token === $token) {
-            return $user;
-        }
         return null;
     }
 
@@ -109,7 +93,7 @@ class User extends UserBase implements IdentityInterface
      */
     public function getId()
     {
-        return $this->user_id;
+        return $this->id;
     }
 
     /**
@@ -125,28 +109,61 @@ class User extends UserBase implements IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
-        if($this->status == self::STATUS_ENABLE) {
-            return $this->auth_key === $authKey;
+        if ($this->status == self::STATUS_ACTIVE) {
+            return $this->getAuthKey() === $authKey;
         }
         return false;
     }
 
-    public function encryptPassword($password)
-    {
-        $password = md5($password) . md5(self::COMMON_KEY . $this->passkey);
-        return $password;
-    }
-
     public function validatePassword($password)
     {
-        $password = $this->encryptPassword($password);
-        return Yii::$app->security->validatePassword($password, $this->password);
+        return Yii::$app->security->validatePassword($password, $this->password_hash);
     }
 
-    public function hashPassword()
+    public function encryptPassword()
     {
-        $password = $this->encryptPassword($this->password);
-        $this->password = Yii::$app->security->generatePasswordHash($password);
+        $this->password_hash = Yii::$app->security->generatePasswordHash($this->password_hash);
     }
 
+    public function generateAuthKey()
+    {
+        $this->auth_key = Yii::$app->security->generateRandomString();
+    }
+
+    public function generatePasswordResetToken()
+    {
+        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
+    }
+
+    public static function isPasswordResetTokenValid($token)
+    {
+        if (empty($token)) {
+            return false;
+        }
+        $parts = explode('_', $token);
+        $timestamp = (int)end($parts);
+        return ($timestamp + self::PASSWORD_RESET_TOKEN_EXPIRE) >= time();
+    }
+
+    public static function findByPasswordResetToken($token)
+    {
+        if (!static::isPasswordResetTokenValid($token)) {
+            return null;
+        }
+
+        return static::findOne([
+            'password_reset_token' => $token,
+            'status' => self::STATUS_ACTIVE,
+        ]);
+    }
+
+    public function removePasswordResetToken()
+    {
+        $this->password_reset_token = null;
+    }
+
+    public function getDetail()
+    {
+        return $this->hasOne(UserDetail::className(), ['user_id' => 'id']);
+    }
 }

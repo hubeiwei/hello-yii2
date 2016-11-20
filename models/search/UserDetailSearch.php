@@ -4,7 +4,6 @@ namespace app\models\search;
 
 use app\models\User;
 use app\models\UserDetail;
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
@@ -19,8 +18,28 @@ class UserDetailSearch extends UserDetail
     public function rules()
     {
         return [
-            [['id', 'user_id', 'birthday', 'gender', 'email', 'phone', 'resume', 'updated_at', 'user.username'], 'safe'],
+            [['id', 'user_id', 'birthday', 'gender', 'phone', 'resume', 'updated_at', 'username'], 'safe'],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), [
+            'username',
+        ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return array_merge(parent::attributeLabels(), [
+            'username' => '用户名',
+        ]);
     }
 
     /**
@@ -41,12 +60,20 @@ class UserDetailSearch extends UserDetail
      */
     public function search($params)
     {
-        $query = UserDetail::find()->joinWith('user');
+        /** @var \app\modules\core\extensions\ActiveQuery $query */
+        $query = self::find()
+            ->from(['detail' => self::tableName()])
+            ->select([
+                'detail.*',
+                'user.username'
+            ])
+            ->leftJoin(['user' => User::tableName()], 'user.id = detail.user_id');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => ['defaultOrder' => ['id' => SORT_DESC]],
         ]);
 
         $this->load($params);
@@ -59,16 +86,15 @@ class UserDetailSearch extends UserDetail
 
         // grid filtering conditions
         $query->andFilterWhere(['like', 'gender', $this->gender])
-            ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'phone', $this->phone])
             ->andFilterWhere(['like', 'resume', $this->resume])
-            ->andFilterWhere(['like', User::tableName() . '.username', $this->getAttribute('user.username')]);
+            ->andFilterWhere(['like', 'user.username', $this->getAttribute('username')]);
 
-        $query->compare('id', $this->id);
-        $query->compare(self::tableName() . '.user_id', $this->user_id);
+        $query->compare('detail.id', $this->id)
+            ->compare('detail.user_id', $this->user_id);
 
-        $query->timeRangeFilter('birthday', $this->birthday);
-        $query->timeRangeFilter('updated_at', $this->updated_at);
+        $query->timeRangeFilter('birthday', $this->birthday)
+            ->timeRangeFilter('detail.updated_at', $this->updated_at, false);
 
         return $dataProvider;
     }
