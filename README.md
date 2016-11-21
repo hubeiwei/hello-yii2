@@ -12,8 +12,6 @@
 
     * [使用](#使用)
 
-    * [部署遇到问题怎么办？](#部署遇到问题怎么办)
-
 * [结构说明](#结构说明)
 
     * [文件和目录](#文件和目录)
@@ -114,7 +112,7 @@ master(最外层)
 
 配置了layout了地方：
 
-前台默认main
+前台使用默认的main
 
 用户模块表单：[详情](https://github.com/hubeiwei/hello-yii2/blob/2.0/modules/user/controllers/base/ModuleController.php#L14)
 
