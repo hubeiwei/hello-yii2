@@ -1,22 +1,27 @@
 <?php
 
+use app\common\widgets\CssBlock;
 use app\modules\core\helpers\UserHelper;
 use app\modules\core\widgets\Growl;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 
-/* @var $this \yii\web\View */
-/* @var $content string */
+/**
+ * @var $this \yii\web\View
+ * @var $content string
+ */
+?>
 
-$css = <<<CSS
-html, body {
-    background-color: #f1f1f1;
-}
-CSS;
+<?php CssBlock::begin(); ?>
+<style>
+    html, body {
+        background-color: #f1f1f1;
+    }
+</style>
+<?php CssBlock::end(); ?>
 
-$this->registerCss($css);
-
+<?php
 $this->beginContent('@app/views/layouts/master.php');
 
 NavBar::begin([

@@ -1,5 +1,6 @@
 <?php
 
+use app\common\widgets\CssBlock;
 use app\modules\core\helpers\UserHelper;
 use app\modules\core\widgets\Alert;
 use kartik\sidenav\SideNav;
@@ -12,15 +13,17 @@ use yii\widgets\Breadcrumbs;
  * @var $this \yii\web\View
  * @var $content string
  */
+?>
 
-$css = <<<CSS
-.container {
-    width: 100%;
-}
-CSS;
+<?php CssBlock::begin(); ?>
+<style>
+    .container {
+        width: 100%;
+    }
+</style>
+<?php CssBlock::end(); ?>
 
-$this->registerCss($css);
-
+<?php
 $this->beginContent('@app/views/layouts/master.php');
 
 $assignedMenu = MenuHelper::getAssignedMenu(UserHelper::getUserId());
