@@ -1,11 +1,11 @@
 <?php
 
+use app\common\grid\ActionColumn;
+use app\common\grid\SerialColumn;
 use app\common\helpers\RenderHelper;
 use app\common\widgets\DateRangePicker;
 use app\common\widgets\JsBlock;
 use app\models\Music;
-use app\modules\core\grid\ActionColumn;
-use app\modules\core\grid\SerialColumn;
 use yii\helpers\Html;
 
 /**

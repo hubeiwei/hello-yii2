@@ -9,8 +9,8 @@
 
 namespace app\common\helpers;
 
-use app\modules\core\grid\ExportMenu;
-use app\modules\core\grid\GridView;
+use app\common\grid\ExportMenu;
+use app\common\grid\GridView;
 use Yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;

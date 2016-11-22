@@ -1,5 +1,5 @@
 <?php
-namespace app\modules\core\grid;
+namespace app\common\grid;
 
 use kartik\export\ExportMenu as KartikExportMenu;
 

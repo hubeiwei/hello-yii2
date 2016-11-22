@@ -6,7 +6,7 @@
  * Time: 13:36
  */
 
-namespace app\modules\core\grid;
+namespace app\common\grid;
 
 use kartik\grid\DataColumn as KartikDataColumn;
 

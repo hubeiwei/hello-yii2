@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace app\modules\core\grid;
+namespace app\common\grid;
 
 use kartik\grid\GridView as KartikGridView;
 
@@ -23,7 +23,7 @@ class GridView extends KartikGridView
         'lastPageLabel' => '尾页',
     ];
 
-    public $dataColumnClass = '\app\modules\core\grid\DataColumn';
+    public $dataColumnClass = '\app\common\grid\DataColumn';
 
     public $resizableColumns = false;
 

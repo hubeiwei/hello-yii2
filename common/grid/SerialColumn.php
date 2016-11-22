@@ -6,7 +6,7 @@
  * Time: 15:08
  */
 
-namespace app\modules\core\grid;
+namespace app\common\grid;
 
 use kartik\grid\SerialColumn as KartikSerialColumn;
 

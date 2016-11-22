@@ -6,7 +6,7 @@
  * Time: 14:37
  */
 
-namespace app\modules\core\grid;
+namespace app\common\grid;
 
 use kartik\grid\ActionColumn as KartikActionColumn;
 
