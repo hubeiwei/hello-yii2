@@ -10,7 +10,6 @@ namespace app\assets;
 
 use yii\helpers\Json;
 use yii\web\AssetBundle;
-use yii\web\View;
 
 class HighlightAsset extends AssetBundle
 {
@@ -48,19 +47,19 @@ class HighlightAsset extends AssetBundle
             // do nothing...
         }
 
-        $options = empty($configOptions) ? '' : Json::encode($configOptions);
+        if (!empty($configOptions)) {
+            $options = Json::encode($configOptions);
+            $view->registerJs('hljs.configure("' . $options . '");');
+        }
 
         if ($configSelector !== self::DEFAULT_SELECTOR) {
             $view->registerJs('
-                hljs.configure("' . $options . '");
-                $("' . $configSelector . '").each(function(i, block) {
+                $("' . $configSelector . '").each(function (i, block) {
                     hljs.highlightBlock(block);
-                });');
+                });'
+            );
         } else {
-            $view->registerJs('
-                hljs.configure("' . $options . '");
-                hljs.initHighlightingOnLoad();',
-                View::POS_END);
+            $view->registerJs('hljs.initHighlightingOnLoad();');
         }
 
         return parent::register($view);
