@@ -2,10 +2,10 @@
 
 namespace app\modules\user\controllers;
 
+use app\common\helpers\EasyHelper;
 use app\common\helpers\Message;
 use app\models\User;
 use app\models\UserDetail;
-use app\modules\core\helpers\EasyHelper;
 use app\modules\core\helpers\UserHelper;
 use app\modules\user\controllers\base\ModuleController;
 use app\modules\user\models\LoginForm;

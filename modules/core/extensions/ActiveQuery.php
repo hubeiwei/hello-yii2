@@ -9,7 +9,7 @@
 
 namespace app\modules\core\extensions;
 
-use app\modules\core\helpers\EasyHelper;
+use app\common\helpers\EasyHelper;
 use yii\db\ActiveQuery as YiiActiveQuery;
 
 class ActiveQuery extends YiiActiveQuery
