@@ -27,7 +27,4 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
     ];
-    public $jsOptions = [
-        'position' => View::POS_HEAD,
-    ];
 }

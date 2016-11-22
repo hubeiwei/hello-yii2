@@ -1,5 +1,6 @@
 <?php
 
+use app\common\widgets\JsBlock;
 use app\models\Music;
 use app\modules\core\grid\SerialColumn;
 use app\modules\core\helpers\RenderHelper;
@@ -66,6 +67,7 @@ $gridColumns = [
     <?= RenderHelper::gridView($dataProvider, $gridColumns, $searchModel) ?>
 
 </div>
+<?php JsBlock::begin(); ?>
 <script>
     $(".play-list-item").click(function () {
         $("#track_title").html($(this).html());
@@ -81,3 +83,4 @@ $gridColumns = [
         }
     });
 </script>
+<?php JsBlock::end(); ?>
