@@ -32,6 +32,15 @@ $config = [
                 ],
             ],
         ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+                'login' => '/user/default/login',
+                'logout' => '/user/default/logout',
+                'register' => '/user/default/register',
+            ],
+        ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['Guest'],
@@ -119,16 +128,6 @@ $config['components']['mailer'] = [
         'from' => [
             'hubeiwei1234@163.com' => $config['name'] . ' robot',
         ],
-    ],
-];
-
-$config['components']['urlManager'] = [
-    'enablePrettyUrl' => true,
-    'showScriptName' => false,
-    'rules' => [
-        'login' => '/user/default/login',
-        'logout' => '/user/default/logout',
-        'register' => '/user/default/register',
     ],
 ];
 
