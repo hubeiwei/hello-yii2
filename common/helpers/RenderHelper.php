@@ -7,7 +7,7 @@
  * To change this template use File | Setting | File Templates.
  */
 
-namespace app\modules\core\helpers;
+namespace app\common\helpers;
 
 use app\modules\core\grid\ExportMenu;
 use app\modules\core\grid\GridView;

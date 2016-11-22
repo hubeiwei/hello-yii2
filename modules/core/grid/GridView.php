@@ -14,7 +14,7 @@ use kartik\grid\GridView as KartikGridView;
 /**
  * 已经封装在RenderHelper了，
  * 但有特别需求时还是可以单独使用该类
- * @see \app\modules\core\helpers\RenderHelper::gridView()
+ * @see \app\common\helpers\RenderHelper::gridView()
  */
 class GridView extends KartikGridView
 {
