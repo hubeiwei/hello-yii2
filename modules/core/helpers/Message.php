@@ -23,8 +23,8 @@ use yii\bootstrap\Widget;
  * ```
  *
  * 以下两个widget支持批量输出所有而且数据类型为数组的消息
- * @see \app\modules\core\widgets\Alert
- * @see \app\modules\core\widgets\Growl
+ * @see \app\common\widgets\Alert
+ * @see \app\common\widgets\Growl
  */
 class Message extends Widget
 {

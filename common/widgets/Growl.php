@@ -6,7 +6,7 @@
  * Time: 9:45
  */
 
-namespace app\modules\core\widgets;
+namespace app\common\widgets;
 
 use app\modules\core\helpers\Message;
 use kartik\growl\Growl as KartikGrowl;

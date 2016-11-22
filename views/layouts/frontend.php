@@ -1,8 +1,8 @@
 <?php
 
 use app\common\widgets\CssBlock;
+use app\common\widgets\Growl;
 use app\modules\core\helpers\UserHelper;
-use app\modules\core\widgets\Growl;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
