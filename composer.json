@@ -21,7 +21,9 @@
         "kartik-v/yii2-widget-datetimepicker": "*",
         "kartik-v/yii2-widget-fileinput": "@dev",
         "kartik-v/yii2-widget-growl": "*",
+        "kartik-v/yii2-widget-select2": "@dev",
         "kartik-v/yii2-widget-sidenav": "*",
+        "kartik-v/yii2-widget-typeahead": "*",
         "ijackua/yii2-lepture-markdown-editor-widget": "^1.0",
         "yiidoc/yii2-redactor": "*",
         "bower-asset/highlightjs": "*"
