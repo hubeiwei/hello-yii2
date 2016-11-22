@@ -1,8 +1,8 @@
 <?php
 
+use app\common\captcha\Captcha;
 use app\common\helpers\UserHelper;
 use app\models\Article;
-use app\modules\core\captcha\Captcha;
 use ijackua\lepture\Markdowneditor;
 use kartik\datetime\DateTimePicker;
 use yii\helpers\Html;

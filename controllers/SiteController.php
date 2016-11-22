@@ -1,12 +1,12 @@
 <?php
 
-namespace app\modules\core\controllers;
+namespace app\controllers;
 
-use app\modules\core\captcha\CaptchaAction;
-use app\modules\core\controllers\base\ModuleController;
+use app\common\captcha\CaptchaAction;
+use yii\web\Controller;
 use yii\web\ErrorAction;
 
-class DefaultController extends ModuleController
+class SiteController extends Controller
 {
     /**
      * @inheritdoc
@@ -16,7 +16,6 @@ class DefaultController extends ModuleController
         return [
             'error' => [
                 'class' => ErrorAction::className(),
-                'view' => '@app/views/site/error.php',
             ],
             'captcha' => [
                 'class' => CaptchaAction::className(),

@@ -1,8 +1,8 @@
 <?php
 
+use app\common\captcha\Captcha;
 use app\common\helpers\UserHelper;
 use app\models\Music;
-use app\modules\core\captcha\Captcha;
 use kartik\file\FileInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;

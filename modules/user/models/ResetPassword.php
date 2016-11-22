@@ -2,8 +2,8 @@
 
 namespace app\modules\user\models;
 
+use app\common\captcha\CaptchaValidator;
 use app\models\User;
-use app\modules\core\captcha\CaptchaValidator;
 use app\modules\core\extensions\StrengthValidator;
 use yii\base\InvalidParamException;
 use yii\base\Model;

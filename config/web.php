@@ -21,7 +21,7 @@ $config = [
             'loginUrl' => ['/login'],
         ],
         'errorHandler' => [
-            'errorAction' => '/core/default/error',
+            'errorAction' => '/site/error',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -53,8 +53,14 @@ $config = [
     'timeZone' => 'Asia/Shanghai',
     'defaultRoute' => '/frontend',
     'modules' => [
-        'gridview' => [
-            'class' => 'kartik\grid\Module',
+        'frontend' => [
+            'class' => 'app\modules\frontend\Module',
+        ],
+        'backend' => [
+            'class' => 'app\modules\backend\Module',
+        ],
+        'user' => [
+            'class' => 'app\modules\user\Module',
         ],
         'admin' => [
             'class' => 'mdm\admin\Module',
@@ -66,6 +72,9 @@ $config = [
                 ],
             ],
         ],
+        'gridview' => [
+            'class' => 'kartik\grid\Module',
+        ],
         'redactor' => [
             'class' => 'yii\redactor\RedactorModule',
             'uploadDir' => '@webroot/redactor',
@@ -75,22 +84,6 @@ $config = [
                 'minHeight' => 300,
                 'maxHeight' => 600,
             ],
-        ],
-        //封装和继承一些代码的地方
-        'core' => [
-            'class' => 'app\modules\core\Module',
-        ],
-        //前台
-        'frontend' => [
-            'class' => 'app\modules\frontend\Module',
-        ],
-        //后台
-        'backend' => [
-            'class' => 'app\modules\backend\Module',
-        ],
-        //用户
-        'user' => [
-            'class' => 'app\modules\user\Module',
         ],
     ],
     'as access' => [

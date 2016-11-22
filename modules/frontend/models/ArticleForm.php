@@ -9,8 +9,8 @@
 
 namespace app\modules\frontend\models;
 
+use app\common\captcha\CaptchaValidator;
 use app\models\Article;
-use app\modules\core\captcha\CaptchaValidator;
 use yii\base\Model;
 use yii\validators\DateValidator;
 

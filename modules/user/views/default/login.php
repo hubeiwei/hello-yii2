@@ -1,6 +1,6 @@
 <?php
 
-use app\modules\core\captcha\Captcha;
+use app\common\captcha\Captcha;
 use kartik\password\PasswordInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;

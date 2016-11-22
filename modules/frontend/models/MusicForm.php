@@ -9,9 +9,9 @@
 
 namespace app\modules\frontend\models;
 
+use app\common\captcha\CaptchaValidator;
 use app\common\helpers\UserHelper;
 use app\models\Music;
-use app\modules\core\captcha\CaptchaValidator;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 

@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace app\modules\core\captcha;
+namespace app\common\captcha;
 
 use yii\captcha\Captcha as YiiCaptcha;
 
@@ -18,7 +18,7 @@ use yii\captcha\Captcha as YiiCaptcha;
  */
 class Captcha extends YiiCaptcha
 {
-    public $captchaAction = '/core/default/captcha';
+    public $captchaAction = '/site/captcha';
 
     public $imageOptions = [
         'alt' => '验证码',

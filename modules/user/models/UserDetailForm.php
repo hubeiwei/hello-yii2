@@ -9,8 +9,8 @@
 
 namespace app\modules\user\models;
 
+use app\common\captcha\CaptchaValidator;
 use app\models\UserDetail;
-use app\modules\core\captcha\CaptchaValidator;
 use yii\base\Model;
 
 class UserDetailForm extends Model

@@ -7,8 +7,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
+use app\common\captcha\Captcha;
 use app\models\UserDetail;
-use app\modules\core\captcha\Captcha;
 use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
