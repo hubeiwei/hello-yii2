@@ -6,7 +6,7 @@
  * Time: 0:28
  */
 
-namespace app\modules\core\helpers;
+namespace app\common\helpers;
 
 use Yii;
 use yii\bootstrap\Widget;
@@ -15,7 +15,7 @@ use yii\bootstrap\Widget;
  * 封装该类主要是为了定义一些常量以及固定的方法以方便后期管理
  *
  * ```php
- * use app\modules\core\helpers\Message;
+ * use app\common\helpers\Message;
  *
  * \Yii::$app->session->setFlash(Message::TYPE_INFO, 'message');
  * Message::setSuccessMsg('success');

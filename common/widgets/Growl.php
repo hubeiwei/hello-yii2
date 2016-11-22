@@ -8,7 +8,7 @@
 
 namespace app\common\widgets;
 
-use app\modules\core\helpers\Message;
+use app\common\helpers\Message;
 use kartik\growl\Growl as KartikGrowl;
 use Yii;
 use yii\bootstrap\Widget;

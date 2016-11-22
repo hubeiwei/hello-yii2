@@ -2,7 +2,7 @@
 
 namespace app\modules\user\controllers;
 
-use app\modules\core\helpers\Message;
+use app\common\helpers\Message;
 use app\modules\user\controllers\base\ModuleController;
 use app\modules\user\models\PasswordResetRequest;
 use app\modules\user\models\ResetPassword;

@@ -2,10 +2,10 @@
 
 namespace app\modules\backend\controllers;
 
+use app\common\helpers\Message;
 use app\models\Music;
 use app\models\search\MusicSearch;
 use app\modules\backend\controllers\base\ModuleController;
-use app\modules\core\helpers\Message;
 use app\modules\frontend\models\MusicForm;
 use Yii;
 use yii\filters\VerbFilter;

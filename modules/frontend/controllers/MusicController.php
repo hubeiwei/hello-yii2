@@ -2,9 +2,9 @@
 
 namespace app\modules\frontend\controllers;
 
+use app\common\helpers\Message;
 use app\models\Music;
 use app\models\search\MusicSearch;
-use app\modules\core\helpers\Message;
 use app\modules\core\helpers\UserHelper;
 use app\modules\frontend\controllers\base\ModuleController;
 use app\modules\frontend\models\MusicForm;

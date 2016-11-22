@@ -2,10 +2,10 @@
 
 namespace app\modules\backend\controllers;
 
+use app\common\helpers\Message;
 use app\models\search\UserDetailSearch;
 use app\models\UserDetail;
 use app\modules\backend\controllers\base\ModuleController;
-use app\modules\core\helpers\Message;
 use app\modules\user\models\UserDetailForm;
 use Yii;
 use yii\web\NotFoundHttpException;

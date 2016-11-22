@@ -2,10 +2,10 @@
 
 namespace app\modules\backend\controllers;
 
+use app\common\helpers\Message;
 use app\models\search\SettingSearch;
 use app\models\Setting;
 use app\modules\backend\controllers\base\ModuleController;
-use app\modules\core\helpers\Message;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;

@@ -8,9 +8,9 @@
 
 namespace app\common\widgets;
 
-use app\modules\core\helpers\Message;
-use yii\bootstrap\Alert as YiiAlert;
+use app\common\helpers\Message;
 use Yii;
+use yii\bootstrap\Alert as YiiAlert;
 use yii\bootstrap\Widget;
 
 class Alert extends Widget
