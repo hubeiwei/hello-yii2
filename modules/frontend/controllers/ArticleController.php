@@ -2,12 +2,12 @@
 
 namespace app\modules\frontend\controllers;
 
+use app\common\extensions\Query;
 use app\common\helpers\Message;
 use app\common\helpers\UserHelper;
 use app\models\Article;
 use app\models\search\ArticleSearch;
 use app\models\User;
-use app\modules\core\extensions\Query;
 use app\modules\frontend\controllers\base\ModuleController;
 use app\modules\frontend\models\ArticleForm;
 use Yii;

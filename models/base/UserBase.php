@@ -17,7 +17,7 @@ use Yii;
  * @property integer $created_at
  * @property integer $updated_at
  */
-class UserBase extends \app\modules\core\extensions\ActiveRecord
+class UserBase extends \app\common\extensions\ActiveRecord
 {
     /**
      * @inheritdoc

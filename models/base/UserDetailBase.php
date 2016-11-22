@@ -16,7 +16,7 @@ use Yii;
  * @property string $resume
  * @property string $updated_at
  */
-class UserDetailBase extends \app\modules\core\extensions\ActiveRecord
+class UserDetailBase extends \app\common\extensions\ActiveRecord
 {
     /**
      * @inheritdoc

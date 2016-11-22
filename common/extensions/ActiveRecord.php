@@ -7,7 +7,7 @@
  * To change this template use File | Setting | File Templates.
  */
 
-namespace app\modules\core\extensions;
+namespace app\common\extensions;
 
 use yii\db\ActiveRecord as YiiActiveRecord;
 

@@ -39,7 +39,7 @@ class UserSearch extends User
      */
     public function search($params)
     {
-        /** @var \app\modules\core\extensions\ActiveQuery $query */
+        /** @var \app\common\extensions\ActiveQuery $query */
         $query = self::find();
 
         // add conditions that should always apply here

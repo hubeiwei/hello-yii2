@@ -61,7 +61,7 @@ class MusicSearch extends Music
      */
     public function search($params)
     {
-        /** @var \app\modules\core\extensions\ActiveQuery $query */
+        /** @var \app\common\extensions\ActiveQuery $query */
         $query = self::find()
             ->from(['music' => self::tableName()])
             ->select([
@@ -112,7 +112,7 @@ class MusicSearch extends Music
 
     public function searchMyMusic($params)
     {
-        /** @var \app\modules\core\extensions\ActiveQuery $query */
+        /** @var \app\common\extensions\ActiveQuery $query */
         $query = self::find()->where(['user_id' => UserHelper::getUserId()]);
 
         // add conditions that should always apply here

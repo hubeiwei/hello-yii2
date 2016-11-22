@@ -6,7 +6,7 @@
  * Time: 18:39
  */
 
-namespace app\modules\core\extensions;
+namespace app\common\extensions;
 
 use app\common\helpers\EasyHelper;
 use yii\db\Query as YiiQuery;

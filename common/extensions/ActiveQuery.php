@@ -7,7 +7,7 @@
  * To change this template use File | Setting | File Templates.
  */
 
-namespace app\modules\core\extensions;
+namespace app\common\extensions;
 
 use app\common\helpers\EasyHelper;
 use yii\db\ActiveQuery as YiiActiveQuery;

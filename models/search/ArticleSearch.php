@@ -62,7 +62,7 @@ class ArticleSearch extends Article
      */
     public function search($params)
     {
-        /** @var \app\modules\core\extensions\ActiveQuery $query */
+        /** @var \app\common\extensions\ActiveQuery $query */
         $query = self::find()
             ->from(['article' => self::tableName()])
             ->select([
@@ -108,7 +108,7 @@ class ArticleSearch extends Article
 
     public function searchMyArticle($params)
     {
-        /** @var \app\modules\core\extensions\ActiveQuery $query */
+        /** @var \app\common\extensions\ActiveQuery $query */
         $query = self::find()->where(['created_by' => UserHelper::getUserId()]);
 
         // add conditions that should always apply here
