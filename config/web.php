@@ -89,11 +89,13 @@ $config = [
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
-            'debug/*',
-            'redactor/*',
-            'core/*',
+            'site/error',
+            'site/captcha',
             'frontend/*',
             'user/*',
+            'debug/*',
+            'gridview/*',
+            'redactor/*',
         ]
     ],
 ];
