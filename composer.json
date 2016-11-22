@@ -12,6 +12,7 @@
         "mdmsoft/yii2-admin": "~2.0",
         "kartik-v/yii2-date-range": "dev-master",
         "kartik-v/yii2-detail-view": "@dev",
+        "kartik-v/yii2-dynagrid": "@dev",
         "kartik-v/yii2-export": "@dev",
         "kartik-v/yii2-grid": "@dev",
         "kartik-v/yii2-password": "@dev",
