@@ -10,8 +10,8 @@
 namespace app\modules\user\models;
 
 use app\common\captcha\CaptchaValidator;
+use app\common\extensions\StrengthValidator;
 use app\models\User;
-use app\modules\core\extensions\StrengthValidator;
 use yii\base\Model;
 
 class RegisterForm extends Model

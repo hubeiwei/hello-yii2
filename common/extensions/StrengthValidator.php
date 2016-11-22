@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace app\modules\core\extensions;
+namespace app\common\extensions;
 
 use kartik\password\StrengthValidator as KartikStrengthValidator;
 
