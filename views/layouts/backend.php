@@ -1,8 +1,8 @@
 <?php
 
+use app\common\helpers\UserHelper;
 use app\common\widgets\Alert;
 use app\common\widgets\CssBlock;
-use app\modules\core\helpers\UserHelper;
 use kartik\sidenav\SideNav;
 use mdm\admin\components\MenuHelper;
 use yii\bootstrap\Nav;

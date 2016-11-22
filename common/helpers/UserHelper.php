@@ -7,7 +7,7 @@
  * To change this template use File | Setting | File Templates.
  */
 
-namespace app\modules\core\helpers;
+namespace app\common\helpers;
 
 use app\models\User;
 use Yii;

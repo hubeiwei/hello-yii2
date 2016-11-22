@@ -2,9 +2,9 @@
 
 namespace app\models\search;
 
+use app\common\helpers\UserHelper;
 use app\models\Article;
 use app\models\User;
-use app\modules\core\helpers\UserHelper;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 

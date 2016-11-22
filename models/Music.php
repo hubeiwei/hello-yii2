@@ -2,8 +2,8 @@
 
 namespace app\models;
 
+use app\common\helpers\UserHelper;
 use app\models\base\MusicBase;
-use app\modules\core\helpers\UserHelper;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
