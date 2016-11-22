@@ -52,7 +52,7 @@ class Query extends YiiQuery
     }
 
     /**
-     * @see \app\modules\core\widgets\DateRangePicker
+     * @see \app\common\widgets\DateRangePicker
      *
      * @param string $attribute
      * @param string $value

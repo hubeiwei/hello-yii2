@@ -1,10 +1,10 @@
 <?php
 
+use app\common\widgets\DateRangePicker;
 use app\models\Article;
 use app\modules\core\grid\ActionColumn;
 use app\modules\core\grid\SerialColumn;
 use app\modules\core\helpers\RenderHelper;
-use app\modules\core\widgets\DateRangePicker;
 use yii\bootstrap\ButtonDropdown;
 use yii\helpers\Html;
 

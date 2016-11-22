@@ -6,7 +6,7 @@
  * Time: 23:03
  */
 
-namespace app\modules\core\widgets;
+namespace app\common\widgets;
 
 use kartik\daterange\DateRangePicker as KartikDateRangePicker;
 use Yii;
