@@ -11,6 +11,7 @@ namespace app\common\helpers;
 
 use app\common\grid\ExportMenu;
 use app\common\grid\GridView;
+use kartik\dynagrid\DynaGrid;
 use Yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
@@ -77,5 +78,62 @@ class RenderHelper
         }
 
         return GridView::widget($gridConfig);
+    }
+
+    /**
+     * @param string $id
+     * @param $dataProvider
+     * @param $gridColumns
+     * @param $searchModel
+     * @param bool $hasExport
+     * @param bool $showPageSummary
+     * @return string
+     */
+    public static function dynaGrid($id, $dataProvider, $gridColumns, $searchModel = null, $hasExport = false, $showPageSummary = false)
+    {
+        $resetUrl = '<div class="btn-group">' . Html::a('<i class="glyphicon glyphicon-repeat"></i> 重置', [Yii::$app->controller->action->id], ['class' => 'btn btn-default', 'title' => '重置搜索条件', 'data' => ['pjax' => 'true']]) . '</div>';
+
+        $export = !$hasExport ? '' : ExportMenu::widget([
+            'dataProvider' => $dataProvider,
+            'columns' => $gridColumns,
+            'exportConfig' => [
+                ExportMenu::FORMAT_HTML => false,
+                ExportMenu::FORMAT_TEXT => false,
+                ExportMenu::FORMAT_PDF => false,
+                ExportMenu::FORMAT_EXCEL => false,
+            ],
+            'pjaxContainerId' => 'kartik-dynagrid-pjax',
+        ]);
+
+        $gridConfig = [
+            'dataProvider' => $dataProvider,
+            'pjax' => true,
+            'pjaxSettings' => [
+                'options' => [
+                    'id' => 'kartik-dynagrid-pjax',
+                ],
+            ],
+            'showPageSummary' => $showPageSummary,
+            'toolbar' => [
+                '{toggleData}',
+                $resetUrl,
+                $export,
+                ['content' => '{dynagrid}{dynagridFilter}{dynagridSort}'],
+            ],
+        ];
+        if ($searchModel !== null) {
+            $gridConfig['filterModel'] = $searchModel;
+        }
+
+        $dynaGridConfig = [
+            'allowThemeSetting' => false,
+            'gridOptions' => $gridConfig,
+            'options' => [
+                'id' => $id,
+            ],
+            'columns' => $gridColumns,
+        ];
+
+        return DynaGrid::widget($dynaGridConfig);
     }
 }

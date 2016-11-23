@@ -47,9 +47,10 @@ composer install
 创建一个`utf8`数据库，在`config/db.php`文件配置好MySql相关参数后，执行以下命令：
 
 ```
-yii migrate --migrationPath=@yii/rbac/migrations
-yii migrate --migrationPath=@mdm/admin/migrations
-yii migrate
+php yii migrate --migrationPath=@yii/rbac/migrations
+php yii migrate --migrationPath=@mdm/admin/migrations
+php yii migrate
+php yii migrate --migrationPath=@kartik/dynagrid/migrations
 ```
 
 ## 服务器配置

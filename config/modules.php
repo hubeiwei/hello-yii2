@@ -1,5 +1,7 @@
 <?php
 
+use kartik\dynagrid\DynaGrid;
+
 return [
     'frontend' => [
         'class' => 'app\modules\frontend\Module',
@@ -22,6 +24,29 @@ return [
     ],
     'gridview' => [
         'class' => 'kartik\grid\Module',
+    ],
+    'dynagrid' => [
+        'class' => 'kartik\dynagrid\Module',
+        'dbSettings' => [
+            'tableName' => 'dynagrid',
+        ],
+        'dbSettingsDtl' => [
+            'tableName' => 'dynagrid_dtl',
+        ],
+        'dynaGridOptions' => [
+            'storage' => DynaGrid::TYPE_DB,
+            'gridOptions' => [
+                'dataColumnClass' => 'app\common\grid\DataColumn',
+                'resizableColumns' => false,
+                'responsiveWrap' => false,
+                'hover' => true,
+                'export' => false,
+                'pager' => [
+                    'firstPageLabel' => '首页',
+                    'lastPageLabel' => '尾页',
+                ],
+            ],
+        ],
     ],
     'redactor' => [
         'class' => 'yii\redactor\RedactorModule',
