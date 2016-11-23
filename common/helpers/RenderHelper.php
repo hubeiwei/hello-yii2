@@ -40,10 +40,10 @@ class RenderHelper
      * @param $gridColumns
      * @param $searchModel
      * @param bool $hasExport
+     * @param bool $showPageSummary
      * @return string
-     * @throws \Exception
      */
-    public static function gridView($dataProvider, $gridColumns, $searchModel = null, $hasExport = false)
+    public static function gridView($dataProvider, $gridColumns, $searchModel = null, $hasExport = false, $showPageSummary = false)
     {
         $config = [
             'dataProvider' => $dataProvider,
@@ -63,18 +63,18 @@ class RenderHelper
         ]));
 
         $gridConfig = ArrayHelper::merge($config, [
+            'layout' => '<p>' . $resetUrl . '{toolbar}' . $export . '</p>{summary}{items}{pager}',
             'pjax' => true,
             'pjaxSettings' => [
                 'options' => [
                     'id' => 'kartik-grid-pjax',
                 ],
             ],
-//            'showPageSummary' => true,
+            'showPageSummary' => $showPageSummary,
         ]);
         if ($searchModel !== null) {
             $gridConfig['filterModel'] = $searchModel;
         }
-        $gridConfig['layout'] = '<p>' . $resetUrl . '{toolbar}' . $export . '</p>{summary}{items}{pager}';
 
         return GridView::widget($gridConfig);
     }
