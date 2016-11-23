@@ -20,7 +20,7 @@ class DateRangePicker extends KartikDateRangePicker
     /**
      * @var bool pluginOptions为空时根据改属性来设置时间格式
      */
-    private $_dateOnly = true;
+    public $dateOnly = false;
 
     /**
      * @inheritdoc
@@ -28,7 +28,7 @@ class DateRangePicker extends KartikDateRangePicker
     public function run()
     {
         if (empty($this->pluginOptions)) {
-            if ($this->_dateOnly === false) {
+            if ($this->dateOnly === false) {
                 $this->pluginOptions['locale']['format'] = 'Y/m/d H:i:s';
                 $this->pluginOptions += [
                     'timePicker' => true,
@@ -68,15 +68,5 @@ class DateRangePicker extends KartikDateRangePicker
             'firstDay' => new JsExpression('moment.localeData()._week.dow')
         ];
         $this->pluginOptions['locale'] = $localeSettings;
-    }
-
-    public function setDateOnly($value)
-    {
-        $this->_dateOnly = $value;
-    }
-
-    public function getDateOnly()
-    {
-        return $this->_dateOnly;
     }
 }

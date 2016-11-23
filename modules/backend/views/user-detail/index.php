@@ -42,13 +42,13 @@ $gridColumns = [
         'attribute' => 'birthday',
         'format' => 'date',
         'filterType' => DateRangePicker::className(),
+        'filterWidgetOptions' => ['dateOnly' => true],
     ],
     'phone',
     [
         'attribute' => 'updated_at',
         'format' => 'dateTime',
         'filterType' => DateRangePicker::className(),
-        'filterWidgetOptions' => ['dateOnly' => false],
     ],
 
     [

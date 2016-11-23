@@ -43,7 +43,6 @@ $gridColumns = [
         'attribute' => 'created_at',
         'format' => 'dateTime',
         'filterType' => DateRangePicker::className(),
-        'filterWidgetOptions' => ['dateOnly' => false],
         'headerOptions' => ['width' => 160],
     ],
 ];
