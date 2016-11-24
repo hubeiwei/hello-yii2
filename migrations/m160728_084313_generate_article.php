@@ -14,7 +14,7 @@ class m160728_084313_generate_article extends Migration
         $articles = [];
         for ($i = 0; $i < 50; $i++) {
             $articles[] = [
-                'title' => $faker->text(rand(10, 20)),
+                'title' => $faker->text(mt_rand(10, 20)),
                 'created_by' => mt_rand(1, 2),
                 'published_at' => mt_rand(strtotime('-1 day'), strtotime('+6 hour')),
                 'content' => $faker->text(mt_rand(100, 6000)),
