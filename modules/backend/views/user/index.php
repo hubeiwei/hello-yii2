@@ -4,6 +4,7 @@ use app\common\grid\ActionColumn;
 use app\common\grid\SerialColumn;
 use app\common\helpers\RenderHelper;
 use app\common\widgets\DateRangePicker;
+use app\common\widgets\Select2;
 use app\models\User;
 use yii\helpers\Html;
 
@@ -30,7 +31,10 @@ $gridColumns = [
         'value' => function ($model) {
             return User::$status_map[$model->status];
         },
-        'filter' => RenderHelper::dropDownFilter($searchModel, 'status', User::$status_map),
+        'filterType' => Select2::className(),
+        'filterWidgetOptions' => [
+            'data' => User::$status_map,
+        ],
         'headerOptions' => ['width' => 100],
     ],
     [
@@ -59,6 +63,6 @@ $gridColumns = [
         <?= Html::a('添加用户', ['create'], ['class' => 'btn btn-info']) ?>
     </p>
 
-    <?= RenderHelper::gridView($dataProvider, $gridColumns, $searchModel) ?>
+    <?= RenderHelper::dynaGrid('backend-user-index', $dataProvider, $gridColumns, $searchModel) ?>
     
 </div>

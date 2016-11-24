@@ -4,6 +4,7 @@ use app\common\grid\ActionColumn;
 use app\common\grid\SerialColumn;
 use app\common\helpers\RenderHelper;
 use app\common\widgets\DateRangePicker;
+use app\common\widgets\Select2;
 use app\models\UserDetail;
 use yii\helpers\Html;
 
@@ -27,16 +28,20 @@ $gridColumns = [
         },
         'format' => 'html',
     ],
-    [
-        'attribute' => 'avatar_file',
+//    [
+//        'attribute' => 'avatar_file',
 //        'headerOptions' => ['width' => 160],
-    ],
+//    ],
     [
         'attribute' => 'gender',
         'value' => function ($model) {
             return UserDetail::$gender_map[$model->gender];
         },
-        'filter' => RenderHelper::dropDownFilter($searchModel, 'gender', UserDetail::$gender_map),
+        'filterType' => Select2::className(),
+        'filterWidgetOptions' => [
+            'data' => UserDetail::$gender_map,
+        ],
+        'headerOptions' => ['width' => 100],
     ],
     [
         'attribute' => 'birthday',
@@ -65,6 +70,6 @@ $gridColumns = [
 
     <hr>
 
-    <?= RenderHelper::gridView($dataProvider, $gridColumns, $searchModel, true) ?>
-    
+    <?= RenderHelper::dynaGrid('backend-user-detail-index', $dataProvider, $gridColumns, $searchModel) ?>
+
 </div>

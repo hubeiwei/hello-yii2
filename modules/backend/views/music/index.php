@@ -5,6 +5,7 @@ use app\common\grid\SerialColumn;
 use app\common\helpers\RenderHelper;
 use app\common\widgets\DateRangePicker;
 use app\common\widgets\JsBlock;
+use app\common\widgets\Select2;
 use app\models\Music;
 use yii\helpers\Html;
 
@@ -46,7 +47,10 @@ $gridColumns = [
         'value' => function ($model) {
             return Music::$visible_map[$model->visible];
         },
-        'filter' => RenderHelper::dropDownFilter($searchModel, 'visible', Music::$visible_map),
+        'filterType' => Select2::className(),
+        'filterWidgetOptions' => [
+            'data' => Music::$visible_map,
+        ],
         'headerOptions' => ['width' => 100],
     ],
     [
@@ -54,7 +58,10 @@ $gridColumns = [
         'value' => function ($model) {
             return Music::$status_map[$model->status];
         },
-        'filter' => RenderHelper::dropDownFilter($searchModel, 'status', Music::$status_map),
+        'filterType' => Select2::className(),
+        'filterWidgetOptions' => [
+            'data' => Music::$status_map,
+        ],
         'headerOptions' => ['width' => 100],
     ],
     [
@@ -88,7 +95,7 @@ $gridColumns = [
 
     <hr>
 
-    <?= RenderHelper::gridView($dataProvider, $gridColumns, $searchModel) ?>
+    <?= RenderHelper::dynaGrid('backend-music-index', $dataProvider, $gridColumns, $searchModel) ?>
 
 </div>
 <?php JsBlock::begin(); ?>
