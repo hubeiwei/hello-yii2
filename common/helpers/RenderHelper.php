@@ -38,7 +38,7 @@ class RenderHelper
 
     /**
      * @param $dataProvider
-     * @param $gridColumns
+     * @param array $gridColumns
      * @param $searchModel
      * @param bool $hasExport
      * @param bool $showPageSummary
@@ -64,7 +64,7 @@ class RenderHelper
         ]));
 
         $gridConfig = ArrayHelper::merge($config, [
-            'layout' => '<p>' . $resetUrl . '{toolbar}' . $export . '</p>{summary}{items}{pager}',
+            'layout' => '<p>{toolbar}</p>{summary}{items}{pager}',
             'pjax' => true,
             'pjaxSettings' => [
                 'options' => [
@@ -72,6 +72,11 @@ class RenderHelper
                 ],
             ],
             'showPageSummary' => $showPageSummary,
+            'toolbar' => [
+                '{toggleData}',
+                $resetUrl,
+                $export,
+            ],
         ]);
         if ($searchModel !== null) {
             $gridConfig['filterModel'] = $searchModel;
@@ -83,17 +88,16 @@ class RenderHelper
     /**
      * @param string $id
      * @param $dataProvider
-     * @param $gridColumns
+     * @param array $gridColumns
      * @param $searchModel
-     * @param bool $hasExport
      * @param bool $showPageSummary
      * @return string
      */
-    public static function dynaGrid($id, $dataProvider, $gridColumns, $searchModel = null, $hasExport = false, $showPageSummary = false)
+    public static function dynaGrid($id, $dataProvider, $gridColumns, $searchModel = null, $showPageSummary = false)
     {
         $resetUrl = '<div class="btn-group">' . Html::a('<i class="glyphicon glyphicon-repeat"></i> 重置', [Yii::$app->controller->action->id], ['class' => 'btn btn-default', 'title' => '重置搜索条件', 'data' => ['pjax' => 'true']]) . '</div>';
 
-        $export = !$hasExport ? '' : ExportMenu::widget([
+        $export = ExportMenu::widget([
             'dataProvider' => $dataProvider,
             'columns' => $gridColumns,
             'exportConfig' => [
