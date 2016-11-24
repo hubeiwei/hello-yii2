@@ -12,5 +12,9 @@ use kartik\grid\DataColumn as KartikDataColumn;
 
 class DataColumn extends KartikDataColumn
 {
+    public $hAlign = GridView::ALIGN_CENTER;
+
+    public $vAlign = GridView::ALIGN_MIDDLE;
+
     public $noWrap = true;
 }
