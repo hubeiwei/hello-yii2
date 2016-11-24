@@ -34,6 +34,12 @@ return [
             'tableName' => 'dynagrid_dtl',
         ],
         'dynaGridOptions' => [
+            /**
+             * TODO TYPE_DB需要执行以下命令：
+             * ```
+             * php yii migrate --migrationPath=@kartik/dynagrid/migrations
+             * ```
+             */
             'storage' => DynaGrid::TYPE_DB,
             'gridOptions' => [
                 'dataColumnClass' => 'app\common\grid\DataColumn',
