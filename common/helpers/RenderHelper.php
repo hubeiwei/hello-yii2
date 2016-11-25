@@ -37,11 +37,11 @@ class RenderHelper
     }
 
     /**
-     * @param $dataProvider
-     * @param array $gridColumns
-     * @param $searchModel
-     * @param bool $hasExport
-     * @param bool $showPageSummary
+     * @param $dataProvider \yii\data\ActiveDataProvider|\yii\data\ArrayDataProvider|\yii\data\SqlDataProvider
+     * @param $gridColumns array
+     * @param $searchModel \yii\base\Model
+     * @param $hasExport bool
+     * @param $showPageSummary bool
      * @return string
      */
     public static function gridView($dataProvider, $gridColumns, $searchModel = null, $hasExport = false, $showPageSummary = false)
@@ -86,11 +86,11 @@ class RenderHelper
     }
 
     /**
-     * @param string $id
-     * @param $dataProvider
-     * @param array $gridColumns
-     * @param $searchModel
-     * @param bool $showPageSummary
+     * @param $id string
+     * @param $dataProvider \yii\data\ActiveDataProvider|\yii\data\ArrayDataProvider|\yii\data\SqlDataProvider
+     * @param $gridColumns array
+     * @param $searchModel \yii\base\Model
+     * @param $showPageSummary bool
      * @return string
      */
     public static function dynaGrid($id, $dataProvider, $gridColumns, $searchModel = null, $showPageSummary = false)
