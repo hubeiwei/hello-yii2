@@ -12,6 +12,7 @@ namespace app\common\helpers;
 use app\common\grid\ExportMenu;
 use app\common\grid\GridView;
 use kartik\dynagrid\DynaGrid;
+use liyunfang\pager\LinkPager;
 use Yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
@@ -123,6 +124,11 @@ class RenderHelper
                 $resetUrl,
                 $export,
                 ['content' => '{dynagrid}{dynagridFilter}{dynagridSort}'],
+            ],
+            'filterSelector' => "input[name='" . $dataProvider->getPagination()->pageParam . "']",
+            'pager' => [
+                'class' => LinkPager::className(),
+                'template' => '<div class="form-inline">{pageButtons}{customPage}</div>',
             ],
         ];
         if ($searchModel !== null) {
