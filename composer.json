@@ -24,6 +24,7 @@
         "kartik-v/yii2-widget-select2": "@dev",
         "kartik-v/yii2-widget-sidenav": "*",
         "kartik-v/yii2-widget-typeahead": "*",
+        "liyunfang/yii2-widget-linkpager": "*",
         "ijackua/yii2-lepture-markdown-editor-widget": "^1.0",
         "yiidoc/yii2-redactor": "*",
         "bower-asset/highlightjs": "*"
