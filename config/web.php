@@ -71,8 +71,9 @@ $config = [
             'user/*',
             'debug/*',
             'gridview/*',
+            'dynagrid/*',
             'redactor/*',
-        ]
+        ],
     ],
 ];
 
