@@ -107,19 +107,11 @@ views | 目前只是放布局文件而已，布局结构详情请[往下拉](#la
 master(最外层)
 ├ frontend(前台外层)
 │ ├ main(前台，layout会指向这里)
-│ └ user_form(用户模块表单，layout会指向这里)
+│ └ user_form(用户模块的表单，layout会指向这里)
 └ backend(后台，layout会指向这里)
 ```
 
-配置了layout了地方：
-
-前台使用默认的main
-
-用户模块表单：[详情](https://github.com/hubeiwei/hello-yii2/blob/2.0/modules/user/controllers/base/ModuleController.php#L14)
-
-后台：[详情](https://github.com/hubeiwei/hello-yii2/blob/2.0/modules/backend/controllers/base/ModuleController.php#L14)
-
-admin模块在**配置文件**里指向backend：[详情](https://github.com/hubeiwei/hello-yii2/blob/2.0/config/web.php#L61)
+layout统一在`config/modules.php`配置。
 
 # 打赏
 

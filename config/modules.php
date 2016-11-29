@@ -8,9 +8,20 @@ return [
     ],
     'backend' => [
         'class' => 'app\modules\backend\Module',
+        'layout' => '@app/views/layouts/backend',
     ],
     'user' => [
         'class' => 'app\modules\user\Module',
+        'controllerMap' => [
+            'default' => [
+                'class' => 'app\modules\user\controllers\DefaultController',
+                'layout' => '@app/views/layouts/user_form',
+            ],
+            'security' => [
+                'class' => 'app\modules\user\controllers\SecurityController',
+                'layout' => '@app/views/layouts/user_form',
+            ],
+        ],
     ],
     'admin' => [
         'class' => 'mdm\admin\Module',

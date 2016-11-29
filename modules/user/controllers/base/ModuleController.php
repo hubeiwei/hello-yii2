@@ -11,6 +11,5 @@ class ModuleController extends MasterController
     public function init()
     {
         parent::init();
-        $this->layout = '@app/views/layouts/user_form';
     }
 }
