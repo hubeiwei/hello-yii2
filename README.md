@@ -104,11 +104,12 @@ views | 目前只是放布局文件而已，布局结构详情请[往下拉](#la
 ## Layout
 
 ```
-master(最外层)
-├ frontend(前台外层)
-│ ├ main(前台，layout会指向这里)
-│ └ user_form(用户模块的表单，layout会指向这里)
-└ backend(后台，layout会指向这里)
+master(最外层，layout不直接指向这里)
+├ frontend(前台外层，layout不直接指向这里)
+│ ├ main(前台)
+│ ├ user(用户模块)
+│ └ user_form(用户模块的表单)
+└ backend(后台)
 ```
 
 layout统一在`config/modules.php`配置。

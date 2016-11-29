@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = '修改';
 
     <hr>
 
-    <?= $this->render('@app/modules/user/views/default/_user-detail-form', [
+    <?= $this->render('@app/modules/user/views/setting/_user-detail-form', [
         'model' => $model,
     ]) ?>
     

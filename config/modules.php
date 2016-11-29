@@ -12,6 +12,7 @@ return [
     ],
     'user' => [
         'class' => 'app\modules\user\Module',
+        'layout' => '@app/views/layouts/user',
         'controllerMap' => [
             'default' => [
                 'class' => 'app\modules\user\controllers\DefaultController',
