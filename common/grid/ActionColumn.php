@@ -10,6 +10,9 @@ namespace app\common\grid;
 
 use kartik\grid\ActionColumn as KartikActionColumn;
 
+/**
+ * 不想td换行才有了这个类
+ */
 class ActionColumn extends KartikActionColumn
 {
     public $noWrap = true;

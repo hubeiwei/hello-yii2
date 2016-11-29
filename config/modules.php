@@ -35,6 +35,9 @@ return [
         ],
         'dynaGridOptions' => [
             /**
+             * 虽然在RenderHelper有根据业务来封装，但为了单独使用DynaGrid，在这里进行部分配置
+             * @see \app\common\helpers\RenderHelper::dynaGrid()
+             *
              * TODO TYPE_DB需要执行以下命令：
              * ```
              * php yii migrate --migrationPath=@kartik/dynagrid/migrations

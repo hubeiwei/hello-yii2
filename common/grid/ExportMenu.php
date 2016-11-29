@@ -4,8 +4,9 @@ namespace app\common\grid;
 use kartik\export\ExportMenu as KartikExportMenu;
 
 /**
- * 需要依赖kartik-v/yii2-export
- * @link https://github.com/kartik-v/yii2-export
+ * 虽然在RenderHelper有根据业务来封装，但为了单独使用ExportMenu，在这里进行部分配置
+ * @see \app\common\helpers\RenderHelper::gridView()
+ * @see \app\common\helpers\RenderHelper::dynaGrid()
  */
 class ExportMenu extends KartikExportMenu
 {

@@ -10,6 +10,9 @@ namespace app\common\grid;
 
 use kartik\grid\SerialColumn as KartikSerialColumn;
 
+/**
+ * 不想td换行才有了这个类
+ */
 class SerialColumn extends KartikSerialColumn
 {
     public $noWrap = true;

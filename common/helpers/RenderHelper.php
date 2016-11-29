@@ -21,7 +21,7 @@ use yii\helpers\Html;
 class RenderHelper
 {
     /**
-     * GridView枚举类字段搜索专用下拉框
+     * GridView枚举类字段搜索专用下拉框，不支持DynaGrid的默认排序
      *
      * @param Model $model
      * @param string $attribute
@@ -38,6 +38,10 @@ class RenderHelper
     }
 
     /**
+     * 根据业务来封装的GridView，部分配置需要到类本身查看
+     * @see GridView
+     * @see ExportMenu 导出
+     *
      * @param $dataProvider \yii\data\ActiveDataProvider|\yii\data\ArrayDataProvider|\yii\data\SqlDataProvider
      * @param $gridColumns array
      * @param $searchModel \yii\base\Model
@@ -87,6 +91,9 @@ class RenderHelper
     }
 
     /**
+     * 根据业务来封装的DynaGrid，部分配置需要到`config/modules.php`查看
+     * @see ExportMenu 导出
+     *
      * @param $id string
      * @param $dataProvider \yii\data\ActiveDataProvider|\yii\data\ArrayDataProvider|\yii\data\SqlDataProvider
      * @param $gridColumns array
