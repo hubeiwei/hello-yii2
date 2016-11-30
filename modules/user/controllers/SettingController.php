@@ -8,10 +8,32 @@ use app\models\UserDetail;
 use app\modules\user\controllers\base\ModuleController;
 use app\modules\user\models\UserDetailForm;
 use Yii;
+use yii\filters\AccessControl;
 
 class SettingController extends ModuleController
 {
     public $defaultAction = 'detail';
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => [
+                            'detail',
+                        ],
+                        'roles' => ['@'],
+                    ],
+                ],
+                'denyCallback' => function ($rule, $action) {
+                    return $this->goHome();
+                },
+            ],
+        ];
+    }
 
     public function actionDetail()
     {

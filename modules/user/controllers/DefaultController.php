@@ -42,7 +42,6 @@ class DefaultController extends ModuleController
                         'allow' => true,
                         'actions' => [
                             'logout',
-                            'detail',
                         ],
                         'roles' => ['@'],
                     ],
