@@ -25,7 +25,7 @@ $this->beginContent('@app/views/layouts/frontend.php');
                         ],
                         'items' => [
                             ['label' => '个人资料',  'url' => ['/user/setting/detail']],
-                        ]
+                        ],
                     ]) ?>
                 </div>
             </div>
