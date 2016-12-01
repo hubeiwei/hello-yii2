@@ -17,8 +17,10 @@ class DateRangePicker extends KartikDateRangePicker
 {
     public $convertFormat = true;
 
+    public $presetDropdown = true;
+
     /**
-     * @var bool pluginOptions为空时根据改属性来设置时间格式
+     * @var bool pluginOptions为空时根据该属性来设置时间格式
      */
     public $dateOnly = false;
 
@@ -29,19 +31,33 @@ class DateRangePicker extends KartikDateRangePicker
     {
         if (empty($this->pluginOptions)) {
             if ($this->dateOnly === false) {
-                $this->pluginOptions['locale']['format'] = 'Y/m/d H:i:s';
-                $this->pluginOptions += [
+                $this->pluginOptions = [
                     'timePicker' => true,
                     'timePicker24Hour' => true,
                     'timePickerIncrement' => 1,
                     'timePickerSeconds' => true,
+                    'locale' => [
+                        'format' => 'Y/m/d H:i:s',
+                    ],
                 ];
             } else {
-                $this->pluginOptions['locale']['format'] = 'Y/m/d';
+                $this->pluginOptions = [
+                    'locale' => [
+                        'format' => 'Y/m/d',
+                    ],
+                ];
             }
         }
-        $this->pluginOptions['showDropdowns'] = true;
-        $this->pluginOptions['locale']['separator'] = ' - ';
+        $this->pluginOptions = ArrayHelper::merge(
+            $this->pluginOptions,
+            [
+                'showDropdowns' => true,
+                'opens' => 'left',
+                'locale' => [
+                    'separator' => ' - ',
+                ],
+            ]
+        );
         parent::run();
     }
 
