@@ -13,6 +13,15 @@ use kartik\growl\Growl as KartikGrowl;
 use Yii;
 use yii\bootstrap\Widget;
 
+/**
+ * 输出消息用，建议放在layout里
+ * ```php
+ * <?= app\common\widgets\Growl::widget() ?>
+ * ```
+ *
+ * 设置消息请看Message类
+ * @see Message
+ */
 class Growl extends Widget
 {
     /**

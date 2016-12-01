@@ -13,6 +13,15 @@ use Yii;
 use yii\bootstrap\Alert as YiiAlert;
 use yii\bootstrap\Widget;
 
+/**
+ * 输出消息用，建议放在layout里
+ * ```php
+ * <?= app\common\widgets\Alert::widget() ?>
+ * ```
+ *
+ * 设置消息请看Message类
+ * @see Message
+ */
 class Alert extends Widget
 {
     public $typeMap = [
