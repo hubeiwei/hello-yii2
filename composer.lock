@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bc0702b22e287863f9e4423cf1ed66f4",
+    "hash": "061b509e7877a0e0873c3c13edf78394",
     "content-hash": "4d054d4b85b2e8390b0df1a324e4f291",
     "packages": [
         {
@@ -581,12 +581,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-detail-view.git",
-                "reference": "af3438e4f929a32029fe03491c980a7b741a2d3b"
+                "reference": "d5856b55e0bb6b3a21fb66fb12b194519f5d6b7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-detail-view/zipball/af3438e4f929a32029fe03491c980a7b741a2d3b",
-                "reference": "af3438e4f929a32029fe03491c980a7b741a2d3b",
+                "url": "https://api.github.com/repos/kartik-v/yii2-detail-view/zipball/d5856b55e0bb6b3a21fb66fb12b194519f5d6b7e",
+                "reference": "d5856b55e0bb6b3a21fb66fb12b194519f5d6b7e",
                 "shasum": ""
             },
             "require": {
@@ -627,7 +627,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-11-05 15:24:31"
+            "time": "2016-12-14 16:38:38"
         },
         {
             "name": "kartik-v/yii2-dialog",
@@ -687,12 +687,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-dynagrid.git",
-                "reference": "39dcf60e1fa8dd7aaf6f9cfc9354f490ad3801cc"
+                "reference": "69432af2ccab6b07e4f75a569246f52965511279"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-dynagrid/zipball/39dcf60e1fa8dd7aaf6f9cfc9354f490ad3801cc",
-                "reference": "39dcf60e1fa8dd7aaf6f9cfc9354f490ad3801cc",
+                "url": "https://api.github.com/repos/kartik-v/yii2-dynagrid/zipball/69432af2ccab6b07e4f75a569246f52965511279",
+                "reference": "69432af2ccab6b07e4f75a569246f52965511279",
                 "shasum": ""
             },
             "require": {
@@ -739,7 +739,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-11-21 06:02:18"
+            "time": "2016-12-09 16:31:08"
         },
         {
             "name": "kartik-v/yii2-export",
@@ -747,12 +747,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-export.git",
-                "reference": "b12ac2a78b08fc78f11606ec4f53002841143888"
+                "reference": "227ad81e16fa4f8b056e7862baa86a390ac62702"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-export/zipball/b12ac2a78b08fc78f11606ec4f53002841143888",
-                "reference": "b12ac2a78b08fc78f11606ec4f53002841143888",
+                "url": "https://api.github.com/repos/kartik-v/yii2-export/zipball/227ad81e16fa4f8b056e7862baa86a390ac62702",
+                "reference": "227ad81e16fa4f8b056e7862baa86a390ac62702",
                 "shasum": ""
             },
             "require": {
@@ -799,7 +799,7 @@
                 "xlsx",
                 "yii2"
             ],
-            "time": "2016-10-12 10:44:24"
+            "time": "2016-12-14 15:32:34"
         },
         {
             "name": "kartik-v/yii2-grid",
@@ -807,17 +807,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "ff39cb3340510b5634f27108727f82c6ce9fb242"
+                "reference": "2388b6c6019ecdd92a63f6665c1c03761b438494"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/ff39cb3340510b5634f27108727f82c6ce9fb242",
-                "reference": "ff39cb3340510b5634f27108727f82c6ce9fb242",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/2388b6c6019ecdd92a63f6665c1c03761b438494",
+                "reference": "2388b6c6019ecdd92a63f6665c1c03761b438494",
                 "shasum": ""
             },
             "require": {
                 "kartik-v/yii2-dialog": "~1.0",
                 "kartik-v/yii2-krajee-base": "~1.7"
+            },
+            "suggest": {
+                "kartik-v/yii2-mpdf": "For exporting grids to PDF"
             },
             "type": "yii2-extension",
             "extra": {
@@ -849,26 +852,31 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-11-05 15:33:03"
+            "time": "2016-12-14 15:53:40"
         },
         {
             "name": "kartik-v/yii2-helpers",
-            "version": "v1.3.5",
+            "version": "v1.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-helpers.git",
-                "reference": "f16003c8c9cfdaa50b4c9574cae9f0310946696c"
+                "reference": "0b9d5f17464df9f68e249ed4411f9f1381927b83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-helpers/zipball/f16003c8c9cfdaa50b4c9574cae9f0310946696c",
-                "reference": "f16003c8c9cfdaa50b4c9574cae9f0310946696c",
+                "url": "https://api.github.com/repos/kartik-v/yii2-helpers/zipball/0b9d5f17464df9f68e249ed4411f9f1381927b83",
+                "reference": "0b9d5f17464df9f68e249ed4411f9f1381927b83",
                 "shasum": ""
             },
             "require": {
                 "yiisoft/yii2-bootstrap": "*"
             },
             "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "kartik\\helpers\\": ""
@@ -895,7 +903,7 @@
                 "yii",
                 "yii2"
             ],
-            "time": "2015-12-12 18:47:11"
+            "time": "2016-11-26 06:03:52"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
