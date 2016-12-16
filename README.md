@@ -118,9 +118,9 @@ layout统一在`config/modules.php`配置。
 
 如果觉得我做的内容对你有帮助的话，求打赏，以后我会有更多动力去学习和分享更多yii2的内容。
 
-![wechat](https://raw.githubusercontent.com/hubeiwei/hello-yii2/master/web/wechat_pay.png "微信")
+![alipay](https://raw.githubusercontent.com/hubeiwei/hubeiwei.github.io/master/images/pay/ali_pay.jpg "支付宝")
 
-![alipay](https://raw.githubusercontent.com/hubeiwei/hello-yii2/master/web/ali_pay.jpg "支付宝")
+![wechat](https://raw.githubusercontent.com/hubeiwei/hubeiwei.github.io/master/images/pay/wechat_pay.png "微信")
 
 感谢以下这些朋友的支持。
 
@@ -131,4 +131,3 @@ layout统一在`config/modules.php`配置。
 东方不拔 | 790292520 | 30.00
 欲买桂花同载酒。 | 1054828207 | 18.88
 [a boy with a mission](https://github.com/xiaocai314) | 727492986 | 8.88
-
