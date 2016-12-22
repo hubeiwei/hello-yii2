@@ -79,7 +79,6 @@ class Music extends MusicBase
         unlink($this->getMusicFullPath($this->music_file));
     }
 
-
     /**
      * 获取音乐目录的完整磁盘路径
      * 这样做的目的是让项目搭载在任何目录和系统下都能上传文件
