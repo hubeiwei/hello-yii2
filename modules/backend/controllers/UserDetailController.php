@@ -6,7 +6,7 @@ use app\common\helpers\Message;
 use app\models\search\UserDetailSearch;
 use app\models\UserDetail;
 use app\modules\backend\controllers\base\ModuleController;
-use app\modules\user\models\UserDetailForm;
+use app\modules\user\models\UserDetailValidator;
 use Yii;
 use yii\web\NotFoundHttpException;
 
@@ -50,29 +50,29 @@ class UserDetailController extends ModuleController
      */
     public function actionUpdate($id)
     {
+        $request = Yii::$app->request;
         $model = $this->findModel($id);
-        $form = new UserDetailForm();
+        $validator = new UserDetailValidator();
 
-        if ($form->load(Yii::$app->request->post())) {
-            if ($form->validate()) {
-                $model->setAttributes($form->getAttributes());
-                $model->birthday = $form->birthday ? strtotime($form->birthday) : null;
+        if ($request->isPost) {
+            $validator->load($request->post());
+            $model->load($request->post());
+            if ($validator->validate()) {
+                $model->birthday = $validator->birthday ? strtotime($validator->birthday) : null;
                 if ($model->save()) {
                     Message::setSuccessMsg('修改成功');
                     return $this->redirect(['view', 'id' => $model->id]);
                 } else {
-                    $form->addErrors($model->getErrors());
+                    Message::setErrorMsg('修改失败');
                 }
             }
         } else {
-            $form->setAttributes($model->getAttributes());
-            $form->birthday = date('Y-m-d', $model->birthday);;
+            $validator->birthday = $model->birthday ? date('Y-m-d', $model->birthday) : null;
         }
 
         return $this->render('update', [
-            'id' => $model->id,
-            'username' => $model->user->username,
-            'model' => $form,
+            'model' => $model,
+            'validator' => $validator,
         ]);
     }
 

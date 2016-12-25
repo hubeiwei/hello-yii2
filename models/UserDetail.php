@@ -44,7 +44,21 @@ class UserDetail extends UserDetailBase
     {
         return array_merge(parent::rules(), [
             ['gender', 'in', 'range' => self::$gender_list],
+            ['phone', 'match', 'pattern' => '/^1[34578]\d{9}$/'],
         ]);
+    }
+
+    public function beforeValidate()
+    {
+        if (parent::beforeValidate()) {
+            // 挖了个大坑，值为空字符串时无法通过唯一约束
+            if (empty($this->phone)) {
+                $this->phone = null;
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -57,7 +71,8 @@ class UserDetail extends UserDetailBase
         ]);
     }
 
-    public function getUser() {
+    public function getUser()
+    {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }

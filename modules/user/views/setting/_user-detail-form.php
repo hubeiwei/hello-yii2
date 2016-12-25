@@ -15,7 +15,8 @@ use yii\widgets\ActiveForm;
 
 /**
  * @var $this yii\web\View
- * @var $model app\modules\user\models\UserDetailForm
+ * @var $model app\models\UserDetail
+ * @var $validator app\modules\user\models\UserDetailValidator
  */
 ?>
 
@@ -25,7 +26,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'gender')->dropDownList(UserDetail::$gender_map) ?>
 
-    <?= $form->field($model, 'birthday')->widget(DatePicker::className(), [
+    <?= $form->field($validator, 'birthday')->widget(DatePicker::className(), [
         'pluginOptions' => [
             'autoclose' => true,
             'format' => 'yyyy-mm-dd',
@@ -36,7 +37,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'resume')->textarea(['maxlength' => 100, 'rows' => 3]) ?>
 
-    <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
+    <?= $form->field($validator, 'verifyCode')->widget(Captcha::className()) ?>
 
     <div class="form-group">
         <?= Html::submitButton('保存', ['class' => 'btn btn-primary btn-block']) ?>

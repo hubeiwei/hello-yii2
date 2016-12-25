@@ -6,7 +6,7 @@ use app\common\helpers\Message;
 use app\common\helpers\UserHelper;
 use app\models\UserDetail;
 use app\modules\user\controllers\base\ModuleController;
-use app\modules\user\models\UserDetailForm;
+use app\modules\user\models\UserDetailValidator;
 use Yii;
 use yii\filters\AccessControl;
 
@@ -37,28 +37,29 @@ class SettingController extends ModuleController
 
     public function actionDetail()
     {
+        $request = Yii::$app->request;
         $model = UserDetail::findOne(['user_id' => UserHelper::getUserId()]);
-        $form = new UserDetailForm();
+        $validator = new UserDetailValidator();
 
-        if ($form->load(Yii::$app->request->post())) {
-            if ($form->validate()) {
-                $model->setAttributes($form->getAttributes());
-                $model->birthday = $form->birthday ? strtotime($form->birthday) : null;
+        if ($request->isPost) {
+            $validator->load($request->post());
+            $model->load($request->post());
+            if ($validator->validate()) {
+                $model->birthday = $validator->birthday ? strtotime($validator->birthday) : null;
                 if ($model->save()) {
                     Message::setSuccessMsg('修改成功');
-                    return $this->redirect(['detail', 'id' => $model->id]);
+                    return $this->redirect(['detail']);
                 } else {
                     Message::setErrorMsg('修改失败');
-                    $form->addErrors($model->getErrors());
                 }
             }
         } else {
-            $form->setAttributes($model->getAttributes());
-            $form->birthday = date('Y-m-d', $model->birthday);
+            $validator->birthday = $model->birthday ? date('Y-m-d', $model->birthday) : null;
         }
 
         return $this->render('detail', [
-            'model' => $form,
+            'model' => $model,
+            'validator' => $validator,
         ]);
     }
 }
