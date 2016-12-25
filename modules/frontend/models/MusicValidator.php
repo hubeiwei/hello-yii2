@@ -10,20 +10,16 @@
 namespace app\modules\frontend\models;
 
 use app\common\captcha\CaptchaValidator;
-use app\common\helpers\UserHelper;
 use app\models\Music;
 use yii\base\Model;
-use yii\helpers\ArrayHelper;
 
-class MusicForm extends Model
+class MusicValidator extends Model
 {
-    public $track_title;
-    /**
-     * @var \yii\web\UploadedFile
-     */
+    const SCENARIO_CREATE = 'create';
+    const SCENARIO_UPDATE = 'update';
+
+    /** @var \yii\web\UploadedFile */
     public $music_file;
-    public $visible;
-    public $status = Music::STATUS_ENABLE;
     public $verifyCode;
 
     /**
@@ -32,10 +28,7 @@ class MusicForm extends Model
     public function attributeLabels()
     {
         return [
-            'track_title' => '标题',
             'music_file' => '文件',
-            'visible' => '可见性',
-            'status' => '状态',
             'verifyCode' => '验证码',
         ];
     }
@@ -45,14 +38,11 @@ class MusicForm extends Model
      */
     public function scenarios()
     {
-        $baseScenarios = ['track_title', 'music_file', 'visible', 'verifyCode'];
+        $baseAttribute = ['music_file', 'verifyCode'];
         $scenarios = [
-            'create' => ArrayHelper::merge($baseScenarios, ['status']),
-            'update' => $baseScenarios,
+            self::SCENARIO_CREATE => $baseAttribute,
+            self::SCENARIO_UPDATE => $baseAttribute,
         ];
-        if (UserHelper::isAdmin()) {
-            $scenarios['update'] = ArrayHelper::merge($scenarios['update'], ['status']);
-        }
         return $scenarios;
     }
 
@@ -62,12 +52,9 @@ class MusicForm extends Model
     public function rules()
     {
         return [
-            ['music_file', 'required', 'on' => 'create'],
+            ['music_file', 'required', 'on' => self::SCENARIO_CREATE],
             ['music_file', 'file', 'extensions' => ['mp3'], 'checkExtensionByMimeType' => false, 'maxSize' => Music::MUSIC_SIZE],
-            [['track_title', 'verifyCode'], 'required'],
-            ['track_title', 'string', 'max' => 50],
-            ['visible', 'in', 'range' => Music::$visible_list],
-            ['status', 'in', 'range' => Music::$status_list],
+            ['verifyCode', 'required'],
             ['verifyCode', 'string', 'length' => 4],
             ['verifyCode', CaptchaValidator::className()],
         ];

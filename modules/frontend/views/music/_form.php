@@ -9,7 +9,8 @@ use yii\widgets\ActiveForm;
 
 /**
  * @var $this yii\web\View
- * @var $model app\modules\frontend\models\MusicForm
+ * @var $model app\models\Music
+ * @var $validator app\modules\frontend\models\MusicValidator
  */
 ?>
 
@@ -30,16 +31,16 @@ use yii\widgets\ActiveForm;
         'maxlength' => true,
     ]) ?>
 
-    <?= $form->field($model, 'music_file')->widget(FileInput::className(), [
+    <?= $form->field($validator, 'music_file')->widget(FileInput::className(), [
+        'options' => [
+            'accept' => 'audio/mpeg',
+        ],
         'pluginOptions' => [
             'showUpload' => false,//不显示上传按钮，这个按钮是submit
             'browseLabel' => '',
             'removeLabel' => '',
         ],
-        'options' => [
-            'accept' => 'audio/mpeg',
-        ],
-    ])->label($model->scenario == 'update' ? '新文件（可不传）' : '文件') ?>
+    ])->label($model->isNewRecord ? '文件' : '新文件（可不传）') ?>
 
     <?= $form->field($model, 'visible')->dropDownList(Music::$visible_map) ?>
 
@@ -49,10 +50,16 @@ use yii\widgets\ActiveForm;
     }
     ?>
 
-    <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
+    <?= $form->field($validator, 'verifyCode')->widget(Captcha::className()) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('提交', ['class' => 'btn btn-primary btn-block']) ?>
+        <?= Html::submitButton($model->isNewRecord ? '添加' : '修改', [
+            'class' => [
+                'btn',
+                $model->isNewRecord ? 'btn-success' : 'btn-primary',
+                'btn-block',
+            ],
+        ]) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

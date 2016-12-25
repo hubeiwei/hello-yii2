@@ -74,21 +74,24 @@ class Music extends MusicBase
         return $file->saveAs($this->getMusicFullPath($this->music_file));
     }
 
-    public function deleteMusic()
+    public function deleteMusic($fileName = null)
     {
-        unlink($this->getMusicFullPath($this->music_file));
+        if($fileName === null){
+            $fileName = $this->music_file;
+        }
+        @unlink($this->getMusicFullPath($fileName));
     }
 
     /**
      * 获取音乐目录的完整磁盘路径
      * 这样做的目的是让项目搭载在任何目录和系统下都能上传文件
      *
-     * @param $filename
+     * @param $fileName
      * @return string
      */
-    public static function getMusicFullPath($filename)
+    public static function getMusicFullPath($fileName)
     {
-        return Yii::getAlias('@webroot/' . self::MUSIC_PATH . $filename);
+        return Yii::getAlias('@webroot/' . self::MUSIC_PATH . $fileName);
     }
 
     /**

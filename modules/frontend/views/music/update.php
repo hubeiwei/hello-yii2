@@ -4,7 +4,8 @@ use yii\helpers\Html;
 
 /**
  * @var $this yii\web\View
- * @var $model app\modules\frontend\models\MusicForm
+ * @var $model app\models\Music
+ * @var $validator app\modules\frontend\models\MusicValidator
  */
 
 $this->title = '修改音乐: ' . $model->track_title;
@@ -20,6 +21,7 @@ $this->params['breadcrumbs'][] = '修改';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'validator' => $validator,
     ]) ?>
 
 </div>

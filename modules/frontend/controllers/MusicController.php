@@ -7,7 +7,7 @@ use app\common\helpers\UserHelper;
 use app\models\Music;
 use app\models\search\MusicSearch;
 use app\modules\frontend\controllers\base\ModuleController;
-use app\modules\frontend\models\MusicForm;
+use app\modules\frontend\models\MusicValidator;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -88,29 +88,41 @@ class MusicController extends ModuleController
      */
     public function actionCreate()
     {
-        $form = new MusicForm();
-        $form->scenario = 'create';
-        if ($form->load(Yii::$app->request->post())) {
-            $form->music_file = UploadedFile::getInstance($form, 'music_file');
-            if ($form->validate()) {
-                $model = new Music();
-                $model->setAttributes($form->getAttributes());
-                if ($model->uploadMusic($form->music_file)) {
-                    if ($model->save(false)) {
-                        Message::setSuccessMsg('上传成功');
-                        return $this->redirect(['index']);
-                    } else {
-                        $model->deleteMusic();
-                        Message::setErrorMsg('上传失败');
-                    }
-                } else {
-                    $form->addError('music_file', '文件上传失败');
-                }
+        $request = Yii::$app->request;
+        $model = new Music();
+        $validator = new MusicValidator();
+        $validator->scenario = MusicValidator::SCENARIO_CREATE;
+
+        if ($request->isPost) {
+            $data = $request->post();
+            if (!UserHelper::isAdmin()) {
+                // 因为设计的问题，不想改写rules，所以这样防止status被管理员之外的人修改
+                unset($data[$model->formName()]['status']);
+            }
+
+            $flow = true;
+            $model->load($data);
+            $validator->load($data);
+            $validator->music_file = UploadedFile::getInstance($validator, 'music_file');
+            if (!$validator->validate()) {
+                $flow = false;
+            }
+            if ($flow && !$model->uploadMusic($validator->music_file)) {
+                $flow = false;
+                $validator->addError('music_file', '文件上传失败');
+            }
+            if ($flow && $model->save()) {
+                Message::setSuccessMsg('上传成功');
+                return $this->redirect(['index']);
+            } else {
+                $model->deleteMusic();
+                Message::setErrorMsg('上传失败');
             }
         }
 
         return $this->render('create', [
-            'model' => $form,
+            'model' => $model,
+            'validator' => $validator,
         ]);
     }
 
@@ -122,6 +134,7 @@ class MusicController extends ModuleController
      */
     public function actionUpdate($id)
     {
+        $request = Yii::$app->request;
         $model = $this->findModel($id);
 
         if (!UserHelper::isBelongToUser($model->user_id)) {
@@ -129,46 +142,49 @@ class MusicController extends ModuleController
             return $this->redirect(['index']);
         }
 
-        $form = new MusicForm();
-        $form->scenario = 'update';
-        if ($form->load(Yii::$app->request->post())) {
-            $form->music_file = UploadedFile::getInstance($form, 'music_file');
-            if ($form->validate()) {
-                $original_file_name = $model->music_file;//记录原文件名
-                $model->setAttributes($form->getAttributes(null, ['music_file']));
-                $flow = true;
+        $validator = new MusicValidator();
+        $validator->scenario = MusicValidator::SCENARIO_UPDATE;
 
-                //如果上传了文件，上传新文件
-                if ($form->music_file) {
-                    if (!$model->uploadMusic($form->music_file)) {
-                        $form->addError('music_file', '文件上传失败');
-                        $flow = false;
-                    }
+        if ($request->isPost) {
+            $data = $request->post();
+            if (!UserHelper::isAdmin()) {
+                // 因为设计的问题，不想改写rules，所以这样防止status被管理员之外的人修改
+                unset($data[$model->formName()]['status']);
+            }
+
+            $flow = true;
+            $originalFileName = $model->music_file;
+            $model->load($data);
+            $validator->load($data);
+            $validator->music_file = UploadedFile::getInstance($validator, 'music_file');
+            if ($validator->validate()) {
+                //如果上传了新文件，则上传它
+                if ($validator->music_file && !$model->uploadMusic($validator->music_file)) {
+                    $validator->addError('music_file', '文件上传失败');
+                    $flow = false;
                 }
-
                 if ($flow) {
-                    if ($model->save(false)) {
+                    if ($model->save()) {
                         //如果上传了新文件，删除原文件
-                        if ($form->music_file) {
-                            unlink(Music::getMusicFullPath($original_file_name));
+                        if ($validator->music_file) {
+                            $model->deleteMusic($originalFileName);
                         }
                         Message::setSuccessMsg('修改成功');
-                        return $this->redirect(['index']);
+                        return $this->redirect(['my-music']);
                     } else {
                         //如果上传了新文件，删除新文件
-                        if ($form->music_file) {
+                        if ($validator->music_file) {
                             $model->deleteMusic();
                         }
                         Message::setErrorMsg('修改失败');
                     }
                 }
             }
-        } else {
-            $form->setAttributes($model->getAttributes(null, ['music_file']));
         }
 
         return $this->render('update', [
-            'model' => $form,
+            'model' => $model,
+            'validator' => $validator,
         ]);
     }
 

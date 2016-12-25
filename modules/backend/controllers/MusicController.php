@@ -6,7 +6,7 @@ use app\common\helpers\Message;
 use app\models\Music;
 use app\models\search\MusicSearch;
 use app\modules\backend\controllers\base\ModuleController;
-use app\modules\frontend\models\MusicForm;
+use app\modules\frontend\models\MusicValidator;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
@@ -55,48 +55,45 @@ class MusicController extends ModuleController
      */
     public function actionUpdate($id)
     {
+        $request = Yii::$app->request;
         $model = $this->findModel($id);
+        $validator = new MusicValidator();
+        $validator->scenario = MusicValidator::SCENARIO_UPDATE;
 
-        $form = new MusicForm();
-        $form->scenario = 'update';
-        if ($form->load(Yii::$app->request->post())) {
-            $form->music_file = UploadedFile::getInstance($form, 'music_file');
-            if ($form->validate()) {
-                $original_file_name = $model->music_file;//记录原文件名
-                $model->setAttributes($form->getAttributes());
-                $flow = true;
-
-                //如果上传了文件，上传新文件
-                if ($form->music_file) {
-                    if (!$model->uploadMusic($form->music_file)) {
-                        $form->addError('music_file', '文件上传失败');
-                        $flow = false;
-                    }
+        if ($request->isPost) {
+            $flow = true;
+            $originalFileName = $model->music_file;
+            $model->load($request->post());
+            $validator->load($request->post());
+            $validator->music_file = UploadedFile::getInstance($validator, 'music_file');
+            if ($validator->validate()) {
+                //如果上传了新文件，则上传它
+                if ($validator->music_file && !$model->uploadMusic($validator->music_file)) {
+                    $validator->addError('music_file', '文件上传失败');
+                    $flow = false;
                 }
-
                 if ($flow) {
-                    if ($model->save(false)) {
+                    if ($model->save()) {
                         //如果上传了新文件，删除原文件
-                        if ($form->music_file) {
-                            unlink(Music::getMusicFullPath($original_file_name));
+                        if ($validator->music_file) {
+                            $model->deleteMusic($originalFileName);
                         }
                         Message::setSuccessMsg('修改成功');
                         return $this->redirect(['index']);
                     } else {
                         //如果上传了新文件，删除新文件
-                        if ($form->music_file) {
+                        if ($validator->music_file) {
                             $model->deleteMusic();
                         }
                         Message::setErrorMsg('修改失败');
                     }
                 }
             }
-        } else {
-            $form->setAttributes($model->getAttributes());
         }
 
         return $this->render('@app/modules/frontend/views/music/update', [
-            'model' => $form,
+            'model' => $model,
+            'validator' => $validator,
         ]);
     }
 
