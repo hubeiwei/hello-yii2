@@ -4,7 +4,8 @@ use yii\helpers\Html;
 
 /**
  * @var $this yii\web\View
- * @var $model app\modules\frontend\models\ArticleForm
+ * @var $model app\models\Article
+ * @var $validator app\modules\frontend\models\ArticleValidator
  */
 
 $this->title = '发布文章';
@@ -19,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'validator' => $validator,
     ]) ?>
 
 </div>

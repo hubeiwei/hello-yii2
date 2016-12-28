@@ -11,8 +11,8 @@ use yii\widgets\ActiveForm;
 
 /**
  * @var $this yii\web\View
- * @var $model app\modules\frontend\models\ArticleForm
- * @var $form yii\widgets\ActiveForm
+ * @var $model app\models\Article
+ * @var $validator app\modules\frontend\models\ArticleValidator
  */
 ?>
 
@@ -33,7 +33,7 @@ use yii\widgets\ActiveForm;
     }
     ?>
 
-    <?= $form->field($model, 'published_at')->widget(DateTimePicker::className(), [
+    <?= $form->field($validator, 'published_at')->widget(DateTimePicker::className(), [
         'pluginOptions' => [
             'autoclose' => true,
         ],
@@ -49,7 +49,7 @@ use yii\widgets\ActiveForm;
     }
     ?>
 
-    <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
+    <?= $form->field($validator, 'verifyCode')->widget(Captcha::className()) ?>
 
     <div class="form-group">
         <?= Html::submitButton('提交', ['class' => 'btn btn-primary btn-block']) ?>

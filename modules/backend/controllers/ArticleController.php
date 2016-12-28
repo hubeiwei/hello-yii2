@@ -6,7 +6,7 @@ use app\common\helpers\Message;
 use app\models\Article;
 use app\models\search\ArticleSearch;
 use app\modules\backend\controllers\base\ModuleController;
-use app\modules\frontend\models\ArticleForm;
+use app\modules\frontend\models\ArticleValidator;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
@@ -66,14 +66,16 @@ class ArticleController extends ModuleController
      */
     public function actionUpdate($id)
     {
+        $request = Yii::$app->request;
         $model = $this->findModel($id);
+        $validator = new ArticleValidator();
 
-        $form = new ArticleForm();
-
-        if ($form->load(Yii::$app->request->post())) {
-            if ($form->validate()) {
-                $model->setAttributes($form->getAttributes());
-                $model->published_at = strtotime($form->published_at);
+        if ($request->isPost) {
+            $data = $request->post();
+            $model->load($data);
+            $validator->load($data);
+            if ($validator->validate()) {
+                $model->published_at = strtotime($validator->published_at);
                 if ($model->save()) {
                     Message::setSuccessMsg('修改成功');
                     return $this->redirect(['view', 'id' => $model->id]);
@@ -82,13 +84,12 @@ class ArticleController extends ModuleController
                 }
             }
         } else {
-            $form->setAttributes($model->getAttributes());
-            $form->published_at = date('Y-m-d H:i', $model->published_at);
+            $validator->published_at = $model->published_at ? date('Y-m-d H:i', $model->published_at) : null;
         }
 
         return $this->render('@app/modules/frontend/views/article/update', [
-            'model' => $form,
-            'id' => $model->id,
+            'model' => $model,
+            'validator' => $validator,
         ]);
     }
 

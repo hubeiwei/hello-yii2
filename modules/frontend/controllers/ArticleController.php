@@ -9,7 +9,7 @@ use app\models\Article;
 use app\models\search\ArticleSearch;
 use app\models\User;
 use app\modules\frontend\controllers\base\ModuleController;
-use app\modules\frontend\models\ArticleForm;
+use app\modules\frontend\models\ArticleValidator;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -152,15 +152,23 @@ class ArticleController extends ModuleController
      */
     public function actionCreate()
     {
-        $form = new ArticleForm();
-        $form->type = Yii::$app->request->get('type', Article::TYPE_MARKDOWN);
+        $request = Yii::$app->request;
+        $model = new Article();
+        $validator = new ArticleValidator();
+        $model->type = $request->get('type', Article::TYPE_MARKDOWN);
 
-        if ($form->load(Yii::$app->request->post())) {
-            if ($form->validate()) {
-                $model = new Article();
-                $model->setAttributes($form->getAttributes());
-                $model->published_at = strtotime($form->published_at);
-                if ($model->save(false)) {
+        if ($request->isPost) {
+            $data = $request->post();
+            if (!UserHelper::isAdmin()) {
+                // 因为设计的问题，不想改写rules，所以这样防止status被管理员之外的人修改
+                unset($data[$model->formName()]['status']);
+            }
+
+            $model->load($data);
+            $validator->load($data);
+            if ($validator->validate()) {
+                $model->published_at = strtotime($validator->published_at);
+                if ($model->save()) {
                     Message::setSuccessMsg('发布成功');
                     return $this->redirect(['view', 'id' => $model->id]);
                 } else {
@@ -168,11 +176,12 @@ class ArticleController extends ModuleController
                 }
             }
         } else {
-            $form->published_at = date('Y-m-d H:i');
+            $validator->published_at = date('Y-m-d H:i');
         }
 
         return $this->render('create', [
-            'model' => $form,
+            'model' => $model,
+            'validator' => $validator,
         ]);
     }
 
@@ -184,6 +193,7 @@ class ArticleController extends ModuleController
      */
     public function actionUpdate($id)
     {
+        $request = Yii::$app->request;
         $model = $this->findModel($id);
 
         if (!UserHelper::isBelongToUser($model->created_by)) {
@@ -191,12 +201,18 @@ class ArticleController extends ModuleController
             return $this->redirect(['index']);
         }
 
-        $form = new ArticleForm();
+        $validator = new ArticleValidator();
 
-        if ($form->load(Yii::$app->request->post())) {
-            if ($form->validate()) {
-                $model->setAttributes($form->getAttributes());
-                $model->published_at = strtotime($form->published_at);
+        if ($request->isPost) {
+            $data = $request->post();
+            if (!UserHelper::isAdmin()) {
+                // 因为设计的问题，不想改写rules，所以这样防止status被管理员之外的人修改
+                unset($data[$model->formName()]['status']);
+            }
+            $model->load($data);
+            $validator->load($data);
+            if ($validator->validate()) {
+                $model->published_at = strtotime($validator->published_at);
                 if ($model->save()) {
                     Message::setSuccessMsg('修改成功');
                     return $this->redirect(['view', 'id' => $model->id]);
@@ -205,13 +221,12 @@ class ArticleController extends ModuleController
                 }
             }
         } else {
-            $form->setAttributes($model->getAttributes());
-            $form->published_at = date('Y-m-d H:i', $model->published_at);
+            $validator->published_at = $model->published_at ? date('Y-m-d H:i', $model->published_at) : null;
         }
 
         return $this->render('update', [
-            'model' => $form,
-            'id' => $model->id,
+            'model' => $model,
+            'validator' => $validator,
         ]);
     }
 
