@@ -24,7 +24,7 @@ $this->beginContent('@app/views/layouts/frontend.php');
                             'class' => 'nav nav-pills nav-stacked'
                         ],
                         'items' => [
-                            ['label' => '个人资料',  'url' => ['/user/setting/detail']],
+                            ['label' => '个人资料',  'url' => ['/user/home/detail']],
                         ],
                     ]) ?>
                 </div>

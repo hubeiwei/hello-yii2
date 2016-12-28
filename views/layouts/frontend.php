@@ -72,8 +72,8 @@ echo Nav::widget([
                 ],
                 '<li class="divider"></li>',
                 [
-                    'label' => '帐号设置',
-                    'url' => ['/user/setting'],
+                    'label' => '个人中心',
+                    'url' => ['/user/home'],
                 ],
                 [
                     'label' => '登出',

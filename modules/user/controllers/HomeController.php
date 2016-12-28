@@ -10,7 +10,7 @@ use app\modules\user\models\UserDetailValidator;
 use Yii;
 use yii\filters\AccessControl;
 
-class SettingController extends ModuleController
+class HomeController extends ModuleController
 {
     public $defaultAction = 'detail';
 
