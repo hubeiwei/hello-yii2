@@ -3,7 +3,7 @@
 use app\models\Setting;
 use yii\db\Migration;
 
-class m161012_021822_drop_setting_created_by_column extends Migration
+class m161012_021822_drop_created_by_columns_from_setting_table extends Migration
 {
     public function safeUp()
     {
