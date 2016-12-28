@@ -72,6 +72,8 @@ class MusicController extends ModuleController
 
     public function actionMyMusic()
     {
+        $this->layout = '@app/views/layouts/user';
+
         $searchModel = new MusicSearch();
         $dataProvider = $searchModel->searchMyMusic(Yii::$app->request->queryParams);
 

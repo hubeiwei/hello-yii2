@@ -25,6 +25,8 @@ $this->beginContent('@app/views/layouts/frontend.php');
                         ],
                         'items' => [
                             ['label' => '个人资料',  'url' => ['/user/home/detail']],
+                            ['label' => '我的文章', 'url' => ['/frontend/article/my-article']],
+                            ['label' => '我的音乐', 'url' => ['/frontend/music/my-music']],
                         ],
                     ]) ?>
                 </div>

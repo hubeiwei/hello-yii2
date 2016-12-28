@@ -63,18 +63,10 @@ echo Nav::widget([
             'visible' => !Yii::$app->user->isGuest,
             'items' => [
                 [
-                    'label' => '我的文章',
-                    'url' => ['/frontend/article/my-article'],
-                ],
-                [
-                    'label' => '我的音乐',
-                    'url' => ['/frontend/music/my-music'],
-                ],
-                '<li class="divider"></li>',
-                [
                     'label' => '个人中心',
                     'url' => ['/user/home'],
                 ],
+                '<li class="divider"></li>',
                 [
                     'label' => '登出',
                     'url' => ['/logout'],

@@ -86,10 +86,6 @@ $gridColumns = [
 ?>
 <div class="article-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <hr>
-
     <?= ButtonDropdown::widget([
         'label' => '发布文章',
         'containerOptions' => [

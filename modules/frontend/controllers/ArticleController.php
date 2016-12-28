@@ -117,6 +117,8 @@ class ArticleController extends ModuleController
 
     public function actionMyArticle()
     {
+        $this->layout = '@app/views/layouts/user';
+
         $searchModel = new ArticleSearch();
         $dataProvider = $searchModel->searchMyArticle(Yii::$app->request->queryParams);
 
