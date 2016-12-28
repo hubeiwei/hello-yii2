@@ -113,12 +113,14 @@ class MusicController extends ModuleController
                 $flow = false;
                 $validator->addError('music_file', '文件上传失败');
             }
-            if ($flow && $model->save()) {
-                Message::setSuccessMsg('上传成功');
-                return $this->redirect(['index']);
-            } else {
-                $model->deleteMusic();
-                Message::setErrorMsg('上传失败');
+            if ($flow) {
+                if ($model->save()) {
+                    Message::setSuccessMsg('上传成功');
+                    return $this->redirect(['index']);
+                } else {
+                    $model->deleteMusic();
+                    Message::setErrorMsg('上传失败');
+                }
             }
         }
 
