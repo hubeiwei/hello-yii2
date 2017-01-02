@@ -38,11 +38,12 @@ class MusicValidator extends Model
      */
     public function scenarios()
     {
-        $baseAttribute = ['music_file', 'verifyCode'];
-        $scenarios = [
-            self::SCENARIO_CREATE => $baseAttribute,
-            self::SCENARIO_UPDATE => $baseAttribute,
-        ];
+        $baseAttributes = ['music_file', 'verifyCode'];
+        $scenarios = array_merge(parent::scenarios(), [
+            self::SCENARIO_CREATE => $baseAttributes,
+            self::SCENARIO_UPDATE => $baseAttributes,
+        ]);
+
         return $scenarios;
     }
 
