@@ -60,8 +60,7 @@ class ArticleController extends ModuleController
     }
 
     /**
-     * Lists all Article models.
-     * @return mixed
+     * 这里其实配合searchModel更好，但目前懒得改，就当是`yii\db\Query`类查询的例子吧
      */
     public function actionIndex()
     {
