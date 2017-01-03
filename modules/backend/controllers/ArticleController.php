@@ -8,6 +8,7 @@ use app\models\search\ArticleSearch;
 use app\modules\backend\controllers\base\ModuleController;
 use app\modules\frontend\models\ArticleValidator;
 use Yii;
+use yii\base\ErrorException;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 
@@ -94,22 +95,30 @@ class ArticleController extends ModuleController
     }
 
     /**
-     * Deletes an existing Article model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
-     * @return mixed
+     * 为了适应grid是否开启pjax而这样写的，
+     * 有个坑，要用ajax来判断，
+     * 代码写两遍算是方便以后分别调整吧
+     *
+     * @param $id
+     * @return \yii\web\Response
+     * @throws ErrorException
      */
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
 
-        if ($model->delete()) {
-            Message::setSuccessMsg('删除成功');
+        if (!Yii::$app->request->isAjax) {
+            if ($model->delete()) {
+                Message::setSuccessMsg('删除成功');
+            } else {
+                Message::setErrorMsg('删除失败');
+            }
+            return $this->redirect(['index']);
         } else {
-            Message::setErrorMsg('删除失败');
+            if (!$model->delete()) {
+                throw new ErrorException('删除失败');
+            }
         }
-
-        return $this->redirect(['index']);
     }
 
     /**

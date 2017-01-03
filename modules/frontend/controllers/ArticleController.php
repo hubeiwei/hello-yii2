@@ -11,6 +11,7 @@ use app\models\User;
 use app\modules\frontend\controllers\base\ModuleController;
 use app\modules\frontend\models\ArticleValidator;
 use Yii;
+use yii\base\ErrorException;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -232,26 +233,38 @@ class ArticleController extends ModuleController
     }
 
     /**
-     * Deletes an existing Article model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
-     * @return mixed
+     * 为了适应grid是否开启pjax而这样写的，
+     * 有个坑，要用ajax来判断，
+     * 代码写两遍算是方便以后分别调整吧
+     *
+     * @param $id
+     * @return \yii\web\Response
+     * @throws ErrorException
      */
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
 
-        if (UserHelper::isBelongToUser($model->created_by)) {
-            if ($model->delete()) {
-                Message::setSuccessMsg('删除成功');
+        if (!Yii::$app->request->isAjax) {
+            if (UserHelper::isBelongToUser($model->created_by)) {
+                if ($model->delete()) {
+                    Message::setSuccessMsg('删除成功');
+                } else {
+                    Message::setErrorMsg('删除失败');
+                }
             } else {
-                Message::setErrorMsg('删除失败');
+                Message::setErrorMsg('不能删除其他人的数据');
             }
+            return $this->redirect(['my-article']);
         } else {
-            Message::setErrorMsg('不能删除其他人的数据');
+            if (UserHelper::isBelongToUser($model->created_by)) {
+                if (!$model->delete()) {
+                    throw new ErrorException('删除失败');
+                }
+            } else {
+                throw new ErrorException('不能删除其他人的数据');
+            }
         }
-
-        return $this->redirect(['my-article']);
     }
 
     /**

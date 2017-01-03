@@ -9,6 +9,7 @@ use app\models\User;
 use app\models\UserDetail;
 use app\modules\backend\controllers\base\ModuleController;
 use Yii;
+use yii\base\ErrorException;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 
@@ -115,26 +116,37 @@ class UserController extends ModuleController
     }
 
     /**
-     * Deletes an existing User model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
-     * @return mixed
+     * 为了适应grid是否开启pjax而这样写的，
+     * 有个坑，要用ajax来判断，
+     *
+     * @param $id
+     * @return \yii\web\Response
+     * @throws ErrorException
      */
     public function actionDelete($id)
     {
+        $request = Yii::$app->request;
         $model = $this->findModel($id);
         $userDetail = UserDetail::findOne(['user_id' => $id]);
 
         $transaction = EasyHelper::beginTransaction();
         if ($model->delete() && $userDetail->delete()) {
             $transaction->commit();
-            Message::setSuccessMsg('删除成功');
+            if (!$request->isAjax) {
+                Message::setSuccessMsg('删除成功');
+            }
         } else {
             $transaction->rollBack();
-            Message::setErrorMsg('删除失败');
+            if (!$request->isAjax) {
+                Message::setErrorMsg('删除失败');
+            } else {
+                throw new ErrorException('删除失败');
+            }
         }
 
-        return $this->redirect(['index']);
+        if (!$request->isAjax) {
+            return $this->redirect(['index']);
+        }
     }
 
     /**
