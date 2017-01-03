@@ -66,8 +66,8 @@ class UserSearch extends User
 
         $query->compare('user_id', $this->id);
 
-        $query->timeRangeFilter('created_at', $this->created_at, false)
-            ->timeRangeFilter('updated_at', $this->updated_at, false);
+        $query->timeRangeFilter('created_at', $this->created_at)
+            ->timeRangeFilter('updated_at', $this->updated_at);
 
         return $dataProvider;
     }

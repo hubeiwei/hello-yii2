@@ -104,8 +104,8 @@ class MusicSearch extends Music
         $query->compare('music.id', $this->id)
             ->compare('user_id', $this->user_id);
 
-        $query->timeRangeFilter('music.created_at', $this->created_at, false)
-            ->timeRangeFilter('music.updated_at', $this->updated_at, false);
+        $query->timeRangeFilter('music.created_at', $this->created_at)
+            ->timeRangeFilter('music.updated_at', $this->updated_at);
 
         return $dataProvider;
     }
@@ -143,8 +143,8 @@ class MusicSearch extends Music
 
         $query->compare('id', $this->id);
 
-        $query->timeRangeFilter('created_at', $this->created_at, false)
-            ->timeRangeFilter('updated_at', $this->updated_at, false);
+        $query->timeRangeFilter('created_at', $this->created_at)
+            ->timeRangeFilter('updated_at', $this->updated_at);
 
         return $dataProvider;
     }

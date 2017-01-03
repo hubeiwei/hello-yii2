@@ -96,8 +96,8 @@ class SettingSearch extends Setting
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'tag', $this->tag]);
 
-        $query->timeRangeFilter('setting.created_at', $this->created_at, false)
-            ->timeRangeFilter('setting.updated_at', $this->updated_at, false);
+        $query->timeRangeFilter('setting.created_at', $this->created_at)
+            ->timeRangeFilter('setting.updated_at', $this->updated_at);
 
         return $dataProvider;
     }

@@ -87,7 +87,7 @@ class ArticleController extends ModuleController
             ->andFilterWhere(['like', 'title', $title])
             ->andFilterWhere(['like', 'content', $content])
             ->andFilterWhere(['user.username' => $username])
-            ->timeRangeFilter('published_at', $published_at, true);
+            ->timeRangeFilter('published_at', $published_at);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

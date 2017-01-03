@@ -59,7 +59,7 @@ class Query extends YiiQuery
      * @param bool $date_only
      * @return $this
      */
-    public function timeRangeFilter($attribute, $value, $date_only = true)
+    public function timeRangeFilter($attribute, $value, $date_only = false)
     {
         if ($value != '') {
             $value = "$value";

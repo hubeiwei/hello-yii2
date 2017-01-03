@@ -99,9 +99,9 @@ class ArticleSearch extends Article
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'user.username', $this->getAttribute('username')]);
 
-        $query->timeRangeFilter('published_at', $this->published_at, false)
-            ->timeRangeFilter('article.created_at', $this->created_at, false)
-            ->timeRangeFilter('article.updated_at', $this->updated_at, false);
+        $query->timeRangeFilter('published_at', $this->published_at)
+            ->timeRangeFilter('article.created_at', $this->created_at)
+            ->timeRangeFilter('article.updated_at', $this->updated_at);
 
         return $dataProvider;
     }
