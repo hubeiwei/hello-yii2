@@ -114,17 +114,12 @@ class RenderHelper
                 ExportMenu::FORMAT_PDF => false,
                 ExportMenu::FORMAT_EXCEL => false,
             ],
-            'pjaxContainerId' => 'kartik-dynagrid-pjax',
+            'pjaxContainerId' => $id . '-pjax',
         ]);
 
         $gridConfig = [
             'dataProvider' => $dataProvider,
             'pjax' => true,
-            'pjaxSettings' => [
-                'options' => [
-                    'id' => 'kartik-dynagrid-pjax',
-                ],
-            ],
             'showPageSummary' => $showPageSummary,
             'toolbar' => [
                 '{toggleData}',
