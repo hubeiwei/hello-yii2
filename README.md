@@ -34,7 +34,7 @@
 
 * 扩展：openssl、pdo_mysql、fileinfo
 
-* 程序上的上传文件大小限制在 `app\models\Music` 里，目前的设置是 20MB，`php.ini` 的 `post_max_size` 和 `upload_max_filesize` 两个值需要配置一下，
+* 程序上的上传文件大小限制在 `app\models\Music` 里，目前的设置是 20MB，php.ini 的 `post_max_size` 和 `upload_max_filesize` 两个值需要配置一下，
 
 ## 安装第三方扩展和创建数据库表
 
@@ -46,7 +46,7 @@ composer global require "fxp/composer-asset-plugin:^1.2.0"
 composer install
 ```
 
-创建一个 `utf8` 数据库，在 `config/db.php` 文件配置好 MySql 相关参数后，执行以下命令：
+在 MySql 创建一个 utf8 数据库，在 config/db.php 文件配置好 MySql 相关参数后，执行以下命令：
 
 ```
 php yii migrate --migrationPath=@yii/rbac/migrations
@@ -57,9 +57,9 @@ php yii migrate --migrationPath=@kartik/dynagrid/migrations
 
 ## 服务器配置
 
-因为路由规则需要，需要开启 rewrite 而且把 `web` 目录设置为站点根目录。
+因为路由规则需要，需要开启 rewrite 而且把 web 目录设置为站点根目录。
 
-apache 的 `.htaccess` 文件我已经配置好放在 `web` 目录里了，windows 环境下用集成环境的话，可以试一下软件提供的添加网站功能，其他情况下的搭建方法自行 google 吧。
+apache 的 .htaccess 文件我已经配置好放在 web 目录里了，windows 环境下用集成环境的话，可以试一下软件提供的添加网站功能，其他情况下的搭建方法自行 google 吧。
 
 nginx 可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
@@ -67,7 +67,7 @@ nginx 可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
 ## 使用
 
-* 在 `config/web.php` 里找到[邮箱的配置](https://github.com/hubeiwei/hello-yii2/blob/master/config/web.php#L83)并配置好，才能用找回密码的功能。
+* 在 config/web.php 里找到[邮箱的配置](https://github.com/hubeiwei/hello-yii2/blob/master/config/web.php#L83)并配置好，才能用找回密码的功能。
 
 * 用户名和密码如下：
 
@@ -104,7 +104,7 @@ views                  目前只是放布局文件而已，布局结构详情请
 
 ## Model
 
-首先我用 gii 生成 model 到 `models/base` 目录下，取名为 'ModelBase'，接着会在 `models` 目录下新建一个 'Model' 来继承 'ModelBase'，以后有代码都写到 'Model' 里，这样做的好处是修改了数据库表结构后重新生成 model 可以直接覆盖 'ModelBase'。
+首先我用 gii 生成 model 到 models/base 目录下，取名为 'ModelBase'，接着会在 models 目录下新建一个 'Model' 来继承 'ModelBase'，以后有代码都写到 'Model' 里，这样做的好处是修改了表结构后重新生成 model 可以直接覆盖 'ModelBase'。
 
 ## Layout
 
@@ -117,7 +117,7 @@ master(最外层，layout 不直接指向这里)
 └ backend(后台)
 ```
 
-layout 会统一在 `config/modules.php` 里配置
+layout 会统一在 config/modules.php 里配置
 
 # 打赏
 
