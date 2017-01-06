@@ -20,7 +20,7 @@ class DateRangePicker extends KartikDateRangePicker
     public $presetDropdown = true;
 
     /**
-     * @var bool pluginOptions为空时根据该属性来设置时间格式
+     * @var bool 根据该属性决定默认配置
      */
     public $dateOnly = false;
 

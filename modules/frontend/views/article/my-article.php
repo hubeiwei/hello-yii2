@@ -37,9 +37,6 @@ $gridColumns = [
                 'locale' => [
                     'format' => 'Y/m/d H:i',
                 ],
-                'timePicker' => true,
-                'timePicker24Hour' => true,
-                'timePickerIncrement' => 1,
             ],
         ],
         'headerOptions' => ['width' => 160],
