@@ -51,6 +51,22 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+        'generators' => [
+            'model' => [
+                'class' => 'yii\gii\generators\model\Generator',
+                'ns' => 'app\models\base',
+                'baseClass' => 'app\common\extensions\ActiveRecord',
+                'generateLabelsFromComments' => true,
+            ],
+            'crud' => [
+                'class' => 'yii\gii\generators\crud\Generator',
+                'modelClass' => 'app\models\(Model名)',
+                'controllerClass' => 'app\modules\backend\controllers\(Model名)Controller',
+                'viewPath' => '@app/modules/backend/views/(路由)',
+                'baseControllerClass' => 'app\modules\backend\controllers\base\ModuleController',
+                'searchModelClass' => 'app\models\search\(Model名)Search',
+            ],
+        ],
     ];
 }
 
