@@ -11,16 +11,12 @@ use yii\widgets\DetailView;
  */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => '文章', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '我的文章', 'url' => ['my-article']];
 $this->params['breadcrumbs'][] = $this->title;
 
 HighlightAsset::register($this);
 ?>
 <div class="article-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <hr>
 
     <p>
         <?= Html::a('修改', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -61,6 +57,8 @@ HighlightAsset::register($this);
     ]) ?>
 
     <hr>
+
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $model->processArticle() ?>
 

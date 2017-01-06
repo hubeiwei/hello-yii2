@@ -87,8 +87,17 @@ class ArticleController extends ModuleController
 
     public function actionView($id)
     {
+        $this->layout = '@app/views/layouts/user';
+
+        $model = $this->findModel($id);
+
+        if (!UserHelper::isBelongToUser($model->created_by)) {
+            Message::setErrorMsg('不可查看别人的详细数据');
+            return $this->redirect(['index']);
+        }
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
@@ -101,6 +110,8 @@ class ArticleController extends ModuleController
 
     public function actionCreate()
     {
+        $this->layout = '@app/views/layouts/user';
+
         $request = Yii::$app->request;
         $model = new Article();
         $validator = new ArticleValidator();
@@ -136,6 +147,8 @@ class ArticleController extends ModuleController
 
     public function actionUpdate($id)
     {
+        $this->layout = '@app/views/layouts/user';
+
         $request = Yii::$app->request;
         $model = $this->findModel($id);
 

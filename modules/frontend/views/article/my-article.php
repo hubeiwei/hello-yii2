@@ -15,8 +15,6 @@ use yii\helpers\Html;
  */
 
 $this->title = '我的文章';
-$this->params['breadcrumbs'][] = ['label' => '文章', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['my-article']];
 
 $gridColumns = [
     ['class' => SerialColumn::className()],

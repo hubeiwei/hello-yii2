@@ -81,6 +81,8 @@ class MusicController extends ModuleController
 
     public function actionCreate()
     {
+        $this->layout = '@app/views/layouts/user';
+
         $request = Yii::$app->request;
         $model = new Music();
         $validator = new MusicValidator();
@@ -123,6 +125,8 @@ class MusicController extends ModuleController
 
     public function actionUpdate($id)
     {
+        $this->layout = '@app/views/layouts/user';
+
         $request = Yii::$app->request;
         $model = $this->findModel($id);
 

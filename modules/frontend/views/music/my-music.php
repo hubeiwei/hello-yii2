@@ -15,8 +15,6 @@ use yii\helpers\Html;
  */
 
 $this->title = '我的音乐';
-$this->params['breadcrumbs'][] = ['label' => '音乐', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['my-music']];
 
 $gridColumns = [
     ['class' => SerialColumn::className()],
