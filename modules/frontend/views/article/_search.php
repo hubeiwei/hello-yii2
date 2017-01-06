@@ -1,63 +1,46 @@
 <?php
 
-use kartik\daterange\DateRangePicker;
+use app\common\widgets\DateRangePicker;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /**
  * @var $this yii\web\View
+ * @var $searchModel app\models\search\ArticleSearch
  * @var $sort yii\data\Sort
- * @var $title string
- * @var $content string
- * @var $username string
- * @var $published_at string
  */
 ?>
 
 <div class="article-search">
 
-    <?= Html::beginForm(['index'], 'get') ?>
+    <?php $form = ActiveForm::begin([
+        'method' => 'get',
+    ]); ?>
 
-    <div class="form-group">
-        <?= Html::label($sort->link('title', ['label' => '标题']), 'title') ?>
-        <?= Html::textInput('title', $title, ['id' => 'title', 'class' => 'form-control']) ?>
-    </div>
+    <?= $form->field($searchModel, 'title')->textInput()
+        ->label($sort->link('title', ['label' => '标题'])) ?>
 
-    <div class="form-group">
-        <?= Html::label($sort->link('content', ['label' => '内容']), 'content') ?>
-        <?= Html::textInput('content', $content, ['id' => 'content', 'class' => 'form-control']) ?>
-    </div>
+    <?= $form->field($searchModel, 'content')->textInput()
+        ->label($sort->link('content', ['label' => '内容'])) ?>
 
-    <div class="form-group">
-        <?= Html::label($sort->link('username', ['label' => '用户名']), 'username') ?>
-        <?= Html::textInput('username', $username, ['id' => 'username', 'class' => 'form-control']) ?>
-    </div>
+    <?= $form->field($searchModel, 'username')->textInput()
+        ->label($sort->link('username', ['label' => '用户名'])) ?>
 
-    <div class="form-group">
-        <?= Html::label($sort->link('published_at', ['label' => '发布时间']), 'published_at') ?>
-        <?= DateRangePicker::widget([
-            'id' => 'published_at',
-            'name' => 'published_at',
-            'value' => $published_at,
-            'convertFormat' => true,
+    <?= $form->field($searchModel, 'published_at')
+        ->widget(DateRangePicker::className(), [
             'pluginOptions' => [
                 'locale' => [
-                    'separator' => ' - ',
-                    'format' => 'Y/m/d H:i:s',
+                    'format' => 'Y/m/d H:i',
                 ],
-                'showDropdowns' => true,
-                'timePicker' => true,
-                'timePicker24Hour' => true,
-                'timePickerIncrement' => 1,
-                'timePickerSeconds' => true,
             ],
-        ]) ?>
-    </div>
+        ])
+        ->label($sort->link('published_at', ['label' => '发布时间'])) ?>
 
     <div class="form-group">
         <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('重置', ['class' => 'btn btn-default']) ?>
     </div>
 
-    <?= Html::endForm() ?>
+    <?php ActiveForm::end(); ?>
 
 </div>

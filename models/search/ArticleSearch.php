@@ -5,14 +5,13 @@ namespace app\models\search;
 use app\common\helpers\UserHelper;
 use app\models\Article;
 use app\models\User;
-use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
-/**
- * ArticleSearch represents the model behind the search form about `app\models\Article`.
- */
 class ArticleSearch extends Article
 {
+    const SCENARIO_INDEX = 'index';
+    const SCENARIO_MY_ARTICLE = 'my_article';
+
     /**
      * @inheritdoc
      */
@@ -49,8 +48,14 @@ class ArticleSearch extends Article
      */
     public function scenarios()
     {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
+        $baseAttributes = ['title', 'content', 'username', 'published_at'];
+        return array_merge(parent::scenarios(), [
+            self::SCENARIO_INDEX => $baseAttributes,
+            self::SCENARIO_MY_ARTICLE => array_merge(
+                $baseAttributes,
+                ['visible', 'type', 'status', 'created_at', 'updated_at']
+            ),
+        ]);
     }
 
     /**
@@ -71,7 +76,17 @@ class ArticleSearch extends Article
             ])
             ->leftJoin(['user' => User::tableName()], 'user.id = article.created_by');
 
-        // add conditions that should always apply here
+        if ($this->scenario == self::SCENARIO_INDEX) {
+            $query->andWhere([
+                'visible' => Article::VISIBLE_YES,
+                'article.status' => Article::STATUS_ENABLE,
+            ]);
+            $query->andWhere(['<=', 'published_at', time()]);
+        }
+
+        if ($this->scenario == self::SCENARIO_MY_ARTICLE) {
+            $query->andWhere(['created_by' => UserHelper::getUserId()]);
+        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -81,12 +96,9 @@ class ArticleSearch extends Article
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'created_by' => $this->created_by,
@@ -102,44 +114,6 @@ class ArticleSearch extends Article
         $query->timeRangeFilter('published_at', $this->published_at)
             ->timeRangeFilter('article.created_at', $this->created_at)
             ->timeRangeFilter('article.updated_at', $this->updated_at);
-
-        return $dataProvider;
-    }
-
-    public function searchMyArticle($params)
-    {
-        /** @var \app\common\extensions\ActiveQuery $query */
-        $query = self::find()->where(['created_by' => UserHelper::getUserId()]);
-
-        // add conditions that should always apply here
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'sort' => ['defaultOrder' => ['created_at' => SORT_DESC]],
-        ]);
-
-        $this->load($params);
-
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
-
-        // grid filtering conditions
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'type' => $this->type,
-            'visible' => $this->visible,
-            'status' => $this->status,
-        ]);
-
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'content', $this->content]);
-
-        $query->timeRangeFilter('published_at', $this->published_at)
-            ->timeRangeFilter('created_at', $this->created_at)
-            ->timeRangeFilter('updated_at', $this->updated_at);
 
         return $dataProvider;
     }

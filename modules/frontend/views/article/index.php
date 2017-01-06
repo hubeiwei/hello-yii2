@@ -9,10 +9,7 @@ use yii\widgets\LinkPager;
 
 /**
  * @var $this yii\web\View
- * @var $title string
- * @var $content string
- * @var $username string
- * @var $published_at string
+ * @var $searchModel app\models\search\ArticleSearch
  * @var $dataProvider yii\data\ActiveDataProvider
  */
 
@@ -46,11 +43,8 @@ $this->title = '文章';
                     [
                         'label' => '搜索文章',
                         'content' => $this->render('_search', [
+                            'searchModel' => $searchModel,
                             'sort' => $dataProvider->sort,
-                            'title' => $title,
-                            'content' => $content,
-                            'username' => $username,
-                            'published_at' => $published_at,
                         ]),
                     ]
                 ],
