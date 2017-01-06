@@ -29,9 +29,17 @@ class DateRangePicker extends KartikDateRangePicker
      */
     public function run()
     {
-        if (empty($this->pluginOptions)) {
-            if ($this->dateOnly === false) {
-                $this->pluginOptions = [
+        $basePluginOptions = [
+            'showDropdowns' => true,
+            'opens' => 'left',
+            'locale' => [
+                'separator' => ' - ',
+            ],
+        ];
+        if ($this->dateOnly === false) {
+            $basePluginOptions = ArrayHelper::merge(
+                $basePluginOptions,
+                [
                     'timePicker' => true,
                     'timePicker24Hour' => true,
                     'timePickerIncrement' => 1,
@@ -39,24 +47,19 @@ class DateRangePicker extends KartikDateRangePicker
                     'locale' => [
                         'format' => 'Y/m/d H:i:s',
                     ],
-                ];
-            } else {
-                $this->pluginOptions = [
+                ]);
+        } else {
+            $basePluginOptions = ArrayHelper::merge(
+                $basePluginOptions,
+                [
                     'locale' => [
                         'format' => 'Y/m/d',
                     ],
-                ];
-            }
+                ]);
         }
         $this->pluginOptions = ArrayHelper::merge(
-            $this->pluginOptions,
-            [
-                'showDropdowns' => true,
-                'opens' => 'left',
-                'locale' => [
-                    'separator' => ' - ',
-                ],
-            ]
+            $basePluginOptions,
+            $this->pluginOptions
         );
         parent::run();
     }
