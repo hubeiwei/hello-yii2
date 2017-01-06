@@ -82,6 +82,18 @@ class RenderHelper
                 $resetUrl,
                 $export,
             ],
+            'filterSelector' => "input[name='" . $dataProvider->getPagination()->pageParam . "']",
+            'pager' => [
+                'class' => LinkPager::className(),
+                'template' => '<div class="form-inline" style="padding: 10px 0 0;">{pageButtons}{customPage}</div>',
+                'options' => [
+                    'class' => ['pagination'],
+                    'style' => [
+                        'margin' => 0,
+                        'float' => 'left',
+                    ],
+                ],
+            ],
         ]);
         if ($searchModel !== null) {
             $gridConfig['filterModel'] = $searchModel;
