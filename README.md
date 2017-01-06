@@ -67,7 +67,7 @@ nginx 可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
 ### 使用
 
-* 在 config/web.php 里找到[邮箱的配置](https://github.com/hubeiwei/hello-yii2/blob/master/config/web.php#L83)并配置好，才能用找回密码的功能。
+* 在 config/components.php 里找到[邮箱的配置](https://github.com/hubeiwei/hello-yii2/blob/master/config/components.php#L51)并配置好，才能用找回密码的功能。
 
 * 用户名和密码如下：
 
@@ -86,6 +86,7 @@ nginx 可以参考[这篇文章](http://www.getyii.com/topic/31)。
 common                 一些我自己封装的代码和改写的类
 
 config
+    components.php     组件
     db.php             数据库
     modules.php        模块
     web.php            框架配置
