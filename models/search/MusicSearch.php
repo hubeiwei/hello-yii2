@@ -5,14 +5,13 @@ namespace app\models\search;
 use app\common\helpers\UserHelper;
 use app\models\Music;
 use app\models\User;
-use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
-/**
- * MusicSearch represents the model behind the search form about `app\models\Music`.
- */
 class MusicSearch extends Music
 {
+    const SCENARIO_INDEX = 'index';
+    const SCENARIO_MY_MUSIC = 'my_music';
+
     /**
      * @inheritdoc
      */
@@ -28,8 +27,17 @@ class MusicSearch extends Music
      */
     public function scenarios()
     {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
+        $baseAttributes = ['track_title', 'created_at'];
+        return array_merge(parent::scenarios(), [
+            self::SCENARIO_INDEX => array_merge(
+                $baseAttributes,
+                ['username']
+            ),
+            self::SCENARIO_MY_MUSIC => array_merge(
+                $baseAttributes,
+                ['visible', 'status', 'updated_at']
+            ),
+        ]);
     }
 
     /**
@@ -70,11 +78,16 @@ class MusicSearch extends Music
             ])
             ->leftJoin(['user' => User::tableName()], 'user.id = music.user_id');
 
-        if (!UserHelper::isAdmin()) {
-            $query->where(['visible' => self::VISIBLE_YES, 'music.status' => self::STATUS_ENABLE]);
+        if ($this->scenario == self::SCENARIO_INDEX && !UserHelper::isAdmin()) {
+            $query->andWhere([
+                'visible' => self::VISIBLE_YES,
+                'music.status' => self::STATUS_ENABLE,
+            ]);
         }
 
-        // add conditions that should always apply here
+        if ($this->scenario == self::SCENARIO_MY_MUSIC) {
+            $query->andWhere(['user_id' => UserHelper::getUserId()]);
+        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -87,12 +100,9 @@ class MusicSearch extends Music
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
             'visible' => $this->visible,
             'music.status' => $this->status,
@@ -106,45 +116,6 @@ class MusicSearch extends Music
 
         $query->timeRangeFilter('music.created_at', $this->created_at)
             ->timeRangeFilter('music.updated_at', $this->updated_at);
-
-        return $dataProvider;
-    }
-
-    public function searchMyMusic($params)
-    {
-        /** @var \app\common\extensions\ActiveQuery $query */
-        $query = self::find()->where(['user_id' => UserHelper::getUserId()]);
-
-        // add conditions that should always apply here
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'pageSize' => 10,
-            ],
-            'sort' => ['defaultOrder' => ['created_at' => SORT_DESC]],
-        ]);
-
-        $this->load($params);
-
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
-
-        // grid filtering conditions
-        $query->andFilterWhere([
-            'visible' => $this->visible,
-            'status' => $this->status,
-        ]);
-
-        $query->andFilterWhere(['like', 'track_title', $this->track_title]);
-
-        $query->compare('id', $this->id);
-
-        $query->timeRangeFilter('created_at', $this->created_at)
-            ->timeRangeFilter('updated_at', $this->updated_at);
 
         return $dataProvider;
     }

@@ -15,9 +15,6 @@ use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 
-/**
- * MusicController implements the CRUD actions for Music model.
- */
 class MusicController extends ModuleController
 {
     /**
@@ -56,13 +53,10 @@ class MusicController extends ModuleController
         ];
     }
 
-    /**
-     * Lists all Music models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new MusicSearch();
+        $searchModel->scenario = MusicSearch::SCENARIO_INDEX;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -76,7 +70,8 @@ class MusicController extends ModuleController
         $this->layout = '@app/views/layouts/user';
 
         $searchModel = new MusicSearch();
-        $dataProvider = $searchModel->searchMyMusic(Yii::$app->request->queryParams);
+        $searchModel->scenario = MusicSearch::SCENARIO_MY_MUSIC;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('my-music', [
             'searchModel' => $searchModel,
@@ -84,11 +79,6 @@ class MusicController extends ModuleController
         ]);
     }
 
-    /**
-     * Creates a new Music model.
-     * If creation is successful, the browser will be redirected to the 'index' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $request = Yii::$app->request;
@@ -131,12 +121,6 @@ class MusicController extends ModuleController
         ]);
     }
 
-    /**
-     * Updates an existing Music model.
-     * If update is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
-     * @return mixed
-     */
     public function actionUpdate($id)
     {
         $request = Yii::$app->request;
