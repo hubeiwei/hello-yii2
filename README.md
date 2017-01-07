@@ -91,17 +91,17 @@ config
     modules.php        模块
     web.php            框架配置
 
-models                 放 model 的地方，详情请[往下拉](#model)
+models                 放 model 的地方
 
 modules
     backend/           后台模块
     frontend/          前台模块
     user/              用户相关，例如登入登出、用户中心
 
-views                  目前只是放布局文件而已，布局结构详情请[往下拉](#layout)
+views                  目前只是放布局文件而已
 ```
 
-另外没提到的资源、邮件模板、翻译、数据库迁移的文件不重要，想看的随便看看就好。
+别的文件随便看看就好。
 
 ### Model
 
@@ -118,7 +118,7 @@ master(最外层，layout 不直接指向这里)
 └ backend(后台)
 ```
 
-layout 会统一在 config/modules.php 里配置
+layout 会统一在 config/modules.php 里配置，frontend 模块两个控制器的 `beforeAction()` 方法里也有修改布局的代码。
 
 ## 打赏
 
