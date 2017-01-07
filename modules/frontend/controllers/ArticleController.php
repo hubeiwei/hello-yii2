@@ -54,6 +54,20 @@ class ArticleController extends ModuleController
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function beforeAction($action)
+    {
+        if (parent::beforeAction($action)) {
+            if (in_array($action->id, ['my-article', 'view', 'create', 'update'])) {
+                $this->layout = '@app/views/layouts/user';
+            }
+            return true;
+        }
+        return false;
+    }
+
     public function actionIndex()
     {
         $searchModel = new ArticleSearch();
@@ -73,8 +87,6 @@ class ArticleController extends ModuleController
 
     public function actionMyArticle()
     {
-        $this->layout = '@app/views/layouts/user';
-
         $searchModel = new ArticleSearch();
         $searchModel->scenario = ArticleSearch::SCENARIO_MY_ARTICLE;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -87,8 +99,6 @@ class ArticleController extends ModuleController
 
     public function actionView($id)
     {
-        $this->layout = '@app/views/layouts/user';
-
         $model = $this->findModel($id);
 
         if (!UserHelper::isBelongToUser($model->created_by)) {
@@ -110,8 +120,6 @@ class ArticleController extends ModuleController
 
     public function actionCreate()
     {
-        $this->layout = '@app/views/layouts/user';
-
         $request = Yii::$app->request;
         $model = new Article();
         $validator = new ArticleValidator();
@@ -147,8 +155,6 @@ class ArticleController extends ModuleController
 
     public function actionUpdate($id)
     {
-        $this->layout = '@app/views/layouts/user';
-
         $request = Yii::$app->request;
         $model = $this->findModel($id);
 

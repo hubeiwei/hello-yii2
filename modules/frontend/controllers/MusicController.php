@@ -53,6 +53,20 @@ class MusicController extends ModuleController
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function beforeAction($action)
+    {
+        if (parent::beforeAction($action)) {
+            if (in_array($action->id, ['my-music', 'create', 'update'])) {
+                $this->layout = '@app/views/layouts/user';
+            }
+            return true;
+        }
+        return false;
+    }
+
     public function actionIndex()
     {
         $searchModel = new MusicSearch();
@@ -67,8 +81,6 @@ class MusicController extends ModuleController
 
     public function actionMyMusic()
     {
-        $this->layout = '@app/views/layouts/user';
-
         $searchModel = new MusicSearch();
         $searchModel->scenario = MusicSearch::SCENARIO_MY_MUSIC;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -81,8 +93,6 @@ class MusicController extends ModuleController
 
     public function actionCreate()
     {
-        $this->layout = '@app/views/layouts/user';
-
         $request = Yii::$app->request;
         $model = new Music();
         $validator = new MusicValidator();
@@ -125,8 +135,6 @@ class MusicController extends ModuleController
 
     public function actionUpdate($id)
     {
-        $this->layout = '@app/views/layouts/user';
-
         $request = Yii::$app->request;
         $model = $this->findModel($id);
 
