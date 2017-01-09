@@ -43,7 +43,7 @@
 ```
 composer self-update
 composer global require "fxp/composer-asset-plugin:^1.2.0"
-composer install
+composer install --prefer-dist
 ```
 
 在 MySql 创建一个 utf8 数据库，在 config/db.php 文件配置好 MySql 相关参数后，执行以下命令：
