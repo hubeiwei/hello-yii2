@@ -71,7 +71,7 @@ class MusicSearch extends Music
     {
         /** @var \app\common\extensions\ActiveQuery $query */
         $query = self::find()
-            ->from(['music' => self::tableName()])
+            ->alias('music')
             ->select([
                 'music.*',
                 'user.username',

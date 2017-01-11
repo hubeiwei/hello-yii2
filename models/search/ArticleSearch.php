@@ -69,7 +69,7 @@ class ArticleSearch extends Article
     {
         /** @var \app\common\extensions\ActiveQuery $query */
         $query = self::find()
-            ->from(['article' => self::tableName()])
+            ->alias('article')
             ->select([
                 'article.*',
                 'user.username',
