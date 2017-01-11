@@ -26,7 +26,7 @@
 
 这是我在空闲时间用 yii2-basic 来研究各种新奇玩意的项目，请多关注，里面的业务代码不一定能在实际工作中使用，也不一定是最好的写法，仅供参考。
 
-为了减少代码量，我改写和封装了好多东西，在公司也这么用，虽然不能满足所有人的口味，但如果你觉得好的话，你可以拿我的 common 目录的东西去用。在 tools 目录，我放了一些我在 PHPStorm 常用的 Live Templates。
+为了减少代码量，我改写和封装了好多东西，甚至有时候会重构，在公司也这么用，虽然不能满足所有人的口味，但如果你觉得好的话，你可以拿我的 common 目录的东西去用。在 tools 目录，我放了一些我在 PHPStorm 常用的 Live Templates。
 
 ## 项目部署
 
@@ -34,7 +34,17 @@
 
 * 扩展：openssl、pdo_mysql、fileinfo
 
-* 程序上的上传文件大小限制在 `app\models\Music` 里，目前的设置是 20MB，php.ini 的 `post_max_size` 和 `upload_max_filesize` 两个值需要配置一下，
+* 程序上的上传文件大小限制在 `app\models\Music` 里，目前的设置是 20MB，php.ini 的 `post_max_size` 和 `upload_max_filesize` 两个值需要配置一下，如果提交表单失败，可能服务器也需要配置一下，比如我在 apache 下是针对本项目的 vhost 来配置的：
+
+```
+<VirtualHost *:80>
+    # ...
+    <IfModule mod_fcgid.c>
+        MaxRequestLen 20971520
+    </IfModule>
+    # ...
+</VirtualHost>
+```
 
 ### 安装第三方扩展和创建数据库表
 
