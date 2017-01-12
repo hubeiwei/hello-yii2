@@ -54,7 +54,11 @@ class MusicValidator extends Model
     {
         return [
             ['music_file', 'required', 'on' => self::SCENARIO_CREATE],
-            ['music_file', 'file', 'extensions' => ['mp3'], 'checkExtensionByMimeType' => false, 'maxSize' => Music::MUSIC_SIZE],
+            ['music_file', 'file',
+                'extensions' => ['mp3'],
+                'checkExtensionByMimeType' => false,
+                'maxSize' => Music::MUSIC_SIZE,
+            ],
             ['verifyCode', 'required'],
             ['verifyCode', 'string', 'length' => 4],
             ['verifyCode', CaptchaValidator::className()],

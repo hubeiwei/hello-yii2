@@ -36,7 +36,10 @@ class ArticleValidator extends Model
     {
         return [
             [['published_at'], 'required'],
-            ['published_at', 'date', 'type' => DateValidator::TYPE_DATETIME, 'format' => 'php:Y-m-d H:i'],
+            ['published_at', 'date',
+                'type' => DateValidator::TYPE_DATETIME,
+                'format' => 'php:Y-m-d H:i',
+            ],
             ['verifyCode', 'string', 'length' => 4],
             ['verifyCode', CaptchaValidator::className()],
         ];
