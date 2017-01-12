@@ -48,7 +48,7 @@
 
 ### 安装第三方扩展和创建数据库表
 
-你要有 [composer](http://docs.phpcomposer.com/)，执行以下命令，如果你觉得速度慢的话，可以参考我的[这篇文章](laohu321.cc/2017/01/terminal-accelerate)。
+你要有 [composer](http://docs.phpcomposer.com/)，执行以下命令，如果你觉得速度慢的话，可以参考我的[这篇文章](http://laohu321.cc/2017/01/terminal-accelerate)。
 
 ```
 composer self-update
