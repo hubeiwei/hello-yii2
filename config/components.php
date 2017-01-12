@@ -43,7 +43,7 @@ return [
     'assetManager' => [
         'bundles' => [
             'app\assets\HighlightAsset' => [
-                'css' => ['styles/github.css'],
+                'css' => ['styles/solarized-light.css'],
             ],
         ]
     ],
