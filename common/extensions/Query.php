@@ -71,7 +71,7 @@ class Query extends YiiQuery
             }
 
             if ($date_only) {
-                $to = strtotime(trim($conditions[1])) + 24 * 60 * 60;
+                $to = strtotime(trim($conditions[1])) + 24 * 60 * 60 - 1;
             } else {
                 $to = strtotime(trim($conditions[1]));
             }
