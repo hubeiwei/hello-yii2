@@ -166,4 +166,14 @@ class User extends UserBase implements IdentityInterface
     {
         return $this->hasOne(UserDetail::className(), ['user_id' => 'id']);
     }
+
+    public function getArticles()
+    {
+        return $this->hasMany(Article::className(), ['created_by' => 'id']);
+    }
+
+    public function getMusics()
+    {
+        return $this->hasMany(Music::className(), ['user_id' => 'id']);
+    }
 }
