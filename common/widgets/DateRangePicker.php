@@ -47,7 +47,8 @@ class DateRangePicker extends KartikDateRangePicker
                     'locale' => [
                         'format' => 'Y/m/d H:i:s',
                     ],
-                ]);
+                ]
+            );
         } else {
             $basePluginOptions = ArrayHelper::merge(
                 $basePluginOptions,
@@ -55,7 +56,8 @@ class DateRangePicker extends KartikDateRangePicker
                     'locale' => [
                         'format' => 'Y/m/d',
                     ],
-                ]);
+                ]
+            );
         }
         $this->pluginOptions = ArrayHelper::merge(
             $basePluginOptions,
