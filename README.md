@@ -127,7 +127,7 @@ views                  放布局文件和错误页面用，下面有详细说明
 base_html5(最外层，最基础的 html 结构，所有人都能用，layout 不直接指向这里)
 └ master(根据自己项目自定义的最外层，layout 不直接指向这里)
   ├ frontend(前台外层，layout 不直接指向这里)
-  │ ├ main(前台)
+  │ ├ main(前台，框架默认指向的地方)
   │ ├ user(用户模块)
   │ └ user_form(用户模块的表单)
   └ backend(后台)
