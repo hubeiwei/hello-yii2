@@ -1,7 +1,6 @@
 <?php
 
 use app\assets\AppAsset;
-use yii\helpers\Html;
 
 /**
  * @var $this \yii\web\View
@@ -9,19 +8,12 @@ use yii\helpers\Html;
  */
 
 AppAsset::register($this);
-$this->beginPage();
+$this->registerMetaTag([
+    'name' => 'viewport',
+    'content' => 'width=device-width, initial-scale=1, user-scalable=no',
+]);
 ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
-<head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-</head>
-<body>
-<?php $this->beginBody() ?>
+<?php $this->beginContent('@app/views/layouts/base_html5.php') ?>
 <div class="wrap">
     <?= $content ?>
 </div>
@@ -31,7 +23,4 @@ $this->beginPage();
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
-<?php $this->endBody() ?>
-</body>
-</html>
-<?php $this->endPage() ?>
+<?php $this->endContent(); ?>

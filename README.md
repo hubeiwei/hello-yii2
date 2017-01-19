@@ -92,43 +92,59 @@ nginx 可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
 ### 文件和目录
 
+没列出的文件随便看看就好。
+
 ```
 common                 一些我自己封装的代码和改写的类
 
 config
-    components.php     组件
-    db.php             数据库
-    modules.php        模块
+    components.php     组件配置
+    db.php             数据库配置
+    modules.php        模块配置
     web.php            框架配置
 
-models                 放 model 的地方
+models                 放 model 的地方，下面有详细说明
 
 modules
     backend/           后台模块
     frontend/          前台模块
-    user/              用户相关，例如登入登出、用户中心
+    user/              用户相关，例如登入登出、个人中心、找回密码等
 
-views                  目前只是放布局文件而已
+views                  放布局文件和错误页面用，下面有详细说明
 ```
-
-别的文件随便看看就好。
 
 ### Model
 
-首先我用 gii 生成 model 到 models/base 目录下，取名为 'ModelBase'，接着会在 models 目录下新建一个 'Model' 来继承 'ModelBase'，以后有代码都写到 'Model' 里，这样做的好处是修改了表结构后重新生成 model 可以直接覆盖 'ModelBase'。
+我用 gii 生成 model 到 models/base 目录下，取名为 'ModelBase'，然后在 models 目录下新建一个 'Model' 来继承 'ModelBase'，以后只编辑 'Model'，这样做的好处是重新生成 model 可以直接覆盖。
+
+用 gii 生成 crud 代码，其中有一项 “Search Model Class”，我把它生成到 models/search 目录下。
 
 ### Layout
 
+布局结构和说明：
+
 ```
-master(最外层，layout 不直接指向这里)
-├ frontend(前台外层，layout 不直接指向这里)
-│ ├ main(前台)
-│ ├ user(用户模块)
-│ └ user_form(用户模块的表单)
-└ backend(后台)
+base_html5(最外层，最基础的 html 结构，所有人都能用，layout 不直接指向这里)
+└ master(根据自己项目自定义的最外层，layout 不直接指向这里)
+  ├ frontend(前台外层，layout 不直接指向这里)
+  │ ├ main(前台)
+  │ ├ user(用户模块)
+  │ └ user_form(用户模块的表单)
+  └ backend(后台)
 ```
 
-layout 会统一在 config/modules.php 里配置，frontend 模块两个控制器的 `beforeAction()` 方法里也有修改布局的代码。
+layout 会统一在 config/modules.php 里配置，frontend 模块里两个控制器的 `beforeAction()` 方法里也有修改布局的代码。
+
+只做输出用的文件：
+
+```
+frontend
+    frontend_nav        顶部 bootstrap 的菜单
+
+backend
+    backend_menu        左侧菜单
+    bacnend_nav         顶部 bootstrap 的菜单
+```
 
 ## 打赏
 

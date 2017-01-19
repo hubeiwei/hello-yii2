@@ -3,16 +3,15 @@
 use app\common\helpers\UserHelper;
 use app\common\widgets\Alert;
 use app\common\widgets\CssBlock;
-use kartik\sidenav\SideNav;
 use mdm\admin\components\MenuHelper;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 
 /**
  * @var $this \yii\web\View
  * @var $content string
  */
+
+$menu = MenuHelper::getAssignedMenu(UserHelper::getUserId());
 ?>
 
 <?php CssBlock::begin(); ?>
@@ -25,63 +24,31 @@ use yii\widgets\Breadcrumbs;
 
 <?php
 $this->beginContent('@app/views/layouts/master.php');
-
-$assignedMenu = MenuHelper::getAssignedMenu(UserHelper::getUserId());
-
-NavBar::begin([
-    'brandLabel' => Yii::$app->name . '后台',
-    'brandUrl' => Yii::$app->homeUrl,
-    'options' => [
-        'class' => 'navbar-inverse navbar-fixed-top',
-    ],
-]);
-
-echo Nav::widget([
-    'options' => ['class' => 'navbar-nav navbar-left'],
-    'items' => $assignedMenu,
-]);
-
-echo Nav::widget([
-    'options' => ['class' => 'navbar-nav navbar-right'],
-    'items' => [
-        ['label' => '返回前台', 'url' => ['/frontend']],
-        [
-            'label' => '登出(' . UserHelper::getUserName() . ')',
-            'url' => ['/logout'],
-            'linkOptions' => [
-                'data' => [
-                    'confirm' => '确定要登出吗？',
-                    'method' => 'post',
-                ],
-            ],
-        ],
-    ],
-]);
-
-NavBar::end();
 ?>
+
+<?= $this->render('@app/views/layouts/backend_nav.php', [
+    'menu' => $menu,
+]) ?>
+
 <div class="container">
     <div class="row">
         <div class="col-md-3 col-lg-2 hidden-sm hidden-xs">
-            <?= SideNav::widget([
-                'items' => $assignedMenu,
-            ]); ?>
+            <?= $this->render('@app/views/layouts/backend_menu.php', [
+                'menu' => $menu,
+            ]) ?>
         </div>
         <div class="col-md-9 col-lg-10">
-            <?php
-            echo Breadcrumbs::widget([
+            <?= Breadcrumbs::widget([
                 'homeLink' => [
                     'label' => '首页',
                     'url' => ['/backend'],
                 ],
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]);
+            ]) ?>
 
-            // 输出消息
-            echo Alert::widget();
+            <?= Alert::widget() ?>
 
-            echo $content;
-            ?>
+            <?= $content ?>
         </div>
     </div>
 </div>

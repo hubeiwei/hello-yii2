@@ -5,8 +5,8 @@
  * @var $content string
  */
 
-$this->beginContent('@app/views/layouts/frontend.php');
 ?>
+<?php $this->beginContent('@app/views/layouts/frontend.php') ?>
 <div class="panel panel-default">
     <div class="panel-body">
         <?= $content ?>

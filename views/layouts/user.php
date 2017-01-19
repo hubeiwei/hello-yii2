@@ -8,41 +8,41 @@
 use app\common\helpers\UserHelper;
 use yii\widgets\Menu;
 
-$this->beginContent('@app/views/layouts/frontend.php');
 ?>
-    <div class="row">
-        <div class="col-md-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        <?= UserHelper::getUserName() ?>
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    <?= Menu::widget([
-                        'options' => [
-                            'class' => 'nav nav-pills nav-stacked'
-                        ],
-                        'items' => [
-                            ['label' => '个人资料',  'url' => ['/user/home/detail']],
-                            ['label' => '我的文章', 'url' => ['/frontend/article/my-article']],
-                            ['label' => '我的音乐', 'url' => ['/frontend/music/my-music']],
-                        ],
-                    ]) ?>
-                </div>
+<?php $this->beginContent('@app/views/layouts/frontend.php') ?>
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <?= UserHelper::getUserName() ?>
+                </h3>
             </div>
-        </div>
-        <div class="col-md-9">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        <?= $this->title ?>
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    <?= $content ?>
-                </div>
+            <div class="panel-body">
+                <?= Menu::widget([
+                    'options' => [
+                        'class' => 'nav nav-pills nav-stacked'
+                    ],
+                    'items' => [
+                        ['label' => '个人资料', 'url' => ['/user/home/detail']],
+                        ['label' => '我的文章', 'url' => ['/frontend/article/my-article']],
+                        ['label' => '我的音乐', 'url' => ['/frontend/music/my-music']],
+                    ],
+                ]) ?>
             </div>
         </div>
     </div>
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <?= $this->title ?>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <?= $content ?>
+            </div>
+        </div>
+    </div>
+</div>
 <?php $this->endContent(); ?>
