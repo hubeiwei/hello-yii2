@@ -95,22 +95,22 @@ nginx 可以参考[这篇文章](http://www.getyii.com/topic/31)。
 没列出的文件随便看看就好。
 
 ```
-common                 一些我自己封装的代码和改写的类
+common                一些我自己封装的代码和改写的类
 
 config
-    components.php     组件配置
-    db.php             数据库配置
-    modules.php        模块配置
-    web.php            框架配置
+    components.php    组件配置
+    db.php            数据库配置
+    modules.php       模块配置
+    web.php           框架配置
 
-models                 放 model 的地方，下面有详细说明
+models                放 model 的地方，下面有详细说明
 
 modules
-    backend/           后台模块
-    frontend/          前台模块
-    user/              用户相关，例如登入登出、个人中心、找回密码等
+    backend/          后台模块
+    frontend/         前台模块
+    user/             用户相关，例如登入登出、个人中心、找回密码等
 
-views                  放布局文件和错误页面用，下面有详细说明
+views                 放布局文件和错误页面用，下面有详细说明
 ```
 
 ### Model
@@ -124,13 +124,13 @@ views                  放布局文件和错误页面用，下面有详细说明
 布局结构和说明：
 
 ```
-base_html5(最外层，最基础的 html 结构，所有人都能用，layout 不直接指向这里)
-└ master(根据自己项目自定义的最外层，layout 不直接指向这里)
-  ├ frontend(前台外层，layout 不直接指向这里)
-  │ ├ main(前台，框架默认指向的地方)
-  │ ├ user(用户模块)
-  │ └ user_form(用户模块的表单)
-  └ backend(后台)
+base_html5         最外层，最基础的 html 结构，所有人都能用，layout 不直接指向这里
+└ master           根据自己项目自定义的最外层，layout 不直接指向这里
+  ├ frontend       前台外层，layout 不直接指向这里
+  │ ├ main         前台，框架默认指向的地方
+  │ ├ user         用户模块
+  │ └ user_form    用户模块的表单
+  └ backend        后台
 ```
 
 layout 会统一在 config/modules.php 里配置，frontend 模块里两个控制器的 `beforeAction()` 方法里也有修改布局的代码。
@@ -139,11 +139,11 @@ layout 会统一在 config/modules.php 里配置，frontend 模块里两个控�
 
 ```
 frontend
-    frontend_nav        顶部 bootstrap 的菜单
+    frontend_nav    顶部 bootstrap 的菜单
 
 backend
-    backend_menu        左侧菜单
-    bacnend_nav         顶部 bootstrap 的菜单
+    backend_menu    左侧菜单
+    bacnend_nav     顶部 bootstrap 的菜单
 ```
 
 ## 打赏
