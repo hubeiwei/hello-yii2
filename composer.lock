@@ -434,16 +434,16 @@
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
-            "version": "v4.3.6",
+            "version": "v4.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "ad0ddced480efdd38051d02b1ef28a2749bcc48a"
+                "reference": "5977b3cbf2f0010b54ebad6b7e52d1ad62d19c3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/ad0ddced480efdd38051d02b1ef28a2749bcc48a",
-                "reference": "ad0ddced480efdd38051d02b1ef28a2749bcc48a",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/5977b3cbf2f0010b54ebad6b7e52d1ad62d19c3e",
+                "reference": "5977b3cbf2f0010b54ebad6b7e52d1ad62d19c3e",
                 "shasum": ""
             },
             "type": "library",
@@ -483,7 +483,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2016-12-17T16:49:33+00:00"
+            "time": "2017-02-12T02:31:28+00:00"
         },
         {
             "name": "kartik-v/strength-meter",
@@ -579,7 +579,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-12-16 15:59:06"
+            "time": "2016-12-16T15:59:06+00:00"
         },
         {
             "name": "kartik-v/yii2-dialog",
@@ -691,7 +691,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-01-07 03:31:27"
+            "time": "2017-01-07T03:31:27+00:00"
         },
         {
             "name": "kartik-v/yii2-export",
@@ -751,7 +751,7 @@
                 "xlsx",
                 "yii2"
             ],
-            "time": "2016-12-28 16:02:15"
+            "time": "2016-12-28T16:02:15+00:00"
         },
         {
             "name": "kartik-v/yii2-grid",
@@ -804,7 +804,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-01-03 17:51:05"
+            "time": "2017-01-03T17:51:05+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -906,7 +906,7 @@
                 "yii",
                 "yii2"
             ],
-            "time": "2016-05-15 19:25:37"
+            "time": "2016-05-15T19:25:37+00:00"
         },
         {
             "name": "kartik-v/yii2-sortable",
@@ -1109,7 +1109,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-11-11 15:42:04"
+            "time": "2016-11-11T15:42:04+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-datetimepicker",
@@ -1213,7 +1213,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-10-18 06:35:15"
+            "time": "2016-10-18T06:35:15+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-growl",
@@ -1270,12 +1270,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-select2.git",
-                "reference": "e135c25d7b367e4b63613f7c03f884535f1072f5"
+                "reference": "168bc215c9b18f571c5c533f5b8d79d2a189eb5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/e135c25d7b367e4b63613f7c03f884535f1072f5",
-                "reference": "e135c25d7b367e4b63613f7c03f884535f1072f5",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/168bc215c9b18f571c5c533f5b8d79d2a189eb5b",
+                "reference": "168bc215c9b18f571c5c533f5b8d79d2a189eb5b",
                 "shasum": ""
             },
             "require": {
@@ -1315,7 +1315,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-12-30 03:26:33"
+            "time": "2017-02-11T11:04:12+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-sidenav",
@@ -1408,7 +1408,7 @@
                 "yii2",
                 "yii2-widget-linkpager"
             ],
-            "time": "2016-11-25 09:03:50"
+            "time": "2016-11-25T09:03:50+00:00"
         },
         {
             "name": "mdmsoft/yii2-admin",
@@ -1493,7 +1493,7 @@
                     "PHPExcel": "Classes/"
                 }
             },
-            "notification-url": "https://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.orghttps://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL"
             ],
@@ -1527,16 +1527,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.5",
+            "version": "v5.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "cd142238a339459b10da3d8234220963f392540c"
+                "reference": "81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/cd142238a339459b10da3d8234220963f392540c",
-                "reference": "cd142238a339459b10da3d8234220963f392540c",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e",
+                "reference": "81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e",
                 "shasum": ""
             },
             "require": {
@@ -1577,7 +1577,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-12-29T10:02:40+00:00"
+            "time": "2017-02-13T07:52:53+00:00"
         },
         {
             "name": "yiidoc/yii2-redactor",
@@ -1625,16 +1625,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.11",
+            "version": "2.0.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "4144506d84b5c895e026be4d79ebbef7067ebcd3"
+                "reference": "ee996adec1dfd7babb67bd0c604f5bd6425fe5ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/4144506d84b5c895e026be4d79ebbef7067ebcd3",
-                "reference": "4144506d84b5c895e026be4d79ebbef7067ebcd3",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/ee996adec1dfd7babb67bd0c604f5bd6425fe5ab",
+                "reference": "ee996adec1dfd7babb67bd0c604f5bd6425fe5ab",
                 "shasum": ""
             },
             "require": {
@@ -1721,7 +1721,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2017-02-01T16:46:29+00:00"
+            "time": "2017-02-08T09:04:32+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
