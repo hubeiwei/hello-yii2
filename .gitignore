@@ -1,3 +1,7 @@
+# yii console commands
+/yii
+/yii.bat
+
 # phpstorm project files
 .idea
 
