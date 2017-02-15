@@ -30,6 +30,7 @@ $config['params'] = array_merge(
 
 $config['components'] = array_merge(
     require(__DIR__ . '/components.php'),
+    require(__DIR__ . '/components-local.php'),
     require(__DIR__ . '/db.php')// 数据库
 );
 

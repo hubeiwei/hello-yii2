@@ -32,21 +32,24 @@
 
 ### PHP配置
 
-* 扩展：openssl、pdo_mysql、fileinfo
+扩展：openssl、pdo_mysql、fileinfo
 
-* 程序上的上传文件大小限制在 `app\models\Music` 里，目前的设置是 20MB，php.ini 的 `post_max_size` 和 `upload_max_filesize` 两个值需要配置一下，如果提交表单失败，可能服务器也需要配置一下，比如我在 apache 下是针对本项目的 vhost 来配置的：
+程序上的上传文件大小限制在 `app\models\Music::MUSIC_SIZE`，我随便设置了一个 20MB，php 的 `post_max_size` 和 `upload_max_filesize` 两个值需要配置一下。
+
+如果你是用 Apache 的，涉及上传文件的表单提交无响应了，而且 error.log 里有请求数据大小相关的提示，你的 vhost 可以和以下这么配：
 
 ```
 <VirtualHost *:80>
-    # ...
+    DocumentRoot "path/to/hello-yii2/web"
+    ServerName hello-yii2.dev
+    # 设置请求的数据大小，单位为字节
     <IfModule mod_fcgid.c>
-        MaxRequestLen 20971520
+        MaxRequestLen 12345678
     </IfModule>
-    # ...
 </VirtualHost>
 ```
 
-### 安装第三方扩展和创建数据库表
+### 安装 Composer 包
 
 你要有 [composer](http://docs.phpcomposer.com/)，执行以下命令，如果你觉得速度慢的话，可以参考我的[这篇文章](http://laohu321.cc/2017/01/terminal-accelerate)。
 
@@ -56,7 +59,15 @@ composer global require "fxp/composer-asset-plugin:^1.2.0"
 composer install --prefer-dist
 ```
 
-在 MySql 创建一个 utf8 数据库，在 config/db.php 文件配置好 MySql 相关参数后，执行以下命令：
+### 生成本地配置文件
+
+```
+php init --env=Development --overwrite=all
+```
+
+### 创建数据库表
+
+在 MySql 创建一个 utf8 数据库，在 config/db.php 文件配置好之后，执行以下命令：
 
 ```
 php yii migrate --migrationPath=@yii/rbac/migrations
@@ -67,19 +78,26 @@ php yii migrate --migrationPath=@kartik/dynagrid/migrations
 
 ### 服务器配置
 
-因为路由规则需要，需要开启 rewrite 而且把 web 目录设置为站点根目录。
+因为路由规则需要，需要开启 rewrite 并把 web 目录设置为站点根目录，这也是 yii2 的正确使用方式。
 
-apache 的 .htaccess 文件我已经配置好放在 web 目录里了，windows 环境下用集成环境的话，可以试一下软件提供的添加网站功能，其他情况下的搭建方法自行 google 吧。
+apache 的 .htaccess 文件我已经配置好放在 web 目录里了，windows 环境下用集成环境的话，可以试一下软件提供的添加网站功能，其他情况下的搭建方法自行 google 吧，比如我以前用 PHPStudy 时的配置就这么简单：
+
+```
+<VirtualHost *:80>
+    DocumentRoot "path/to/hello-yii2/web"
+    ServerName hello-yii2.dev
+</VirtualHost>
+```
 
 nginx 可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
-详情可以直接参考[官方文档](http://www.yiiframework.com/doc-2.0/guide-start-installation.html#configuring-web-servers)。
+详情可以直接参考[官方文档](https://github.com/yiisoft/yii2/blob/master/docs/guide-zh-CN/start-installation.md#配置-web-服务器-)，我的 nginx 配置就是直接抄官方文档里面的。
 
 ### 使用
 
-* 在 config/components.php 里找到[邮箱的配置](https://github.com/hubeiwei/hello-yii2/blob/master/config/components.php#L51)并配置好，才能用找回密码的功能。
+在 config/components-local.php 里找到邮箱的配置并配置好，才能用找回密码的功能。
 
-* 用户名和密码如下：
+已经生成好的用户名和密码如下：
 
 身份 | 用户名 | 密码
 ---|---|---
@@ -95,31 +113,32 @@ nginx 可以参考[这篇文章](http://www.getyii.com/topic/31)。
 没列出的文件随便看看就好。
 
 ```
-common                一些我自己封装的代码和改写的类
+common                      一些我自己封装的代码和改写的类
 
 config
-    components.php    组件配置
-    db.php            数据库配置
-    modules.php       模块配置
-    web.php           框架配置
+    components.php          组件配置
+    components-local.php    本地组件配置，在 environments 里通过 init 生成
+    db.php                  数据库配置，在 environments 里通过 init 生成
+    modules.php             模块配置
+    web.php                 框架配置
 
-models                放 model 的地方，下面有详细说明
+models                      放 model 的地方，下面有详细说明
 
 modules
-    backend/          后台模块
-    frontend/         前台模块
-    user/             用户相关，例如登入登出、个人中心、找回密码等
+    backend/                后台模块
+    frontend/               前台模块
+    user/                   用户相关，例如登入登出、个人中心、找回密码等
 
-views                 放布局文件和错误页面用，下面有详细说明
+views                       放布局文件和错误页面用，下面有详细说明
 ```
 
-### Model
+### models 目录
 
 我用 gii 生成 model 到 models/base 目录下，取名为 'ModelBase'，然后在 models 目录下新建一个 'Model' 来继承 'ModelBase'，以后只编辑 'Model'，这样做的好处是重新生成 model 可以直接覆盖。
 
 用 gii 生成 crud 代码，其中有一项 “Search Model Class”，我把它生成到 models/search 目录下。
 
-### Layout
+### views/layout 目录
 
 布局结构和说明：
 
