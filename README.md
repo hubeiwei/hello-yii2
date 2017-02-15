@@ -76,7 +76,7 @@ php yii migrate
 php yii migrate --migrationPath=@kartik/dynagrid/migrations
 ```
 
-### 服务器配置
+### 搭建网站
 
 因为路由规则需要，需要开启 rewrite 并把 web 目录设置为站点根目录，这也是 yii2 的正确使用方式。
 
