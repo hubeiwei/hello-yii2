@@ -46,7 +46,7 @@ class UserSearch extends User
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'email', $this->email]);
 
-        $query->compare('user_id', $this->id);
+        $query->compare('id', $this->id);
 
         $query->timeRangeFilter('created_at', $this->created_at)
             ->timeRangeFilter('updated_at', $this->updated_at);
