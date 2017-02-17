@@ -21,7 +21,7 @@ trait QueryTrait
         $expression = "$expression";
         $conditions = explode(',', EasyHelper::unifyLimiter($expression));
         foreach ($conditions as $condition) {
-            if (preg_match('/^(?:\s*(<>|<=|>=|<|>|=))?(.*)$/', $condition, $matches)) {
+            if (preg_match('/^(?:\s*(<>|!=|<=|>=|<|>|=))?(.*)$/', $condition, $matches)) {
                 $op = $matches[1];
                 $value = $matches[2];
             } else {
