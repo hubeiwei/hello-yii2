@@ -38,6 +38,11 @@ use yii\widgets\Pjax;
         </div>
     </div>
     <div class="col-md-9">
+        <?php
+        Pjax::begin([
+            'linkSelector' => '.pjax_link a',
+        ]);
+        ?>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
@@ -45,20 +50,15 @@ use yii\widgets\Pjax;
                 </h3>
             </div>
             <div class="panel-body content">
-                <?php
-                Pjax::begin([
-                    'linkSelector' => '.pjax_link a',
-                ]);
-                echo $content;
-                Pjax::end();
-                ?>
+                <?= $content ?>
             </div>
         </div>
+        <?php Pjax::end(); ?>
     </div>
 </div>
 <?php JsBlock::begin(); ?>
 <script>
-    $(".pjax_menu .pjax_link").on("click",function () {
+    $(".pjax_menu .pjax_link").on("click", function () {
         $(".pjax_menu .pjax_link").removeClass('active');
         $(this).addClass('active');
     });
