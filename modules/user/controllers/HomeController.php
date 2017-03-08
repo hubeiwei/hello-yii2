@@ -57,9 +57,16 @@ class HomeController extends ModuleController
             $validator->birthday = $model->birthday ? date('Y-m-d', $model->birthday) : null;
         }
 
-        return $this->render('detail', [
-            'model' => $model,
-            'validator' => $validator,
-        ]);
+        if (Yii::$app->request->isPjax) {
+            return $this->renderAjax('detail', [
+                'model' => $model,
+                'validator' => $validator,
+            ]);
+        } else {
+            return $this->render('detail', [
+                'model' => $model,
+                'validator' => $validator,
+            ]);
+        }
     }
 }

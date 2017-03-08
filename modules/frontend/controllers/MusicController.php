@@ -85,10 +85,17 @@ class MusicController extends ModuleController
         $searchModel->scenario = MusicSearch::SCENARIO_MY_MUSIC;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('my-music', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        if (Yii::$app->request->isPjax) {
+            return $this->renderAjax('my-music', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        } else {
+            return $this->render('my-music', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
     }
 
     public function actionCreate()

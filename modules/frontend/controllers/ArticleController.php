@@ -91,10 +91,17 @@ class ArticleController extends ModuleController
         $searchModel->scenario = ArticleSearch::SCENARIO_MY_ARTICLE;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('my-article', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        if (Yii::$app->request->isPjax) {
+            return $this->renderAjax('my-article', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        } else {
+            return $this->render('my-article', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
     }
 
     public function actionView($id)
