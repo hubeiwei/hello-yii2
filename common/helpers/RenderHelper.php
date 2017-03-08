@@ -31,7 +31,14 @@ class RenderHelper
     public static function dropDownFilter($model, $attribute, $list)
     {
         if ($model instanceof Model) {
-            return Html::dropDownList($model->formName() . '[' . $attribute . ']', $model->$attribute, ['' => '全部'] + $list, ['class' => 'form-control', 'style' => ['min-width' => '120px']]);
+            return Html::dropDownList(
+                $model->formName() . '[' . $attribute . ']', $model->$attribute,
+                ['' => '全部'] + $list,
+                [
+                    'class' => 'form-control',
+                    'style' => ['min-width' => '120px'],
+                ]
+            );
         } else {
             return null;
         }

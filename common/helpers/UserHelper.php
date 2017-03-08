@@ -23,7 +23,7 @@ class UserHelper
     public static function getUserInstance($userId = 0)
     {
         if ($userId == 0) {
-            return Yii::$app->user->identity;
+            return Yii::$app->getUser()->getIdentity();
         } else {
             return User::find()->where(['id' => $userId])->limit(1)->one();
         }
@@ -38,7 +38,7 @@ class UserHelper
      */
     public static function isAdmin()
     {
-        return Yii::$app->user->can('SuperAdmin');
+        return Yii::$app->getUser()->can('SuperAdmin');
     }
 
     /**
@@ -52,8 +52,9 @@ class UserHelper
         if ($userName) {
             return User::find()->select(['id'])->where(['username' => $userName])->limit(1)->scalar();
         } else {
-            if (Yii::$app->user->id != null) {
-                return Yii::$app->user->id;
+            $id = Yii::$app->getUser()->getId();
+            if ($id != null) {
+                return $id;
             } else {
                 return 0;
             }

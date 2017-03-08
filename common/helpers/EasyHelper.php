@@ -44,35 +44,9 @@ class EasyHelper
     }
 
     /**
-     * 字符串拼接
-     *
-     * For example:
-     *
-     * ```php
-     * $string = 'A:{0},B:{1},C:{2}';
-     * return EasyHelper:stringFormat($string, 'a', 'b', 'c');//A:a,B:b,C:c
-     * ```
-     *
-     * @return string
-     */
-    public static function stringFormat()
-    {
-        $args = func_get_args();
-        if (count($args) == 0) {
-            return null;
-        }
-        if (count($args) == 1) {
-            return $args[0];
-        }
-        $str = array_shift($args);
-        $str = preg_replace_callback('/\\{(0|[1-9]\\d*)\\}/', create_function('$match', '$args = ' . var_export($args, true) . '; return isset($args[$match[1]]) ? $args[$match[1]] : null;'), $str);
-        return $str;
-    }
-
-    /**
      * 开启事务
      *
-     * 该方法只是为了让不同数据库的component开启事务时都能让IDE提示代码
+     * 该方法只是为了让不同数据库的 component 开启事务时都能让 IDE 提示代码
      *
      * @param \yii\db\Connection $db
      * @param string $isolationLevel
@@ -81,7 +55,7 @@ class EasyHelper
     public static function beginTransaction($db = null, $isolationLevel = Transaction::SERIALIZABLE)
     {
         if ($db === null) {
-            $db = Yii::$app->db;
+            $db = Yii::$app->getDb();
         }
         return $db->beginTransaction($isolationLevel);
     }

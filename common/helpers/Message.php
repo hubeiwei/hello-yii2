@@ -40,7 +40,7 @@ class Message extends Widget
      */
     public static function setMessage($message, $type = self::TYPE_INFO)
     {
-        Yii::$app->session->setFlash($type, $message);
+        Yii::$app->getSession()->setFlash($type, $message);
     }
 
     public static function setSuccessMsg($message)

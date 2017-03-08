@@ -22,56 +22,21 @@ class ActiveRecord extends YiiActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * 清空表
+     * @return int
      */
-//    public static function findOne($condition, $cache = null)
-//    {
-//        if ($cache) {
-//            return static::findByCondition($condition)->cache($cache)->one();
-//        } else {
-//            return static::findByCondition($condition)->one();
-//        }
-//    }
-
-    /**
-     * @param array $attribute
-     * @return array
-     */
-    public function getAttributeLabels($attribute)
+    public static function truncateTable()
     {
-        $labels = [];
-        foreach ($attribute as $value) {
-            $labels[$value] = $this->attributeLabels()[$value];
-        }
-        return $labels;
+        return static::getDb()
+            ->createCommand()
+            ->truncateTable(static::tableName())
+            ->execute();
     }
 
     /**
-     * @param array|null $names
-     * @param array $except
-     * @return array
+     * 获取第一条错误
+     * @return string
      */
-    public function getAttributes($names = null, $except = [])
-    {
-        $values = [];
-        if ($names === null) {
-            $names = $this->attributes();
-        }
-        foreach ($names as $name) {
-            $values[$name] = (string)$this->$name;
-        }
-        foreach ($except as $name) {
-            unset($values[$name]);
-        }
-
-        return $values;
-    }
-
-    public function truncateTable()
-    {
-        return \Yii::$app->db->createCommand()->truncateTable($this->tableName())->execute();
-    }
-
     public function getFirstErrorString()
     {
         if ($this->hasErrors()) {

@@ -38,7 +38,7 @@ class Alert extends Widget
     {
         parent::init();
 
-        $session = Yii::$app->session;
+        $session = Yii::$app->getSession();
         $flashes = $session->getAllFlashes();
         foreach ($flashes as $type => $data) {
             if (isset($this->typeMap[$type])) {

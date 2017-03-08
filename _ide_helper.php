@@ -21,13 +21,21 @@ class Yii
 /**
  * @property User $user
  */
-class MyApplication
+abstract class MyApplication
 {
+    /**
+     * @return User
+     */
+    abstract public function getUser();
 }
 
 /**
  * @property \app\models\User $identity
  */
-class User
+abstract class User
 {
+    /**
+     * @return \app\models\User
+     */
+    abstract public function getIdentity();
 }
