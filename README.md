@@ -101,8 +101,8 @@ nginx 可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
 身份 | 用户名 | 密码
 ---|---|---
-超级管理员 | hu | hbw12345
-普通用户 | test | qwer1234
+超级管理员 | admin | asdf1234
+普通用户 | test | asdf1234
 
 ## 结构说明
 

@@ -12,31 +12,39 @@ class m160728_084255_insert_user extends Migration
         $time = time();
         $faker = Factory::create();
 
-        $this->batchInsert(User::tableName(), [
-            'username',
-            'auth_key',
-            'password_hash',
-            'email',
-            'created_at',
-            'updated_at',
-        ], [
+        $user = new User();
+        $user->password_hash = 'asdf1234';
+        $user->encryptPassword();
+
+        $this->batchInsert(
+            User::tableName(),
             [
-                'hu',
-                Yii::$app->security->generateRandomString(),
-                '$2y$13$GseYzG9z1Q87wVsGJ9DdleP/QHSPoPbAdLr3y4D8gDCFq2BRuIYQu',
-                $faker->email,
-                $time,
-                $time,
+                'username',
+                'auth_key',
+                'password_hash',
+                'email',
+                'created_at',
+                'updated_at',
             ],
             [
-                'test',
-                Yii::$app->security->generateRandomString(),
-                '$2y$13$bkTA/HShzVF8P2uZDRZgbe5jPftXwO3xIJnF5gjph63xtFKs9bEpS',
-                $faker->email,
-                $time,
-                $time,
-            ],
-        ]);
+                [
+                    'admin',
+                    Yii::$app->security->generateRandomString(),
+                    $user->password_hash,
+                    $faker->email,
+                    $time,
+                    $time,
+                ],
+                [
+                    'test',
+                    Yii::$app->security->generateRandomString(),
+                    $user->password_hash,
+                    $faker->email,
+                    $time,
+                    $time,
+                ],
+            ]
+        );
 
         $this->batchInsert(UserDetail::tableName(), ['user_id', 'updated_at'], [[1, $time], [2, $time]]);
 
