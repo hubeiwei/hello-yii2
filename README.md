@@ -24,9 +24,7 @@
 
 ## 说明
 
-这是我在空闲时间用 yii2-basic 来研究各种新奇玩意的项目，请多关注，里面的业务代码不一定能在实际工作中使用，也不一定是最好的写法，仅供参考。
-
-为了减少代码量，我改写和封装了好多东西，甚至有时候会重构，在公司也这么用，虽然不能满足所有人的口味，但如果你觉得好的话，你可以拿我的 common 目录的东西去用。在 tools 目录，我放了一些我在 PHPStorm 常用的 Live Templates。
+这是我在空闲时间用 yii2-basic 来研究各种玩意的项目，请多关注，里面的业务代码不一定能在实际工作中使用，也不一定是最好的写法，仅供参考。
 
 ## 项目部署
 
@@ -36,20 +34,7 @@
 
 程序上的上传文件大小限制在 `app\models\Music::MUSIC_SIZE`，我随便设置了一个 20MB，php 的 `post_max_size` 和 `upload_max_filesize` 两个值需要配置一下。
 
-如果你是用 Apache 的，涉及上传文件的表单提交无响应了，而且 error.log 里有请求数据大小相关的提示，你的 vhost 可以和以下这么配：
-
-```
-<VirtualHost *:80>
-    DocumentRoot "path/to/hello-yii2/web"
-    ServerName hello-yii2.dev
-    # 设置请求的数据大小，单位为字节
-    <IfModule mod_fcgid.c>
-        MaxRequestLen 12345678
-    </IfModule>
-</VirtualHost>
-```
-
-### 安装 Composer 包
+### 安装 composer 扩展
 
 你要有 [composer](http://docs.phpcomposer.com/)，执行以下命令，如果你觉得速度慢的话，可以参考我的[这篇文章](http://laohu321.cc/2017/01/terminal-accelerate)。
 
@@ -80,18 +65,9 @@ php yii migrate --migrationPath=@kartik/dynagrid/migrations
 
 因为路由规则需要，需要开启 rewrite 并把 web 目录设置为站点根目录，这也是 yii2 的正确使用方式。
 
-apache 的 .htaccess 文件我已经配置好放在 web 目录里了，windows 环境下用集成环境的话，可以试一下软件提供的添加网站功能，其他情况下的搭建方法自行 google 吧，比如我以前用 PHPStudy 时的配置就这么简单：
-
-```
-<VirtualHost *:80>
-    DocumentRoot "path/to/hello-yii2/web"
-    ServerName hello-yii2.dev
-</VirtualHost>
-```
-
 nginx 可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
-详情可以直接参考[官方文档](https://github.com/yiisoft/yii2/blob/master/docs/guide-zh-CN/start-installation.md#配置-web-服务器-)，我的 nginx 配置就是直接抄官方文档里面的。
+或者直接参考[官方文档](https://github.com/yiisoft/yii2/blob/master/docs/guide-zh-CN/start-installation.md#配置-web-服务器-)，我的 nginx 配置就是直接抄官方文档里面的。
 
 ### 使用
 
@@ -106,6 +82,8 @@ nginx 可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
 ## 结构说明
 
+完成上面的步骤后你就可以使用了，如果你想了解我的项目的话，可以看看这一节。
+
 我的代码是从 gii 生成的 model 和 CRUD 代码上修改而来的，如果你也是这个套路的话，那我的代码应该还算容易看懂，就 model 和原来的有些区别，详情请[往下拉](#model)。
 
 ### 文件和目录
@@ -113,23 +91,23 @@ nginx 可以参考[这篇文章](http://www.getyii.com/topic/31)。
 没列出的文件随便看看就好。
 
 ```
-common                      一些我自己封装的代码和改写的类
+common                    一些我自己封装的代码和改写的类
 
 config
-    components.php          组件配置
-    components-local.php    本地组件配置，在 environments 里通过 init 生成
-    db.php                  数据库配置，在 environments 里通过 init 生成
-    modules.php             模块配置
-    web.php                 框架配置
+├ components.php          组件配置
+├ components-local.php    本地组件配置，在 environments 里通过 init 生成
+├ db.php                  数据库配置，在 environments 里通过 init 生成
+├ modules.php             模块配置
+└ web.php                 框架配置
 
-models                      放 model 的地方，下面有详细说明
+models                    放 model 的地方，下面有详细说明
 
 modules
-    backend/                后台模块
-    frontend/               前台模块
-    user/                   用户相关，例如登入登出、个人中心、找回密码等
+├ backend                 后台模块
+├ frontend                前台模块
+└ user                    用户相关，例如登入登出、个人中心、找回密码等
 
-views                       放布局文件和错误页面用，下面有详细说明
+views                     放布局文件和错误页面用，下面有详细说明
 ```
 
 ### models 目录
@@ -143,13 +121,13 @@ views                       放布局文件和错误页面用，下面有详细�
 布局结构和说明：
 
 ```
-base_html5         最外层，最基础的 html 结构，所有人都能用，layout 不直接指向这里
-└ master           根据自己项目自定义的最外层，layout 不直接指向这里
-  ├ frontend       前台外层，layout 不直接指向这里
-  │ ├ main         前台，框架默认指向的地方
-  │ ├ user         用户模块
-  │ └ user_form    用户模块的表单
-  └ backend        后台
+base_html5.php         最外层，最基础的 html 结构，所有人都能用，layout 不直接指向这里
+└ master.php           根据自己项目自定义的最外层，layout 不直接指向这里
+  ├ frontend.php       前台外层，layout 不直接指向这里
+  │ ├ main.php         前台，框架默认指向的地方
+  │ ├ user.php         用户模块
+  │ └ user_form.php    用户模块的表单
+  └ backend.php        后台
 ```
 
 layout 会统一在 config/modules.php 里配置，frontend 模块里两个控制器的 `beforeAction()` 方法里也有修改布局的代码。
@@ -157,12 +135,12 @@ layout 会统一在 config/modules.php 里配置，frontend 模块里两个控�
 只做输出用的文件：
 
 ```
-frontend
-    frontend_nav    顶部 bootstrap 的菜单
+frontend.php
+└ frontend_nav.php    顶部 bootstrap 的菜单
 
-backend
-    backend_menu    左侧菜单
-    bacnend_nav     顶部 bootstrap 的菜单
+backend.php
+├ backend_menu.php    左侧菜单
+└ bacnend_nav.php     顶部 bootstrap 的菜单
 ```
 
 ## 打赏
