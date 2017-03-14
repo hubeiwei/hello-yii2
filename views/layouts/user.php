@@ -6,7 +6,7 @@
  */
 
 use app\common\helpers\UserHelper;
-use app\common\widgets\JsBlock;
+use hubeiwei\yii2tools\widgets\JsBlock;
 use yii\widgets\Menu;
 use yii\widgets\Pjax;
 

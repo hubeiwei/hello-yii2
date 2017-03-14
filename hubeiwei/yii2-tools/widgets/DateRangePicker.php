@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hubeiwei
- * Date: 2016/9/20
- * Time: 23:03
- */
 
-namespace app\common\widgets;
+namespace hubeiwei\yii2tools\widgets;
 
 use kartik\daterange\DateRangePicker as KartikDateRangePicker;
 use Yii;

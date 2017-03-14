@@ -2,13 +2,13 @@
 
 namespace app\modules\user\controllers;
 
-use app\common\helpers\EasyHelper;
-use app\common\helpers\Message;
 use app\models\User;
 use app\models\UserDetail;
 use app\modules\user\controllers\base\ModuleController;
 use app\modules\user\models\LoginForm;
 use app\modules\user\models\RegisterForm;
+use hubeiwei\yii2tools\helpers\Helper;
+use hubeiwei\yii2tools\helpers\Message;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -93,7 +93,7 @@ class DefaultController extends ModuleController
                  */
                 $user->password_hash = $form->password;
 
-                $transaction = EasyHelper::beginTransaction();
+                $transaction = Helper::beginTransaction();
                 $flow = $user->save(false);
                 if ($flow) {
                     $user_detail = new UserDetail();

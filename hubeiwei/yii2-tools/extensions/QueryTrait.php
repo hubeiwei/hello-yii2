@@ -1,8 +1,8 @@
 <?php
 
-namespace app\common\extensions;
+namespace hubeiwei\yii2tools\extensions;
 
-use app\common\helpers\EasyHelper;
+use hubeiwei\yii2tools\helpers\Helper;
 
 trait QueryTrait
 {
@@ -10,8 +10,8 @@ trait QueryTrait
      * @param string $attribute
      *
      * @param string $expression
-     * 格式可以是"1,<2,!=3"或"1 <2 !=3"，具体可以看下面给出的方法
-     * @see EasyHelper::unifyLimiter()
+     * 格式可以是 "1,<2,!=3" 或 "1 <2 !=3"，你看下面给出的方法就明白了
+     * @see Helper::unifyLimiter()
      *
      * @return $this
      */
@@ -19,7 +19,7 @@ trait QueryTrait
     {
         $value = '';
         $expression = "$expression";
-        $conditions = explode(',', EasyHelper::unifyLimiter($expression));
+        $conditions = explode(',', Helper::unifyLimiter($expression));
         foreach ($conditions as $condition) {
             if (preg_match('/^(?:\s*(<>|!=|<=|>=|<|>|=))?(.*)$/', $condition, $matches)) {
                 $op = $matches[1];
@@ -44,7 +44,7 @@ trait QueryTrait
     }
 
     /**
-     * @see \app\common\widgets\DateRangePicker
+     * @see \hubeiwei\yii2tools\widgets\DateRangePicker
      *
      * @param string $attribute
      * @param string $value

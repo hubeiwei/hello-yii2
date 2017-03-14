@@ -1,11 +1,11 @@
 <?php
 
-use app\common\grid\ActionColumn;
-use app\common\grid\SerialColumn;
-use app\common\helpers\RenderHelper;
-use app\common\widgets\DateRangePicker;
-use app\common\widgets\Select2;
 use app\models\Setting;
+use hubeiwei\yii2tools\grid\ActionColumn;
+use hubeiwei\yii2tools\grid\SerialColumn;
+use hubeiwei\yii2tools\helpers\RenderHelper;
+use hubeiwei\yii2tools\widgets\DateRangePicker;
+use hubeiwei\yii2tools\widgets\Select2;
 use yii\helpers\Html;
 
 /**

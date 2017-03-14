@@ -2,10 +2,10 @@
 
 namespace app\modules\backend\controllers;
 
-use app\common\helpers\Message;
 use app\models\search\SettingSearch;
 use app\models\Setting;
 use app\modules\backend\controllers\base\ModuleController;
+use hubeiwei\yii2tools\helpers\Message;
 use Yii;
 use yii\base\ErrorException;
 use yii\filters\VerbFilter;

@@ -2,8 +2,6 @@
 
 namespace app\models\base;
 
-use Yii;
-
 /**
  * This is the model class for table "setting".
  *
@@ -17,7 +15,7 @@ use Yii;
  * @property string $created_at
  * @property string $updated_at
  */
-class SettingBase extends \app\common\extensions\ActiveRecord
+class SettingBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -2,8 +2,6 @@
 
 namespace app\models\base;
 
-use Yii;
-
 /**
  * This is the model class for table "user_detail".
  *
@@ -16,7 +14,7 @@ use Yii;
  * @property string $resume
  * @property string $updated_at
  */
-class UserDetailBase extends \app\common\extensions\ActiveRecord
+class UserDetailBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
 {
     /**
      * @inheritdoc

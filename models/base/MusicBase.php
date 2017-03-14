@@ -2,8 +2,6 @@
 
 namespace app\models\base;
 
-use Yii;
-
 /**
  * This is the model class for table "music".
  *
@@ -16,7 +14,7 @@ use Yii;
  * @property string $created_at
  * @property string $updated_at
  */
-class MusicBase extends \app\common\extensions\ActiveRecord
+class MusicBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
 {
     /**
      * @inheritdoc

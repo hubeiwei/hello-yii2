@@ -1,8 +1,8 @@
 <?php
 
 use app\common\helpers\UserHelper;
-use app\common\widgets\Alert;
-use app\common\widgets\CssBlock;
+use hubeiwei\yii2tools\widgets\Alert;
+use hubeiwei\yii2tools\widgets\CssBlock;
 use mdm\admin\components\MenuHelper;
 use yii\widgets\Breadcrumbs;
 

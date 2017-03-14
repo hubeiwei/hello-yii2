@@ -1,12 +1,13 @@
 <?php
-namespace app\common\grid;
+
+namespace hubeiwei\yii2tools\grid;
 
 use kartik\export\ExportMenu as KartikExportMenu;
 
 /**
- * 虽然在RenderHelper有根据业务来封装，但为了单独使用ExportMenu，在这里进行部分配置
- * @see \app\common\helpers\RenderHelper::gridView()
- * @see \app\common\helpers\RenderHelper::dynaGrid()
+ * 虽然在 RenderHelper 有根据业务来封装，但为了有时候能单独使用 ExportMenu，在这里进行部分配置
+ * @see \hubeiwei\yii2tools\helpers\RenderHelper::gridView()
+ * @see \hubeiwei\yii2tools\helpers\RenderHelper::dynaGrid()
  */
 class ExportMenu extends KartikExportMenu
 {
@@ -19,7 +20,7 @@ class ExportMenu extends KartikExportMenu
 //    public $batchSize = 500;
 
     /**
-     * 打算在这里弄个导出时临时修改内存的，还在建设中
+     * 打算在这里弄个导出时临时修改内存的，还没开始用
      *
      * @throws \yii\base\InvalidConfigException
      */

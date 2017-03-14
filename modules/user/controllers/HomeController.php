@@ -2,11 +2,11 @@
 
 namespace app\modules\user\controllers;
 
-use app\common\helpers\Message;
 use app\common\helpers\UserHelper;
 use app\models\UserDetail;
 use app\modules\user\controllers\base\ModuleController;
 use app\modules\user\models\UserDetailValidator;
+use hubeiwei\yii2tools\helpers\Message;
 use Yii;
 use yii\filters\AccessControl;
 

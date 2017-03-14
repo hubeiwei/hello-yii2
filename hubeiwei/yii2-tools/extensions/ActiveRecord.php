@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HBW
- * Date: 2016/4/1
- * Time: 23:28
- * To change this template use File | Setting | File Templates.
- */
 
-namespace app\common\extensions;
+namespace hubeiwei\yii2tools\extensions;
 
 use yii\db\ActiveRecord as YiiActiveRecord;
 

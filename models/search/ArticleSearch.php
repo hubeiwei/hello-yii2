@@ -67,7 +67,7 @@ class ArticleSearch extends Article
      */
     public function search($params)
     {
-        /** @var \app\common\extensions\ActiveQuery $query */
+        /** @var \hubeiwei\yii2tools\extensions\ActiveQuery $query */
         $query = self::find()
             ->alias('article')
             ->select([

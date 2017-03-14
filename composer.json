@@ -32,6 +32,11 @@
         "yiisoft/yii2-gii": "~2.0.0",
         "yiisoft/yii2-faker": "~2.0.0"
     },
+    "autoload": {
+        "psr-4": {
+            "hubeiwei\\yii2tools\\": "hubeiwei/yii2-tools"
+        }
+    },
     "config": {
         "process-timeout": 1800
     },

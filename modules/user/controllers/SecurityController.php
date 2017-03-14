@@ -2,10 +2,10 @@
 
 namespace app\modules\user\controllers;
 
-use app\common\helpers\Message;
 use app\modules\user\controllers\base\ModuleController;
 use app\modules\user\models\PasswordResetRequest;
 use app\modules\user\models\ResetPassword;
+use hubeiwei\yii2tools\helpers\Message;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;

@@ -1,16 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hubeiwei
- * Date: 2016/11/22
- * Time: 12:39
- */
 
-namespace app\common\widgets;
+namespace hubeiwei\yii2tools\widgets;
 
 use yii\web\View;
 use yii\widgets\Block;
 
+/**
+ * 来源：
+ * @link https://getyii.com/topic/9
+ */
 class JsBlock extends Block
 {
     /**

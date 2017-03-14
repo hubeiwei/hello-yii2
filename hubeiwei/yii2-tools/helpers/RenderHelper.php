@@ -1,16 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HBW
- * Date: 2016/4/1
- * Time: 22:30
- * To change this template use File | Setting | File Templates.
- */
 
-namespace app\common\helpers;
+namespace hubeiwei\yii2tools\helpers;
 
-use app\common\grid\ExportMenu;
-use app\common\grid\GridView;
+use hubeiwei\yii2tools\grid\ExportMenu;
+use hubeiwei\yii2tools\grid\GridView;
 use kartik\dynagrid\DynaGrid;
 use liyunfang\pager\LinkPager;
 use Yii;
@@ -21,23 +14,31 @@ use yii\helpers\Html;
 class RenderHelper
 {
     /**
-     * GridView枚举类字段搜索专用下拉框，不支持DynaGrid的默认排序
+     * GridView 枚举类字段搜索用到下拉框
+     * 使用 DynaGrid 的默认过滤时不会选中，需要使用 Select2
+     * @see \hubeiwei\yii2tools\widgets\Select2
      *
      * @param Model $model
      * @param string $attribute
-     * @param array $list 形如[value1 => label1, value2 => label2]的数组
+     * @param array $map
+     * @param array $options
      * @return null|string
      */
-    public static function dropDownFilter($model, $attribute, $list)
+    public static function dropDownFilter($model, $attribute, $map, $options = [])
     {
         if ($model instanceof Model) {
-            return Html::dropDownList(
-                $model->formName() . '[' . $attribute . ']', $model->$attribute,
-                ['' => '全部'] + $list,
+            $options = ArrayHelper::merge(
                 [
-                    'class' => 'form-control',
+                    'class' => ['form-control'],
                     'style' => ['min-width' => '120px'],
-                ]
+                ],
+                $options
+            );
+            return Html::dropDownList(
+                $model->formName() . '[' . $attribute . ']',
+                $model->$attribute,
+                ['' => '全部'] + $map,
+                $options
             );
         } else {
             return null;
@@ -45,9 +46,7 @@ class RenderHelper
     }
 
     /**
-     * 根据业务来封装的GridView，部分配置需要到类本身查看
-     * @see GridView
-     * @see ExportMenu 导出
+     * 根据业务来封装的 GridView
      *
      * @param $dataProvider \yii\data\ActiveDataProvider|\yii\data\ArrayDataProvider|\yii\data\SqlDataProvider
      * @param $gridColumns array
@@ -110,8 +109,9 @@ class RenderHelper
     }
 
     /**
-     * 根据业务来封装的DynaGrid，部分配置需要到`config/modules.php`查看
-     * @see ExportMenu 导出
+     * 根据业务来封装的 DynaGrid
+     * DynaGrid 的模块配置可以参考我的：
+     * @link https://github.com/hubeiwei/hello-yii2/blob/master/config/modules.php#L40
      *
      * @param $id string
      * @param $dataProvider \yii\data\ActiveDataProvider|\yii\data\ArrayDataProvider|\yii\data\SqlDataProvider

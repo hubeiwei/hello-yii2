@@ -1,10 +1,10 @@
 <?php
 
-use app\common\grid\SerialColumn;
-use app\common\helpers\RenderHelper;
-use app\common\widgets\DateRangePicker;
-use app\common\widgets\JsBlock;
 use app\models\Music;
+use hubeiwei\yii2tools\grid\SerialColumn;
+use hubeiwei\yii2tools\helpers\RenderHelper;
+use hubeiwei\yii2tools\widgets\DateRangePicker;
+use hubeiwei\yii2tools\widgets\JsBlock;
 use yii\helpers\Html;
 
 /**

@@ -1,25 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hubeiwei
- * Date: 2016/10/30
- * Time: 9:45
- */
 
-namespace app\common\widgets;
+namespace hubeiwei\yii2tools\widgets;
 
-use app\common\helpers\Message;
+use hubeiwei\yii2tools\helpers\Message;
 use kartik\growl\Growl as KartikGrowl;
 use Yii;
 use yii\bootstrap\Widget;
 
 /**
- * 输出消息用，建议放在layout里
+ * 输出消息用，建议放在 layout 里
  * ```php
- * <?= app\common\widgets\Growl::widget() ?>
+ * <?= hubeiwei\yii2tools\widgets\Growl::widget() ?>
  * ```
  *
- * 设置消息请看Message类
+ * 设置消息请看 Message 类
  * @see Message
  */
 class Growl extends Widget

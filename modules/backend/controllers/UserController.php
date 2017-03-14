@@ -2,12 +2,12 @@
 
 namespace app\modules\backend\controllers;
 
-use app\common\helpers\EasyHelper;
-use app\common\helpers\Message;
 use app\models\search\UserSearch;
 use app\models\User;
 use app\models\UserDetail;
 use app\modules\backend\controllers\base\ModuleController;
+use hubeiwei\yii2tools\helpers\Helper;
+use hubeiwei\yii2tools\helpers\Message;
 use Yii;
 use yii\base\ErrorException;
 use yii\filters\VerbFilter;
@@ -71,7 +71,7 @@ class UserController extends ModuleController
 
         if ($user->load(Yii::$app->request->post())) {
 
-            $transaction = EasyHelper::beginTransaction();
+            $transaction = Helper::beginTransaction();
             $flow = $user->save(false);
             if ($flow) {
                 $user_detail = new UserDetail();
@@ -129,7 +129,7 @@ class UserController extends ModuleController
         $model = $this->findModel($id);
         $userDetail = UserDetail::findOne(['user_id' => $id]);
 
-        $transaction = EasyHelper::beginTransaction();
+        $transaction = Helper::beginTransaction();
         if ($model->delete() && $userDetail->delete()) {
             $transaction->commit();
             if (!$request->isAjax) {

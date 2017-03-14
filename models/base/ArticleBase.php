@@ -2,8 +2,6 @@
 
 namespace app\models\Base;
 
-use Yii;
-
 /**
  * This is the model class for table "article".
  *
@@ -18,7 +16,7 @@ use Yii;
  * @property string $created_at
  * @property string $updated_at
  */
-class ArticleBase extends \app\common\extensions\ActiveRecord
+class ArticleBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
 {
     /**
      * @inheritdoc

@@ -2,11 +2,11 @@
 
 namespace app\modules\backend\controllers;
 
-use app\common\helpers\Message;
 use app\models\search\UserDetailSearch;
 use app\models\UserDetail;
 use app\modules\backend\controllers\base\ModuleController;
 use app\modules\user\models\UserDetailValidator;
+use hubeiwei\yii2tools\helpers\Message;
 use Yii;
 use yii\web\NotFoundHttpException;
 

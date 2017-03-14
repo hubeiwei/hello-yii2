@@ -1,10 +1,10 @@
 <?php
 
-use app\common\grid\ActionColumn;
-use app\common\grid\SerialColumn;
-use app\common\helpers\RenderHelper;
-use app\common\widgets\DateRangePicker;
 use app\models\Article;
+use hubeiwei\yii2tools\grid\ActionColumn;
+use hubeiwei\yii2tools\grid\SerialColumn;
+use hubeiwei\yii2tools\helpers\RenderHelper;
+use hubeiwei\yii2tools\widgets\DateRangePicker;
 use yii\bootstrap\ButtonDropdown;
 use yii\helpers\Html;
 

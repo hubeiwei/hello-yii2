@@ -56,7 +56,7 @@ if (YII_ENV_DEV) {
             'model' => [
                 'class' => 'yii\gii\generators\model\Generator',
                 'ns' => 'app\models\base',
-                'baseClass' => 'app\common\extensions\ActiveRecord',
+                'baseClass' => 'hubeiwei\yii2tools\extensions\ActiveRecord',
                 'generateLabelsFromComments' => true,
             ],
             'crud' => [

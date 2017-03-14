@@ -2,12 +2,12 @@
 
 namespace app\modules\frontend\controllers;
 
-use app\common\helpers\Message;
 use app\common\helpers\UserHelper;
 use app\models\Music;
 use app\models\search\MusicSearch;
 use app\modules\frontend\controllers\base\ModuleController;
 use app\modules\frontend\models\MusicValidator;
+use hubeiwei\yii2tools\helpers\Message;
 use Yii;
 use yii\base\ErrorException;
 use yii\filters\AccessControl;

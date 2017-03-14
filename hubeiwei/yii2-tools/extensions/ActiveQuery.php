@@ -1,6 +1,6 @@
 <?php
 
-namespace app\common\extensions;
+namespace hubeiwei\yii2tools\extensions;
 
 use yii\db\ActiveQuery as YiiActiveQuery;
 

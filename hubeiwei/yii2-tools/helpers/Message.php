@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hubeiwei
- * Date: 2016/10/30
- * Time: 0:28
- */
 
-namespace app\common\helpers;
+namespace hubeiwei\yii2tools\helpers;
 
 use Yii;
 use yii\bootstrap\Widget;
@@ -15,16 +9,16 @@ use yii\bootstrap\Widget;
  * 封装该类主要是为了定义一些常量以及固定的方法以方便后期管理
  *
  * ```php
- * use app\common\helpers\Message;
+ * use hubeiwei\yii2tools\helpers\Message;
  *
  * \Yii::$app->session->setFlash(Message::TYPE_INFO, 'message');
  * Message::setSuccessMsg('success');
  * Message::setErrorMsg(['error1', 'error2']);
  * ```
  *
- * 以下两个widget支持批量输出所有而且数据类型为数组的消息
- * @see \app\common\widgets\Alert
- * @see \app\common\widgets\Growl
+ * 以下两个 widget 支持批量输出所有而且数据类型为数组的消息
+ * @see \hubeiwei\yii2tools\widgets\Alert
+ * @see \hubeiwei\yii2tools\widgets\Growl
  */
 class Message extends Widget
 {

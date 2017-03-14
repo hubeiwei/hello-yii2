@@ -26,7 +26,7 @@ class UserSearch extends User
      */
     public function search($params)
     {
-        /** @var \app\common\extensions\ActiveQuery $query */
+        /** @var \hubeiwei\yii2tools\extensions\ActiveQuery $query */
         $query = self::find();
 
         $dataProvider = new ActiveDataProvider([

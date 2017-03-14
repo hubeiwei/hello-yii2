@@ -1,6 +1,6 @@
 <?php
 
-use app\common\widgets\DateRangePicker;
+use hubeiwei\yii2tools\widgets\DateRangePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 

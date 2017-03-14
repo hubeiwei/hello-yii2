@@ -1,7 +1,7 @@
 <?php
 
-use app\common\widgets\CssBlock;
-use app\common\widgets\Growl;
+use hubeiwei\yii2tools\widgets\CssBlock;
+use hubeiwei\yii2tools\widgets\Growl;
 use yii\widgets\Breadcrumbs;
 
 /**
