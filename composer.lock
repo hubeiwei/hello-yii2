@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "62d9ec2c7bdd6ff0b07f2e75f24b65a8",
+    "content-hash": "cdb38d153ff1c2c4666f2072802529ef",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -390,6 +390,58 @@
             "time": "2017-03-13T06:30:53+00:00"
         },
         {
+            "name": "hubeiwei/yii2-tools",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hubeiwei/yii2-tools.git",
+                "reference": "66418caa5e874a5302fe5cbd48328e213d7ece5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hubeiwei/yii2-tools/zipball/66418caa5e874a5302fe5cbd48328e213d7ece5c",
+                "reference": "66418caa5e874a5302fe5cbd48328e213d7ece5c",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-date-range": "*",
+                "kartik-v/yii2-dynagrid": "*",
+                "kartik-v/yii2-export": "*",
+                "kartik-v/yii2-grid": "*",
+                "kartik-v/yii2-password": "*",
+                "kartik-v/yii2-widget-alert": "*",
+                "kartik-v/yii2-widget-growl": "*",
+                "kartik-v/yii2-widget-select2": "*",
+                "liyunfang/yii2-widget-linkpager": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "hubeiwei\\yii2tools\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "hubeiwei",
+                    "email": "hubeiwei@hotmail.com",
+                    "homepage": "http://hubeiwei.github.io"
+                }
+            ],
+            "description": "自己在 yii2 上封装的一些东西",
+            "homepage": "https://github.com/hubeiwei/yii2-tools",
+            "keywords": [
+                "extension",
+                "tools",
+                "widget",
+                "yii2"
+            ],
+            "time": "2017-03-15T04:51:26+00:00"
+        },
+        {
             "name": "ijackua/yii2-lepture-markdown-editor-widget",
             "version": "1.0.0",
             "source": {
@@ -532,16 +584,16 @@
         },
         {
             "name": "kartik-v/yii2-date-range",
-            "version": "dev-master",
+            "version": "v1.6.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-date-range.git",
-                "reference": "01b9202c9141e7c939c233c803e8693a23c15374"
+                "reference": "c7177cd89cc90772acc96a05fbf5996f67127e4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-date-range/zipball/01b9202c9141e7c939c233c803e8693a23c15374",
-                "reference": "01b9202c9141e7c939c233c803e8693a23c15374",
+                "url": "https://api.github.com/repos/kartik-v/yii2-date-range/zipball/c7177cd89cc90772acc96a05fbf5996f67127e4c",
+                "reference": "c7177cd89cc90772acc96a05fbf5996f67127e4c",
                 "shasum": ""
             },
             "require": {
@@ -582,7 +634,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-03-13 05:14:28"
+            "time": "2016-07-12T07:02:07+00:00"
         },
         {
             "name": "kartik-v/yii2-dialog",
@@ -638,16 +690,16 @@
         },
         {
             "name": "kartik-v/yii2-dynagrid",
-            "version": "dev-master",
+            "version": "v1.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-dynagrid.git",
-                "reference": "e38b3f8cdd695351c5052c22491636393aefce0e"
+                "reference": "8ed61fa996c949b233e3c3f241f24e91da76d95e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-dynagrid/zipball/e38b3f8cdd695351c5052c22491636393aefce0e",
-                "reference": "e38b3f8cdd695351c5052c22491636393aefce0e",
+                "url": "https://api.github.com/repos/kartik-v/yii2-dynagrid/zipball/8ed61fa996c949b233e3c3f241f24e91da76d95e",
+                "reference": "8ed61fa996c949b233e3c3f241f24e91da76d95e",
                 "shasum": ""
             },
             "require": {
@@ -657,11 +709,6 @@
                 "kartik-v/yii2-widget-select2": "~2.0"
             },
             "type": "yii2-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "kartik\\dynagrid\\": ""
@@ -694,25 +741,24 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-02-26 05:48:44"
+            "time": "2015-08-04T15:22:13+00:00"
         },
         {
             "name": "kartik-v/yii2-export",
-            "version": "dev-master",
+            "version": "v1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-export.git",
-                "reference": "4862c52f9190e2e199d4490ee8a6b24d3c7947f5"
+                "reference": "2a77907a7eb6885573ca3871241e3394b33e39ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-export/zipball/4862c52f9190e2e199d4490ee8a6b24d3c7947f5",
-                "reference": "4862c52f9190e2e199d4490ee8a6b24d3c7947f5",
+                "url": "https://api.github.com/repos/kartik-v/yii2-export/zipball/2a77907a7eb6885573ca3871241e3394b33e39ea",
+                "reference": "2a77907a7eb6885573ca3871241e3394b33e39ea",
                 "shasum": ""
             },
             "require": {
-                "kartik-v/yii2-dialog": "~1.0.0",
-                "kartik-v/yii2-dynagrid": ">=1.4.5",
+                "kartik-v/yii2-grid": "~3.0",
                 "phpoffice/phpexcel": "~1.8.0"
             },
             "type": "yii2-extension",
@@ -754,28 +800,25 @@
                 "xlsx",
                 "yii2"
             ],
-            "time": "2017-03-13 06:21:23"
+            "time": "2016-04-18T16:54:14+00:00"
         },
         {
             "name": "kartik-v/yii2-grid",
-            "version": "dev-master",
+            "version": "v3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "05b889d6b51cdebd7e442be51b3cb7cf4f49fb9a"
+                "reference": "448db13904dad68153ef466bbc905b916a2a5900"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/05b889d6b51cdebd7e442be51b3cb7cf4f49fb9a",
-                "reference": "05b889d6b51cdebd7e442be51b3cb7cf4f49fb9a",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/448db13904dad68153ef466bbc905b916a2a5900",
+                "reference": "448db13904dad68153ef466bbc905b916a2a5900",
                 "shasum": ""
             },
             "require": {
                 "kartik-v/yii2-dialog": "~1.0",
                 "kartik-v/yii2-krajee-base": "~1.7"
-            },
-            "suggest": {
-                "kartik-v/yii2-mpdf": "For exporting grids to PDF"
             },
             "type": "yii2-extension",
             "extra": {
@@ -807,7 +850,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-03-11 10:54:52"
+            "time": "2016-10-22T16:52:42+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -862,16 +905,16 @@
         },
         {
             "name": "kartik-v/yii2-password",
-            "version": "dev-master",
+            "version": "v1.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-password.git",
-                "reference": "fb5634389a1eaa87c3f321761add3fd46ce7677b"
+                "reference": "5413e68cc6d2f3db6374882d4149b575e060fa8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-password/zipball/fb5634389a1eaa87c3f321761add3fd46ce7677b",
-                "reference": "fb5634389a1eaa87c3f321761add3fd46ce7677b",
+                "url": "https://api.github.com/repos/kartik-v/yii2-password/zipball/5413e68cc6d2f3db6374882d4149b575e060fa8a",
+                "reference": "5413e68cc6d2f3db6374882d4149b575e060fa8a",
                 "shasum": ""
             },
             "require": {
@@ -909,7 +952,7 @@
                 "yii",
                 "yii2"
             ],
-            "time": "2016-05-15 19:25:37"
+            "time": "2016-01-10T16:56:43+00:00"
         },
         {
             "name": "kartik-v/yii2-sortable",
@@ -1062,16 +1105,16 @@
         },
         {
             "name": "kartik-v/yii2-widget-datepicker",
-            "version": "dev-master",
+            "version": "v1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-datepicker.git",
-                "reference": "92e04c6a9ff90c4290db7566f68af429f2d641d5"
+                "reference": "8738f6dc3211d949b05189ba103aab786143fc6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/92e04c6a9ff90c4290db7566f68af429f2d641d5",
-                "reference": "92e04c6a9ff90c4290db7566f68af429f2d641d5",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/8738f6dc3211d949b05189ba103aab786143fc6c",
+                "reference": "8738f6dc3211d949b05189ba103aab786143fc6c",
                 "shasum": ""
             },
             "require": {
@@ -1112,7 +1155,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-11-11 15:42:04"
+            "time": "2016-09-04T10:52:50+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-datetimepicker",
@@ -1165,16 +1208,16 @@
         },
         {
             "name": "kartik-v/yii2-widget-fileinput",
-            "version": "dev-master",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-fileinput.git",
-                "reference": "744e12c1f5be45357ec50eea6f678ecc9ba67dc2"
+                "reference": "3b8f6819f2cd01becff5251b8b952ac3e57b903a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/744e12c1f5be45357ec50eea6f678ecc9ba67dc2",
-                "reference": "744e12c1f5be45357ec50eea6f678ecc9ba67dc2",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/3b8f6819f2cd01becff5251b8b952ac3e57b903a",
+                "reference": "3b8f6819f2cd01becff5251b8b952ac3e57b903a",
                 "shasum": ""
             },
             "require": {
@@ -1216,7 +1259,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-10-18 06:35:15"
+            "time": "2016-06-16T06:53:01+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-growl",
@@ -1269,16 +1312,16 @@
         },
         {
             "name": "kartik-v/yii2-widget-select2",
-            "version": "dev-master",
+            "version": "v2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-select2.git",
-                "reference": "9d2f24a3beba5364bc53996f9d7259a13e29e797"
+                "reference": "4d03239c1e28ef8d3b96ab7fe360f5cbda34fb69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/9d2f24a3beba5364bc53996f9d7259a13e29e797",
-                "reference": "9d2f24a3beba5364bc53996f9d7259a13e29e797",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/4d03239c1e28ef8d3b96ab7fe360f5cbda34fb69",
+                "reference": "4d03239c1e28ef8d3b96ab7fe360f5cbda34fb69",
                 "shasum": ""
             },
             "require": {
@@ -1318,7 +1361,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-03-07 10:03:08"
+            "time": "2016-02-17T11:49:30+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-sidenav",
@@ -1371,16 +1414,16 @@
         },
         {
             "name": "liyunfang/yii2-widget-linkpager",
-            "version": "dev-master",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpyii/yii2-widget-linkpager.git",
-                "reference": "3a0ba3cd5de8e173ffe9e078161731bd0bf6d959"
+                "reference": "2811a2b7a9bd9f0ccc087d5455d282b08001614f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpyii/yii2-widget-linkpager/zipball/3a0ba3cd5de8e173ffe9e078161731bd0bf6d959",
-                "reference": "3a0ba3cd5de8e173ffe9e078161731bd0bf6d959",
+                "url": "https://api.github.com/repos/phpyii/yii2-widget-linkpager/zipball/2811a2b7a9bd9f0ccc087d5455d282b08001614f",
+                "reference": "2811a2b7a9bd9f0ccc087d5455d282b08001614f",
                 "shasum": ""
             },
             "require": {
@@ -1411,7 +1454,7 @@
                 "yii2",
                 "yii2-widget-linkpager"
             ],
-            "time": "2016-11-25 09:03:50"
+            "time": "2015-09-24T04:23:54+00:00"
         },
         {
             "name": "mdmsoft/yii2-admin",
@@ -2142,15 +2185,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "kartik-v/yii2-date-range": 20,
-        "kartik-v/yii2-dynagrid": 20,
-        "kartik-v/yii2-export": 20,
-        "kartik-v/yii2-grid": 20,
-        "kartik-v/yii2-password": 20,
-        "kartik-v/yii2-widget-datepicker": 20,
-        "kartik-v/yii2-widget-fileinput": 20,
-        "kartik-v/yii2-widget-select2": 20,
-        "liyunfang/yii2-widget-linkpager": 20
+        "hubeiwei/yii2-tools": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

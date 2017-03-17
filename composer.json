@@ -9,33 +9,21 @@
         "yiisoft/yii2": "~2.0.5",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
-        "mdmsoft/yii2-admin": "~2.0",
-        "kartik-v/yii2-date-range": "dev-master",
-        "kartik-v/yii2-dynagrid": "@dev",
-        "kartik-v/yii2-export": "@dev",
-        "kartik-v/yii2-grid": "@dev",
-        "kartik-v/yii2-password": "@dev",
-        "kartik-v/yii2-widget-alert": "*",
-        "kartik-v/yii2-widget-datepicker": "@dev",
-        "kartik-v/yii2-widget-datetimepicker": "*",
-        "kartik-v/yii2-widget-fileinput": "@dev",
-        "kartik-v/yii2-widget-growl": "*",
-        "kartik-v/yii2-widget-select2": "@dev",
-        "kartik-v/yii2-widget-sidenav": "*",
-        "liyunfang/yii2-widget-linkpager": "dev-master",
+
+        "bower-asset/highlightjs": "*",
+        "hubeiwei/yii2-tools": "dev-master",
         "ijackua/yii2-lepture-markdown-editor-widget": "^1.0",
-        "yiidoc/yii2-redactor": "*",
-        "bower-asset/highlightjs": "*"
+        "kartik-v/yii2-widget-datepicker": "*",
+        "kartik-v/yii2-widget-datetimepicker": "*",
+        "kartik-v/yii2-widget-fileinput": "*",
+        "kartik-v/yii2-widget-sidenav": "*",
+        "mdmsoft/yii2-admin": "~2.0",
+        "yiidoc/yii2-redactor": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-gii": "~2.0.0",
         "yiisoft/yii2-faker": "~2.0.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "hubeiwei\\yii2tools\\": "hubeiwei/yii2-tools"
-        }
     },
     "config": {
         "process-timeout": 1800
