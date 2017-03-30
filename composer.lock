@@ -57,16 +57,16 @@
         },
         {
             "name": "bower-asset/bootstrap3-dialog",
-            "version": "v1.35.3",
+            "version": "v1.35.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nakupanda/bootstrap3-dialog.git",
-                "reference": "4aa9d536516957e01c39afd1b5e8bdd88976ef7b"
+                "reference": "3dd11d586f78de75356af418907ec6e3b347377c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nakupanda/bootstrap3-dialog/zipball/4aa9d536516957e01c39afd1b5e8bdd88976ef7b",
-                "reference": "4aa9d536516957e01c39afd1b5e8bdd88976ef7b",
+                "url": "https://api.github.com/repos/nakupanda/bootstrap3-dialog/zipball/3dd11d586f78de75356af418907ec6e3b347377c",
+                "reference": "3dd11d586f78de75356af418907ec6e3b347377c",
                 "shasum": ""
             },
             "require": {
@@ -395,12 +395,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hubeiwei/yii2-tools.git",
-                "reference": "66418caa5e874a5302fe5cbd48328e213d7ece5c"
+                "reference": "bb57f26a551f88b14379901e9e119e741c66019a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hubeiwei/yii2-tools/zipball/66418caa5e874a5302fe5cbd48328e213d7ece5c",
-                "reference": "66418caa5e874a5302fe5cbd48328e213d7ece5c",
+                "url": "https://api.github.com/repos/hubeiwei/yii2-tools/zipball/bb57f26a551f88b14379901e9e119e741c66019a",
+                "reference": "bb57f26a551f88b14379901e9e119e741c66019a",
                 "shasum": ""
             },
             "require": {
@@ -439,7 +439,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-03-15T04:51:26+00:00"
+            "time": "2017-03-26T14:52:03+00:00"
         },
         {
             "name": "ijackua/yii2-lepture-markdown-editor-widget",
