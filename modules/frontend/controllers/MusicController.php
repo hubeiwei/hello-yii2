@@ -10,9 +10,7 @@ use app\modules\frontend\models\MusicValidator;
 use hubeiwei\yii2tools\helpers\Message;
 use Yii;
 use yii\base\ErrorException;
-use yii\caching\DbDependency;
 use yii\filters\AccessControl;
-use yii\filters\PageCache;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
@@ -50,15 +48,6 @@ class MusicController extends ModuleController
                         ],
                         'roles' => ['@'],
                     ],
-                ],
-            ],
-            'pageCache' => [
-                'class' => PageCache::className(),
-                'only' => ['index'],
-                'duration' => 300,
-                'dependency' => [
-                    'class' => DbDependency::className(),
-                    'sql' => 'SELECT COUNT(*) FROM ' . Music::tableName(),
                 ],
             ],
         ];
