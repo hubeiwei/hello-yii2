@@ -1,7 +1,8 @@
 {
     "name": "hubeiwei/hello-yii2",
     "description": "练手用",
-    "homepage": "https://github.com/hubeiwei/laohu-yii2",
+    "keywords": ["yii2", "basic"],
+    "homepage": "https://github.com/hubeiwei/hello-yii2",
     "type": "project",
     "license": "MIT",
     "require": {
