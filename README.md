@@ -40,7 +40,7 @@
 
 ```
 composer self-update
-composer global require "fxp/composer-asset-plugin:^1.2.0"
+composer global require "fxp/composer-asset-plugin:^1.3.1"
 composer install --prefer-dist
 ```
 
