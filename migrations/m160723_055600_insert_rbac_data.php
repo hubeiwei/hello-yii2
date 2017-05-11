@@ -40,33 +40,45 @@ class m160723_055600_insert_rbac_data extends Migration
         ]);
 
         $this->batchInsert('auth_item', ['name', 'type', 'description', 'created_at', 'updated_at'], [
-            ['Guest', 1, '访客', $time, $time],
-            ['SuperAdmin', 1, '超管', $time, $time],
+            ['guest', 1, '访客', $time, $time],
+            ['admin', 1, '管理员', $time, $time],
         ]);
 
         $this->insert('auth_item_child', [
-            'parent' => 'SuperAdmin',
+            'parent' => 'admin',
             'child' => '/*',
         ]);
 
+        // 创建一级菜单
         $this->batchInsert('menu', ['name', 'parent', 'route', 'order'], [
             ['首页', null, '/backend/default/index', 1],
             ['前台', null, null, 2],
+            ['用户', null, null, 3],
+            ['权限管理', null, null, 4],
+            ['系统', null, null, 5],
+        ]);
+
+        // 创建子菜单
+        $this->batchInsert('menu', ['name', 'parent', 'route', 'order'], [
+            // 前台，id：2
             ['文章管理', 2, '/backend/article/index', 1],
             ['音乐管理', 2, '/backend/music/index', 2],
-            ['用户', null, null, 3],
-            ['用户管理', 5, '/backend/user/index', 1],
-            ['用户资料', 5, '/backend/user-detail/index', 2],
-            ['权限管理', null, null, 4],
-            ['分配', 8, '/admin/assignment/index', 1],
-            ['角色列表', 8, '/admin/role/index', 2],
-            ['权限列表', 8, '/admin/permission/index', 3],
-            ['规则列表', 8, '/admin/rule/index', 4],
-            ['菜单列表', 8, '/admin/menu/index', 5],
-            ['路由列表', 8, '/admin/route/index', 6],
-            ['系统', null, null, 5],
-            ['网站配置', 15, '/backend/setting/index', 1],
-            ['代码生成', 15, '/gii/default/index', 2],
+
+            // 用户，id：3
+            ['用户管理', 3, '/backend/user/index', 1],
+            ['用户资料', 3, '/backend/user-detail/index', 2],
+
+            // 权限管理：id：4
+            ['分配', 4, '/admin/assignment/index', 1],
+            ['角色列表', 4, '/admin/role/index', 2],
+            ['权限列表', 4, '/admin/permission/index', 3],
+            ['规则列表', 4, '/admin/rule/index', 4],
+            ['菜单列表', 4, '/admin/menu/index', 5],
+            ['路由列表', 4, '/admin/route/index', 6],
+
+            // 系统，id：5
+            ['网站配置', 5, '/backend/setting/index', 1],
+            ['代码生成', 5, '/gii/default/index', 2],
         ]);
     }
 

@@ -2,17 +2,19 @@
 
 namespace app\models\base;
 
+use Yii;
+
 /**
- * This is the model class for table "user_detail".
+ * This is the model class for table "{{%user_detail}}".
  *
- * @property string $id
- * @property string $user_id
+ * @property integer $id
+ * @property integer $user_id
  * @property string $avatar_file
- * @property string $gender
- * @property string $birthday
+ * @property integer $gender
+ * @property integer $birthday
  * @property string $phone
  * @property string $resume
- * @property string $updated_at
+ * @property integer $updated_at
  */
 class UserDetailBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
 {
@@ -21,7 +23,7 @@ class UserDetailBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
      */
     public static function tableName()
     {
-        return 'user_detail';
+        return '{{%user_detail}}';
     }
 
     /**
@@ -31,8 +33,7 @@ class UserDetailBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
     {
         return [
             [['user_id'], 'required'],
-            [['user_id', 'birthday', 'updated_at'], 'integer'],
-            [['gender'], 'string'],
+            [['user_id', 'gender', 'birthday', 'updated_at'], 'integer'],
             [['avatar_file', 'resume'], 'string', 'max' => 100],
             [['phone'], 'string', 'max' => 11],
             [['user_id'], 'unique'],

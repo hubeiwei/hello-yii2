@@ -2,18 +2,20 @@
 
 namespace app\models\base;
 
+use Yii;
+
 /**
- * This is the model class for table "setting".
+ * This is the model class for table "{{%setting}}".
  *
- * @property string $id
+ * @property integer $id
  * @property string $key
  * @property string $value
- * @property string $status
+ * @property integer $status
  * @property string $description
  * @property string $tag
- * @property string $updated_by
- * @property string $created_at
- * @property string $updated_at
+ * @property integer $updated_by
+ * @property integer $created_at
+ * @property integer $updated_at
  */
 class SettingBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
 {
@@ -22,7 +24,7 @@ class SettingBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
      */
     public static function tableName()
     {
-        return 'setting';
+        return '{{%setting}}';
     }
 
     /**
@@ -32,8 +34,8 @@ class SettingBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
     {
         return [
             [['key', 'value'], 'required'],
-            [['value', 'status'], 'string'],
-            [['updated_by', 'created_at', 'updated_at'], 'integer'],
+            [['value'], 'string'],
+            [['status', 'updated_by', 'created_at', 'updated_at'], 'integer'],
             [['key', 'tag'], 'string', 'max' => 20],
             [['description'], 'string', 'max' => 200],
             [['key'], 'unique'],

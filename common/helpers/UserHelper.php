@@ -38,7 +38,7 @@ class UserHelper
      */
     public static function isAdmin()
     {
-        return Yii::$app->getUser()->can('SuperAdmin');
+        return Yii::$app->getUser()->can('admin');
     }
 
     /**

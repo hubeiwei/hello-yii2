@@ -32,7 +32,7 @@ $config = [
     ],
     'authManager' => [
         'class' => 'yii\rbac\DbManager',
-        'defaultRoles' => ['Guest'],
+        'defaultRoles' => ['guest'],
     ],
     'formatter' => [
         'dateFormat' => 'php:Y-m-d',

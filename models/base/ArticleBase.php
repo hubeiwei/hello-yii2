@@ -1,20 +1,22 @@
 <?php
 
-namespace app\models\Base;
+namespace app\models\base;
+
+use Yii;
 
 /**
- * This is the model class for table "article".
+ * This is the model class for table "{{%article}}".
  *
- * @property string $id
+ * @property integer $id
  * @property string $title
- * @property string $created_by
- * @property string $published_at
+ * @property integer $created_by
+ * @property integer $published_at
  * @property string $content
- * @property string $visible
- * @property string $type
- * @property string $status
- * @property string $created_at
- * @property string $updated_at
+ * @property integer $visible
+ * @property integer $type
+ * @property integer $status
+ * @property integer $created_at
+ * @property integer $updated_at
  */
 class ArticleBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
 {
@@ -23,7 +25,7 @@ class ArticleBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
      */
     public static function tableName()
     {
-        return 'article';
+        return '{{%article}}';
     }
 
     /**
@@ -33,8 +35,8 @@ class ArticleBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
     {
         return [
             [['title', 'published_at', 'content', 'type'], 'required'],
-            [['created_by', 'published_at', 'created_at', 'updated_at'], 'integer'],
-            [['content', 'visible', 'type', 'status'], 'string'],
+            [['created_by', 'published_at', 'visible', 'type', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['content'], 'string'],
             [['title'], 'string', 'max' => 20],
         ];
     }

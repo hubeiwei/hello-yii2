@@ -14,19 +14,19 @@ class Music extends MusicBase
     const MUSIC_PATH = 'file/music/';
     const MUSIC_SIZE = 20971520;
 
-    const VISIBLE_YES = 'Y';
-    const VISIBLE_NO = 'N';
+    const VISIBLE_NO = 0;
+    const VISIBLE_YES = 1;
     public static $visible_list = [
-        self::VISIBLE_YES,
         self::VISIBLE_NO,
+        self::VISIBLE_YES,
     ];
     public static $visible_map = [
         self::VISIBLE_YES => '显示',
         self::VISIBLE_NO => '隐藏',
     ];
 
-    const STATUS_DISABLE = 'N';
-    const STATUS_ENABLE = 'Y';
+    const STATUS_DISABLE = 0;
+    const STATUS_ENABLE = 1;
     public static $status_list = [
         self::STATUS_ENABLE,
         self::STATUS_DISABLE,

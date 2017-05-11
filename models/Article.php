@@ -16,8 +16,8 @@ use yii\helpers\Markdown;
 
 class Article extends ArticleBase
 {
-    const TYPE_HTML = 'H';
-    const TYPE_MARKDOWN = 'M';
+    const TYPE_HTML = 0;
+    const TYPE_MARKDOWN = 1;
     public static $type_list = [
         self::TYPE_HTML,
         self::TYPE_MARKDOWN,
@@ -27,22 +27,22 @@ class Article extends ArticleBase
         self::TYPE_MARKDOWN => 'Markdown',
     ];
 
-    const VISIBLE_YES = 'Y';
-    const VISIBLE_NO = 'N';
+    const VISIBLE_NO = 0;
+    const VISIBLE_YES = 1;
     public static $visible_list = [
-        self::VISIBLE_YES,
         self::VISIBLE_NO,
+        self::VISIBLE_YES,
     ];
     public static $visible_map = [
         self::VISIBLE_YES => '显示',
         self::VISIBLE_NO => '隐藏',
     ];
 
-    const STATUS_DISABLE = 'N';
-    const STATUS_ENABLE = 'Y';
+    const STATUS_DISABLE = 0;
+    const STATUS_ENABLE = 1;
     public static $status_list = [
-        self::STATUS_ENABLE,
         self::STATUS_DISABLE,
+        self::STATUS_ENABLE,
     ];
     public static $status_map = [
         self::STATUS_ENABLE => '启用',

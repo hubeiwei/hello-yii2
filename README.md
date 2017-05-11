@@ -56,7 +56,7 @@ php init --env=Development --overwrite=all
 
 ```
 php yii migrate --migrationPath=@yii/rbac/migrations
-php yii migrate --migrationPath=@mdm/admin/migrations
+php yii migrate/to m140602_111327_create_menu_table --migrationPath=@mdm/admin/migrations
 php yii migrate --migrationPath=@kartik/dynagrid/migrations
 php yii migrate
 ```
