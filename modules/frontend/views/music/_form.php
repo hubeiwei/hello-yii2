@@ -42,11 +42,11 @@ use yii\widgets\ActiveForm;
         ],
     ])->label($model->isNewRecord ? '文件' : '新文件（可不传）') ?>
 
-    <?= $form->field($model, 'visible')->dropDownList(Music::$visible_map) ?>
+    <?= $form->field($model, 'visible')->dropDownList(Music::visibleMap()) ?>
 
     <?php
     if (UserHelper::isAdmin()) {
-        echo $form->field($model, 'status')->dropDownList(Music::$status_map);
+        echo $form->field($model, 'status')->dropDownList(Music::statusMap());
     }
     ?>
 

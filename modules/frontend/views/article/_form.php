@@ -39,13 +39,13 @@ use yii\widgets\ActiveForm;
         ],
     ]) ?>
 
-    <?= $form->field($model, 'visible')->dropDownList(Article::$visible_map) ?>
+    <?= $form->field($model, 'visible')->dropDownList(Article::visibleMap()) ?>
 
     <?= $form->field($model, 'type', ['template' => '{input}'])->hiddenInput() ?>
 
     <?php
     if (UserHelper::isAdmin()) {
-        echo $form->field($model, 'status')->dropDownList(Article::$status_map);
+        echo $form->field($model, 'status')->dropDownList(Article::statusMap());
     }
     ?>
 

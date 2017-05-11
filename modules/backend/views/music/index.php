@@ -45,22 +45,22 @@ $gridColumns = [
     [
         'attribute' => 'visible',
         'value' => function ($model) {
-            return Music::$visible_map[$model->visible];
+            return Music::visibleMap($model->visible);
         },
         'filterType' => Select2::className(),
         'filterWidgetOptions' => [
-            'data' => Music::$visible_map,
+            'data' => Music::visibleMap(),
         ],
         'headerOptions' => ['width' => 100],
     ],
     [
         'attribute' => 'status',
         'value' => function ($model) {
-            return Music::$status_map[$model->status];
+            return Music::statusMap($model->status);
         },
         'filterType' => Select2::className(),
         'filterWidgetOptions' => [
-            'data' => Music::$status_map,
+            'data' => Music::statusMap(),
         ],
         'headerOptions' => ['width' => 100],
     ],

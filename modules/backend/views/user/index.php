@@ -29,11 +29,11 @@ $gridColumns = [
     [
         'attribute' => 'status',
         'value' => function ($model) {
-            return User::$status_map[$model->status];
+            return User::statusMap($model->status);
         },
         'filterType' => Select2::className(),
         'filterWidgetOptions' => [
-            'data' => User::$status_map,
+            'data' => User::statusMap(),
         ],
         'headerOptions' => ['width' => 100],
     ],

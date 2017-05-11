@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'value',
             [
                 'attribute' => 'status',
-                'value' => Setting::$status_map[$model->status],
+                'value' => Setting::statusMap($model->status),
             ],
             'description',
             'tag',

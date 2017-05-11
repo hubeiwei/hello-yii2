@@ -7,6 +7,7 @@ use app\models\base\MusicBase;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
 class Music extends MusicBase
@@ -20,10 +21,22 @@ class Music extends MusicBase
         self::VISIBLE_NO,
         self::VISIBLE_YES,
     ];
-    public static $visible_map = [
-        self::VISIBLE_YES => '显示',
-        self::VISIBLE_NO => '隐藏',
-    ];
+
+    /**
+     * @param int $value
+     * @return array|string|null
+     */
+    public static function visibleMap($value = -1)
+    {
+        $map = [
+            self::VISIBLE_YES => '显示',
+            self::VISIBLE_NO => '隐藏',
+        ];
+        if ($value == -1) {
+            return $map;
+        }
+        return ArrayHelper::getValue($map, $value);
+    }
 
     const STATUS_DISABLE = 0;
     const STATUS_ENABLE = 1;
@@ -31,10 +44,22 @@ class Music extends MusicBase
         self::STATUS_ENABLE,
         self::STATUS_DISABLE,
     ];
-    public static $status_map = [
-        self::STATUS_ENABLE => '启用',
-        self::STATUS_DISABLE => '禁用',
-    ];
+
+    /**
+     * @param int $value
+     * @return array|string|null
+     */
+    public static function statusMap($value = -1)
+    {
+        $map = [
+            self::STATUS_ENABLE => '启用',
+            self::STATUS_DISABLE => '禁用',
+        ];
+        if ($value == -1) {
+            return $map;
+        }
+        return ArrayHelper::getValue($map, $value);
+    }
 
     /**
      * @inheritdoc
@@ -76,7 +101,7 @@ class Music extends MusicBase
 
     public function deleteMusic($fileName = null)
     {
-        if($fileName === null){
+        if ($fileName === null) {
             $fileName = $this->music_file;
         }
         @unlink($this->getMusicFullPath($fileName));

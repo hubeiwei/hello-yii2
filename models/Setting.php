@@ -5,6 +5,7 @@ namespace app\models;
 use app\models\base\SettingBase;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 class Setting extends SettingBase
 {
@@ -14,10 +15,22 @@ class Setting extends SettingBase
         self::STATUS_DISABLE,
         self::STATUS_ENABLE,
     ];
-    public static $status_map = [
-        self::STATUS_DISABLE => '禁用',
-        self::STATUS_ENABLE => '启用',
-    ];
+
+    /**
+     * @param int $value
+     * @return array|string|null
+     */
+    public static function statusMap($value = -1)
+    {
+        $map = [
+            self::STATUS_DISABLE => '禁用',
+            self::STATUS_ENABLE => '启用',
+        ];
+        if ($value == -1) {
+            return $map;
+        }
+        return ArrayHelper::getValue($map, $value);
+    }
 
     /**
      * @inheritdoc

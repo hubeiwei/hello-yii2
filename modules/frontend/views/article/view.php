@@ -41,15 +41,15 @@ HighlightAsset::register($this);
             ],
             [
                 'attribute' => 'visible',
-                'value' => Article::$visible_map[$model->visible],
+                'value' => Article::visibleMap($model->visible),
             ],
             [
                 'attribute' => 'type',
-                'value' => Article::$type_map[$model->type],
+                'value' => Article::typeMap($model->type),
             ],
             [
                 'attribute' => 'status',
-                'value' => Article::$status_map[$model->status],
+                'value' => Article::statusMap($model->status),
             ],
             'created_at:dateTime',
             'updated_at:dateTime',

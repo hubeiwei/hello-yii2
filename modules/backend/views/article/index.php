@@ -41,33 +41,33 @@ $gridColumns = [
     [
         'attribute' => 'visible',
         'value' => function ($model) {
-            return Article::$visible_map[$model->visible];
+            return Article::visibleMap($model->visible);
         },
         'filterType' => Select2::className(),
         'filterWidgetOptions' => [
-            'data' => Article::$visible_map,
+            'data' => Article::visibleMap(),
         ],
         'headerOptions' => ['width' => 100],
     ],
     [
         'attribute' => 'type',
         'value' => function ($model) {
-            return Article::$type_map[$model->type];
+            return Article::typeMap($model->type);
         },
         'filterType' => Select2::className(),
         'filterWidgetOptions' => [
-            'data' => Article::$type_map,
+            'data' => Article::typeMap(),
         ],
         'headerOptions' => ['width' => 100],
     ],
     [
         'attribute' => 'status',
         'value' => function ($model) {
-            return Article::$status_map[$model->status];
+            return Article::statusMap($model->status);
         },
         'filterType' => Select2::className(),
         'filterWidgetOptions' => [
-            'data' => Article::$status_map,
+            'data' => Article::statusMap(),
         ],
         'headerOptions' => ['width' => 100],
     ],

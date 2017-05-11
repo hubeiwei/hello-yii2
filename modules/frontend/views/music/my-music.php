@@ -34,18 +34,18 @@ $gridColumns = [
         'attribute' => 'visible',
         'value' => function ($model) {
             /** @var $model Music */
-            return Music::$visible_map[$model->visible];
+            return Music::visibleMap($model->visible);
         },
-        'filter' => RenderHelper::dropDownFilter($searchModel, 'visible', Music::$visible_map),
+        'filter' => RenderHelper::dropDownFilter($searchModel, 'visible', Music::visibleMap()),
         'headerOptions' => ['width' => 100],
     ],
     [
         'attribute' => 'status',
         'value' => function ($model) {
             /** @var $model Music */
-            return Music::$status_map[$model->status];
+            return Music::statusMap($model->status);
         },
-        'filter' => RenderHelper::dropDownFilter($searchModel, 'status', Music::$status_map),
+        'filter' => RenderHelper::dropDownFilter($searchModel, 'status', Music::statusMap()),
         'headerOptions' => ['width' => 100],
     ],
     [

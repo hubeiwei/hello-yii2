@@ -5,6 +5,7 @@ namespace app\models;
 use app\models\base\UserBase;
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 
 class User extends UserBase implements IdentityInterface
@@ -18,10 +19,22 @@ class User extends UserBase implements IdentityInterface
         self::STATUS_INACTIVE,
         self::STATUS_ACTIVE,
     ];
-    public static $status_map = [
-        self::STATUS_INACTIVE => '禁用',
-        self::STATUS_ACTIVE => '启用',
-    ];
+
+    /**
+     * @param int $value
+     * @return array|string|null
+     */
+    public static function statusMap($value = -1)
+    {
+        $map = [
+            self::STATUS_ACTIVE => '启用',
+            self::STATUS_INACTIVE => '禁用',
+        ];
+        if ($value == -1) {
+            return $map;
+        }
+        return ArrayHelper::getValue($map, $value);
+    }
 
     /**
      * @inheritdoc

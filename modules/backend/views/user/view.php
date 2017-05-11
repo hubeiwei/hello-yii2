@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             [
                 'attribute' => 'status',
-                'value' => User::$status_map[$model->status],
+                'value' => User::statusMap($model->status),
             ],
             'created_at:dateTime',
             'updated_at:dateTime',

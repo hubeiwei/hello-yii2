@@ -1,5 +1,6 @@
 <?php
 
+use app\common\helpers\UserHelper;
 use app\models\User;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -17,6 +18,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'username')->textInput([
         'autofocus' => true,
         'maxlength' => true,
+        'disabled' => !$model->isNewRecord,// 用户名不可修改
     ]) ?>
 
     <?php
@@ -27,7 +29,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->dropDownList(User::$status_map) ?>
+    <?php
+    // 不能修改自己的状态，防止无法登录
+    if (UserHelper::getUserId() != $model->id) {
+        echo $form->field($model, 'status')->dropDownList(User::statusMap());
+    }
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '添加' : '修改', ['class' => 'btn btn-block ' . ($model->isNewRecord ? 'btn-success' : 'btn-primary')]) ?>

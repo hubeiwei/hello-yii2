@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tag')->textInput(['maxlength' => true, 'placeholder' => '用在哪个类或场景']) ?>
 
-    <?= $form->field($model, 'status')->dropDownList(Setting::$status_map) ?>
+    <?= $form->field($model, 'status')->dropDownList(Setting::statusMap()) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '添加' : '修改', ['class' => 'btn btn-block ' . ($model->isNewRecord ? 'btn-success' : 'btn-primary')]) ?>
