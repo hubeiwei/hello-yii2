@@ -33,7 +33,10 @@ $config = [
     */
 ];
 
-$config['components'] = array_merge($config['components'], require(__DIR__ . '/db.php'));
+$config['components'] = array_merge(
+    $config['components'],
+    require(__DIR__ . '/db.php')// 数据库
+);
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment

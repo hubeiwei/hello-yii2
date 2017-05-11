@@ -1,5 +1,17 @@
 <?php
 
+$params = array_merge(
+    require(__DIR__ . '/params.php')
+);
+
+$components = array_merge(
+    require(__DIR__ . '/components.php'),
+    require(__DIR__ . '/components-local.php'),
+    require(__DIR__ . '/db.php')// 数据库
+);
+
+$modules = require(__DIR__ . '/modules.php');
+
 $config = [
     'id' => 'basic',
     'name' => 'Hello yii2',
@@ -8,7 +20,9 @@ $config = [
     'language' => 'zh-CN',
     'timeZone' => 'Asia/Shanghai',
     'defaultRoute' => '/frontend',
-    'modules' => require(__DIR__ . '/modules.php'),
+    'params' => $params,
+    'components' => $components,
+    'modules' => $modules,
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
@@ -23,16 +37,6 @@ $config = [
         ],
     ],
 ];
-
-$config['params'] = array_merge(
-    require(__DIR__ . '/params.php')
-);
-
-$config['components'] = array_merge(
-    require(__DIR__ . '/components.php'),
-    require(__DIR__ . '/components-local.php'),
-    require(__DIR__ . '/db.php')// 数据库
-);
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment

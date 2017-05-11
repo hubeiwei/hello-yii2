@@ -1,5 +1,6 @@
 <?php
-return [
+
+$config = [
     'db' => [
         'class' => 'yii\db\Connection',
         'dsn' => 'mysql:host=127.0.0.1;dbname=hello_yii2',
@@ -8,3 +9,5 @@ return [
         'charset' => 'utf8',
     ],
 ];
+
+return $config;

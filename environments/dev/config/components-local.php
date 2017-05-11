@@ -1,5 +1,6 @@
 <?php
-return [
+
+$config = [
     'request' => [
         'cookieValidationKey' => '',
     ],
@@ -23,3 +24,5 @@ return [
         ],
     ],
 ];
+
+return $config;

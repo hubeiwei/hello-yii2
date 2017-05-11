@@ -2,7 +2,7 @@
 
 use kartik\dynagrid\DynaGrid;
 
-return [
+$config = [
     'frontend' => [
         'class' => 'app\modules\frontend\Module',
     ],
@@ -71,3 +71,5 @@ return [
         ],
     ],
 ];
+
+return $config;

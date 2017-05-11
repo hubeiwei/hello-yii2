@@ -57,8 +57,8 @@ php init --env=Development --overwrite=all
 ```
 php yii migrate --migrationPath=@yii/rbac/migrations
 php yii migrate --migrationPath=@mdm/admin/migrations
-php yii migrate
 php yii migrate --migrationPath=@kartik/dynagrid/migrations
+php yii migrate
 ```
 
 ### 搭建网站

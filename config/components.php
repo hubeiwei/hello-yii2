@@ -1,5 +1,6 @@
 <?php
-return [
+
+$config = [
     'urlManager' => [
         'enablePrettyUrl' => true,
         'showScriptName' => false,
@@ -45,3 +46,5 @@ return [
         ]
     ],
 ];
+
+return $config;
