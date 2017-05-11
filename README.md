@@ -132,15 +132,15 @@ base_html5.php         最外层，最基础的 html 结构，所有人都能用
 
 layout 会统一在 config/modules.php 里配置，frontend 模块里两个控制器的 `beforeAction()` 方法里也有修改布局的代码。
 
-只做输出用的文件：
+只做输出用的文件，在同级的 include 目录下：
 
 ```
-frontend.php
-└ frontend_nav.php    顶部 bootstrap 的菜单
+layout/frontend.php
+└ include/frontend_nav.php    顶部 bootstrap 的菜单
 
-backend.php
-├ backend_menu.php    左侧菜单
-└ bacnend_nav.php     顶部 bootstrap 的菜单
+layout/backend.php
+├ include/backend_menu.php    左侧菜单
+└ include/bacnend_nav.php     顶部 bootstrap 的菜单
 ```
 
 ## 打赏

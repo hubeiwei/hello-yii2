@@ -26,14 +26,14 @@ $menu = MenuHelper::getAssignedMenu(UserHelper::getUserId());
 $this->beginContent('@app/views/layouts/master.php');
 ?>
 
-<?= $this->render('@app/views/layouts/backend_nav.php', [
+<?= $this->render('@app/views/include/backend_nav.php', [
     'menu' => $menu,
 ]) ?>
 
 <div class="container">
     <div class="row">
         <div class="col-md-3 col-lg-2 hidden-sm hidden-xs">
-            <?= $this->render('@app/views/layouts/backend_menu.php', [
+            <?= $this->render('@app/views/include/backend_menu.php', [
                 'menu' => $menu,
             ]) ?>
         </div>

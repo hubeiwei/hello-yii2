@@ -21,7 +21,7 @@ use yii\widgets\Breadcrumbs;
 
 <?php $this->beginContent('@app/views/layouts/master.php') ?>
 
-<?= $this->render('@app/views/layouts/frontend_nav.php') ?>
+<?= $this->render('@app/views/include/frontend_nav.php') ?>
 
 <div class="container">
     <?= Breadcrumbs::widget([
