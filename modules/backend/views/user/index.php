@@ -1,5 +1,6 @@
 <?php
 
+use app\common\helpers\UserHelper;
 use app\models\User;
 use hubeiwei\yii2tools\grid\ActionColumn;
 use hubeiwei\yii2tools\grid\SerialColumn;
@@ -50,7 +51,14 @@ $gridColumns = [
         'headerOptions' => ['width' => 160],
     ],
 
-    ['class' => ActionColumn::className()],
+    [
+        'class' => ActionColumn::className(),
+        'visibleButtons' => [
+            'delete' => function ($model, $key, $index) {
+                return UserHelper::getUserId() != $model->id;
+            },
+        ],
+    ],
 ];
 ?>
 <div class="sys-user-index">
