@@ -24,7 +24,19 @@
 
 ## 说明
 
-这是我在空闲时间用 yii2-basic 来研究各种玩意的项目，请多关注，里面的业务代码不一定能在实际工作中使用，也不一定是最好的写法，仅供参考。
+这是我在空闲时间用 yii2-basic 来研究各种玩意的项目，请多关注，里面的代码不一定能在实际工作中使用，也不一定是最好的写法，仅供参考。
+
+目前可能是你能学到破姿势的地方：
+
+前台文章首页（/frontend/article/index）：使用 DataProvider 遍历数据、分页、排序（虽然很基础，但比起传统的手动加 offset、limit、order by 方便多了）。
+
+个人中心（/user/home）：这里的页面加载你看起来感觉会很快，因为我用了 pjax，不过目前有个 bug，点击链接时我会把链接的文字加到右边面板上，但是后退的时候就尴尬了，我现在有两个方案，但还懒得去改。
+
+你可以随便提交一些表单，或者删除一些数据，你会看到我是怎么提示消息的，如果你觉得代码太多，找不到关键点，可以[来这里看看](https://github.com/hubeiwei/yii2-tools#消息提示)
+
+用到 GridView、DynaGrid（也就是表格）的地方，你可以看看我是怎么做导出的.
+
+另外你还可以看一下我表格上的日期和枚举字段的搜索我是怎么处理的，如果你觉得代码太多，找不到关键点，可以[来这里看看](https://github.com/hubeiwei/yii2-tools#widget)。
 
 ## 项目部署
 
@@ -34,9 +46,9 @@
 
 程序上的上传文件大小限制在 `app\models\Music::MUSIC_SIZE`，我随便设置了一个 20MB，php 的 `post_max_size` 和 `upload_max_filesize` 两个值需要配置一下。
 
-### 安装 composer 扩展
+### 安装 vendor 目录（composer 包）
 
-你要有 [composer](http://docs.phpcomposer.com/)，执行以下命令，如果你觉得速度慢的话，可以参考我的[这篇文章](http://laohu321.cc/2017/01/terminal-accelerate)。
+首先你要有 [composer](http://docs.phpcomposer.com/)，然后按顺序执行以下命令，如果你觉得速度慢的话，可以参考我的[这篇文章](http://laohu321.cc/2017/01/terminal-accelerate)。
 
 ```
 composer self-update
@@ -52,7 +64,7 @@ php init --env=Development --overwrite=all
 
 ### 创建数据库表
 
-在 MySql 创建一个 utf8 数据库，在 config/db.php 文件配置好之后，执行以下命令：
+在 MySql 创建一个 utf8 数据库，在 config/db.php 文件配置好之后，按顺序执行以下命令：
 
 ```
 php yii migrate --migrationPath=@yii/rbac/migrations
