@@ -122,10 +122,7 @@ class User extends UserBase implements IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
-        if ($this->status == self::STATUS_ACTIVE) {
-            return $this->getAuthKey() === $authKey;
-        }
-        return false;
+        return $this->getAuthKey() === $authKey;
     }
 
     public function validatePassword($password)
