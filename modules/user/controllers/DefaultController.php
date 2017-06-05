@@ -58,6 +58,11 @@ class DefaultController extends ModuleController
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post())) {
+            Yii::$app->user->on(\yii\web\User::EVENT_BEFORE_LOGIN, function ($event) {
+                /** @var User $user */
+                $user = $event->identity;
+                $user->refreshAuthKey();
+            });
             if ($model->login()) {
                 Message::setSuccessMsg('登录成功');
                 return $this->goHome();

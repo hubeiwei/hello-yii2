@@ -140,6 +140,12 @@ class User extends UserBase implements IdentityInterface
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
 
+    public function refreshAuthKey()
+    {
+        $this->generateAuthKey();
+        return $this->save();
+    }
+
     public function generatePasswordResetToken()
     {
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
