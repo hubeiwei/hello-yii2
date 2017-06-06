@@ -12,7 +12,6 @@ use hubeiwei\yii2tools\helpers\Message;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\web\UserEvent;
 
 class DefaultController extends ModuleController
 {
@@ -60,7 +59,7 @@ class DefaultController extends ModuleController
 
         if ($model->load(Yii::$app->request->post())) {
             Yii::$app->user->on(\yii\web\User::EVENT_BEFORE_LOGIN, function ($event) {
-                /** @var UserEvent $event */
+                /** @var \yii\web\UserEvent $event */
                 /** @var User $user */
                 $user = $event->identity;
                 $flow = true;
