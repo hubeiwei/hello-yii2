@@ -71,11 +71,15 @@ class ResetPassword extends Model
      */
     public function resetPassword()
     {
+        if (!$this->validate()) {
+            return false;
+        }
+
         $user = $this->_user;
-        $user->password_hash = $this->password;
-        $user->encryptPassword();
+        $user->setPassword($this->password);
+        $user->generateAuthKey();// 踢掉还在登陆的
         $user->removePasswordResetToken();
 
-        return $user->save(false);
+        return $user->save();
     }
 }

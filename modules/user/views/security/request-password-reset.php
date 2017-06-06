@@ -21,7 +21,7 @@ $this->title = '找回密码';
 
     <?= $form->field($model, 'email')->textInput([
         'autofocus' => true,
-        'placeholder' => '请输入您注册时的邮箱',
+        'placeholder' => '请输入您的邮箱',
     ]) ?>
 
     <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>

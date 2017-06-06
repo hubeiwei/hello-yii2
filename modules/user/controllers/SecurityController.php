@@ -38,9 +38,13 @@ class SecurityController extends ModuleController
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        if ($model->load(Yii::$app->getRequest()->post()) && $model->validate() && $model->resetPassword()) {
-            Message::setSuccessMsg('密码修改成功');
-            return $this->goHome();
+        if ($model->load(Yii::$app->getRequest()->post())) {
+            if($model->resetPassword()){
+                Message::setSuccessMsg('密码修改成功');
+                return $this->goHome();
+            } else {
+                Message::setErrorMsg('密码修改失败');
+            }
         }
 
         return $this->render('reset-password', [
