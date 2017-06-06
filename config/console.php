@@ -2,12 +2,8 @@
 
 $params = require(__DIR__ . '/params.php');
 
-$config = [
-    'id' => 'basic-console',
-    'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
-    'controllerNamespace' => 'app\commands',
-    'components' => [
+$components = array_merge(
+    [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -23,6 +19,15 @@ $config = [
             'class' => 'yii\rbac\DbManager',
         ],
     ],
+    require(__DIR__ . '/db.php')// 数据库
+);
+
+$config = [
+    'id' => 'basic-console',
+    'basePath' => dirname(__DIR__),
+    'bootstrap' => ['log'],
+    'controllerNamespace' => 'app\commands',
+    'components' => $components,
     'params' => $params,
     /*
     'controllerMap' => [
@@ -32,11 +37,6 @@ $config = [
     ],
     */
 ];
-
-$config['components'] = array_merge(
-    $config['components'],
-    require(__DIR__ . '/db.php')// 数据库
-);
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment

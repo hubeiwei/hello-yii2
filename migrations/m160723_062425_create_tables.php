@@ -25,8 +25,8 @@ class m160723_062425_create_tables extends Migration
             'password_reset_token' => $this->string()->unique(),
             'email' => $this->string()->notNull()->unique()->comment('邮箱'),
             'status' => $this->smallInteger()->notNull()->defaultValue(User::STATUS_ACTIVE)->comment('状态'),
-            'created_at' => $this->integer()->notNull()->comment('创建时间'),
-            'updated_at' => $this->integer()->notNull()->comment('修改时间'),
+            'created_at' => $this->integer()->unsigned()->comment('创建时间'),
+            'updated_at' => $this->integer()->unsigned()->comment('修改时间'),
         ], $tableOptions . ' COMMENT=\'用户\'');
 
         $this->createTable(UserDetail::tableName(), [
