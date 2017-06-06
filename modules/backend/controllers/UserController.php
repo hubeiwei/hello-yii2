@@ -70,9 +70,9 @@ class UserController extends ModuleController
         $user = new User();
 
         if ($user->load(Yii::$app->request->post())) {
-
             $transaction = Helper::beginTransaction();
-            $flow = $user->save(false);
+            $user->generateAuthKey();
+            $flow = $user->save();
             if ($flow) {
                 $user_detail = new UserDetail();
                 $user_detail->user_id = $user->id;
@@ -104,6 +104,7 @@ class UserController extends ModuleController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
+            $model->generateAuthKey();
             if ($model->save()) {
                 Message::setSuccessMsg('修改成功');
                 return $this->redirect(['view', 'id' => $model->id]);

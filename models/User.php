@@ -51,21 +51,6 @@ class User extends UserBase implements IdentityInterface
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
-        return array_merge(parent::attributeLabels(), [
-            'username' => '用户名',
-            'password_reset_token' => '密码重置口令',
-            'email' => '邮箱',
-            'status' => '状态',
-            'created_at' => '创建时间',
-            'updated_at' => '修改时间',
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function behaviors()
     {
         return [
@@ -73,24 +58,12 @@ class User extends UserBase implements IdentityInterface
         ];
     }
 
-    public function beforeSave($insert)
-    {
-        if (parent::beforeSave($insert)) {
-            if ($insert) {
-                $this->encryptPassword();
-            }
-            $this->generateAuthKey();
-            return true;
-        }
-        return false;
-    }
-
     /**
      * @inheritdoc
      */
     public static function findIdentity($id)
     {
-        return self::findOne($id);
+        return self::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**
@@ -125,14 +98,36 @@ class User extends UserBase implements IdentityInterface
         return $this->getAuthKey() === $authKey;
     }
 
+    /**
+     * 验证密码
+     *
+     * @param $password
+     * @return bool
+     */
     public function validatePassword($password)
     {
         return Yii::$app->security->validatePassword($password, $this->password_hash);
     }
 
-    public function encryptPassword()
+    /**
+     * 加密密码
+     *
+     * @param $password
+     * @return string
+     */
+    public function encryptPassword($password)
     {
-        $this->password_hash = Yii::$app->security->generatePasswordHash($this->password_hash);
+        return Yii::$app->security->generatePasswordHash($password);
+    }
+
+    /**
+     * 设置密码
+     *
+     * @param string $password
+     */
+    public function setPassword($password)
+    {
+        $this->password_hash = $this->encryptPassword($password);
     }
 
     public function generateAuthKey()
@@ -147,7 +142,7 @@ class User extends UserBase implements IdentityInterface
     }
 
     /**
-     * Finds user by username
+     * 根据用户名查找
      *
      * @param string $username
      * @return static|null

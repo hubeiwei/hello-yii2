@@ -33,7 +33,7 @@ class UserBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
+            [['username', 'auth_key', 'password_hash', 'email'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['username'], 'string', 'max' => 20],
             [['auth_key'], 'string', 'max' => 32],

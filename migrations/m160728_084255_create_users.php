@@ -16,9 +16,10 @@ class m160728_084255_create_users extends Migration
         $microtime = microtime(true);
         $adminUser = new User();
         $adminUser->username = 'admin';
-        $adminUser->password_hash = 'asdf1234';
+        $adminUser->setPassword('asdf1234');
+        $adminUser->generateAuthKey();
         $adminUser->email = $faker->email;
-        if (!$adminUser->save(false)) {
+        if (!$adminUser->save()) {
             throw new \ErrorException('创建管理员用户失败');
         }
         echo ' done (time: ' . sprintf('%.3f', microtime(true) - $microtime) . "s)\n";
@@ -27,9 +28,10 @@ class m160728_084255_create_users extends Migration
         $microtime = microtime(true);
         $testUser = new User();
         $testUser->username = 'test';
-        $testUser->password_hash = 'asdf1234';
+        $testUser->setPassword('asdf1234');
+        $testUser->generateAuthKey();
         $testUser->email = $faker->email;
-        if (!$testUser->save(false)) {
+        if (!$testUser->save()) {
             throw new \ErrorException('创建普通用户失败');
         }
         echo ' done (time: ' . sprintf('%.3f', microtime(true) - $microtime) . "s)\n";

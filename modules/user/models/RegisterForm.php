@@ -1,17 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HBW
- * Date: 2016/5/9
- * Time: 18:24
- * To change this template use File | Settings | File Templates.
- */
 
 namespace app\modules\user\models;
 
 use app\common\captcha\CaptchaValidator;
 use app\common\extensions\StrengthValidator;
 use app\models\User;
+use app\models\UserDetail;
+use hubeiwei\yii2tools\helpers\Helper;
 use yii\base\Model;
 
 class RegisterForm extends Model
@@ -47,5 +42,40 @@ class RegisterForm extends Model
             'email' => '邮箱',
             'verifyCode' => '验证码',
         ];
+    }
+
+    public function register()
+    {
+        if (!$this->validate()) {
+            return null;
+        }
+
+        $flow = true;
+        $transaction = Helper::beginTransaction();
+        try {
+            $user = new User();
+            $user->username = $this->username;
+            $user->setPassword($this->password);
+            $user->email = $this->email;
+            $user->generateAuthKey();
+            $flow = $user->save();
+
+            if ($flow) {
+                $user_detail = new UserDetail();
+                $user_detail->user_id = $user->id;
+                $flow = $user_detail->save();
+            }
+
+            if ($flow) {
+                $transaction->commit();
+            } else {
+                $transaction->rollBack();
+            }
+        } catch (\Exception $exception) {
+            $transaction->rollBack();
+            throw $exception;
+        }
+
+        return $flow;
     }
 }

@@ -93,31 +93,11 @@ class DefaultController extends ModuleController
         $form = new RegisterForm();
 
         if ($form->load(Yii::$app->request->post())) {
-            if ($form->validate()) {
-                $user = new User();
-                $user->setAttributes($form->getAttributes());
-
-                /**
-                 * @see User::encryptPassword()
-                 * @see User::beforeSave()
-                 */
-                $user->password_hash = $form->password;
-
-                $transaction = Helper::beginTransaction();
-                $flow = $user->save(false);
-                if ($flow) {
-                    $user_detail = new UserDetail();
-                    $user_detail->user_id = $user->id;
-                    $flow = $user_detail->save(false);
-                }
-                if ($flow) {
-                    $transaction->commit();
-                    Message::setSuccessMsg('注册成功');
-                    return $this->redirect('login');
-                } else {
-                    $transaction->rollBack();
-                    Message::setErrorMsg('注册失败');
-                }
+            if ($form->register()) {
+                Message::setSuccessMsg('注册成功');
+                return $this->redirect('login');
+            } else {
+                Message::setErrorMsg('注册失败');
             }
         }
 
