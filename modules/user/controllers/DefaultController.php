@@ -2,16 +2,14 @@
 
 namespace app\modules\user\controllers;
 
-use app\models\User;
-use app\models\UserDetail;
 use app\modules\user\controllers\base\ModuleController;
 use app\modules\user\models\LoginForm;
 use app\modules\user\models\RegisterForm;
-use hubeiwei\yii2tools\helpers\Helper;
 use hubeiwei\yii2tools\helpers\Message;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\web\User;
 
 class DefaultController extends ModuleController
 {
@@ -58,9 +56,9 @@ class DefaultController extends ModuleController
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post())) {
-            Yii::$app->user->on(\yii\web\User::EVENT_BEFORE_LOGIN, function ($event) {
+            Yii::$app->user->on(User::EVENT_BEFORE_LOGIN, function ($event) {
                 /** @var \yii\web\UserEvent $event */
-                /** @var User $user */
+                /** @var \app\models\User $user */
                 $user = $event->identity;
                 $flow = true;
                 if ($flow && !$user->refreshAuthKey()) {
