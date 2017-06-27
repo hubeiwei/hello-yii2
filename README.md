@@ -24,19 +24,15 @@
 
 ## 说明
 
-这是我在空闲时间用 yii2-basic 来研究各种玩意的项目，请多关注，里面的代码不一定能在实际工作中使用，也不一定是最好的写法，仅供参考。
+这是我在空闲时间用 yii2-basic 模板来练手的东西，里面的代码不一定能在实际工作中使用，也不一定是最好的写法，仅供参考。
 
-目前可能是你能学到破姿势的地方：
+目前可能是你能学到一点破姿势的地方：
 
 前台文章首页（/frontend/article/index）：使用 DataProvider 遍历数据、分页、排序（虽然很基础，但比起传统的手动加 offset、limit、order by 方便多了）。
 
 个人中心（/user/home）：这里的页面加载你看起来感觉会很快，因为我用了 pjax，不过目前有个 bug，点击链接时我会把链接的文字加到右边面板上，但是后退的时候就尴尬了，我现在有两个方案，但还懒得去改。
 
-你可以随便提交一些表单，或者删除一些数据，你会看到我是怎么提示消息的，如果你觉得代码太多，找不到关键点，可以[来这里看看](https://github.com/hubeiwei/yii2-tools#消息提示)
-
-用到 GridView、DynaGrid（也就是表格）的地方，你可以看看我是怎么做导出的.
-
-另外你还可以看一下我表格上的日期和枚举字段的搜索我是怎么处理的，如果你觉得代码太多，找不到关键点，可以[来这里看看](https://github.com/hubeiwei/yii2-tools#widget)。
+另外，有些东西我封装到[这个项目](https://github.com/hubeiwei/yii2-tools)里了，具体作用去看说明和我给出的 demo 吧。
 
 ## 项目部署
 
@@ -46,7 +42,7 @@
 
 程序上的上传文件大小限制在 `app\models\Music::MUSIC_SIZE`，我随便设置了一个 20MB，php 的 `post_max_size` 和 `upload_max_filesize` 两个值需要配置一下。
 
-### 安装 vendor 目录（composer 包）
+### 安装 composer 依赖（vendor 目录）
 
 首先你要有 [composer](http://docs.phpcomposer.com/)，然后按顺序执行以下命令，如果你觉得速度慢的话，可以参考我的[这篇文章](http://laohu321.cc/2017/01/terminal-accelerate)。
 
@@ -83,7 +79,7 @@ nginx 可以参考[这篇文章](http://www.getyii.com/topic/31)。
 
 ### 使用
 
-在 config/components-local.php 里找到邮箱的配置并配置好，才能用找回密码的功能。
+在 config/components-local.php 里找到邮箱的配置，配置好了才能用找回密码的功能。
 
 已经生成好的用户名和密码如下：
 
@@ -170,6 +166,7 @@ layout/backend.php
 若 | 921520651 | 88.88
 誓言 | 443536249 | 50.00
 山中石 | 1146283 | 50.00
+N | 1024720263 | 50.00
 东方不拔 | 790292520 | 30.00
 allen | 2134691391 | 20.00
 欲买桂花同载酒。 | 1054828207 | 18.88
