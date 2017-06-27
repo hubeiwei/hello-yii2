@@ -56,19 +56,24 @@ class DefaultController extends ModuleController
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post())) {
+            // 登陆前事件
             Yii::$app->user->on(User::EVENT_BEFORE_LOGIN, function ($event) {
                 /** @var \yii\web\UserEvent $event */
                 /** @var \app\models\User $user */
                 $user = $event->identity;
                 $flow = true;
+
+                // 刷新 AuthKey，这里面执行过一次 save，下次扩展时要注意
                 if ($flow && !$user->refreshAuthKey()) {
                     $flow = false;
                 }
+
                 $event->isValid = $flow;
             });
+
             if ($model->login()) {
                 Message::setSuccessMsg('登录成功');
-                return $this->goHome();
+                return $this->goBack();
             } else {
                 Message::setErrorMsg('登录失败');
             }
@@ -88,10 +93,10 @@ class DefaultController extends ModuleController
 
     public function actionRegister()
     {
-        $form = new RegisterForm();
+        $model = new RegisterForm();
 
-        if ($form->load(Yii::$app->request->post())) {
-            if ($form->register()) {
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->register()) {
                 Message::setSuccessMsg('注册成功');
                 return $this->redirect('login');
             } else {
@@ -100,7 +105,7 @@ class DefaultController extends ModuleController
         }
 
         return $this->render('register', [
-            'model' => $form
+            'model' => $model
         ]);
     }
 }
