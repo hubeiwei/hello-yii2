@@ -14,6 +14,7 @@
         "bower-asset/highlightjs": "*",
         "hubeiwei/yii2-tools": "dev-master",
         "ijackua/yii2-lepture-markdown-editor-widget": "^1.0",
+        "kartik-v/yii2-password": "*",
         "kartik-v/yii2-widget-datepicker": "*",
         "kartik-v/yii2-widget-datetimepicker": "*",
         "kartik-v/yii2-widget-fileinput": "*",
