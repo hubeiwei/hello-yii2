@@ -3,7 +3,7 @@
 namespace app\modules\user\models;
 
 use app\common\captcha\CaptchaValidator;
-use app\models\User;
+use app\common\helpers\UserHelper;
 use Yii;
 use yii\base\Model;
 
@@ -78,12 +78,16 @@ class LoginForm extends Model
     /**
      * Finds user by [[username]]
      *
-     * @return User|null
+     * @return yii\db\ActiveRecord|null
      */
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
+            $userHelper = UserHelper::get();
+            $this->_user = $userHelper->userClass::find()
+                ->where([$userHelper->usernameField => $this->username])
+                ->limit(1)
+                ->one();
         }
         return $this->_user;
     }

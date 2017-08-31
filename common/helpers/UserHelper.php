@@ -1,31 +1,50 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HBW
- * Date: 2016/4/28
- * Time: 9:56
- * To change this template use File | Setting | File Templates.
- */
 
 namespace app\common\helpers;
 
-use app\models\User;
 use Yii;
 
 class UserHelper
 {
     /**
+     * @var yii\db\ActiveRecord|string 用户类，实例或类名
+     */
+    public $userClass;
+
+    /**
+     * @var string 用户表主键
+     */
+    public $userIdField = 'id';
+
+    /**
+     * @var string 用户名字段
+     */
+    public $usernameField = 'username';
+
+    /**
+     * @return self
+     */
+    public static function get()
+    {
+        return Yii::$container->get('UserHelper');
+    }
+
+    /**
      * 获取用户实例，默认返回当前登录的用户实例
      *
      * @param int|string $userId
-     * @return User|null
+     * @return yii\db\ActiveRecord|null
      */
     public static function getUserInstance($userId = 0)
     {
         if ($userId == 0) {
             return Yii::$app->getUser()->getIdentity();
         } else {
-            return User::find()->where(['id' => $userId])->limit(1)->one();
+            $userHelper = self::get();
+            return $userHelper->userClass::find()
+                ->where([$userHelper->userIdField => $userId])
+                ->limit(1)
+                ->one();
         }
     }
 
@@ -50,14 +69,14 @@ class UserHelper
     public static function getUserId($userName = null)
     {
         if ($userName) {
-            return User::find()->select(['id'])->where(['username' => $userName])->limit(1)->scalar();
+            $userHelper = self::get();
+            return $userHelper->userClass::find()
+                ->select([$userHelper->userIdField])
+                ->where([$userHelper->usernameField => $userName])
+                ->limit(1)
+                ->scalar();
         } else {
-            $id = Yii::$app->getUser()->getId();
-            if ($id != null) {
-                return $id;
-            } else {
-                return 0;
-            }
+            return Yii::$app->getUser()->getId();
         }
     }
 
@@ -65,21 +84,21 @@ class UserHelper
      * 获取用户名，默认返回当前登录用户的用户名
      *
      * @param int $userId
-     * @param null $default
-     * @param string $zero_name
+     * @param string|null $default
      * @return bool|null|string
      */
-    public static function getUserName($userId = -1, $default = null, $zero_name = 'System')
+    public static function getUserName($userId = null, $default = null)
     {
-        if ($userId == -1 && !Yii::$app->user->isGuest) {
-            return self::getUserInstance()->username;
-        } else if ($userId == 0) {
-            return $zero_name;
-        } else if ($userId > 0) {
-            $username = User::find()->select(['username'])->where(['id' => $userId])->limit(1)->scalar();
-            if ($username) {
-                return $username;
-            }
+        $userHelper = self::get();
+        if ($userId == null && !Yii::$app->user->isGuest) {
+            return self::getUserInstance()->{$userHelper->usernameField};
+        } else {
+            $username = $userHelper->userClass::find()
+                ->select([$userHelper->usernameField])
+                ->where([$userHelper->userIdField => $userId])
+                ->limit(1)
+                ->scalar();
+            return $username;
         }
         return $default;
     }
