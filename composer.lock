@@ -401,16 +401,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hubeiwei/yii2-tools.git",
-                "reference": "2e76668445ffa7029a6aab4acea8660cd8a40e88"
+                "reference": "a18ebd1337fe7813f898c2915eaeb432f35811b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hubeiwei/yii2-tools/zipball/2e76668445ffa7029a6aab4acea8660cd8a40e88",
-                "reference": "2e76668445ffa7029a6aab4acea8660cd8a40e88",
+                "url": "https://api.github.com/repos/hubeiwei/yii2-tools/zipball/a18ebd1337fe7813f898c2915eaeb432f35811b7",
+                "reference": "a18ebd1337fe7813f898c2915eaeb432f35811b7",
                 "shasum": ""
             },
             "require": {
-                "kartik-v/yii2-date-range": "*",
+                "kartik-v/yii2-date-range": "1.6.7",
                 "kartik-v/yii2-dynagrid": "*",
                 "kartik-v/yii2-export": "*",
                 "kartik-v/yii2-grid": "*",
@@ -443,7 +443,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-08-31T03:27:37+00:00"
+            "time": "2017-09-04T07:49:44+00:00"
         },
         {
             "name": "ijackua/yii2-lepture-markdown-editor-widget",
@@ -589,16 +589,16 @@
         },
         {
             "name": "kartik-v/yii2-date-range",
-            "version": "1.6.8",
+            "version": "v1.6.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-date-range.git",
-                "reference": "908e8175f3f8c091d425bcaba6e18871d63291a0"
+                "reference": "c7177cd89cc90772acc96a05fbf5996f67127e4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-date-range/zipball/908e8175f3f8c091d425bcaba6e18871d63291a0",
-                "reference": "908e8175f3f8c091d425bcaba6e18871d63291a0",
+                "url": "https://api.github.com/repos/kartik-v/yii2-date-range/zipball/c7177cd89cc90772acc96a05fbf5996f67127e4c",
+                "reference": "c7177cd89cc90772acc96a05fbf5996f67127e4c",
                 "shasum": ""
             },
             "require": {
@@ -639,7 +639,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-08-08T04:26:22+00:00"
+            "time": "2016-07-12T07:02:07+00:00"
         },
         {
             "name": "kartik-v/yii2-dialog",
@@ -1119,16 +1119,16 @@
         },
         {
             "name": "kartik-v/yii2-widget-datepicker",
-            "version": "v1.4.2",
+            "version": "v1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-datepicker.git",
-                "reference": "8738f6dc3211d949b05189ba103aab786143fc6c"
+                "reference": "b793655b63e77e5598ed232cf887cc640c30420f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/8738f6dc3211d949b05189ba103aab786143fc6c",
-                "reference": "8738f6dc3211d949b05189ba103aab786143fc6c",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-datepicker/zipball/b793655b63e77e5598ed232cf887cc640c30420f",
+                "reference": "b793655b63e77e5598ed232cf887cc640c30420f",
                 "shasum": ""
             },
             "require": {
@@ -1169,7 +1169,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-09-04T10:52:50+00:00"
+            "time": "2017-09-04T03:28:47+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-datetimepicker",
