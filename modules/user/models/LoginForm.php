@@ -14,6 +14,9 @@ class LoginForm extends Model
     public $verifyCode;
     public $rememberMe = false;
 
+    public $validatePasswordMethod = 'validatePassword';
+    public $loginSecond = 7 * 24 * 60 * 60;
+
     private $_user = false;
 
     /**
@@ -56,7 +59,7 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-            if (!$user || !$user->validatePassword($this->password)) {
+            if (!$user || !call_user_func([$user, $this->validatePasswordMethod], $this->password)) {
                 $this->addError($attribute, '用户名或密码错误');
             }
         }
@@ -70,7 +73,7 @@ class LoginForm extends Model
     {
         if ($this->validate()) {
             $user = $this->getUser();
-            return Yii::$app->user->login($user, $this->rememberMe ? 7 * 24 * 60 * 60 : 0);
+            return Yii::$app->user->login($user, $this->rememberMe ? $this->loginSecond : 0);
         }
         return false;
     }
@@ -78,13 +81,13 @@ class LoginForm extends Model
     /**
      * Finds user by [[username]]
      *
-     * @return yii\db\ActiveRecord|null
+     * @return yii\web\IdentityInterface|yii\db\ActiveRecord|null
      */
     public function getUser()
     {
         if ($this->_user === false) {
             $userHelper = UserHelper::get();
-            $this->_user = $userHelper->userClass::find()
+            $this->_user = call_user_func([$userHelper->userClass, 'find'])
                 ->where([$userHelper->usernameField => $this->username])
                 ->limit(1)
                 ->one();

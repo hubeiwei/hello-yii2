@@ -41,7 +41,7 @@ class UserHelper
             return Yii::$app->getUser()->getIdentity();
         } else {
             $userHelper = self::get();
-            return $userHelper->userClass::find()
+            return call_user_func([$userHelper->userClass, 'find'])
                 ->where([$userHelper->userIdField => $userId])
                 ->limit(1)
                 ->one();
@@ -70,7 +70,7 @@ class UserHelper
     {
         if ($userName) {
             $userHelper = self::get();
-            return $userHelper->userClass::find()
+            return call_user_func([$userHelper->userClass, 'find'])
                 ->select([$userHelper->userIdField])
                 ->where([$userHelper->usernameField => $userName])
                 ->limit(1)
@@ -93,7 +93,7 @@ class UserHelper
         if ($userId == null && !Yii::$app->user->isGuest) {
             return self::getUserInstance()->{$userHelper->usernameField};
         } else {
-            $username = $userHelper->userClass::find()
+            $username = call_user_func([$userHelper->userClass, 'find'])
                 ->select([$userHelper->usernameField])
                 ->where([$userHelper->userIdField => $userId])
                 ->limit(1)
