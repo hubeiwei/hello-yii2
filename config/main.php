@@ -23,6 +23,10 @@ $config = [
     'params' => $params,
     'components' => $components,
     'modules' => $modules,
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm' => '@vendor/npm-asset',
+    ],
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
