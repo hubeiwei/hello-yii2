@@ -45,6 +45,15 @@ $config = [
             ],
         ]
     ],
+    'i18n' => [
+        'translations' => [
+            'rbac-admin' => [
+                'class' => 'yii\i18n\PhpMessageSource',
+                'basePath' => '@mdm/admin/messages',
+                'sourceLanguage' => 'en-US',
+            ],
+        ],
+    ],
 ];
 
 return $config;
