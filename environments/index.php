@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The manifest of files that are local to specific environment.
  * This file returns a list of environments that the application
@@ -28,18 +29,25 @@
  * ];
  * ```
  */
-return [
+
+$setWritable = [
+    'runtime',
+    'web/assets',
+];
+$setExecutable = [
+    'yii',
+];
+$setCookieValidationKey = [
+    'config/main-local.php',
+];
+
+$config = [
     'Development' => [
         'path' => 'dev',
-        'setWritable' => [
-            'runtime',
-            'web/assets',
-        ],
-        'setExecutable' => [
-            'yii',
-        ],
-        'setCookieValidationKey' => [
-            'config/components-local.php',
-        ],
+        'setWritable' => $setWritable,
+        'setExecutable' => $setExecutable,
+        'setCookieValidationKey' => $setCookieValidationKey,
     ],
 ];
+
+return $config;
