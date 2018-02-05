@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HBW
- * Date: 2016/5/11
- * Time: 13:03
- * To change this template use File | Settings | File Templates.
- */
 
 namespace app\common\extensions;
 

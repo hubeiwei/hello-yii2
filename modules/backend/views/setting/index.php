@@ -67,5 +67,5 @@ $gridColumns = [
     </p>
 
     <?= RenderHelper::dynaGrid('backend-setting-index', $dataProvider, $gridColumns, $searchModel) ?>
-    
+
 </div>

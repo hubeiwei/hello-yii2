@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HBW
- * Date: 2016/5/14
- * Time: 12:24
- * To change this template use File | Settings | File Templates.
- */
 
 namespace app\modules\user\models;
 

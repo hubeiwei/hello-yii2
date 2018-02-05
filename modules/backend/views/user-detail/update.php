@@ -23,5 +23,5 @@ $this->params['breadcrumbs'][] = '修改';
         'model' => $model,
         'validator' => $validator,
     ]) ?>
-    
+
 </div>

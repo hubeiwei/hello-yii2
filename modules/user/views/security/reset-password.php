@@ -2,8 +2,8 @@
 
 use app\common\captcha\Captcha;
 use kartik\password\PasswordInput;
-use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 
 /**
  * @var $this yii\web\View

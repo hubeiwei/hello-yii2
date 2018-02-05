@@ -28,10 +28,10 @@ $gridColumns = [
         },
         'format' => 'html',
     ],
-//    [
-//        'attribute' => 'avatar_file',
-//        'headerOptions' => ['width' => 160],
-//    ],
+    // [
+    //     'attribute' => 'avatar_file',
+    //     'headerOptions' => ['width' => 160],
+    // ],
     [
         'attribute' => 'gender',
         'value' => function ($model) {

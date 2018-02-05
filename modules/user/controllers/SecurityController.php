@@ -39,7 +39,7 @@ class SecurityController extends ModuleController
         }
 
         if ($model->load(Yii::$app->getRequest()->post())) {
-            if($model->resetPassword()){
+            if ($model->resetPassword()) {
                 Message::setSuccessMsg('密码修改成功');
                 return $this->goHome();
             } else {

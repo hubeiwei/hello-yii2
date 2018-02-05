@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HBW
- * Date: 2016/5/1
- * Time: 21:40
- * To change this template use File | Settings | File Templates.
- */
 
 namespace app\common\captcha;
 

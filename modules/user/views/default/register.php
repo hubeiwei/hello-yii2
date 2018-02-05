@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HBW
- * Date: 2016/5/9
- * Time: 18:08
- * To change this template use File | Settings | File Templates.
- */
 
 use app\common\captcha\Captcha;
 use kartik\password\PasswordInput;

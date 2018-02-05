@@ -8,7 +8,6 @@
 namespace app\assets;
 
 use yii\web\AssetBundle;
-use yii\web\View;
 
 /**
  * @author Qiang Xue <qiang.xue@gmail.com>
