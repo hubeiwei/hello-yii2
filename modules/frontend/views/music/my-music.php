@@ -3,7 +3,7 @@
 use app\models\Music;
 use hubeiwei\yii2tools\grid\ActionColumn;
 use hubeiwei\yii2tools\grid\SerialColumn;
-use hubeiwei\yii2tools\helpers\RenderHelper;
+use hubeiwei\yii2tools\helpers\Render;
 use hubeiwei\yii2tools\widgets\DateRangePicker;
 use hubeiwei\yii2tools\widgets\JsBlock;
 use yii\helpers\Html;
@@ -36,8 +36,7 @@ $gridColumns = [
             /** @var $model Music */
             return Music::visibleMap($model->visible);
         },
-        'filter' => RenderHelper::dropDownFilter($searchModel, 'visible', Music::visibleMap()),
-        'headerOptions' => ['width' => 100],
+        'filter' => Music::visibleMap(),
     ],
     [
         'attribute' => 'status',
@@ -45,20 +44,12 @@ $gridColumns = [
             /** @var $model Music */
             return Music::statusMap($model->status);
         },
-        'filter' => RenderHelper::dropDownFilter($searchModel, 'status', Music::statusMap()),
-        'headerOptions' => ['width' => 100],
+        'filter' => Music::statusMap(),
     ],
     [
         'attribute' => 'created_at',
         'format' => 'dateTime',
         'filterType' => DateRangePicker::className(),
-        'headerOptions' => ['width' => 160],
-    ],
-    [
-        'attribute' => 'updated_at',
-        'format' => 'dateTime',
-        'filterType' => DateRangePicker::className(),
-        'headerOptions' => ['width' => 160],
     ],
 
     [
@@ -79,7 +70,11 @@ $gridColumns = [
         <?= Html::a('添加音乐', ['create'], ['class' => 'btn btn-info']) ?>
     </p>
 
-    <?= RenderHelper::gridView($dataProvider, $gridColumns, $searchModel) ?>
+    <?= Render::gridView([
+    	'dataProvider' => $dataProvider,
+		'filterModel' => $searchModel,
+		'columns' => $gridColumns,
+	]) ?>
 
 </div>
 <?php JsBlock::begin(); ?>

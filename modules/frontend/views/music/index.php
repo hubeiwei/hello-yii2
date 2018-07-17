@@ -2,7 +2,7 @@
 
 use app\models\Music;
 use hubeiwei\yii2tools\grid\SerialColumn;
-use hubeiwei\yii2tools\helpers\RenderHelper;
+use hubeiwei\yii2tools\helpers\Render;
 use hubeiwei\yii2tools\widgets\DateRangePicker;
 use hubeiwei\yii2tools\widgets\JsBlock;
 use yii\helpers\Html;
@@ -63,7 +63,11 @@ $gridColumns = [
         <?= Html::a('添加音乐', ['create'], ['class' => 'btn btn-info']) ?>
     </p>
 
-    <?= RenderHelper::gridView($dataProvider, $gridColumns, $searchModel) ?>
+    <?= Render::gridView([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => $gridColumns,
+    ]) ?>
 
 </div>
 <?php JsBlock::begin(); ?>

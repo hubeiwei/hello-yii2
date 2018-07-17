@@ -3,7 +3,7 @@
 use app\models\Article;
 use hubeiwei\yii2tools\grid\ActionColumn;
 use hubeiwei\yii2tools\grid\SerialColumn;
-use hubeiwei\yii2tools\helpers\RenderHelper;
+use hubeiwei\yii2tools\helpers\Render;
 use hubeiwei\yii2tools\widgets\DateRangePicker;
 use hubeiwei\yii2tools\widgets\Select2;
 use yii\helpers\Html;
@@ -21,10 +21,7 @@ $gridColumns = [
     ['class' => SerialColumn::className()],
 
     'title',
-    [
-        'attribute' => 'username',
-        'headerOptions' => ['width' => 160],
-    ],
+    'username',
     [
         'attribute' => 'published_at',
         'format' => ['dateTime', 'php:Y-m-d H:i'],
@@ -36,7 +33,6 @@ $gridColumns = [
                 ],
             ],
         ],
-        'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'visible',
@@ -47,7 +43,6 @@ $gridColumns = [
         'filterWidgetOptions' => [
             'data' => Article::visibleMap(),
         ],
-        'headerOptions' => ['width' => 100],
     ],
     [
         'attribute' => 'type',
@@ -58,7 +53,11 @@ $gridColumns = [
         'filterWidgetOptions' => [
             'data' => Article::typeMap(),
         ],
-        'headerOptions' => ['width' => 100],
+        'filterOptions' => [
+            'style' => [
+                'min-width' => '120px',
+            ],
+        ],
     ],
     [
         'attribute' => 'status',
@@ -69,19 +68,16 @@ $gridColumns = [
         'filterWidgetOptions' => [
             'data' => Article::statusMap(),
         ],
-        'headerOptions' => ['width' => 100],
     ],
     [
         'attribute' => 'created_at',
         'format' => 'dateTime',
         'filterType' => DateRangePicker::className(),
-        'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'updated_at',
         'format' => 'dateTime',
         'filterType' => DateRangePicker::className(),
-        'headerOptions' => ['width' => 160],
     ],
 
     ['class' => ActionColumn::className()],
@@ -93,6 +89,10 @@ $gridColumns = [
 
     <hr>
 
-    <?= RenderHelper::dynaGrid('backend-article-index', $dataProvider, $gridColumns, $searchModel) ?>
+    <?= Render::dynaGrid([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => $gridColumns,
+    ]) ?>
 
 </div>

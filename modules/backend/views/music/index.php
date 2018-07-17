@@ -3,7 +3,7 @@
 use app\models\Music;
 use hubeiwei\yii2tools\grid\ActionColumn;
 use hubeiwei\yii2tools\grid\SerialColumn;
-use hubeiwei\yii2tools\helpers\RenderHelper;
+use hubeiwei\yii2tools\helpers\Render;
 use hubeiwei\yii2tools\widgets\DateRangePicker;
 use hubeiwei\yii2tools\widgets\JsBlock;
 use hubeiwei\yii2tools\widgets\Select2;
@@ -95,7 +95,11 @@ $gridColumns = [
 
     <hr>
 
-    <?= RenderHelper::dynaGrid('backend-music-index', $dataProvider, $gridColumns, $searchModel) ?>
+    <?= Render::dynaGrid([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => $gridColumns,
+    ]) ?>
 
 </div>
 <?php JsBlock::begin(); ?>

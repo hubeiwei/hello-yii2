@@ -3,7 +3,7 @@
 use app\models\Article;
 use hubeiwei\yii2tools\grid\ActionColumn;
 use hubeiwei\yii2tools\grid\SerialColumn;
-use hubeiwei\yii2tools\helpers\RenderHelper;
+use hubeiwei\yii2tools\helpers\Render;
 use hubeiwei\yii2tools\widgets\DateRangePicker;
 use yii\bootstrap\ButtonDropdown;
 use yii\helpers\Html;
@@ -37,43 +37,37 @@ $gridColumns = [
                 ],
             ],
         ],
-        'headerOptions' => ['width' => 160],
     ],
     [
         'attribute' => 'visible',
         'value' => function ($model) {
             return Article::visibleMap($model->visible);
         },
-        'filter' => RenderHelper::dropDownFilter($searchModel, 'visible', Article::visibleMap()),
-        'headerOptions' => ['width' => 100],
+        'filter' => Article::visibleMap(),
     ],
     [
         'attribute' => 'type',
         'value' => function ($model) {
             return Article::typeMap($model->type);
         },
-        'filter' => RenderHelper::dropDownFilter($searchModel, 'type', Article::typeMap()),
-        'headerOptions' => ['width' => 100],
+        'filter' => Article::typeMap(),
+		'filterOptions' => [
+			'style' => [
+                'min-width' => '120px',
+			],
+		],
     ],
     [
         'attribute' => 'status',
         'value' => function ($model) {
             return Article::statusMap($model->status);
         },
-        'filter' => RenderHelper::dropDownFilter($searchModel, 'status', Article::statusMap()),
-        'headerOptions' => ['width' => 100],
+        'filter' =>  Article::statusMap(),
     ],
     [
         'attribute' => 'created_at',
         'format' => 'dateTime',
         'filterType' => DateRangePicker::className(),
-        'headerOptions' => ['width' => 160],
-    ],
-    [
-        'attribute' => 'updated_at',
-        'format' => 'dateTime',
-        'filterType' => DateRangePicker::className(),
-        'headerOptions' => ['width' => 160],
     ],
 
     ['class' => ActionColumn::className()],
@@ -97,6 +91,10 @@ $gridColumns = [
         ],
     ]) ?>
 
-    <?= RenderHelper::gridView($dataProvider, $gridColumns, $searchModel) ?>
+    <?= Render::gridView([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => $gridColumns,
+    ]) ?>
 
 </div>

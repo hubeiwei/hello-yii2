@@ -3,7 +3,7 @@
 use app\models\UserDetail;
 use hubeiwei\yii2tools\grid\ActionColumn;
 use hubeiwei\yii2tools\grid\SerialColumn;
-use hubeiwei\yii2tools\helpers\RenderHelper;
+use hubeiwei\yii2tools\helpers\Render;
 use hubeiwei\yii2tools\widgets\DateRangePicker;
 use hubeiwei\yii2tools\widgets\Select2;
 use yii\helpers\Html;
@@ -70,6 +70,10 @@ $gridColumns = [
 
     <hr>
 
-    <?= RenderHelper::dynaGrid('backend-user-detail-index', $dataProvider, $gridColumns, $searchModel) ?>
+    <?= Render::dynaGrid([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => $gridColumns,
+    ]) ?>
 
 </div>

@@ -47,17 +47,6 @@ $config = [
         ],
         'dynaGridOptions' => [
             'storage' => DynaGrid::TYPE_DB,
-            'gridOptions' => [
-                'dataColumnClass' => 'hubeiwei\yii2tools\grid\DataColumn',
-                'resizableColumns' => false,
-                'responsiveWrap' => false,
-                'hover' => true,
-                'export' => false,
-                'pager' => [
-                    'firstPageLabel' => '首页',
-                    'lastPageLabel' => '尾页',
-                ],
-            ],
         ],
     ],
     'redactor' => [

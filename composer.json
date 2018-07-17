@@ -12,7 +12,7 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
 
         "bower-asset/highlightjs": "*",
-        "hubeiwei/yii2-tools": "dev-master",
+        "hubeiwei/yii2-tools": "2.0.x-dev",
         "ijackua/yii2-lepture-markdown-editor-widget": "^1.0",
         "kartik-v/yii2-password": "*",
         "kartik-v/yii2-widget-datepicker": "*",
@@ -28,7 +28,10 @@
         "yiisoft/yii2-faker": "~2.0.0"
     },
     "config": {
-        "process-timeout": 1800
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        }
     },
     "repositories": [
         {
