@@ -157,18 +157,3 @@ layout/backend.php
 <img src="https://raw.githubusercontent.com/hubeiwei/hubeiwei.github.io/master/images/pay/ali_pay.jpg" width="500px" alt="支付宝">
 
 <img src="https://raw.githubusercontent.com/hubeiwei/hubeiwei.github.io/master/images/pay/wechat_pay.png" width="500px" alt="微信">
-
-感谢以下这些朋友的支持。
-
-打赏人 | QQ | 金额
----|---|---
-若 | 921520651 | 88.88
-誓言 | 443536249 | 50.00
-山中石 | 1146283 | 50.00
-N | 1024720263 | 50.00
-东方不拔 | 790292520 | 30.00
-allen | 2134691391 | 20.00
-欲买桂花同载酒。 | 1054828207 | 18.88
-一缕云烟 | 494644368 | 13.80
-[a boy with a mission](https://github.com/xiaocai314) | 727492986 | 8.88
-hello world! | 85307097 | 1.00
