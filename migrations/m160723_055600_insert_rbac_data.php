@@ -31,8 +31,6 @@ class m160723_055600_insert_rbac_data extends Migration
             ['/backend/default/index', 2, $time, $time],
             ['/backend/music/*', 2, $time, $time],
             ['/backend/music/index', 2, $time, $time],
-            ['/backend/setting/*', 2, $time, $time],
-            ['/backend/setting/index', 2, $time, $time],
             ['/backend/user-detail/*', 2, $time, $time],
             ['/backend/user-detail/index', 2, $time, $time],
             ['/backend/user/*', 2, $time, $time],
@@ -55,7 +53,6 @@ class m160723_055600_insert_rbac_data extends Migration
             ['前台', null, null, 2],
             ['用户', null, null, 3],
             ['权限管理', null, null, 4],
-            ['系统', null, null, 5],
         ]);
 
         // 创建子菜单
@@ -75,10 +72,6 @@ class m160723_055600_insert_rbac_data extends Migration
             ['规则列表', 4, '/admin/rule/index', 4],
             ['菜单列表', 4, '/admin/menu/index', 5],
             ['路由列表', 4, '/admin/route/index', 6],
-
-            // 系统，id：5
-            ['网站配置', 5, '/backend/setting/index', 1],
-            ['代码生成', 5, '/gii/default/index', 2],
         ]);
     }
 

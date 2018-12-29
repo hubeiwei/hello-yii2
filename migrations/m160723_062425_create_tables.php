@@ -2,7 +2,6 @@
 
 use app\models\Article;
 use app\models\Music;
-use app\models\Setting;
 use app\models\User;
 use app\models\UserDetail;
 use yii\db\Migration;
@@ -63,18 +62,6 @@ class m160723_062425_create_tables extends Migration
             'created_at' => $this->integer(11)->unsigned()->comment('创建时间'),
             'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
         ], $tableOptions . ' COMMENT=\'音乐\'');
-
-        $this->createTable(Setting::tableName(), [
-            'id' => $this->primaryKey(10)->unsigned(),
-            'key' => $this->string(20)->notNull()->unique()->comment('键'),
-            'value' => $this->text()->notNull()->comment('值'),
-            'status' => $this->smallInteger()->notNull()->defaultValue(Setting::STATUS_ENABLE)->comment('状态'),
-            'description' => $this->string(200)->comment('描述'),
-            'tag' => $this->string(20)->comment('标记'),
-            'updated_by' => $this->integer(10)->unsigned()->comment('最后操作者'),
-            'created_at' => $this->integer(11)->unsigned()->comment('创建时间'),
-            'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
-        ], $tableOptions . ' COMMENT=\'网站配置\'');
     }
 
     public function safeDown()
@@ -83,6 +70,5 @@ class m160723_062425_create_tables extends Migration
         $this->dropTable(UserDetail::tableName());
         $this->dropTable(Article::tableName());
         $this->dropTable(Music::tableName());
-        $this->dropTable(Setting::tableName());
     }
 }
