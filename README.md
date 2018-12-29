@@ -24,7 +24,7 @@
 
 ## 说明
 
-这是我在空闲时间用 yii2-basic 模板来练手的东西，里面的代码不一定能在实际工作中使用，也不一定是最好的写法，而且年代久远，仅供参考，我只会时不时上来更新一下 composer 测试一下有没有问题再去公司的项目里更新。
+这是我2016年在空闲时间用 yii2-basic 模板来练手的东西，里面的代码不一定能在实际工作中使用，也不一定是最好的写法，而且年代久远，仅供参考，我只会时不时上来更新一下 composer 测试一下有没有问题再去公司的项目里更新，新功能估计不会再搞。
 
 目前可能是你能学到一点破姿势的地方：
 
@@ -62,19 +62,14 @@ php init --env=Development --overwrite=all
 在 MySql 创建一个 utf8 数据库，在 config/db.php 文件配置好之后，按顺序执行以下命令：
 
 ```
-php yii migrate --migrationPath=@yii/rbac/migrations
-php yii migrate/to m140602_111327_create_menu_table --migrationPath=@mdm/admin/migrations
-php yii migrate --migrationPath=@kartik/dynagrid/migrations
 php yii migrate
 ```
 
-### 搭建网站
+### 服务器配置
 
-因为路由规则需要，需要开启 rewrite 并把 web 目录设置为站点根目录，这也是 yii2 的正确使用方式。
+直接参考[官方文档](https://github.com/yiisoft/yii2/blob/master/docs/guide-zh-CN/start-installation.md#配置-web-服务器-)，我的 nginx 配置就是直接抄官方文档里面的。
 
-nginx 可以参考[这篇文章](http://www.getyii.com/topic/31)。
-
-或者直接参考[官方文档](https://github.com/yiisoft/yii2/blob/master/docs/guide-zh-CN/start-installation.md#配置-web-服务器-)，我的 nginx 配置就是直接抄官方文档里面的。
+nginx 也看看[这篇文章](http://www.getyii.com/topic/31)。
 
 ### 使用
 

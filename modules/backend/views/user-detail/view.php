@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $model->user->username;
             'avatar_file',
             [
                 'attribute' => 'gender',
-                'value' => UserDetail::$gender_map[$model->gender],
+                'value' => UserDetail::genderMap($model->gender),
             ],
             'birthday:date',
             'phone',

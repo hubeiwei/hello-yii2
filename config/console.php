@@ -29,13 +29,22 @@ $config = [
     'controllerNamespace' => 'app\commands',
     'components' => $components,
     'params' => $params,
-    /*
     'controllerMap' => [
-        'fixture' => [ // Fixture generation command line.
+        /*'fixture' => [ // Fixture generation command line.
             'class' => 'yii\faker\FixtureController',
+        ],*/
+        'migrate' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationPath' => [
+                '@app/migrations',
+                '@yii/rbac/migrations',
+                '@mdm/admin/migrations',
+            ],
+            'migrationNamespaces' => [
+                'kartik\dynagrid\migrations',
+            ],
         ],
     ],
-    */
 ];
 
 if (YII_ENV_DEV) {

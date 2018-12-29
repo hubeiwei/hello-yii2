@@ -5,7 +5,6 @@ use hubeiwei\yii2tools\grid\ActionColumn;
 use hubeiwei\yii2tools\grid\SerialColumn;
 use hubeiwei\yii2tools\helpers\Render;
 use hubeiwei\yii2tools\widgets\DateRangePicker;
-use hubeiwei\yii2tools\widgets\Select2;
 use yii\helpers\Html;
 
 /**
@@ -35,13 +34,9 @@ $gridColumns = [
     [
         'attribute' => 'gender',
         'value' => function ($model) {
-            return UserDetail::$gender_map[$model->gender];
+            return UserDetail::genderMap($model->gender);
         },
-        'filterType' => Select2::className(),
-        'filterWidgetOptions' => [
-            'data' => UserDetail::$gender_map,
-        ],
-        'headerOptions' => ['width' => 100],
+        'filter' => UserDetail::genderMap(),
     ],
     [
         'attribute' => 'birthday',

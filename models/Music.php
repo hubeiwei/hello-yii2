@@ -17,10 +17,6 @@ class Music extends MusicBase
 
     const VISIBLE_NO = 0;
     const VISIBLE_YES = 1;
-    public static $visible_list = [
-        self::VISIBLE_NO,
-        self::VISIBLE_YES,
-    ];
 
     /**
      * @param int $value
@@ -40,10 +36,6 @@ class Music extends MusicBase
 
     const STATUS_DISABLE = 0;
     const STATUS_ENABLE = 1;
-    public static $status_list = [
-        self::STATUS_ENABLE,
-        self::STATUS_DISABLE,
-    ];
 
     /**
      * @param int $value
@@ -84,8 +76,8 @@ class Music extends MusicBase
     public function rules()
     {
         return array_merge(parent::rules(), [
-            ['visible', 'in', 'range' => self::$visible_list],
-            ['status', 'in', 'range' => self::$status_list],
+            ['visible', 'in', 'range' => array_keys(self::visibleMap())],
+            ['status', 'in', 'range' => array_keys(self::statusMap())],
         ]);
     }
 

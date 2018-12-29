@@ -5,7 +5,6 @@ use hubeiwei\yii2tools\grid\ActionColumn;
 use hubeiwei\yii2tools\grid\SerialColumn;
 use hubeiwei\yii2tools\helpers\Render;
 use hubeiwei\yii2tools\widgets\DateRangePicker;
-use hubeiwei\yii2tools\widgets\Select2;
 use yii\helpers\Html;
 
 /**
@@ -39,35 +38,21 @@ $gridColumns = [
         'value' => function ($model) {
             return Article::visibleMap($model->visible);
         },
-        'filterType' => Select2::className(),
-        'filterWidgetOptions' => [
-            'data' => Article::visibleMap(),
-        ],
+        'filter' => Article::visibleMap(),
     ],
     [
         'attribute' => 'type',
         'value' => function ($model) {
             return Article::typeMap($model->type);
         },
-        'filterType' => Select2::className(),
-        'filterWidgetOptions' => [
-            'data' => Article::typeMap(),
-        ],
-        'filterOptions' => [
-            'style' => [
-                'min-width' => '120px',
-            ],
-        ],
+        'filter' => Article::typeMap(),
     ],
     [
         'attribute' => 'status',
         'value' => function ($model) {
             return Article::statusMap($model->status);
         },
-        'filterType' => Select2::className(),
-        'filterWidgetOptions' => [
-            'data' => Article::statusMap(),
-        ],
+        'filter' => Article::statusMap(),
     ],
     [
         'attribute' => 'created_at',

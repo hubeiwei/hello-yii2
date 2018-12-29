@@ -6,7 +6,6 @@ use hubeiwei\yii2tools\grid\ActionColumn;
 use hubeiwei\yii2tools\grid\SerialColumn;
 use hubeiwei\yii2tools\helpers\Render;
 use hubeiwei\yii2tools\widgets\DateRangePicker;
-use hubeiwei\yii2tools\widgets\Select2;
 use yii\helpers\Html;
 
 /**
@@ -32,11 +31,7 @@ $gridColumns = [
         'value' => function ($model) {
             return User::statusMap($model->status);
         },
-        'filterType' => Select2::className(),
-        'filterWidgetOptions' => [
-            'data' => User::statusMap(),
-        ],
-        'headerOptions' => ['width' => 100],
+        'filter' => User::statusMap(),
     ],
     [
         'attribute' => 'created_at',

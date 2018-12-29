@@ -2,30 +2,32 @@
 
 namespace app\models\base;
 
+use Yii;
+
 /**
- * This is the model class for table "{{%user_detail}}".
+ * This is the model class for table "user_detail".
  *
- * @property integer $id
- * @property integer $user_id
- * @property string $avatar_file
- * @property integer $gender
- * @property integer $birthday
- * @property string $phone
- * @property string $resume
- * @property integer $updated_at
+ * @property int $id
+ * @property int $user_id 用户ID
+ * @property string $avatar_file 头像文件
+ * @property int $gender 性别
+ * @property int $birthday 生日
+ * @property string $phone 电话
+ * @property string $resume 简介
+ * @property int $updated_at 修改时间
  */
-class UserDetailBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
+class UserDetailBase extends \hubeiwei\yii2tools\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
-        return '{{%user_detail}}';
+        return 'user_detail';
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -40,7 +42,7 @@ class UserDetailBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {

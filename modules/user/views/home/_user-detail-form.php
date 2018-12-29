@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'gender')->dropDownList(UserDetail::$gender_map) ?>
+    <?= $form->field($model, 'gender')->dropDownList(UserDetail::genderMap()) ?>
 
     <?= $form->field($validator, 'birthday')->widget(DatePicker::className(), [
         'pluginOptions' => [

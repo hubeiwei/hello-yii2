@@ -16,17 +16,12 @@ class m160723_062425_create_tables extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable(User::tableName(), [
-            'id' => $this->primaryKey(),
-            'username' => $this->string(20)->notNull()->unique()->comment('用户名'),
-            'auth_key' => $this->string(32)->notNull(),
-            'password_hash' => $this->string()->notNull(),
-            'password_reset_token' => $this->string()->unique(),
-            'email' => $this->string()->notNull()->unique()->comment('邮箱'),
-            'status' => $this->smallInteger()->notNull()->defaultValue(User::STATUS_ACTIVE)->comment('状态'),
-            'created_at' => $this->integer()->unsigned()->comment('创建时间'),
-            'updated_at' => $this->integer()->unsigned()->comment('修改时间'),
-        ], $tableOptions . ' COMMENT=\'用户\'');
+        $this->alterColumn(User::tableName(), 'username', $this->string(32)->notNull()->unique()->comment('用户名'));
+        $this->alterColumn(User::tableName(), 'email', $this->string()->notNull()->unique()->comment('邮箱'));
+        $this->alterColumn(User::tableName(), 'status', $this->smallInteger()->notNull()->defaultValue(User::STATUS_ACTIVE)->comment('状态'));
+        $this->alterColumn(User::tableName(), 'created_at', $this->integer()->unsigned()->comment('创建时间'));
+        $this->alterColumn(User::tableName(), 'updated_at', $this->integer()->unsigned()->comment('修改时间'));
+        $this->addCommentOnTable(User::tableName(), '用户');
 
         $this->createTable(UserDetail::tableName(), [
             'id' => $this->primaryKey(10)->unsigned(),
@@ -37,7 +32,7 @@ class m160723_062425_create_tables extends Migration
             'phone' => $this->string(11)->unique()->comment('电话'),
             'resume' => $this->string(100)->comment('简介'),
             'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
-        ], $tableOptions . ' COMMENT=\'用户资料\'');
+        ], $tableOptions . " COMMENT='用户资料'");
 
         $this->createTable(Article::tableName(), [
             'id' => $this->primaryKey(10)->unsigned(),
@@ -50,7 +45,7 @@ class m160723_062425_create_tables extends Migration
             'status' => $this->smallInteger()->notNull()->defaultValue(Article::STATUS_ENABLE)->comment('状态'),
             'created_at' => $this->integer(11)->unsigned()->comment('创建时间'),
             'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
-        ], $tableOptions . ' COMMENT=\'文章\'');
+        ], $tableOptions . " COMMENT='文章'");
 
         $this->createTable(Music::tableName(), [
             'id' => $this->primaryKey(10)->unsigned(),
@@ -61,12 +56,17 @@ class m160723_062425_create_tables extends Migration
             'status' => $this->smallInteger()->notNull()->defaultValue(Music::STATUS_ENABLE)->comment('状态'),
             'created_at' => $this->integer(11)->unsigned()->comment('创建时间'),
             'updated_at' => $this->integer(11)->unsigned()->comment('修改时间'),
-        ], $tableOptions . ' COMMENT=\'音乐\'');
+        ], $tableOptions . " COMMENT='音乐'");
     }
 
     public function safeDown()
     {
-        $this->dropTable(User::tableName());
+        $this->alterColumn(User::tableName(), 'username', $this->string(32)->notNull());
+        $this->alterColumn(User::tableName(), 'email', $this->string()->notNull());
+        $this->alterColumn(User::tableName(), 'status', $this->smallInteger()->notNull()->defaultValue(10));
+        $this->alterColumn(User::tableName(), 'created_at', $this->integer()->notNull());
+        $this->alterColumn(User::tableName(), 'updated_at', $this->integer()->notNull());
+        $this->dropCommentFromTable(User::tableName());
         $this->dropTable(UserDetail::tableName());
         $this->dropTable(Article::tableName());
         $this->dropTable(Music::tableName());

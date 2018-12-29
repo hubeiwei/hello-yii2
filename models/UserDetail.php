@@ -4,22 +4,30 @@ namespace app\models;
 
 use app\models\base\UserDetailBase;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 class UserDetail extends UserDetailBase
 {
     const GENDER_SECRECY = '0';
     const GENDER_MAN = '1';
     const GENDER_WOMAN = '2';
-    public static $gender_list = [
-        self::GENDER_SECRECY,
-        self::GENDER_MAN,
-        self::GENDER_WOMAN,
-    ];
-    public static $gender_map = [
-        self::GENDER_SECRECY => '保密',
-        self::GENDER_MAN => '男',
-        self::GENDER_WOMAN => '女',
-    ];
+
+    /**
+     * @param int $value
+     * @return array|string|null
+     */
+    public static function genderMap($value = -1)
+    {
+        $map = [
+            self::GENDER_SECRECY => '保密',
+            self::GENDER_MAN => '男',
+            self::GENDER_WOMAN => '女',
+        ];
+        if ($value == -1) {
+            return $map;
+        }
+        return ArrayHelper::getValue($map, $value);
+    }
 
     /**
      * @inheritdoc
@@ -43,7 +51,7 @@ class UserDetail extends UserDetailBase
     public function rules()
     {
         return array_merge(parent::rules(), [
-            ['gender', 'in', 'range' => self::$gender_list],
+            ['gender', 'in', 'range' => array_keys(self::genderMap())],
             ['phone', 'match', 'pattern' => '/^1[34578]\d{9}$/'],
         ]);
     }

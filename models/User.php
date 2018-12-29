@@ -15,10 +15,6 @@ class User extends UserBase implements IdentityInterface
 
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 10;
-    public static $status_list = [
-        self::STATUS_INACTIVE,
-        self::STATUS_ACTIVE,
-    ];
 
     /**
      * @param int $value
@@ -43,7 +39,7 @@ class User extends UserBase implements IdentityInterface
     {
         return array_merge(parent::rules(), [
             ['password_hash', 'string', 'min' => 8],
-            ['status', 'in', 'range' => self::$status_list],
+            ['status', 'in', 'range' => array_keys(self::statusMap())],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
         ]);
     }

@@ -2,30 +2,32 @@
 
 namespace app\models\base;
 
+use Yii;
+
 /**
- * This is the model class for table "{{%music}}".
+ * This is the model class for table "music".
  *
- * @property integer $id
- * @property string $track_title
- * @property string $music_file
- * @property integer $user_id
- * @property integer $visible
- * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
+ * @property int $id
+ * @property string $track_title 标题
+ * @property string $music_file 音乐文件
+ * @property int $user_id 用户ID
+ * @property int $visible 可见性
+ * @property int $status 状态
+ * @property int $created_at 创建时间
+ * @property int $updated_at 修改时间
  */
-class MusicBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
+class MusicBase extends \hubeiwei\yii2tools\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
-        return '{{%music}}';
+        return 'music';
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -38,7 +40,7 @@ class MusicBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {

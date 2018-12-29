@@ -2,32 +2,34 @@
 
 namespace app\models\base;
 
+use Yii;
+
 /**
- * This is the model class for table "{{%article}}".
+ * This is the model class for table "article".
  *
- * @property integer $id
- * @property string $title
- * @property integer $created_by
- * @property integer $published_at
- * @property string $content
- * @property integer $visible
- * @property integer $type
- * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
+ * @property int $id
+ * @property string $title 标题
+ * @property int $created_by 作者
+ * @property int $published_at 发布时间
+ * @property string $content 内容
+ * @property int $visible 可见性
+ * @property int $type 文章类型
+ * @property int $status 状态
+ * @property int $created_at 创建时间
+ * @property int $updated_at 修改时间
  */
-class ArticleBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
+class ArticleBase extends \hubeiwei\yii2tools\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
-        return '{{%article}}';
+        return 'article';
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -40,7 +42,7 @@ class ArticleBase extends \hubeiwei\yii2tools\extensions\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {

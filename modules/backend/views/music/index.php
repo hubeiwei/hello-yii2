@@ -6,7 +6,6 @@ use hubeiwei\yii2tools\grid\SerialColumn;
 use hubeiwei\yii2tools\helpers\Render;
 use hubeiwei\yii2tools\widgets\DateRangePicker;
 use hubeiwei\yii2tools\widgets\JsBlock;
-use hubeiwei\yii2tools\widgets\Select2;
 use yii\helpers\Html;
 
 /**
@@ -47,22 +46,14 @@ $gridColumns = [
         'value' => function ($model) {
             return Music::visibleMap($model->visible);
         },
-        'filterType' => Select2::className(),
-        'filterWidgetOptions' => [
-            'data' => Music::visibleMap(),
-        ],
-        'headerOptions' => ['width' => 100],
+        'filter' => Music::visibleMap(),
     ],
     [
         'attribute' => 'status',
         'value' => function ($model) {
             return Music::statusMap($model->status);
         },
-        'filterType' => Select2::className(),
-        'filterWidgetOptions' => [
-            'data' => Music::statusMap(),
-        ],
-        'headerOptions' => ['width' => 100],
+        'filter' => Music::statusMap(),
     ],
     [
         'attribute' => 'created_at',
